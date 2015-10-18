@@ -1,0 +1,172 @@
+\subsection{Analysis routines}
+\label{group__analysis}\index{Analysis routines@{Analysis routines}}
+
+
+\subsubsection{Detailed Description}
+\doxyref{bpm\_\-defs.h}{p.}{bpm__defs_8h-source}
+
+Main definitions for libbpm as well as doxygen intro documentation
+
+These are a number of definitions to make the code run on various systems ( like e.g. win32... ) and some other general definitions used by the library.
+
+\subsubsection*{Files}
+\begin{CompactItemize}
+\item 
+file {\bf ana\_\-compute\_\-residual.c}
+\item 
+file {\bf ana\_\-def\_\-cutfn.c}
+\item 
+file {\bf ana\_\-get\_\-svd\_\-coeffs.c}
+\item 
+file {\bf ana\_\-set\_\-cutfn.c}
+\item 
+file {\bf bpm\_\-analysis.h}
+\begin{CompactList}\small\item\em libbpm analysis routines \item\end{CompactList}
+
+\end{CompactItemize}
+\subsubsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf BPM\_\-GOOD\_\-EVENT}
+\item 
+\#define {\bf BPM\_\-BAD\_\-EVENT}
+\item 
+\#define {\bf ANA\_\-SVD\_\-TILT}
+\item 
+\#define {\bf ANA\_\-SVD\_\-NOTILT}
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN int {\bf ana\_\-set\_\-cutfn} (int($\ast$cutfn)({\bf bpmproc\_\-t} $\ast$proc))
+\item 
+EXTERN int {\bf ana\_\-get\_\-svd\_\-coeffs} ({\bf bpmproc\_\-t} $\ast$$\ast$proc, int num\_\-bpms, int num\_\-svd, int total\_\-num\_\-evts, double $\ast$coeffs, int mode)
+\item 
+EXTERN int {\bf ana\_\-compute\_\-residual} ({\bf bpmproc\_\-t} $\ast$$\ast$proc, int num\_\-bpms, int num\_\-evts, double $\ast$coeffs, int mode, double $\ast$mean, double $\ast$rms)
+\item 
+EXTERN int {\bf ana\_\-def\_\-cutfn} ({\bf bpmproc\_\-t} $\ast$proc)
+\end{CompactItemize}
+\subsubsection*{Variables}
+\begin{CompactItemize}
+\item 
+EXTERN int($\ast$ {\bf ana\_\-cutfn} )({\bf bpmproc\_\-t} $\ast$proc)
+\end{CompactItemize}
+
+
+\subsubsection{Define Documentation}
+\index{analysis@{analysis}!BPM\_\-GOOD\_\-EVENT@{BPM\_\-GOOD\_\-EVENT}}
+\index{BPM\_\-GOOD\_\-EVENT@{BPM\_\-GOOD\_\-EVENT}!analysis@{analysis}}
+\paragraph[BPM\_\-GOOD\_\-EVENT]{\setlength{\rightskip}{0pt plus 5cm}\#define BPM\_\-GOOD\_\-EVENT}\hfill\label{group__analysis_g1f7c3d2d39457fe03fc3de486cee4db8}
+
+
+A good event 
+
+Definition at line 28 of file bpm\_\-analysis.h.
+
+Referenced by ana\_\-compute\_\-residual(), ana\_\-def\_\-cutfn(), ana\_\-get\_\-svd\_\-coeffs(), and ana\_\-set\_\-cutfn().\index{analysis@{analysis}!BPM\_\-BAD\_\-EVENT@{BPM\_\-BAD\_\-EVENT}}
+\index{BPM\_\-BAD\_\-EVENT@{BPM\_\-BAD\_\-EVENT}!analysis@{analysis}}
+\paragraph[BPM\_\-BAD\_\-EVENT]{\setlength{\rightskip}{0pt plus 5cm}\#define BPM\_\-BAD\_\-EVENT}\hfill\label{group__analysis_g18533f61d0a73e5bd6c9d75324e20ce8}
+
+
+A bad event 
+
+Definition at line 29 of file bpm\_\-analysis.h.\index{analysis@{analysis}!ANA\_\-SVD\_\-TILT@{ANA\_\-SVD\_\-TILT}}
+\index{ANA\_\-SVD\_\-TILT@{ANA\_\-SVD\_\-TILT}!analysis@{analysis}}
+\paragraph[ANA\_\-SVD\_\-TILT]{\setlength{\rightskip}{0pt plus 5cm}\#define ANA\_\-SVD\_\-TILT}\hfill\label{group__analysis_g3698d7f2197da52ccf4af44f6c16d33c}
+
+
+Include tilts in the SVD 
+
+Definition at line 31 of file bpm\_\-analysis.h.
+
+Referenced by ana\_\-compute\_\-residual(), and ana\_\-get\_\-svd\_\-coeffs().\index{analysis@{analysis}!ANA\_\-SVD\_\-NOTILT@{ANA\_\-SVD\_\-NOTILT}}
+\index{ANA\_\-SVD\_\-NOTILT@{ANA\_\-SVD\_\-NOTILT}!analysis@{analysis}}
+\paragraph[ANA\_\-SVD\_\-NOTILT]{\setlength{\rightskip}{0pt plus 5cm}\#define ANA\_\-SVD\_\-NOTILT}\hfill\label{group__analysis_g00b420eab9bc814583301e52c07b5c4d}
+
+
+Don't include tilts in the SVD 
+
+Definition at line 32 of file bpm\_\-analysis.h.
+
+\subsubsection{Function Documentation}
+\index{analysis@{analysis}!ana\_\-set\_\-cutfn@{ana\_\-set\_\-cutfn}}
+\index{ana\_\-set\_\-cutfn@{ana\_\-set\_\-cutfn}!analysis@{analysis}}
+\paragraph[ana\_\-set\_\-cutfn]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int ana\_\-set\_\-cutfn (int($\ast$)({\bf bpmproc\_\-t} $\ast$proc) {\em cutfn})}\hfill\label{group__analysis_ga43f2500e6e362684f8158695093611f}
+
+
+Set the cut function
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em cutfn}]a pointer to the cut function with a bpmproc\_\-t as argument \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 8 of file ana\_\-set\_\-cutfn.c.
+
+References ana\_\-cutfn, bpm\_\-error(), and BPM\_\-GOOD\_\-EVENT.\index{analysis@{analysis}!ana\_\-get\_\-svd\_\-coeffs@{ana\_\-get\_\-svd\_\-coeffs}}
+\index{ana\_\-get\_\-svd\_\-coeffs@{ana\_\-get\_\-svd\_\-coeffs}!analysis@{analysis}}
+\paragraph[ana\_\-get\_\-svd\_\-coeffs]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int ana\_\-get\_\-svd\_\-coeffs ({\bf bpmproc\_\-t} $\ast$$\ast$ {\em proc}, \/  int {\em num\_\-bpms}, \/  int {\em num\_\-svd}, \/  int {\em total\_\-num\_\-evts}, \/  double $\ast$ {\em coeffs}, \/  int {\em mode})}\hfill\label{group__analysis_gf85e4ec973a67e8adbcc3ffefcf847be}
+
+
+Perform the SVD on the given data and return the coefficients. The index 0 \doxyref{bpmconf}{p.}{structbpmconf} is the bpm to be regressed against and the remainder are put into the regression. The coeffs array must be valid up to the number of arguments approapriate to mode.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em proc}]pointer to the the processed bpm databuffer \item[{\em num\_\-bpms}]the number of bpms in the array \item[{\em num\_\-svd}]number of svd constants \item[{\em total\_\-num\_\-evts}]total number of events in the buffer \item[{\em coeffs}]the array of correlation coefficients that is returned \item[{\em mode}]mode option: take tilts into account in the SVD ? \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 9 of file ana\_\-get\_\-svd\_\-coeffs.c.
+
+References ana\_\-cutfn, ANA\_\-SVD\_\-TILT, BPM\_\-GOOD\_\-EVENT, gsl\_\-matrix\_\-set(), gsl\_\-vector\_\-get(), and gsl\_\-vector\_\-set().\index{analysis@{analysis}!ana\_\-compute\_\-residual@{ana\_\-compute\_\-residual}}
+\index{ana\_\-compute\_\-residual@{ana\_\-compute\_\-residual}!analysis@{analysis}}
+\paragraph[ana\_\-compute\_\-residual]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int ana\_\-compute\_\-residual ({\bf bpmproc\_\-t} $\ast$$\ast$ {\em proc}, \/  int {\em num\_\-bpms}, \/  int {\em num\_\-evts}, \/  double $\ast$ {\em coeffs}, \/  int {\em mode}, \/  double $\ast$ {\em mean}, \/  double $\ast$ {\em rms})}\hfill\label{group__analysis_g9d2a43680e2b56bd8d9533640e012d39}
+
+
+Calculate the mean and rms of the residual fomr the given events. Note that the mode and svd coefficients must 'match' as with \doxyref{ana\_\-get\_\-svd\_\-coeffs()}{p.}{group__analysis_gf85e4ec973a67e8adbcc3ffefcf847be}
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em proc}]pointer to the the processed bpm databuffer \item[{\em num\_\-bpms}]the number of bpms in the array \item[{\em num\_\-evts}]total number of events in the buffer \item[{\em coeffs}]the array of correlation coefficients \item[{\em mode}]mode option: take tilts into account in the SVD ? \item[{\em mean}]the returned mean \item[{\em rms}]the returned rms \end{description}
+\end{Desc}
+
+
+Definition at line 8 of file ana\_\-compute\_\-residual.c.
+
+References ana\_\-cutfn, ANA\_\-SVD\_\-TILT, BPM\_\-GOOD\_\-EVENT, bpmproc::ddc\_\-pos, and bpmproc::ddc\_\-slope.\index{analysis@{analysis}!ana\_\-def\_\-cutfn@{ana\_\-def\_\-cutfn}}
+\index{ana\_\-def\_\-cutfn@{ana\_\-def\_\-cutfn}!analysis@{analysis}}
+\paragraph[ana\_\-def\_\-cutfn]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int ana\_\-def\_\-cutfn ({\bf bpmproc\_\-t} $\ast$ {\em proc})}\hfill\label{group__analysis_gcbdbcea0b0430035ba67088c6c0aeba0}
+
+
+The default cut function if people cut be bothered to do their own :)
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em proc}]the event to decide \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-GOOD\_\-EVENT if the event is good, BPM\_\-BAD\_\-EVENT if it isn't \end{Desc}
+
+
+Definition at line 10 of file ana\_\-def\_\-cutfn.c.
+
+References BPM\_\-GOOD\_\-EVENT.
+
+\subsubsection{Variable Documentation}
+\index{analysis@{analysis}!ana\_\-cutfn@{ana\_\-cutfn}}
+\index{ana\_\-cutfn@{ana\_\-cutfn}!analysis@{analysis}}
+\paragraph[ana\_\-cutfn]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int($\ast$ {\bf ana\_\-cutfn})({\bf bpmproc\_\-t} $\ast$proc)}\hfill\label{group__analysis_g16314a490ff9a94ed7776e919a290d33}
+
+
+A user cut function to allow cuts to be applied while selecting events for SVD, etc. 
+
+Referenced by ana\_\-compute\_\-residual(), ana\_\-get\_\-svd\_\-coeffs(), and ana\_\-set\_\-cutfn().

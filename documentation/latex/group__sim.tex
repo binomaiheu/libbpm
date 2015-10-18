@@ -1,0 +1,238 @@
+\subsection{BPM signal simulation routines}
+\label{group__sim}\index{BPM signal simulation routines@{BPM signal simulation routines}}
+
+
+\subsubsection{Detailed Description}
+
+
+\subsubsection*{Files}
+\begin{CompactItemize}
+\item 
+file {\bf add\_\-mode\_\-response.c}
+\item 
+file {\bf bpm\_\-simulation.h}
+\begin{CompactList}\small\item\em libbpm waveform simulation routines \item\end{CompactList}
+
+\item 
+file {\bf digitise.c}
+\item 
+file {\bf generate\_\-bpmsignal.c}
+\item 
+file {\bf generate\_\-diodesignal.c}
+\item 
+file {\bf get\_\-mode\_\-amplitude.c}
+\item 
+file {\bf get\_\-mode\_\-response.c}
+\item 
+file {\bf set\_\-temp.c}
+\item 
+file {\bf set\_\-time.c}
+\end{CompactItemize}
+\subsubsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf K\_\-SAMPLE}
+\item 
+\#define \textbf{MODE\_\-DECAY}\label{group__sim_g057113600a8f0d237093da56f7c6b490}
+
+\item 
+\#define \textbf{MODE\_\-MAX\_\-SAMPLES}\label{group__sim_g26762c236ebdbdf60197a9aa519bf6aa}
+
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN int {\bf set\_\-temp} (double TK)
+\item 
+EXTERN int {\bf set\_\-time} (double ts)
+\item 
+EXTERN int {\bf generate\_\-bpmsignal} ({\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmmode\_\-t} $\ast$mode, {\bf beamconf\_\-t} $\ast$beam, {\bf doublewf\_\-t} $\ast$rf)
+\item 
+EXTERN int {\bf add\_\-mode\_\-response} ({\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmmode\_\-t} $\ast$mode, {\bf bunchconf\_\-t} $\ast$bunch, {\bf doublewf\_\-t} $\ast$rf)
+\item 
+EXTERN {\bf complex\_\-t} {\bf get\_\-mode\_\-amplitude} ({\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmmode\_\-t} $\ast$mode, {\bf bunchconf\_\-t} $\ast$bunch)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf generate\_\-diodesignal} ({\bf doublewf\_\-t} $\ast$rf, double sens, {\bf filter\_\-t} $\ast$filt, triggertype\_\-t diode)
+\item 
+EXTERN int {\bf get\_\-mode\_\-response} ({\bf bpmmode\_\-t} $\ast$mode)
+\item 
+EXTERN int {\bf digitise} ({\bf doublewf\_\-t} $\ast$IF, int nbits, double range\_\-min, double range\_\-max, double clock\_\-jitter, double digi\_\-noise, unsigned int ipmode, {\bf intwf\_\-t} $\ast$wf)
+\end{CompactItemize}
+\subsubsection*{Variables}
+\begin{CompactItemize}
+\item 
+EXTERN double {\bf ambient\_\-temp}
+\item 
+EXTERN double {\bf system\_\-time}
+\end{CompactItemize}
+
+
+\subsubsection{Define Documentation}
+\index{sim@{sim}!K\_\-SAMPLE@{K\_\-SAMPLE}}
+\index{K\_\-SAMPLE@{K\_\-SAMPLE}!sim@{sim}}
+\paragraph[K\_\-SAMPLE]{\setlength{\rightskip}{0pt plus 5cm}\#define K\_\-SAMPLE}\hfill\label{group__sim_g84d47ce6d9b52f93054781f5489df910}
+
+
+
+
+Definition at line 48 of file bpm\_\-simulation.h.
+
+\subsubsection{Function Documentation}
+\index{sim@{sim}!set\_\-temp@{set\_\-temp}}
+\index{set\_\-temp@{set\_\-temp}!sim@{sim}}
+\paragraph[set\_\-temp]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int set\_\-temp (double {\em TK})}\hfill\label{group__sim_gb05c63b73b30ae1c78b9a26560043312}
+
+
+Set ambient temperature
+
+Sets up the ambient temperature \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em TK}]ambient temperature in Kelvin\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS \end{Desc}
+
+
+Definition at line 17 of file set\_\-temp.c.
+
+References ambient\_\-temp.\index{sim@{sim}!set\_\-time@{set\_\-time}}
+\index{set\_\-time@{set\_\-time}!sim@{sim}}
+\paragraph[set\_\-time]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int set\_\-time (double {\em ts})}\hfill\label{group__sim_gebc5bf81d987b26f74c55306ffcfa5a2}
+
+
+Set system time
+
+Sets up the system clock \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ts}]current time in seconds\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS \end{Desc}
+
+
+Definition at line 17 of file set\_\-time.c.
+
+References system\_\-time.\index{sim@{sim}!generate\_\-bpmsignal@{generate\_\-bpmsignal}}
+\index{generate\_\-bpmsignal@{generate\_\-bpmsignal}!sim@{sim}}
+\paragraph[generate\_\-bpmsignal]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int generate\_\-bpmsignal ({\bf bpmconf\_\-t} $\ast$ {\em bpm}, \/  {\bf bpmmode\_\-t} $\ast$ {\em mode}, \/  {\bf beamconf\_\-t} $\ast$ {\em beam}, \/  {\bf doublewf\_\-t} $\ast$ {\em rf})}\hfill\label{group__sim_g0bd5d872d8ef9269dfb3258be342c223}
+
+
+Calculates the multi-mode response of a cavity BPM defined using bpminterface structures for a beam containing both one or multiple bunches. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em bpm}]a pointer to the structure defining the bpm \item[{\em beam}]a pointer to the structure defining the beam \item[{\em rf}]a pointer to were to store the generated waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCES upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 9 of file generate\_\-bpmsignal.c.
+
+References add\_\-mode\_\-response(), bunchconf::arrival\_\-time, bpm\_\-error(), bpmmode::buffer, beamconf::bunch, doublewf(), doublewf\_\-getvalue(), doublewf\_\-reset(), doublewf\_\-t::fs, complexwf\_\-t::fs, bpmmode::name, beamconf::nbunches, doublewf\_\-t::ns, complexwf\_\-t::ns, bpmmode::response, doublewf\_\-t::wf, and WF\_\-QUADRATIC.\index{sim@{sim}!add\_\-mode\_\-response@{add\_\-mode\_\-response}}
+\index{add\_\-mode\_\-response@{add\_\-mode\_\-response}!sim@{sim}}
+\paragraph[add\_\-mode\_\-response]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int add\_\-mode\_\-response ({\bf bpmconf\_\-t} $\ast$ {\em bpm}, \/  {\bf bpmmode\_\-t} $\ast$ {\em mode}, \/  {\bf bunchconf\_\-t} $\ast$ {\em bunch}, \/  {\bf doublewf\_\-t} $\ast$ {\em rf})}\hfill\label{group__sim_gef884192643139e71fa61cae9d8b4392}
+
+
+Adds the response of a single mode generated by one bunch to the waveform rf, starting at the first sample \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em bpm}]a pointer to the structure defining the bpm \item[{\em mode}]a pointer to the structure defining a cavity mode \item[{\em bunch}]a pointer to the structure defining the current bunch \item[{\em rf}]a pointer the waveform the response will be added to \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCES upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 10 of file add\_\-mode\_\-response.c.
+
+References bpm\_\-error(), get\_\-mode\_\-amplitude(), complex\_\-t::im, complexwf\_\-t::ns, doublewf\_\-t::ns, bpmmode::order, complex\_\-t::re, bpmmode::response, complexwf\_\-t::wf, and doublewf\_\-t::wf.
+
+Referenced by generate\_\-bpmsignal().\index{sim@{sim}!get\_\-mode\_\-amplitude@{get\_\-mode\_\-amplitude}}
+\index{get\_\-mode\_\-amplitude@{get\_\-mode\_\-amplitude}!sim@{sim}}
+\paragraph[get\_\-mode\_\-amplitude]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf complex\_\-t} get\_\-mode\_\-amplitude ({\bf bpmconf\_\-t} $\ast$ {\em bpm}, \/  {\bf bpmmode\_\-t} $\ast$ {\em mode}, \/  {\bf bunchconf\_\-t} $\ast$ {\em bunch})}\hfill\label{group__sim_g48d7fa109bfc01b1c1685b8c4122ccbb}
+
+
+Returns the complex amplitude of the mode response. The imaginary part is only used when the incline or tilt signal is calculated which has a 90 deg phase offset. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em bpm}]a pointer to the structure defining the bpm \item[{\em mode}]a pointer to the structure defining a cavity mode \item[{\em bunch}]a pointer to the structure defining the current bunch \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCES upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 9 of file get\_\-mode\_\-amplitude.c.
+
+References bpm\_\-warning(), bunchconf::bpmposition, bunchconf::bpmslope, bpmconf::cav\_\-length, bunchconf::charge, bpmmode::frequency, horiz, complex\_\-t::im, bunchconf::length, bpmmode::order, bpmmode::polarisation, complex\_\-t::re, and bpmmode::sensitivity.
+
+Referenced by add\_\-mode\_\-response().\index{sim@{sim}!generate\_\-diodesignal@{generate\_\-diodesignal}}
+\index{generate\_\-diodesignal@{generate\_\-diodesignal}!sim@{sim}}
+\paragraph[generate\_\-diodesignal]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf doublewf\_\-t}$\ast$ generate\_\-diodesignal ({\bf doublewf\_\-t} $\ast$ {\em rf}, \/  double {\em sens}, \/  {\bf filter\_\-t} $\ast$ {\em filt}, \/  triggertype\_\-t {\em diode})}\hfill\label{group__sim_gefb34ed8710cb83e0ef30ddb6b4c8e33}
+
+
+Rectifies the rf waveform ( from the reference cavity ) to get a trigger pulse. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em rf}]input waveform \item[{\em sens}]diode sensitivity in mV/uW \item[{\em filt}]pointer to a filter to apply on the signal \item[{\em diode}]type of the diode (pos/neg/bipolar) \item[{\em dc\_\-out}]rectified signal \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]a pointer to the generated rectified waveform \end{Desc}
+
+
+Definition at line 11 of file generate\_\-diodesignal.c.
+
+References apply\_\-filter(), bipolar, bpm\_\-error(), doublewf(), m33::e, doublewf\_\-t::fs, negative, doublewf\_\-t::ns, positive, and doublewf\_\-t::wf.\index{sim@{sim}!get\_\-mode\_\-response@{get\_\-mode\_\-response}}
+\index{get\_\-mode\_\-response@{get\_\-mode\_\-response}!sim@{sim}}
+\paragraph[get\_\-mode\_\-response]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int get\_\-mode\_\-response ({\bf bpmmode\_\-t} $\ast$ {\em mode})}\hfill\label{group__sim_gf0f427c71051ef0d09f0760b2e2541bc}
+
+
+Calculates the normalized complex mode response, the imaginary part is only used to store incline/tilt signals \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em mode}]structure containing describing the mode and response buffer \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success or BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 11 of file get\_\-mode\_\-response.c.
+
+References apply\_\-filter(), BANDPASS, bpm\_\-error(), complexwf\_\-reset(), complexwf\_\-setimag(), complexwf\_\-setreal(), create\_\-filter(), delete\_\-filter(), doublewf(), doublewf\_\-delete(), doublewf\_\-integrate(), doublewf\_\-scale(), bpmmode::frequency, complexwf\_\-t::fs, complexwf\_\-t::ns, bpmmode::order, bpmmode::Q, RESONATOR, bpmmode::response, and doublewf\_\-t::wf.\index{sim@{sim}!digitise@{digitise}}
+\index{digitise@{digitise}!sim@{sim}}
+\paragraph[digitise]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int digitise ({\bf doublewf\_\-t} $\ast$ {\em IF}, \/  int {\em nbits}, \/  double {\em range\_\-min}, \/  double {\em range\_\-max}, \/  double {\em clock\_\-jitter}, \/  double {\em digi\_\-noise}, \/  unsigned int {\em ipmode}, \/  {\bf intwf\_\-t} $\ast$ {\em wf})}\hfill\label{group__sim_g2f6432343a7f528625487b6c00be2298}
+
+
+Digitises the waveform using the sampling frequency and the number of samples set in the resulting waveform \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em IF}]input waveform to digitse \item[{\em nbits}]bit resolution of the ADC \item[{\em range\_\-min}]the minimum voltage and \item[{\em range\_\-max}]the maximum voltage the ADC can process \item[{\em clock\_\-jitter}]ADC clock jitter \item[{\em digi\_\-noise}]rms digitiser noise in ADC channels \item[{\em ipmode}]interpolation mode for \doxyref{doublewf\_\-getvalue()}{p.}{group__wave_gc0d42d516eec4e92f7d3cfdea49eccd4} \item[{\em wf}]sampled waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 11 of file digitise.c.
+
+References bpm\_\-error(), doublewf\_\-getvalue(), doublewf\_\-t::fs, intwf\_\-t::fs, intwf\_\-add\_\-ampnoise(), nr\_\-rangauss(), doublewf\_\-t::ns, intwf\_\-t::ns, and intwf\_\-t::wf.
+
+\subsubsection{Variable Documentation}
+\index{sim@{sim}!ambient\_\-temp@{ambient\_\-temp}}
+\index{ambient\_\-temp@{ambient\_\-temp}!sim@{sim}}
+\paragraph[ambient\_\-temp]{\setlength{\rightskip}{0pt plus 5cm}EXTERN double {\bf ambient\_\-temp}}\hfill\label{group__sim_gab98b463116d15c85586716a295bd4e5}
+
+
+Ambient temperature in K 
+
+Definition at line 67 of file bpm\_\-simulation.h.
+
+Referenced by set\_\-temp().\index{sim@{sim}!system\_\-time@{system\_\-time}}
+\index{system\_\-time@{system\_\-time}!sim@{sim}}
+\paragraph[system\_\-time]{\setlength{\rightskip}{0pt plus 5cm}EXTERN double {\bf system\_\-time}}\hfill\label{group__sim_g0974a019ef95024af711df3d31deb629}
+
+
+Current system time in s 
+
+Definition at line 77 of file bpm\_\-simulation.h.
+
+Referenced by set\_\-time().

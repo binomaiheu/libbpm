@@ -1,0 +1,742 @@
+\subsection{BPM Processing Routines}
+\label{group__processing}\index{BPM Processing Routines@{BPM Processing Routines}}
+
+
+\subsubsection{Detailed Description}
+\label{group__processing_proc}
+
+
+This set of routines contains the BPM digitised waveform processing routines to go from a sis digitised waveform to position and slope information.\subsubsection{General structure of the BPM signal processing}\label{group__processing_proc_structure}
+The BPM signal processing algorithms are centered around a few top-level routines which need to called by a standard user. All make use of a number of BPM data structures which hold BPM configuration data ( bpmconf\_\-t ), processed BPM information ( bpmproc\_\-t ) or BPM calibration information ( bpmcalib\_\-t ). As the BPM processing algorithms make extensive use of the bpmdsp module, the BPM signals need to be encapsulated in a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} waveform before feeding them to these processing routines. The top-level processing routines have a mode bitword which provides some processing options that the user can feed into the processing algorithm.\paragraph{Diode signal processing}\label{group__processing_proc_structure_diode}
+Since the idea was to unify the processing into one coherent set of data structures, the diode or trigger information had to be fitted into the same framework as the BPM data. This is the function call :
+
+
+
+\begin{Code}\begin{verbatim}    int process_diode( doublewf_t *signal, bpmconf_t *conf, bpmproc_t *proc );
+\end{verbatim}
+\end{Code}
+
+
+
+So the diode pulse has to be fitted into a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} along with a bpmconf\_\-t structure conf. The routine first checks the flag \doxyref{bpmconf\_\-t::cav\_\-type}{p.}{structbpmconf_6360d70b5d4f4abfb37ca7e38df5b5ed} for the cavity type. This should be of type diode for the routine to proceed. It then calls the fit\_\-diodepulse routine onto the signal, which returns the fitted t0 into the bpmproc\_\-t structure as proc-$>$t0.
+
+\begin{Desc}
+\item[Attention:]Note that there is the possibility to abuse a dipole or monopole signal as a trigger pulse. In this case the process\_\-diode routine will determine the RMS of the noise in front of the digitised dipole/monopole signal (first 20 samples ) and return the timestamp in \doxyref{bpmproc\_\-t::t0}{p.}{structbpmproc_882cae0e540fd6d8557628a7edcb449d} of the first sample which is 10 times largers than this RMS value. For this behaviour, the \doxyref{bpmconf\_\-t::cav\_\-type}{p.}{structbpmconf_6360d70b5d4f4abfb37ca7e38df5b5ed} setting is irrelevant but the \doxyref{bpmconf\_\-t::forced\_\-trigger}{p.}{structbpmconf_2a7324686323fe06ecbe81a6455e9d6f} value has to be set to 1. Note that this behaviour is normally not needed an for experimental purposes only. \end{Desc}
+\paragraph{Monopole signal processing}\label{group__processing_proc_structure_monopole}
+For monopole cavities one only needs to determine the amplitude and phase, so no post-processing to get to position and slope using a reference cavity and calibration information is needed. Therefore the process\_\-monopole routine is basically a wrapper around the process\_\-waveform routine which does exactly this determination of the amplitude and phase. The function call is :
+
+
+
+\begin{Code}\begin{verbatim}    int process_monopole( doublewf_t *signal, bpmconf_t *bpm, bpmproc_t *proc, 
+                          bpmproc_t *trig, unsigned int mode );
+\end{verbatim}
+\end{Code}
+
+
+
+This routine basically is a wrapper around
+
+
+
+\begin{Code}\begin{verbatim}    int process_waveform( doublewf_t *signal, bpmconf_t *bpm, bpmproc_t *proc, 
+                          bpmproc_t *trig, unsigned int mode );
+\end{verbatim}
+\end{Code}
+
+
+
+and handles all the processing steps flagged by the mode bitword. Chronologically it executes the following steps :
+
+\begin{itemize}
+\item Check whether the waveform was saturated or not. This is done by a call to check\_\-saturation, which needs the \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} signal obviously and the ADC resolution set by the number of bits in \doxyref{bpmconf\_\-t::digi\_\-nbits}{p.}{structbpmconf_4590775f30535e00c5ec47c0f9c138ec}. It returns whether the waveform was saturated ( saved in \doxyref{bpmproc\_\-t::saturated}{p.}{structbpmproc_611e04c6377faf4db9eb24a4edc1ac3f} ) and assigns the sample number of the first unsaturated sample in the waveform to \doxyref{bpmproc\_\-t::iunsat}{p.}{structbpmproc_714ac2e4b3b26339aae97a0e5b32a300}.\end{itemize}
+
+
+\begin{itemize}
+\item Then process\_\-waveform goes on with subtracting the pedestal of the waveform by getting the average and RMS of the first 20 samples in the waveform using get\_\-pedestal and storing the results in \doxyref{bpmproc\_\-t::voltageoffset}{p.}{structbpmproc_3be3f5398b06d6bb81f3fee29b6b904a} and \doxyref{bpmproc\_\-t::ampnoise}{p.}{structbpmproc_03a2fb57c6fdaa5ea8558235bf69e5b2}. It subsequently subtracts this voltage offset from each sample in the waveform.\end{itemize}
+
+
+\begin{itemize}
+\item Then the t0 time is set. If the process\_\-waveform has trigger information available in the form of a bpmproc\_\-t trigger argument wich was handled by process\_\-diode, then the routine will assume this information has to be used as t0 and will copy the trigger-$>$t0 value to it's own \doxyref{bpmproc\_\-t::t0}{p.}{structbpmproc_882cae0e540fd6d8557628a7edcb449d}. If a bpmproc\_\-t trigger argument is not available ( NULL pointer ), the process\_\-waveform routine will assume the t0 has been set fixed by the BPM configuration ( external clocking ) and will use and copy the \doxyref{bpmconf\_\-t::t0}{p.}{structbpmconf_59157c2831c6191ccabfc702acddf02a} to it's \doxyref{bpmproc\_\-t::t0}{p.}{structbpmproc_882cae0e540fd6d8557628a7edcb449d} value. The \doxyref{bpmproc\_\-t::t0}{p.}{structbpmproc_882cae0e540fd6d8557628a7edcb449d} is furtheron used in the rest of the processing as the starting time for this cavity signal.\end{itemize}
+
+
+\begin{itemize}
+\item If the PROC\_\-DO\_\-FFT flag has been set in the mode bitword, the process\_\-waveform routine will compute the waveform FFT by calling fft\_\-waveform from the bpmdsp module and storing the result in \doxyref{bpmproc\_\-t::ft}{p.}{structbpmproc_c6f3c265a080e664e10cc6f2339662a7}. If this is succesfull, the code will go on to check whether this fourier transform needs to be fitted for it's frequency and decay time ( Lorentz line width ). This is done by calling fit\_\-fft. \begin{Desc}
+\item[Attention:]This routine is a little experimental and can easily by replaced by the user with some other package e.g. ROOT. The full complex fourier waveform is available in the \doxyref{bpmproc\_\-t::ft}{p.}{structbpmproc_c6f3c265a080e664e10cc6f2339662a7} as a \doxyref{complexwf\_\-t}{p.}{structcomplexwf__t}. \end{Desc}
+\item If the PROC\_\-DO\_\-FIT flag has been set in the mode bitword, the process\_\-waveform routine will try to fit a decaying sinewave to the waveform, attempting to extract amplitude, phase, frequency and decay time. \begin{Desc}
+\item[Attention:]This routine is quite experimental as well and needs proper checking before it can be used stabily ! I recommend using a proper fitting package such as MINUIT to fit the waveforms to a decaying sine wave.\end{Desc}
+\item If the PROC\_\-DO\_\-DDC flag has been set in the mode bitword, the process\_\-waveform routine will perform the digital downconversion on the waveform. As this is a more complex algorithm, we will go into a bit more detail here.\begin{itemize}
+\item First, we have to tell the DDC algoritm where to get it's frequency and decay time from. By default the algorithm will use in both cases the frequency and decay time which are set in the cavities configuration, being \doxyref{bpmconf\_\-t::ddc\_\-freq}{p.}{structbpmconf_6c054672fa971d58fd3c50040d9a7e57} and \doxyref{bpmconf\_\-t::ddc\_\-tdecay}{p.}{structbpmconf_626f42b1ed03ecc448dbf6a64852f793}. However, if the flag(s) PROC\_\-DDC\_\-FITFREQ and/or PROC\_\-DDC\_\-FITTDECAY is/are present and the fits ( see previous item ) were succesfull, the ddc algorithm will use the fitted frequency and decaytime values. Alternatively, if the flag(s) PROC\_\-DDC\_\-FFTFREQ and/or PROC\_\-DDC\_\-FFTTDECAY are/is present, the ddc algoritm will use the frequency and decay time derived from the fitted lorentz lineshape of the waveforms fourier transform.\end{itemize}
+\end{itemize}
+
+
+\begin{itemize}
+\item Next the DDC algoritm handls the saturation if present ( was set by the \doxyref{bpmproc\_\-t::saturated}{p.}{structbpmproc_611e04c6377faf4db9eb24a4edc1ac3f} ) flag already. If the waveform was saturated, we will shift the position of the sample time to the last unsaturated sample. \begin{Desc}
+\item[Attention:]Since people haven't converged on a proper way to handle saturation, this is a bit of an open point in the code. At the moment, the ddc\_\-tSample is set to the last unsaturated sample, but one should take into account somehow the bandwidth of the DDC filter, which is not done. I've left it as it is, with the wise advice to store the \doxyref{bpmproc\_\-t::saturated}{p.}{structbpmproc_611e04c6377faf4db9eb24a4edc1ac3f} flag into the user data and simply cut away those pulses.\end{Desc}
+If no saturation is present, the sampling point (expressed in time-units, not sampled ) of the DDC algoritm is set to the t0 time ( starting point of the waveform ) + a constant time offset, which can be tweaked in optimisation. 
+
+\begin{Code}\begin{verbatim}         proc->ddc_tSample = proc->t0 + bpm->ddc_tOffset;
+\end{verbatim}
+\end{Code}
+
+\end{itemize}
+
+
+\begin{itemize}
+\item After the sampling time has been calculated in the previous step, it is converted into a sample number and stored in \doxyref{bpmproc\_\-t::ddc\_\-iSample}{p.}{structbpmproc_c0632d46a0208577c352ea34bb69d983}.\end{itemize}
+
+
+\begin{itemize}
+\item Then the real downconversion is done, by default libbpm will try to use the optimised ddc\_\-sample\_\-waveform routine to save CPU cycles, but if the full DDC is requested by the mode flag PROC\_\-DDC\_\-FULL, it will go through the entire waveform and convert it to DC using the frequency set as explained previously. The routine that is called is ddc\_\-waveform which basically needs the the pedestal subtraced \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} waveform, the frequency of downconversion, a 2 omega filter, defined by a \doxyref{filter\_\-t}{p.}{structfilter__t} structure having the correct type (lowpass) and bandwidth already define and stored in \doxyref{bpmconf\_\-t::ddc\_\-filter}{p.}{structbpmconf_641616863daef1ba61c3962ee0f1feb3}. The full complex downconverted waveform is stored in the case of full ddc in \doxyref{bpmproc\_\-t::dc}{p.}{structbpmproc_64c8db22258e28f24d7db38244b5df98}. The amplitude and phase are calculated at the t0 time by extrapolating the phase and amplitude back from the sampling point at \doxyref{bpmproc\_\-t::ddc\_\-iSample}{p.}{structbpmproc_c0632d46a0208577c352ea34bb69d983}. The ddc\_\-sample\_\-waveform returns these values directly, but does it internally by extrapolation from the sampling time as well, one therefore needs to provide t0, tdecay and iSample as additional arguments to ddc\_\-sample\_\-waveform compared to ddc\_\-waveform.\end{itemize}
+
+
+\begin{itemize}
+\item After this is done, the determined phase is normalised in between 0 and 2pi.\end{itemize}
+\paragraph{Dipole signal processing}\label{group__processing_proc_structure_dipole}
+Dipole cavity waveforms first need to undergo the same processing step as monopole waveforms, to determine their phase and amplitude. After that position and slope information need to be determined using the calibration information. The routine
+
+
+
+\begin{Code}\begin{verbatim}    int process_dipole( doublewf_t *signal, bpmconf_t *bpm, bpmcalib_t *cal, bpmproc_t *proc, 
+                        bpmproc_t *trig, bpmproc_t *ampref, bpmproc_t *phaseref, 
+                        unsigned int mode );
+\end{verbatim}
+\end{Code}
+
+
+
+is therefore a wrapper around the following two core routines :
+
+
+
+\begin{Code}\begin{verbatim}    int process_waveform( signal, bpm, proc, trig, mode );
+    int postprocess_waveform( bpm, proc, cal, ampref, phaseref, mode );
+\end{verbatim}
+\end{Code}
+
+
+
+\begin{Desc}
+\item[Attention:]If the PROC\_\-CORR\_\-GAIN (or PROC\_\-CORR\_\-AMP, PROC\_\-CORR\_\-PHASE) flag is set in the mode word, the process\_\-dipole routine will correct the gains based upon the latest calibration tone information stored in the \doxyref{bpmproc\_\-t::ddc\_\-ct\_\-amp}{p.}{structbpmproc_e3b787a2ed21acdf52ad9b667f57976e} etc variables and comparing them to the \doxyref{bpmcalib\_\-t::ddc\_\-ct\_\-amp}{p.}{structbpmcalib_f5d9554311f52697ee793de6a14efb9c} at the time of calibration. This is done by a call to correct\_\-gain\end{Desc}
+The process\_\-waveform is explained under the process\_\-monopole cavity, the postprocess\_\-waveform routine executes the following :
+
+\begin{itemize}
+\item Firstly the routine calculates the I and Q for the dipole cavity from the amplitude and phase references. This is done by a call to get\_\-IQ, and the values are stored in \doxyref{bpmproc\_\-t::ddc\_\-Q}{p.}{structbpmproc_5c38241ca4aa400c93988106e8325d74}, \doxyref{bpmproc\_\-t::ddc\_\-I}{p.}{structbpmproc_0f0ce52541c5965067e05669dbe96e5d} for the DDC information and \doxyref{bpmproc\_\-t::fit\_\-Q}{p.}{structbpmproc_ad1d52ffea6d3a39b6e0d672c693ae36}, \doxyref{bpmproc\_\-t::fit\_\-I}{p.}{structbpmproc_59924e30e71461ad0a2146a0be873bdf} for the fitted information.\end{itemize}
+
+
+\begin{itemize}
+\item For dipole cavities, the real phase information that means anything is the phase difference between the reference cavity and the dipole cavity. This get's stored into \doxyref{bpmproc\_\-t::ddc\_\-phase}{p.}{structbpmproc_f2a86e422e93b453b91206abccc0b351} and/or \doxyref{bpmproc\_\-t::fit\_\-phase}{p.}{structbpmproc_eb36a2ab357ca13c3c8352feb8cb6e8d}. If the flag PROC\_\-RAW\_\-PHASE is set in the mode word, this is skipped.\end{itemize}
+
+
+\begin{itemize}
+\item Using the I and Q information, the position and slope are calculated\end{itemize}
+\subsubsection{Processing flow}\label{group__processing_proc_flow}
+The question now is how to organise the processing flow from the digitised waveform data. Before being able to obtain positions and slopes, the user will need to have processed all the trigger ( diode ) pulses. And thereafter the monopole waveforms in the event. After that positions and slopes can be calculted using the process\_\-diopole routine. Note that the monopole waveforms depend on the trigger information in the case of internal triggering using a trigger pulse, so a good way to proceed is first to all the trigger pulses, than all the monopole pulses and then all the dipole waveforms.
+
+Alternatively the user can first use the routine process\_\-waveform on all of the waveforms ( together with processing the trigger information ). After this is done, the user can use the postprocess\_\-waveform routine to perform the post-processing on the dipole waveforms.\subsubsection{About trigger pulses, internal vs. external clock}\label{group__processing_proc_timing}
+The SIS ADCs can be triggered by using an external clock in which case all the modules in the system are synchronised and no trigger pulses are needed. Because of the way the processing is setup in process\_\-waveform, the user has to be mindfull of a number of things depending on whether the ADC modules are triggered internally ( and a trigger pulse is available ) or whether they are triggered externally, synchronised to the beam clock, in which case the starting time ( t0 ) of the pulses should be constant for each individual BPM signal.\paragraph{External clock triggering}\label{group__processing_proc_timing_ext}
+In this case, the t0 should be set in the BPM configuration under \doxyref{bpmconf\_\-t::t0}{p.}{structbpmconf_59157c2831c6191ccabfc702acddf02a}. During the processing this value will be used and copied to \doxyref{bpmproc\_\-t::t0}{p.}{structbpmproc_882cae0e540fd6d8557628a7edcb449d}. The bpmconf\_\-t::tOffset defines the offset from this t0 of the pulse of the sampling point in the waveform such that 
+
+\begin{Code}\begin{verbatim}    proc->ddc_tSample = proc->t0 + bpm->ddc_tOffset;
+\end{verbatim}
+\end{Code}
+
+ This mode will be assumed automatically in the absence of the 4th argument of process\_\-waveform ( bpmproc\_\-t $\ast$trig = NULL ).\paragraph{Internal clock triggering}\label{group__processing_proc_timing_int}
+There the \doxyref{bpmconf\_\-t::t0}{p.}{structbpmconf_59157c2831c6191ccabfc702acddf02a} value is ignored and no t0 value needs to be specified before hand since it will be fitted from the diode/trigger pulse. In this case the 4th argument of process\_\-waveform needs to be present. Also,{\bf the bpmconf\_\-t::tOffset keeps it's definition exaclty the same as in the external clock case}. It is the time difference between the sample time and the starttime of the waveform t0, which in this case got fit instead of being fixed.\subsubsection{calibration tone information}\label{group__processing_Incorporating}
+The calibration tone information is kept in two locations. Firstly at the time of calibration, the user should make sure that the latest calibration tone information is set in the bpmcalib\_\-t structure under \doxyref{bpmcalib\_\-t::ddc\_\-ct\_\-amp}{p.}{structbpmcalib_f5d9554311f52697ee793de6a14efb9c} and \doxyref{bpmcalib\_\-t::ddc\_\-ct\_\-phase}{p.}{structbpmcalib_2af30b1158dc11d6a7dba61e52b5d11c} and analoguous for the parameters for the fitted processing. Than each time a calibration tone pulse is encountered, the user should pass the phase and amplitude of the calibration tone on to the \doxyref{bpmproc\_\-t::ddc\_\-ct\_\-amp}{p.}{structbpmproc_e3b787a2ed21acdf52ad9b667f57976e} and \doxyref{bpmproc\_\-t::ddc\_\-ct\_\-phase}{p.}{structbpmproc_5461033608c7c42d900d25b7ead44153} and therefore always keep the lateste calibration tone information in this location. Each call to
+
+
+
+\begin{Code}\begin{verbatim}    int correct_gain( bpmproc_t *proc, bpmcalib_t *cal, unsigned int mode )
+\end{verbatim}
+\end{Code}
+
+
+
+then corrects the phase and amplitude of the current pulse by scaling the amplitude with the ratio between the caltone amplitude at the time of calibration and the lastest one and shifting the phase by the phase difference between the phase of the calibration tone at the time of BPM calibration and the latest phase recorded in the \doxyref{bpmproc\_\-t::ddc\_\-ct\_\-phase}{p.}{structbpmproc_5461033608c7c42d900d25b7ead44153} variable ( or \doxyref{bpmproc\_\-t::fit\_\-ct\_\-phase}{p.}{structbpmproc_047ed884dc6bc77d4829d83176943ef1} ).
+
+\begin{Desc}
+\item[Attention:]I've include a mode bitword, which takes the flags PROC\_\-CORR\_\-GAIN to correct both amplitude and phase, and PROC\_\-CORR\_\-AMP, PROC\_\-CORR\_\-PHASE to correct only one parameter individually. This is done since e.g. for internal clocking, when the ADC's are not synchronised to each other, it is not really clear where to sample the waveform unless a trigger is supplied in the ADC. For external synchronized clocking, we can just give a fixed sample number, stored in the bpm configuration under \doxyref{bpmconf\_\-t::ddc\_\-ct\_\-iSample}{p.}{structbpmconf_22293d75805cdba7799374a11ec3efc7}.\end{Desc}
+
+
+\subsubsection*{Files}
+\begin{CompactItemize}
+\item 
+file {\bf bpm\_\-process.h}
+\begin{CompactList}\small\item\em libbpm main processing routines \item\end{CompactList}
+
+\item 
+file {\bf check\_\-saturation.c}
+\item 
+file {\bf correct\_\-gain.c}
+\item 
+file {\bf ddc\_\-sample\_\-waveform.c}
+\item 
+file {\bf ddc\_\-waveform.c}
+\item 
+file {\bf downmix\_\-waveform.c}
+\item 
+file {\bf fft\_\-waveform.c}
+\item 
+file {\bf fit\_\-diodepulse.c}
+\item 
+file {\bf fit\_\-fft.c}
+\item 
+file {\bf fit\_\-waveform.c}
+\item 
+file {\bf get\_\-IQ.c}
+\item 
+file {\bf get\_\-pedestal.c}
+\item 
+file {\bf get\_\-pos.c}
+\item 
+file {\bf get\_\-slope.c}
+\item 
+file {\bf get\_\-t0.c}
+\item 
+file {\bf postprocess\_\-waveform.c}
+\item 
+file {\bf process\_\-caltone.c}
+\item 
+file {\bf process\_\-diode.c}
+\item 
+file {\bf process\_\-dipole.c}
+\item 
+file {\bf process\_\-monopole.c}
+\item 
+file {\bf process\_\-waveform.c}
+\end{CompactItemize}
+\subsubsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf PROC\_\-DEFAULT}
+\item 
+\#define \textbf{PROC\_\-DO\_\-FFT}\label{group__processing_g7753a1dae883290ad0e5ba65147e9f13}
+
+\item 
+\#define \textbf{PROC\_\-DO\_\-FIT}\label{group__processing_gf546dfa71990db7bf7eeec36d8d60a59}
+
+\item 
+\#define \textbf{PROC\_\-DO\_\-DDC}\label{group__processing_g6c2a8696b49c25e4f29252c3a6d6ac3a}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-CALIBFREQ}\label{group__processing_g21955fd76a7620b71f44fdd66356e04b}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-CALIBTDECAY}\label{group__processing_gca7f027c67eaec7448bb5df686b7b0d4}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-FITFREQ}\label{group__processing_g5730568b109a13eb72680a14857dbbb9}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-FITTDECAY}\label{group__processing_ga79556cfe04c3b7c9c039fa1f277c901}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-FFTFREQ}\label{group__processing_g9eb43ef7c8ecd8d8f728efde9ba522a2}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-FFTTDECAY}\label{group__processing_g516ea3a0590d5902fe107655b03db0c8}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-FULL}\label{group__processing_g1bfa87418a15d7f7e87d6b479c1dcb55}
+
+\item 
+\#define \textbf{PROC\_\-FIT\_\-DDC}\label{group__processing_ga2774a6d8a9ea83cc4121e385f8e20ec}
+
+\item 
+\#define \textbf{PROC\_\-FIT\_\-FFT}\label{group__processing_gbe1a2c0c3d7c8f256d3f3b2df2ade610}
+
+\item 
+\#define \textbf{PROC\_\-RAW\_\-PHASE}\label{group__processing_g1b4ba11635f5e3ec0ae70b6eaa858725}
+
+\item 
+\#define \textbf{PROC\_\-CORR\_\-AMP}\label{group__processing_gd634d8b142407b14b2ed1784764025c0}
+
+\item 
+\#define \textbf{PROC\_\-CORR\_\-PHASE}\label{group__processing_gd99c4784aba9a6afaa18896c5736d60c}
+
+\item 
+\#define \textbf{PROC\_\-CORR\_\-GAIN}\label{group__processing_g40fc552f6d97737b3521d75173f86597}
+
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN int {\bf process\_\-diode} ({\bf doublewf\_\-t} $\ast$signal, {\bf bpmconf\_\-t} $\ast$conf, {\bf bpmproc\_\-t} $\ast$proc)
+\item 
+EXTERN int {\bf process\_\-monopole} ({\bf doublewf\_\-t} $\ast$signal, {\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmcalib\_\-t} $\ast$cal, {\bf bpmproc\_\-t} $\ast$proc, {\bf bpmproc\_\-t} $\ast$trig, unsigned int mode)
+\item 
+EXTERN int {\bf process\_\-dipole} ({\bf doublewf\_\-t} $\ast$signal, {\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmcalib\_\-t} $\ast$cal, {\bf bpmproc\_\-t} $\ast$proc, {\bf bpmproc\_\-t} $\ast$trig, {\bf bpmproc\_\-t} $\ast$ampref, {\bf bpmproc\_\-t} $\ast$phaseref, unsigned int mode)
+\item 
+EXTERN int {\bf process\_\-waveform} ({\bf doublewf\_\-t} $\ast$signal, {\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmproc\_\-t} $\ast$proc, {\bf bpmproc\_\-t} $\ast$trig, unsigned int mode)
+\item 
+EXTERN int {\bf postprocess\_\-waveform} ({\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmproc\_\-t} $\ast$proc, {\bf bpmcalib\_\-t} $\ast$cal, {\bf bpmproc\_\-t} $\ast$ampref, {\bf bpmproc\_\-t} $\ast$phaseref, unsigned int mode)
+\item 
+EXTERN int {\bf process\_\-caltone} ({\bf doublewf\_\-t} $\ast$signal, {\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmproc\_\-t} $\ast$proc, unsigned int mode)
+\item 
+EXTERN int {\bf correct\_\-gain} ({\bf bpmproc\_\-t} $\ast$proc, {\bf bpmcalib\_\-t} $\ast$cal, unsigned int mode)
+\item 
+EXTERN int {\bf fit\_\-waveform} ({\bf doublewf\_\-t} $\ast$w, double t0, double i\_\-freq, double i\_\-tdecay, double i\_\-amp, double i\_\-phase, double $\ast$freq, double $\ast$tdecay, double $\ast$amp, double $\ast$phase)
+\item 
+EXTERN int {\bf fit\_\-diodepulse} ({\bf doublewf\_\-t} $\ast$w, double $\ast$t0)
+\item 
+EXTERN int {\bf fft\_\-waveform} ({\bf doublewf\_\-t} $\ast$w, {\bf complexwf\_\-t} $\ast$ft)
+\item 
+EXTERN int {\bf fit\_\-fft\_\-prepare} ({\bf complexwf\_\-t} $\ast$ft, int $\ast$n1, int $\ast$n2, double $\ast$amp, double $\ast$freq, double $\ast$fwhm)
+\item 
+EXTERN int {\bf fit\_\-fft} ({\bf complexwf\_\-t} $\ast$ft, double $\ast$freq, double $\ast$tdecay, double $\ast$A, double $\ast$C)
+\item 
+EXTERN int {\bf check\_\-saturation} ({\bf doublewf\_\-t} $\ast$w, int nbits, int $\ast$iunsat)
+\item 
+EXTERN int {\bf downmix\_\-waveform} ({\bf doublewf\_\-t} $\ast$w, double frequency, {\bf complexwf\_\-t} $\ast$out)
+\item 
+EXTERN int {\bf ddc\_\-waveform} ({\bf doublewf\_\-t} $\ast$w, double frequency, {\bf filter\_\-t} $\ast$filt, {\bf complexwf\_\-t} $\ast$dc, {\bf doublewf\_\-t} $\ast$buf\_\-re, {\bf doublewf\_\-t} $\ast$buf\_\-im)
+\item 
+EXTERN int {\bf ddc\_\-sample\_\-waveform} ({\bf doublewf\_\-t} $\ast$w, double frequency, {\bf filter\_\-t} $\ast$filt, int iSample, double t0, double tdecay, double $\ast$amp, double $\ast$phase, {\bf doublewf\_\-t} $\ast$buf\_\-re, {\bf doublewf\_\-t} $\ast$buf\_\-im)
+\item 
+EXTERN int {\bf get\_\-pedestal} ({\bf doublewf\_\-t} $\ast$wf, int range, double $\ast$offset, double $\ast$rms)
+\item 
+EXTERN int {\bf get\_\-t0} ({\bf doublewf\_\-t} $\ast$w, double $\ast$t0)
+\item 
+EXTERN int {\bf get\_\-IQ} (double amp, double phase, double refamp, double refphase, double $\ast$Q, double $\ast$I)
+\item 
+EXTERN int {\bf get\_\-pos} (double Q, double I, double IQphase, double posscale, double $\ast$pos)
+\item 
+EXTERN int {\bf get\_\-slope} (double Q, double I, double IQphase, double slopescale, double $\ast$slope)
+\end{CompactItemize}
+
+
+\subsubsection{Define Documentation}
+\index{processing@{processing}!PROC\_\-DEFAULT@{PROC\_\-DEFAULT}}
+\index{PROC\_\-DEFAULT@{PROC\_\-DEFAULT}!processing@{processing}}
+\paragraph[PROC\_\-DEFAULT]{\setlength{\rightskip}{0pt plus 5cm}\#define PROC\_\-DEFAULT}\hfill\label{group__processing_g42cc22e8c958743e2bd86fe5bdfdd42d}
+
+
+
+
+Definition at line 331 of file bpm\_\-process.h.
+
+\subsubsection{Function Documentation}
+\index{processing@{processing}!process\_\-diode@{process\_\-diode}}
+\index{process\_\-diode@{process\_\-diode}!processing@{processing}}
+\paragraph[process\_\-diode]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int process\_\-diode ({\bf doublewf\_\-t} $\ast$ {\em signal}, \/  {\bf bpmconf\_\-t} $\ast$ {\em conf}, \/  {\bf bpmproc\_\-t} $\ast$ {\em proc})}\hfill\label{group__processing_g64dcc54dd58051ed9183a44b791ed73b}
+
+
+This routine processes a diode pulse, which should be found in the signal structure. It fills the proc structure with the t0. The routine checks what the signal type (conf-$>$cav\_\-type) is and when it really is a diode pulse, it will fit the pulse and return t0, otherwise (when the signal is a monopole or dipole signal), it will determine the onset of the waveform by looking where the signal's absolute value exceeds 10 $\ast$ the noise RMS at the beginning of the waveform.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em signal}]The bpm signal \item[{\em conf}]The bpm configuration structure \item[{\em proc}]The processed trigger structure (containing the t0)\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 9 of file process\_\-diode.c.
+
+References bpm\_\-error(), bpmconf::cav\_\-type, diode, doublewf\_\-basic\_\-stats(), fit\_\-diodepulse(), bpmconf::forced\_\-trigger, doublewf\_\-t::fs, wfstat\_\-t::mean, bpmconf::name, doublewf\_\-t::ns, wfstat\_\-t::rms, bpmproc::t0, and doublewf\_\-t::wf.\index{processing@{processing}!process\_\-monopole@{process\_\-monopole}}
+\index{process\_\-monopole@{process\_\-monopole}!processing@{processing}}
+\paragraph[process\_\-monopole]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int process\_\-monopole ({\bf doublewf\_\-t} $\ast$ {\em signal}, \/  {\bf bpmconf\_\-t} $\ast$ {\em bpm}, \/  {\bf bpmcalib\_\-t} $\ast$ {\em cal}, \/  {\bf bpmproc\_\-t} $\ast$ {\em proc}, \/  {\bf bpmproc\_\-t} $\ast$ {\em trig}, \/  unsigned int {\em mode})}\hfill\label{group__processing_g4d159862631514e412a0f30e278e9426}
+
+
+Top-level routine which is basically a wrapper around process\_\-waveform and correct\_\-gain to take into account the calibration tone data. See more in details documentation in those routines.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em signal}]The \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} encoded BPM signal \item[{\em bpm}]The bpm configuration structure \item[{\em cal}]The bpm calibration structure, needed for the gain correction \item[{\em proc}]The processed data structure \item[{\em trig}]The structure with processed trigger info for that waveform \item[{\em mode}]A bitpattern encoding what exactly to process\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 11 of file process\_\-monopole.c.
+
+References bpm\_\-error(), correct\_\-gain(), bpmconf::name, and process\_\-waveform().\index{processing@{processing}!process\_\-dipole@{process\_\-dipole}}
+\index{process\_\-dipole@{process\_\-dipole}!processing@{processing}}
+\paragraph[process\_\-dipole]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int process\_\-dipole ({\bf doublewf\_\-t} $\ast$ {\em signal}, \/  {\bf bpmconf\_\-t} $\ast$ {\em bpm}, \/  {\bf bpmcalib\_\-t} $\ast$ {\em cal}, \/  {\bf bpmproc\_\-t} $\ast$ {\em proc}, \/  {\bf bpmproc\_\-t} $\ast$ {\em trig}, \/  {\bf bpmproc\_\-t} $\ast$ {\em ampref}, \/  {\bf bpmproc\_\-t} $\ast$ {\em phaseref}, \/  unsigned int {\em mode})}\hfill\label{group__processing_g7263f2231c573bf98d41dbaab82c01be}
+
+
+Top-level routine which is a wrapper around process\_\-waveform, correct\_\-gain and postprocess\_\-waveform. See more details in the documentation of those individual routines.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em signal}]The \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} encoded BPM signal \item[{\em bpm}]The bpm configuration structure \item[{\em cal}]The bpm calibration structure, needed for the gain correction \item[{\em proc}]The processed data structure \item[{\em trig}]The structure with processed trigger info for that waveform \item[{\em ampref}]The already processed amplitude reference bpmproc\_\-t structure \item[{\em phaseref}]The already processed phase reference bpmproc\_\-t structure \item[{\em mode}]A bitpattern encoding what exactly to process\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 10 of file process\_\-dipole.c.
+
+References bpm\_\-error(), correct\_\-gain(), bpmconf::name, postprocess\_\-waveform(), and process\_\-waveform().\index{processing@{processing}!process\_\-waveform@{process\_\-waveform}}
+\index{process\_\-waveform@{process\_\-waveform}!processing@{processing}}
+\paragraph[process\_\-waveform]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int process\_\-waveform ({\bf doublewf\_\-t} $\ast$ {\em signal}, \/  {\bf bpmconf\_\-t} $\ast$ {\em bpm}, \/  {\bf bpmproc\_\-t} $\ast$ {\em proc}, \/  {\bf bpmproc\_\-t} $\ast$ {\em trig}, \/  unsigned int {\em mode})}\hfill\label{group__processing_gbd8d3c45cc42c393a13e1471b1dac2c2}
+
+
+Top-level routine to processes a BPM beam pulse waveform (decaying \char`\"{}sin\char`\"{}-like wave) and derive amplitude and phase from the signal. The routine needs to be fed with a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} containing the digitized signal. The signal is checked for saturation, it's pedestal is determined and removed, the pulse starttime (t0) is set from the configuration or the trigger. Then, depending on the mode bitpattern, an FFT is performed, the waveform is fitted and a digital downconversion is done. The results (amplitude and phase) are stored in the bpmproc\_\-t structure of the BPM.
+
+Relevant mode bit patterns for this routine are :\begin{itemize}
+\item PROC\_\-DO\_\-FFT : The Fourier Transform of the waveform gets computed and stored as a \doxyref{complexwf\_\-t}{p.}{structcomplexwf__t} in the \doxyref{bpmproc\_\-t::ft}{p.}{structbpmproc_c6f3c265a080e664e10cc6f2339662a7} variable.\item PROC\_\-FIT\_\-FFT : An attempt to fit the Fourier Transform is made using a Lorentizan Lineshape. If successfull, the \doxyref{bpmproc\_\-t::fft\_\-freq}{p.}{structbpmproc_17d339f93b81bc99d632b9c5ffc8da85} and \doxyref{bpmproc\_\-t::fft\_\-tdecay}{p.}{structbpmproc_ff324567b6af56170b2efe3f658eeac4} variables will contain the fitted frequency and decaytime. I recommend however to use a 3th party fitting routine for this (e.g. MINUIT) and implement this in a user program.\item PROC\_\-DO\_\-FIT : Attempts to fit a decaying sine wave to the waveform having the frequency, the decay time, the amplitude and phase as free parameters. If successfull, the \doxyref{bpmproc\_\-t::fit\_\-freq}{p.}{structbpmproc_95c3ffbd8041ee333f7fb197b80d79b3}, \doxyref{bpmproc\_\-t::fit\_\-amp}{p.}{structbpmproc_ad6477fbcd2c2ead538bef6e17c27022}, \doxyref{bpmproc\_\-t::fit\_\-phase}{p.}{structbpmproc_eb36a2ab357ca13c3c8352feb8cb6e8d} and \doxyref{bpmproc\_\-t::fit\_\-tdecay}{p.}{structbpmproc_7f14eec6bdb4338ddc1f25b7f83d6c27} will contain the fit parameters. Again, I recommend to use a 3th party fitting routine for this.\item PROC\_\-DO\_\-DDC : Will perform a digital downconversion on the waveform. The results are contained in \doxyref{bpmproc\_\-t::ddc\_\-amp}{p.}{structbpmproc_f2defdec0144996a00deab9a30461241} and \doxyref{bpmproc\_\-t::ddc\_\-phase}{p.}{structbpmproc_f2a86e422e93b453b91206abccc0b351}, determined at \doxyref{bpmproc\_\-t::ddc\_\-tSample}{p.}{structbpmproc_53c95ca0b2fa62c817fa4a14052f2a92}, but extrapolated back to \doxyref{bpmproc\_\-t::t0}{p.}{structbpmproc_882cae0e540fd6d8557628a7edcb449d}.\item PROC\_\-DDC\_\-FITTDECAY, PROC\_\-DDC\_\-FFTTDECAY : Normally the ddc algoritm gets it's decay time for extrapolation back to t0 from the \doxyref{bpmconf\_\-t::ddc\_\-tdecay}{p.}{structbpmconf_626f42b1ed03ecc448dbf6a64852f793} variable, if one of these flags are set it will get them from the fitted waveform or FFT if they were succesful.\item PROC\_\-DDC\_\-FITFREQ, PROC\_\-DDC\_\-FFTFREQ : Analogous as the previous item, but now for the ddc frequency which is normally obtained from \doxyref{bpmconf\_\-t::ddc\_\-freq}{p.}{structbpmconf_6c054672fa971d58fd3c50040d9a7e57}.\item PROC\_\-DDC\_\-FULL : Will perform the DDC algorithm on the entire waveform and store the result in \doxyref{bpmproc\_\-t::dc}{p.}{structbpmproc_64c8db22258e28f24d7db38244b5df98}\end{itemize}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em signal}]The digitized signal converted into a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} \item[{\em bpm}]A pointer to the bpmconf\_\-t structure for the BPM channel \item[{\em proc}]A pointer to the bpmproc\_\-t structure for the BPM channel \item[{\em trig}]A pointer to the bpmproc\_\-t structure of the trigger for this BPM channel, if this parameter is NULL, externall clocking will be assumed and the t0 from the bpmconf\_\-t structure will be used in the processing. \item[{\em mode}]The processing mode bitword \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 12 of file process\_\-waveform.c.
+
+References bpmproc::ampnoise, bpm\_\-error(), bpm\_\-warning(), bpmconf::cav\_\-decaytime, check\_\-saturation(), bpmproc::dc, bpmproc::ddc\_\-amp, bpmconf::ddc\_\-buffer\_\-im, bpmconf::ddc\_\-buffer\_\-re, bpmconf::ddc\_\-filter, bpmconf::ddc\_\-freq, bpmproc::ddc\_\-iSample, bpmproc::ddc\_\-phase, ddc\_\-sample\_\-waveform(), bpmproc::ddc\_\-success, bpmconf::ddc\_\-tdecay, bpmconf::ddc\_\-tOffset, bpmproc::ddc\_\-tSample, ddc\_\-waveform(), bpmconf::digi\_\-freq, bpmconf::digi\_\-nbits, bpmconf::digi\_\-nsamples, doublewf\_\-bias(), bpmproc::fft\_\-freq, bpmproc::fft\_\-success, bpmproc::fft\_\-tdecay, fft\_\-waveform(), bpmproc::fit\_\-amp, fit\_\-fft(), bpmproc::fit\_\-freq, bpmproc::fit\_\-phase, bpmproc::fit\_\-success, bpmproc::fit\_\-tdecay, bpmconf::fit\_\-tOffset, fit\_\-waveform(), bpmproc::ft, get\_\-pedestal(), bpmproc::iunsat, bpmconf::name, norm\_\-phase(), bpmproc::saturated, bpmconf::t0, bpmproc::t0, bpmproc::voltageoffset, and complexwf\_\-t::wf.
+
+Referenced by process\_\-dipole(), and process\_\-monopole().\index{processing@{processing}!postprocess\_\-waveform@{postprocess\_\-waveform}}
+\index{postprocess\_\-waveform@{postprocess\_\-waveform}!processing@{processing}}
+\paragraph[postprocess\_\-waveform]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int postprocess\_\-waveform ({\bf bpmconf\_\-t} $\ast$ {\em bpm}, \/  {\bf bpmproc\_\-t} $\ast$ {\em proc}, \/  {\bf bpmcalib\_\-t} $\ast$ {\em cal}, \/  {\bf bpmproc\_\-t} $\ast$ {\em ampref}, \/  {\bf bpmproc\_\-t} $\ast$ {\em phaseref}, \/  unsigned int {\em mode})}\hfill\label{group__processing_g12b153af4b09cd59e863cef0bf5114c3}
+
+
+Top-level routine to Post-process a waveform for whith the amplitude and the phase have already been defined using process\_\-waveform. This routine goes on to calculate I and Q from the phase and amplitudes as well as the postion and slope using the calibration information.
+
+Relevant mode bit patterns for this routine are :\begin{itemize}
+\item PROC\_\-RAW\_\-PHASE : when this bit is active in the mode word, the routine will not replace the phase in the bpmproc\_\-t structure by the phase difference between the reference cavity and the processed cavity. Under normal circumstances you don't want this since it's only the phase difference which actually has any physical meaning.\end{itemize}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em signal}]The digitized signal converted into a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} \item[{\em bpm}]A pointer to the bpmconf\_\-t structure for the BPM channel \item[{\em proc}]A pointer to the bpmproc\_\-t structure for the BPM channel \item[{\em cal}]A pointer to the bpmcalib\_\-t structure for the BPM channel \item[{\em ampref}]A pointer to the bpmproc\_\-t structure of the amplitude reference channel for this BPM. \item[{\em phaseref}]A pointer to the bpmproc\_\-t structure of the phase reference channel for this BPM. \item[{\em mode}]The processing mode bitword \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 10 of file postprocess\_\-waveform.c.
+
+References bpm\_\-error(), bpmproc::ddc\_\-amp, bpmproc::ddc\_\-I, bpmcalib::ddc\_\-IQphase, bpmproc::ddc\_\-phase, bpmproc::ddc\_\-pos, bpmcalib::ddc\_\-posscale, bpmproc::ddc\_\-Q, bpmproc::ddc\_\-slope, bpmcalib::ddc\_\-slopescale, bpmproc::ddc\_\-success, bpmproc::fit\_\-amp, bpmproc::fit\_\-I, bpmcalib::fit\_\-IQphase, bpmproc::fit\_\-phase, bpmproc::fit\_\-pos, bpmcalib::fit\_\-posscale, bpmproc::fit\_\-Q, bpmproc::fit\_\-slope, bpmcalib::fit\_\-slopescale, bpmproc::fit\_\-success, get\_\-IQ(), get\_\-pos(), get\_\-slope(), bpmconf::name, and norm\_\-phase().
+
+Referenced by process\_\-dipole().\index{processing@{processing}!process\_\-caltone@{process\_\-caltone}}
+\index{process\_\-caltone@{process\_\-caltone}!processing@{processing}}
+\paragraph[process\_\-caltone]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int process\_\-caltone ({\bf doublewf\_\-t} $\ast$ {\em signal}, \/  {\bf bpmconf\_\-t} $\ast$ {\em bpm}, \/  {\bf bpmproc\_\-t} $\ast$ {\em proc}, \/  unsigned int {\em mode})}\hfill\label{group__processing_g25fcb848f5ef6ad50b2d0ab683b9ff00}
+
+
+Top level routine to process the calibration tone via DDC, similar to process\_\-waveform but it also updates the ddc\_\-ct\_\-amp and ddc\_\-ct\_\-phase variables in the bpmproc\_\-t structure. No fitting is implemented in this routine.
+
+Relevant mode bit patterns for this routine are analogous as in process\_\-waveform\begin{itemize}
+\item PROC\_\-DO\_\-FFT : see process\_\-waveform\item PROC\_\-FIT\_\-FFT : see process\_\-waveform\item PROC\_\-DO\_\-DDC : see process\_\-waveform\end{itemize}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em signal}]The digitized signal converted into a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} \item[{\em bpm}]A pointer to the bpmconf\_\-t structure for the BPM channel \item[{\em proc}]A pointer to the bpmproc\_\-t structure for the BPM channel \item[{\em mode}]The processing mode bitword\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 11 of file process\_\-caltone.c.
+
+References bpmproc::ampnoise, bpm\_\-error(), bpm\_\-warning(), check\_\-saturation(), bpmproc::dc, bpmproc::ddc\_\-amp, bpmconf::ddc\_\-buffer\_\-im, bpmconf::ddc\_\-buffer\_\-re, bpmproc::ddc\_\-ct\_\-amp, bpmconf::ddc\_\-ct\_\-filter, bpmconf::ddc\_\-ct\_\-freq, bpmconf::ddc\_\-ct\_\-iSample, bpmproc::ddc\_\-ct\_\-phase, bpmproc::ddc\_\-phase, bpmproc::ddc\_\-success, ddc\_\-waveform(), bpmconf::digi\_\-nbits, doublewf\_\-bias(), bpmproc::fft\_\-freq, bpmproc::fft\_\-success, bpmproc::fft\_\-tdecay, fft\_\-waveform(), fit\_\-fft(), bpmproc::ft, get\_\-pedestal(), bpmproc::iunsat, bpmconf::name, norm\_\-phase(), bpmproc::saturated, bpmproc::voltageoffset, and complexwf\_\-t::wf.\index{processing@{processing}!correct\_\-gain@{correct\_\-gain}}
+\index{correct\_\-gain@{correct\_\-gain}!processing@{processing}}
+\paragraph[correct\_\-gain]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int correct\_\-gain ({\bf bpmproc\_\-t} $\ast$ {\em proc}, \/  {\bf bpmcalib\_\-t} $\ast$ {\em cal}, \/  unsigned int {\em mode})}\hfill\label{group__processing_gfbefcc42457d943c215b3a423540a145}
+
+
+Correct the processed amplitude and phase by using calibration tone information if the ddc and or fits were successfull. Since e.g. for internal clock it is not really sure the phase information can be used if there is no proper trigger, some mode bits can be flagged to only correct the amplitude.
+
+Relevant mode bit patterns for this routine are :\begin{itemize}
+\item PROC\_\-CORR\_\-AMP : Correct the amplitude\item PROC\_\-CORR\_\-PHASE : Correct the phase\item PROC\_\-CORR\_\-GAIN : Correct both of them\end{itemize}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em proc}]The bpmproc\_\-t structure of the bpm \item[{\em cal}]The bpmcalib\_\-t structure of the bpm \item[{\em mode}]Mode of correction\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 10 of file correct\_\-gain.c.
+
+References bpm\_\-error(), bpmproc::ddc\_\-amp, bpmcalib::ddc\_\-ct\_\-amp, bpmproc::ddc\_\-ct\_\-amp, bpmcalib::ddc\_\-ct\_\-phase, bpmproc::ddc\_\-ct\_\-phase, bpmproc::ddc\_\-phase, bpmproc::ddc\_\-success, bpmproc::fit\_\-amp, bpmcalib::fit\_\-ct\_\-amp, bpmproc::fit\_\-ct\_\-amp, bpmcalib::fit\_\-ct\_\-phase, bpmproc::fit\_\-ct\_\-phase, bpmproc::fit\_\-phase, and bpmproc::fit\_\-success.
+
+Referenced by process\_\-dipole(), and process\_\-monopole().\index{processing@{processing}!fit\_\-waveform@{fit\_\-waveform}}
+\index{fit\_\-waveform@{fit\_\-waveform}!processing@{processing}}
+\paragraph[fit\_\-waveform]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int fit\_\-waveform ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double {\em t0}, \/  double {\em i\_\-freq}, \/  double {\em i\_\-tdecay}, \/  double {\em i\_\-amp}, \/  double {\em i\_\-phase}, \/  double $\ast$ {\em freq}, \/  double $\ast$ {\em tdecay}, \/  double $\ast$ {\em amp}, \/  double $\ast$ {\em phase})}\hfill\label{group__processing_gef5c2fd31031b3a529366aef80699d23}
+
+
+Fits the waveform with a decaying sin wave using the lmder/lmdif routines from \doxyref{nr\_\-levmar.c}{p.}{nr__levmar_8c} !
+
+\begin{Desc}
+\item[Attention:]Note that this routine is highly experimental, so don't use it for real production stuff. Instead I recommend using a proper minimisation package like MINUIT or so...\end{Desc}
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$w}]The waveform encoded as a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} \item[{\em t0}]t0 for the waveform \item[{\em i\_\-freq}]Initial frequency for the fit \item[{\em i\_\-tdecay}]Initial decay time for the fit \item[{\em i\_\-amp}]Initial amplitude for the fit \item[{\em i\_\-phase}]Initial phase for the fit \item[{\em freq}]Fitted frequency \item[{\em tdecay}]Fitted decay time \item[{\em amp}]Fitted amplitude \item[{\em phase}]Fitted phase\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 80 of file fit\_\-waveform.c.
+
+References bpm\_\-error(), doublewf(), doublewf\_\-delete(), doublewf\_\-t::fs, doublewf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by process\_\-waveform().\index{processing@{processing}!fit\_\-diodepulse@{fit\_\-diodepulse}}
+\index{fit\_\-diodepulse@{fit\_\-diodepulse}!processing@{processing}}
+\paragraph[fit\_\-diodepulse]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int fit\_\-diodepulse ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double $\ast$ {\em t0})}\hfill\label{group__processing_g8435d116a246f99a782b4fd516990248}
+
+
+Fits the diode pulse, basically a wrapper for get\_\-t0, to conserve names and consistency in the library... is nothing more than a wrapper around get\_\-t0, so see there... 
+
+Definition at line 10 of file fit\_\-diodepulse.c.
+
+References get\_\-t0().
+
+Referenced by process\_\-diode().\index{processing@{processing}!fft\_\-waveform@{fft\_\-waveform}}
+\index{fft\_\-waveform@{fft\_\-waveform}!processing@{processing}}
+\paragraph[fft\_\-waveform]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int fft\_\-waveform ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  {\bf complexwf\_\-t} $\ast$ {\em ft})}\hfill\label{group__processing_g702adf29e485a816b5b8b2dbefb6fe6a}
+
+
+Performs a fast fourier transform of the waveform, after subtracting the pedestal, basically just a wrapper around the forward realfft routine from the DSP module. Please see it's documentation for more details...
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em $\ast$w}]the waveform \item[{\em fft}]the complex returned fft spectrum\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 12 of file fft\_\-waveform.c.
+
+References bpm\_\-error(), FFT\_\-FORWARD, and realfft().
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{processing@{processing}!fit\_\-fft\_\-prepare@{fit\_\-fft\_\-prepare}}
+\index{fit\_\-fft\_\-prepare@{fit\_\-fft\_\-prepare}!processing@{processing}}
+\paragraph[fit\_\-fft\_\-prepare]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int fit\_\-fft\_\-prepare ({\bf complexwf\_\-t} $\ast$ {\em ft}, \/  int $\ast$ {\em n1}, \/  int $\ast$ {\em n2}, \/  double $\ast$ {\em amp}, \/  double $\ast$ {\em freq}, \/  double $\ast$ {\em fwhm})}\hfill\label{group__processing_g91374c399c6b149ac8ca96ee1245dc7a}
+
+
+This routine prepares the fft fit of the waveform. It starts by getting the position of the maximum in the spectrum (first nyquist band only). Then from this position runs left and right to determine where the amplitude drops to half of the peak amplitude and have an initial estimation of the FWHM. It will then set twice the FWHM width as the fit range in which to perform the fit, this is than returned by the samplnumbers n1 and n2.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ft}]The \doxyref{complexwf\_\-t}{p.}{structcomplexwf__t} fourier transform \item[{\em n1}]The first sample to start the fit from \item[{\em n2}]The last sample to take into account in the following fit \item[{\em amp}]Initial estimation of the amplitude for the fit \item[{\em freq}]Initial estimation of the frequency for the fit \item[{\em fwhm}]Initial estimation of the FWHM for the fit.\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 72 of file fit\_\-fft.c.
+
+References bpm\_\-error(), complexwf\_\-t::fs, complexwf\_\-t::ns, and complexwf\_\-t::wf.
+
+Referenced by fit\_\-fft().\index{processing@{processing}!fit\_\-fft@{fit\_\-fft}}
+\index{fit\_\-fft@{fit\_\-fft}!processing@{processing}}
+\paragraph[fit\_\-fft]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int fit\_\-fft ({\bf complexwf\_\-t} $\ast$ {\em ft}, \/  double $\ast$ {\em freq}, \/  double $\ast$ {\em tdecay}, \/  double $\ast$ {\em A}, \/  double $\ast$ {\em C})}\hfill\label{group__processing_gabfbe75e2891a3756443d476b05c9b61}
+
+
+Fits the power spectrum of the FT of a waveform frequency and decay time. Internally it makes a call to fit\_\-fft\_\-prepare to get an initial estimation of the parameters and goes on by applying the nr\_\-lmder routine to minimise the fourier transform power spectrum agains a lorentzian lineshape defined by
+
+\[ L = \frac{p_0}{ ( f - p_1 )^2 + \left( \frac{p_2}{2} \right)^2 } + p_3 \]
+
+Where\begin{itemize}
+\item p0 = the amplitude of the power spectrum\item p1 = the frequency of the fourier transform peak\item p2 = the full width at half maximum\item p3 = a constant offset\end{itemize}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ft}]The \doxyref{complexwf\_\-t}{p.}{structcomplexwf__t} encoded fourier transform \item[{\em freq}]The returned frequency (p1) \item[{\em tdecay}]The returned tdecay (p2) \item[{\em a}]p0 (amplitude of powerspectrum ) of the fit ( can be NULL if not interested ) \item[{\em c}]p3 (offset) of the fit ( can be NULL if not interested )\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 148 of file fit\_\-fft.c.
+
+References bpm\_\-error(), fit\_\-fft\_\-prepare(), complexwf\_\-t::fs, complexwf\_\-t::ns, and complexwf\_\-t::wf.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{processing@{processing}!check\_\-saturation@{check\_\-saturation}}
+\index{check\_\-saturation@{check\_\-saturation}!processing@{processing}}
+\paragraph[check\_\-saturation]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int check\_\-saturation ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  int {\em nbits}, \/  int $\ast$ {\em iunsat})}\hfill\label{group__processing_gb0f5fd9a629e07038d336c0aad2cf41c}
+
+
+Checks the saturation, so computes the first sample where no saturation occurs. If no saturation occurred in the waveform, this sample - stored in iunsat - will be set to 0. A saturated sample is found when it's ADC value is more (resp. less) than then maximum allowed ADC value ( 2$^\wedge$nbits ) minus a threshold set to 15. ( resp. the minium allowed ADC value, being 0 ) plus a threshold set to 15.
+
+\begin{Desc}
+\item[Attention:]The waveform contained in the \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} SHOULD NOT have been pedestal corrected. This routine will assume the waveform runs between 0 and 2$^\wedge$nbits.\end{Desc}
+Note the return code of the routine is slightly different than whan is conventional in libbpm since I wanted to encode whether saturation was found or not as the return code of the routine.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]The waveform to check, encoded as a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} \item[{\em nbits}]The number of digitiser bits (e.g. 12 or 14 ) \item[{\em iunsat}]The returned last unsaturated sample\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]1 when saturation was present, 0 when not, -1 when failure occurred \end{Desc}
+
+
+Definition at line 11 of file check\_\-saturation.c.
+
+References bpm\_\-error(), doublewf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{processing@{processing}!downmix\_\-waveform@{downmix\_\-waveform}}
+\index{downmix\_\-waveform@{downmix\_\-waveform}!processing@{processing}}
+\paragraph[downmix\_\-waveform]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int downmix\_\-waveform ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double {\em frequency}, \/  {\bf complexwf\_\-t} $\ast$ {\em out})}\hfill\label{group__processing_g9153adcd6718410b99010b3ad3209edb}
+
+
+Downmixes the input waveform agains a complex LO using a frequency f and phase 0, the real part of the resulting complex waveform was mixed against a cosine-like wave, the imaginary part against a sinus-like. Note that this is just the downmixing itself, no filtering whatsoever is applied here.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]The input waveform, encoded as a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} \item[{\em freq}]The frequency of the digital LO \item[{\em out}]The complex output downmixed waveform\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 10 of file downmix\_\-waveform.c.
+
+References bpm\_\-error(), doublewf\_\-t::fs, complex\_\-t::im, doublewf\_\-t::ns, complex\_\-t::re, doublewf\_\-t::wf, and complexwf\_\-t::wf.\index{processing@{processing}!ddc\_\-waveform@{ddc\_\-waveform}}
+\index{ddc\_\-waveform@{ddc\_\-waveform}!processing@{processing}}
+\paragraph[ddc\_\-waveform]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int ddc\_\-waveform ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double {\em frequency}, \/  {\bf filter\_\-t} $\ast$ {\em filt}, \/  {\bf complexwf\_\-t} $\ast$ {\em dc}, \/  {\bf doublewf\_\-t} $\ast$ {\em buf\_\-re}, \/  {\bf doublewf\_\-t} $\ast$ {\em buf\_\-im})}\hfill\label{group__processing_g4d5ba258550486446e98b18b06d793f9}
+
+
+As this is a pure wrapper around the ddc routine out of the dsp packate, please see the documentation there. 
+
+Definition at line 12 of file ddc\_\-waveform.c.
+
+References bpm\_\-error(), and ddc().
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{processing@{processing}!ddc\_\-sample\_\-waveform@{ddc\_\-sample\_\-waveform}}
+\index{ddc\_\-sample\_\-waveform@{ddc\_\-sample\_\-waveform}!processing@{processing}}
+\paragraph[ddc\_\-sample\_\-waveform]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int ddc\_\-sample\_\-waveform ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double {\em frequency}, \/  {\bf filter\_\-t} $\ast$ {\em filt}, \/  int {\em iSample}, \/  double {\em t0}, \/  double {\em tdecay}, \/  double $\ast$ {\em amp}, \/  double $\ast$ {\em phase}, \/  {\bf doublewf\_\-t} $\ast$ {\em buf\_\-re}, \/  {\bf doublewf\_\-t} $\ast$ {\em buf\_\-im})}\hfill\label{group__processing_gddd40cf316f88ea006e2e68424cb6987}
+
+
+TO BE IMPLEMENTED !!!
+
+This routine will contain a quicker version of the ddc algorithm that doesn't filter the entire waveform and only applies the filter at the sampling point. However, I need to make custom a apply\_\-filter routine which is universally valid for all types of filters (IIR as well). 
+
+Definition at line 19 of file ddc\_\-sample\_\-waveform.c.
+
+References bpm\_\-error().
+
+Referenced by process\_\-waveform().\index{processing@{processing}!get\_\-pedestal@{get\_\-pedestal}}
+\index{get\_\-pedestal@{get\_\-pedestal}!processing@{processing}}
+\paragraph[get\_\-pedestal]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int get\_\-pedestal ({\bf doublewf\_\-t} $\ast$ {\em wf}, \/  int {\em range}, \/  double $\ast$ {\em offset}, \/  double $\ast$ {\em rms})}\hfill\label{group__processing_gbbcbc20893990f64b46cfde9c823c4aa}
+
+
+Find the mean pedestal using the first 20 (or how ever many are required) sample values, store the results in the offset and rms. This routine in fact just calls the doublewf\_\-basic\_\-stats routine and gets the appropriate values from the \doxyref{wfstat\_\-t}{p.}{structwfstat__t} structure.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em wf}]The signal encoded as a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} \item[{\em range}]The maximum sample to go to average over. The pedestal gets determined from the first \char`\"{}range\char`\"{} samples of the waveform \item[{\em $\ast$offset}]Returns the mean value of the samples, so voltage offset (pedestal value) \item[{\em $\ast$rms}]Returns the RMS on that\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 10 of file get\_\-pedestal.c.
+
+References bpm\_\-error(), doublewf\_\-basic\_\-stats(), wfstat\_\-t::mean, and wfstat\_\-t::rms.
+
+Referenced by get\_\-t0(), process\_\-caltone(), and process\_\-waveform().\index{processing@{processing}!get\_\-t0@{get\_\-t0}}
+\index{get\_\-t0@{get\_\-t0}!processing@{processing}}
+\paragraph[get\_\-t0]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int get\_\-t0 ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double $\ast$ {\em t0})}\hfill\label{group__processing_gac8e6d526cd906365ad1fa23f07b865d}
+
+
+Finds the t0 value from a diode peak, used in the case of internall triggering when a trigger pulse needs to be specified to calculate beam arrival
+
+\begin{Desc}
+\item[Attention:]This routine needs some optimisation in terms of speed and some general checking in terms of correctness. Probably some re-writing using the bpmwf structures would be good...\end{Desc}
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} signal \item[{\em t0}]returns t0\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 46 of file get\_\-t0.c.
+
+References bpm\_\-error(), bpm\_\-verbose, bpm\_\-warning(), doublewf\_\-t::fs, get\_\-pedestal(), nr\_\-fit(), doublewf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by fit\_\-diodepulse().\index{processing@{processing}!get\_\-IQ@{get\_\-IQ}}
+\index{get\_\-IQ@{get\_\-IQ}!processing@{processing}}
+\paragraph[get\_\-IQ]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int get\_\-IQ (double {\em amp}, \/  double {\em phase}, \/  double {\em refamp}, \/  double {\em refphase}, \/  double $\ast$ {\em Q}, \/  double $\ast$ {\em I})}\hfill\label{group__processing_gd7417582fb39b8f0cd38a4e28618bf2b}
+
+
+Gets the I and Q from the amplitude and phase of the waveform and it's respective references. The I and Q are calculated respectively as : \[ I = \frac{A}{A_{ref}} \cos( \phi - \phi_{ref} ) \] and \[ Q = \frac{A}{A_{ref}} \sin( \phi - \phi_{ref} ) \]
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em amp}]The amplitude of the considered waveform \item[{\em phase}]The phase of the considered waveform \item[{\em refamp}]The amplitude of the reference cavity \item[{\em refphase}]The phase of the reference cavity \item[{\em Q}]The returned Q value \item[{\em I}]The returned I value\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 8 of file get\_\-IQ.c.
+
+References bpm\_\-error(), and bpm\_\-warning().
+
+Referenced by postprocess\_\-waveform().\index{processing@{processing}!get\_\-pos@{get\_\-pos}}
+\index{get\_\-pos@{get\_\-pos}!processing@{processing}}
+\paragraph[get\_\-pos]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int get\_\-pos (double {\em Q}, \/  double {\em I}, \/  double {\em IQphase}, \/  double {\em posscale}, \/  double $\ast$ {\em pos})}\hfill\label{group__processing_g6906c83d2017b8c2536b31881155e8a6}
+
+
+Returns the beam given I and Q values, IQphase and scale, it is calcualted as
+
+\[ x = c \left[ I \cos (\phi_{IQ} ) + Q \sin ( \phi_IQ )\right] \]
+
+Where c is the positionscale and x the position.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Q}]The Q value (obtained from get\_\-IQ) \item[{\em I}]The I value (obtained from get\_\-IQ) \item[{\em IQphase}]The IQ phase rotation \item[{\em posscale}]The position scale \item[{\em pos}]The returned position\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 8 of file get\_\-pos.c.
+
+References bpm\_\-error().
+
+Referenced by postprocess\_\-waveform().\index{processing@{processing}!get\_\-slope@{get\_\-slope}}
+\index{get\_\-slope@{get\_\-slope}!processing@{processing}}
+\paragraph[get\_\-slope]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int get\_\-slope (double {\em Q}, \/  double {\em I}, \/  double {\em IQphase}, \/  double {\em slopescale}, \/  double $\ast$ {\em slope})}\hfill\label{group__processing_g4010b123b9d6424c97ea9ea77b7a8e4d}
+
+
+Returns the beam slope given I and Q values, IQphase and scale, it is calcualted as
+
+\[ x' = c \left[ - I \sin (\phi_{IQ} ) + Q \cos ( \phi_IQ )\right] \]
+
+Where c is the positionscale and x the position.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em Q}]The Q value (obtained from get\_\-IQ) \item[{\em I}]The I value (obtained from get\_\-IQ) \item[{\em IQphase}]The IQ phase rotation \item[{\em slopescale}]The slope scale \item[{\em slope}]The returned slope\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 8 of file get\_\-slope.c.
+
+References bpm\_\-error().
+
+Referenced by postprocess\_\-waveform().

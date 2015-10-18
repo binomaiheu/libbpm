@@ -1,0 +1,231 @@
+\subsection{RF simulation routines}
+\label{group__rf}\index{RF simulation routines@{RF simulation routines}}
+
+
+\subsubsection{Detailed Description}
+
+
+\subsubsection*{Files}
+\begin{CompactItemize}
+\item 
+file {\bf bpm\_\-rf.h}
+\begin{CompactList}\small\item\em libbpm rf simulation routines \item\end{CompactList}
+
+\item 
+file {\bf rf\_\-addLO.c}
+\item 
+file {\bf rf\_\-amplify.c}
+\item 
+file {\bf rf\_\-amplify\_\-complex.c}
+\item 
+file {\bf rf\_\-mixer.c}
+\item 
+file {\bf rf\_\-phase\_\-shifter.c}
+\item 
+file {\bf rf\_\-rectify.c}
+\item 
+file {\bf rf\_\-setup.c}
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN int {\bf rf\_\-setup} (int nsamples, double sfreq)
+\item 
+EXTERN int {\bf rf\_\-rectify} ({\bf doublewf\_\-t} $\ast$D, {\bf complexwf\_\-t} $\ast$RF)
+\item 
+EXTERN int {\bf rf\_\-addLO} (double amp, double lofreq, enum {\bf bpmphase\_\-t} type, double phase, double phasenoise, {\bf doublewf\_\-t} $\ast$LO)
+\item 
+EXTERN int {\bf rf\_\-mixer} ({\bf doublewf\_\-t} $\ast$RF\_\-Re, {\bf doublewf\_\-t} $\ast$LO, {\bf doublewf\_\-t} $\ast$IF)
+\item 
+EXTERN int {\bf rf\_\-amplify} ({\bf doublewf\_\-t} $\ast$RF, double dB)
+\item 
+EXTERN int {\bf rf\_\-amplify\_\-complex} ({\bf complexwf\_\-t} $\ast$RF, double dB)
+\item 
+EXTERN int {\bf rf\_\-phase\_\-shifter} ({\bf complexwf\_\-t} $\ast$RF, double rotation)
+\end{CompactItemize}
+\subsubsection*{Variables}
+\begin{CompactItemize}
+\item 
+EXTERN int {\bf rf\_\-nsamples}
+\item 
+EXTERN double {\bf rf\_\-samplefreq}
+\end{CompactItemize}
+
+
+\subsubsection{Function Documentation}
+\index{rf@{rf}!rf\_\-setup@{rf\_\-setup}}
+\index{rf\_\-setup@{rf\_\-setup}!rf@{rf}}
+\paragraph[rf\_\-setup]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int rf\_\-setup (int {\em nsamples}, \/  double {\em sfreq})}\hfill\label{group__rf_g1bbbaed6f859da66d484a0de145c5e65}
+
+
+Sets up the sampling of internal RF waveform representation \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em nsamples}]the number of samples \item[{\em sfreq}]the internal sampling frequency\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS \end{Desc}
+
+
+Definition at line 19 of file rf\_\-setup.c.
+
+References rf\_\-nsamples, and rf\_\-samplefreq.\index{rf@{rf}!rf\_\-rectify@{rf\_\-rectify}}
+\index{rf\_\-rectify@{rf\_\-rectify}!rf@{rf}}
+\paragraph[rf\_\-rectify]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int rf\_\-rectify ({\bf doublewf\_\-t} $\ast$ {\em D}, \/  {\bf complexwf\_\-t} $\ast$ {\em RF})}\hfill\label{group__rf_gc7d657690ae444f9e368ca0649a1f996}
+
+
+Rectifies the given waveform assuming a single diode \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em D}]the rectified signal \item[{\em RF}]the complex waveform to rectify \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure\end{Desc}
+Rectifies the given waveform assuming a single diode \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em D}]the rectified signal \item[{\em RF}]the complex waveform to rectify \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 15 of file rf\_\-rectify.c.
+
+References bpm\_\-error(), complexwf\_\-getreal(), doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{rf@{rf}!rf\_\-addLO@{rf\_\-addLO}}
+\index{rf\_\-addLO@{rf\_\-addLO}!rf@{rf}}
+\paragraph[rf\_\-addLO]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int rf\_\-addLO (double {\em amp}, \/  double {\em lofreq}, \/  enum {\bf bpmphase\_\-t} {\em type}, \/  double {\em phase}, \/  double {\em phasenoise}, \/  {\bf doublewf\_\-t} $\ast$ {\em LO})}\hfill\label{group__rf_g3d919b312272011b902c530eb36415c1}
+
+
+Generates an LO waveform \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em amp}]amplitude of the LO signal in Volts \item[{\em lofreq}]LO frequency  locked or freerunning oscillator  phase of the signal, ignored if type is not \char`\"{}locked\char`\"{}  phase noise to be added to the waveform \item[{\em LO}]generated waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure\end{Desc}
+Generates an LO waveform \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em amp}]amplitude of the LO signal in Volts \item[{\em lofreq}]LO frequency  locked or freerunning oscillator  phase of the signal, ignored if type is not \char`\"{}locked\char`\"{}  phase noise to be added to the waveform \item[{\em LO}]generated waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 21 of file rf\_\-addLO.c.
+
+References bpm\_\-error(), doublewf\_\-add\_\-cwtone(), locked, and nr\_\-ranuniform().\index{rf@{rf}!rf\_\-mixer@{rf\_\-mixer}}
+\index{rf\_\-mixer@{rf\_\-mixer}!rf@{rf}}
+\paragraph[rf\_\-mixer]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int rf\_\-mixer ({\bf doublewf\_\-t} $\ast$ {\em RF}, \/  {\bf doublewf\_\-t} $\ast$ {\em LO}, \/  {\bf doublewf\_\-t} $\ast$ {\em IF})}\hfill\label{group__rf_g3fa83d362967cd7bf18f74528579278a}
+
+
+Simulates an ideal mixer \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em RF}]signal to mix \item[{\em LO}]local oscillator signal to mix with \item[{\em IF}]resulting signal containing the up and down converted terms \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure\end{Desc}
+Simulates an ideal mixer \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em RF}]signal to mix \item[{\em LO}]local oscillator signal to mix with \item[{\em IF}]resulting signal containing the up and down converted terms \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 17 of file rf\_\-mixer.c.
+
+References bpm\_\-error(), doublewf\_\-copy(), and doublewf\_\-multiply().\index{rf@{rf}!rf\_\-amplify@{rf\_\-amplify}}
+\index{rf\_\-amplify@{rf\_\-amplify}!rf@{rf}}
+\paragraph[rf\_\-amplify]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int rf\_\-amplify ({\bf doublewf\_\-t} $\ast$ {\em RF}, \/  double {\em dB})}\hfill\label{group__rf_gc53a636818174c65e7c55d8a442eca87}
+
+
+Amplifies the signal by the level dB. The voltage gain is calculated: \[ gain = \sqrt{ 10^{ \frac{db}{20} } } \] \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em RF}]waveform to be processed \item[{\em dB}]gain (or attenuation) in dB \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure\end{Desc}
+Amplifies the signal by the level dB. The voltage gain is calculated: \[ gain = \sqrt{ 10^{ \frac{db}{20} } } \] \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em RF}]waveform to be processed \item[{\em dB}]gain (or attenuation) in dB \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 17 of file rf\_\-amplify.c.
+
+References bpm\_\-error(), and doublewf\_\-scale().\index{rf@{rf}!rf\_\-amplify\_\-complex@{rf\_\-amplify\_\-complex}}
+\index{rf\_\-amplify\_\-complex@{rf\_\-amplify\_\-complex}!rf@{rf}}
+\paragraph[rf\_\-amplify\_\-complex]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int rf\_\-amplify\_\-complex ({\bf complexwf\_\-t} $\ast$ {\em RF}, \/  double {\em dB})}\hfill\label{group__rf_g4d6099ae470e3ae822af20a03c8f4abb}
+
+
+Amplifies the signal by the level dB. The voltage gain is calculated: \[ gain = \sqrt{ 10^{ \frac{db}{20} } } \] \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em RF}]waveform to be processed \item[{\em dB}]gain (or attenuation) in dB \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure\end{Desc}
+Amplifies the signal by the level dB. The voltage gain is calculated: \[ gain = \sqrt{ 10^{ \frac{db}{20} } } \] \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em RF}]waveform to be processed \item[{\em dB}]gain (or attenuation) in dB \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 17 of file rf\_\-amplify\_\-complex.c.
+
+References bpm\_\-error(), complexwf\_\-scale(), complex\_\-t::im, and complex\_\-t::re.\index{rf@{rf}!rf\_\-phase\_\-shifter@{rf\_\-phase\_\-shifter}}
+\index{rf\_\-phase\_\-shifter@{rf\_\-phase\_\-shifter}!rf@{rf}}
+\paragraph[rf\_\-phase\_\-shifter]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int rf\_\-phase\_\-shifter ({\bf complexwf\_\-t} $\ast$ {\em RF}, \/  double {\em rotation})}\hfill\label{group__rf_g8deeec993e7cabbb09afc9d97e570fc3}
+
+
+Rotates the phase of the signal by the amount specified \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em RF}]waveform to be processed \item[{\em rotation}]phase rotation in degrees \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure\end{Desc}
+Rotates the phase of the signal by the amount specified \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em RF}]waveform to be processed \item[{\em rotation}]phase rotation in degrees \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 16 of file rf\_\-phase\_\-shifter.c.
+
+References bpm\_\-error(), complexwf\_\-scale(), complex\_\-t::im, and complex\_\-t::re.
+
+\subsubsection{Variable Documentation}
+\index{rf@{rf}!rf\_\-nsamples@{rf\_\-nsamples}}
+\index{rf\_\-nsamples@{rf\_\-nsamples}!rf@{rf}}
+\paragraph[rf\_\-nsamples]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int {\bf rf\_\-nsamples}}\hfill\label{group__rf_g48e966362ef9264637e063fd53d8ae6d}
+
+
+Numer of samples in the rf waveform representations, default value is 2$^\wedge$16 = 65536 
+
+Definition at line 63 of file bpm\_\-rf.h.
+
+Referenced by rf\_\-setup().\index{rf@{rf}!rf\_\-samplefreq@{rf\_\-samplefreq}}
+\index{rf\_\-samplefreq@{rf\_\-samplefreq}!rf@{rf}}
+\paragraph[rf\_\-samplefreq]{\setlength{\rightskip}{0pt plus 5cm}EXTERN double {\bf rf\_\-samplefreq}}\hfill\label{group__rf_g02c6c1ab51fc18ce03f4ed2b6db98198}
+
+
+Effective sampling frequency for the rf waveform representations, default value is 20 GHz 
+
+Definition at line 69 of file bpm\_\-rf.h.
+
+Referenced by rf\_\-setup().

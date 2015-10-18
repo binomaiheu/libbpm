@@ -1,0 +1,69 @@
+\subsection{Error/warning messages}
+\label{group__message}\index{Error/warning messages@{Error/warning messages}}
+
+
+\subsubsection{Detailed Description}
+
+
+\subsubsection*{Files}
+\begin{CompactItemize}
+\item 
+file {\bf bpm\_\-error.c}
+\item 
+file {\bf bpm\_\-messages.h}
+\begin{CompactList}\small\item\em libbpm error/warning messages \item\end{CompactList}
+
+\item 
+file {\bf bpm\_\-warning.c}
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN void {\bf bpm\_\-error} (char $\ast$msg, char $\ast$f, int l)
+\item 
+EXTERN void {\bf bpm\_\-warning} (char $\ast$msg, char $\ast$f, int l)
+\end{CompactItemize}
+
+
+\subsubsection{Function Documentation}
+\index{message@{message}!bpm\_\-error@{bpm\_\-error}}
+\index{bpm\_\-error@{bpm\_\-error}!message@{message}}
+\paragraph[bpm\_\-error]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void bpm\_\-error (char $\ast$ {\em msg}, \/  char $\ast$ {\em f}, \/  int {\em l})}\hfill\label{group__message_gea352d3bf7620cfbf768f6f90efe5943}
+
+
+Prints an error message in a standard format
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em msg}]the error messages, without end of line character \item[{\em f}]the file position (\_\-\_\-FILE\_\-\_\-) \item[{\em l}]the line in the file (\_\-\_\-LINE\_\-\_\-)\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 9 of file bpm\_\-error.c.
+
+References libbpm\_\-evtnum.
+
+Referenced by \_\-expand\_\-complex\_\-polynomial(), add\_\-mode\_\-response(), ana\_\-set\_\-cutfn(), apply\_\-filter(), calibrate(), check\_\-saturation(), complexfft(), complexwf(), complexwf\_\-add(), complexwf\_\-add\_\-ampnoise(), complexwf\_\-add\_\-cwtone(), complexwf\_\-add\_\-dcywave(), complexwf\_\-add\_\-noise(), complexwf\_\-add\_\-phasenoise(), complexwf\_\-bias(), complexwf\_\-compat(), complexwf\_\-copy(), complexwf\_\-copy\_\-new(), complexwf\_\-divide(), complexwf\_\-getamp(), complexwf\_\-getamp\_\-new(), complexwf\_\-getimag(), complexwf\_\-getimag\_\-new(), complexwf\_\-getphase(), complexwf\_\-getphase\_\-new(), complexwf\_\-getreal(), complexwf\_\-getreal\_\-new(), complexwf\_\-multiply(), complexwf\_\-print(), complexwf\_\-reset(), complexwf\_\-scale(), complexwf\_\-setfunction(), complexwf\_\-setimag(), complexwf\_\-setreal(), complexwf\_\-setvalues(), complexwf\_\-subset(), complexwf\_\-subtract(), correct\_\-gain(), create\_\-filter(), create\_\-resonator\_\-representation(), create\_\-splane\_\-representation(), ddc\_\-initialise(), ddc\_\-sample\_\-waveform(), ddc\_\-waveform(), digitise(), doublewf(), doublewf\_\-add(), doublewf\_\-add\_\-ampnoise(), doublewf\_\-add\_\-cwtone(), doublewf\_\-add\_\-dcywave(), doublewf\_\-basic\_\-stats(), doublewf\_\-bias(), doublewf\_\-cast(), doublewf\_\-cast\_\-new(), doublewf\_\-compat(), doublewf\_\-copy(), doublewf\_\-copy\_\-new(), doublewf\_\-derive(), doublewf\_\-divide(), doublewf\_\-getvalue(), doublewf\_\-integrate(), doublewf\_\-multiply(), doublewf\_\-print(), doublewf\_\-resample(), doublewf\_\-reset(), doublewf\_\-scale(), doublewf\_\-setvalues(), doublewf\_\-subset(), doublewf\_\-subtract(), downmix\_\-waveform(), fft\_\-gen\_\-tables(), fft\_\-initialise(), fft\_\-waveform(), filter\_\-impulse\_\-response(), filter\_\-step\_\-response(), fit\_\-fft(), fit\_\-fft\_\-prepare(), fit\_\-waveform(), gaussian\_\-filter\_\-coeffs(), generate\_\-bpmsignal(), generate\_\-diodesignal(), get\_\-bpmhit(), get\_\-bpmhits(), get\_\-IQ(), get\_\-mode\_\-response(), get\_\-pedestal(), get\_\-pos(), get\_\-slope(), get\_\-t0(), gsl\_\-block\_\-alloc(), gsl\_\-matrix\_\-column(), gsl\_\-matrix\_\-submatrix(), gsl\_\-matrix\_\-swap\_\-columns(), gsl\_\-vector\_\-subvector(), intwf(), intwf\_\-add(), intwf\_\-add\_\-ampnoise(), intwf\_\-add\_\-cwtone(), intwf\_\-add\_\-dcywave(), intwf\_\-basic\_\-stats(), intwf\_\-bias(), intwf\_\-cast(), intwf\_\-cast\_\-new(), intwf\_\-compat(), intwf\_\-copy(), intwf\_\-copy\_\-new(), intwf\_\-derive(), intwf\_\-divide(), intwf\_\-getvalue(), intwf\_\-integrate(), intwf\_\-multiply(), intwf\_\-print(), intwf\_\-resample(), intwf\_\-reset(), intwf\_\-scale(), intwf\_\-setvalues(), intwf\_\-subset(), intwf\_\-subtract(), normalise\_\-filter(), nr\_\-fit(), nr\_\-four1(), nr\_\-gammln(), nr\_\-gammq(), nr\_\-gcf(), nr\_\-gser(), nr\_\-median(), nr\_\-realft(), nr\_\-seed(), nr\_\-select(), postprocess\_\-waveform(), print\_\-filter(), process\_\-caltone(), process\_\-diode(), process\_\-dipole(), process\_\-monopole(), process\_\-waveform(), realfft(), rf\_\-addLO(), rf\_\-amplify(), rf\_\-amplify\_\-complex(), rf\_\-mixer(), rf\_\-phase\_\-shifter(), rf\_\-rectify(), setup\_\-calibration(), wfstat\_\-print(), wfstat\_\-reset(), and zplane\_\-transform().\index{message@{message}!bpm\_\-warning@{bpm\_\-warning}}
+\index{bpm\_\-warning@{bpm\_\-warning}!message@{message}}
+\paragraph[bpm\_\-warning]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void bpm\_\-warning (char $\ast$ {\em msg}, \/  char $\ast$ {\em f}, \/  int {\em l})}\hfill\label{group__message_g79c955853dd93d6184d7793b232450a2}
+
+
+Prints an warning message in a standard format
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em msg}]the error messages, without end of line character \item[{\em f}]the file position (\_\-\_\-FILE\_\-\_\-) \item[{\em l}]the line in the file (\_\-\_\-LINE\_\-\_\-)\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 9 of file bpm\_\-warning.c.
+
+References libbpm\_\-evtnum.
+
+Referenced by complexfft(), complexwf\_\-add(), complexwf\_\-delete(), complexwf\_\-divide(), complexwf\_\-getamp(), complexwf\_\-getimag(), complexwf\_\-getphase(), complexwf\_\-getreal(), complexwf\_\-multiply(), complexwf\_\-setimag(), complexwf\_\-setreal(), complexwf\_\-subtract(), create\_\-filter(), doublewf\_\-add(), doublewf\_\-basic\_\-stats(), doublewf\_\-delete(), doublewf\_\-divide(), doublewf\_\-multiply(), doublewf\_\-subtract(), get\_\-IQ(), get\_\-mode\_\-amplitude(), get\_\-t0(), intwf\_\-add(), intwf\_\-delete(), intwf\_\-divide(), intwf\_\-multiply(), intwf\_\-subtract(), nr\_\-gcf(), nr\_\-gser(), process\_\-caltone(), process\_\-waveform(), and realfft().

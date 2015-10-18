@@ -1,0 +1,14 @@
+ChangeLog
+*********
+
+09.11.2007 : fixed version 0.1, and released it to website, let's start
+             from here :).
+	     The routines and library structure of this version (0.1)
+	     represents what was used for the first ESA BPM paper that
+	     mark wrote.
+
+13.11.2007 : Added a number of waveform handling routines, and put the
+	     gaussian filter into the dsp routines...
+	 
+
+	

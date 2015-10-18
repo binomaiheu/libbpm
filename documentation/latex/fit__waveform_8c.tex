@@ -1,0 +1,56 @@
+\subsection{bpmprocess/fit\_\-waveform.c File Reference}
+\label{fit__waveform_8c}\index{bpmprocess/fit\_\-waveform.c@{bpmprocess/fit\_\-waveform.c}}
+
+
+\subsubsection{Detailed Description}
+
+
+Definition in file {\bf fit\_\-waveform.c}.
+
+{\tt \#include $<$bpm/bpm\_\-nr.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-messages.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-process.h$>$}\par
+
+
+Include dependency graph for fit\_\-waveform.c:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{fit__waveform_8c__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \textbf{FIT\_\-MAX\_\-ITER}\label{fit__waveform_8c_2181690e4757168cb4ff93594aa86a51}
+
+\item 
+\#define \textbf{FIT\_\-AMP}\label{fit__waveform_8c_fb9a54016924b8d66a5e6f62090b2cfd}
+
+\item 
+\#define \textbf{FIT\_\-PHASE}\label{fit__waveform_8c_37773b2de4b59789d1f8a6d5bc52a1a8}
+
+\item 
+\#define \textbf{FIT\_\-FREQ}\label{fit__waveform_8c_afc1a762c8d7caf2a7296f75a076b4aa}
+
+\item 
+\#define \textbf{FIT\_\-TDECAY}\label{fit__waveform_8c_d77baf72df43c5755596e099afffcc9b}
+
+\item 
+\#define \textbf{FIT\_\-T0}\label{fit__waveform_8c_59928f7c9393805abd568243d1b98cb3}
+
+\item 
+\#define \textbf{FIT\_\-FS}\label{fit__waveform_8c_73038af3330937aebf64b4e958a11772}
+
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \textbf{fcnwfjac} (double $\ast$par, double $\ast$jac, int npars, int ns, void $\ast$a)\label{fit__waveform_8c_ac9e9fe2657c440bf5233c9814c38593}
+
+\item 
+void \textbf{fcnwf} (double $\ast$par, double $\ast$sinwf, int npars, int ns, void $\ast$a)\label{fit__waveform_8c_fa81b65b6c5b6765251ace20bf9dfdc6}
+
+\item 
+int {\bf fit\_\-waveform} ({\bf doublewf\_\-t} $\ast$w, double t0, double i\_\-freq, double i\_\-tdecay, double i\_\-amp, double i\_\-phase, double $\ast$freq, double $\ast$tdecay, double $\ast$amp, double $\ast$phase)
+\end{CompactItemize}

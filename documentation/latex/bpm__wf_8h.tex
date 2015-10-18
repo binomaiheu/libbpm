@@ -1,0 +1,249 @@
+\subsection{bpmwf/bpm\_\-wf.h File Reference}
+\label{bpm__wf_8h}\index{bpmwf/bpm\_\-wf.h@{bpmwf/bpm\_\-wf.h}}
+
+
+\subsubsection{Detailed Description}
+Simple waveform handling routines for libbpm. 
+
+
+
+Definition in file {\bf bpm\_\-wf.h}.
+
+{\tt \#include $<$math.h$>$}\par
+{\tt \#include $<$float.h$>$}\par
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include \char`\"{}bpm/bpm\_\-defs.h\char`\"{}}\par
+{\tt \#include \char`\"{}bpm/bpm\_\-units.h\char`\"{}}\par
+{\tt \#include \char`\"{}bpm/bpm\_\-messages.h\char`\"{}}\par
+{\tt \#include \char`\"{}bpm/bpm\_\-nr.h\char`\"{}}\par
+
+
+Include dependency graph for bpm\_\-wf.h:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=414pt]{bpm__wf_8h__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct {\bf doublewf\_\-t}
+\item 
+struct {\bf intwf\_\-t}
+\item 
+struct {\bf complexwf\_\-t}
+\item 
+struct {\bf wfstat\_\-t}
+\end{CompactItemize}
+\subsubsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf WF\_\-EPS}
+\item 
+\#define {\bf MAX\_\-ALLOWED\_\-NS}
+\item 
+\#define {\bf WF\_\-NEAREST}
+\item 
+\#define {\bf WF\_\-LINEAR}
+\item 
+\#define {\bf WF\_\-QUADRATIC}
+\item 
+\#define {\bf WF\_\-SINC}
+\item 
+\#define {\bf WF\_\-LANCZOS}
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN int {\bf wfstat\_\-reset} ({\bf wfstat\_\-t} $\ast$s)
+\item 
+EXTERN void {\bf wfstat\_\-print} (FILE $\ast$of, {\bf wfstat\_\-t} $\ast$s)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf} (int ns, double fs)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-time\_\-series} (int ns, double fs)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-sample\_\-series} (int ns, double fs)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-frequency\_\-series} (int ns, double fs)
+\item 
+EXTERN int {\bf doublewf\_\-setvalues} ({\bf doublewf\_\-t} $\ast$w, double $\ast$x)
+\item 
+EXTERN int {\bf doublewf\_\-setfunction} ({\bf doublewf\_\-t} $\ast$w, double($\ast$wffun)(double t, int, double $\ast$), int npars, double $\ast$par)
+\item 
+EXTERN int {\bf doublewf\_\-copy} ({\bf doublewf\_\-t} $\ast$copy, {\bf doublewf\_\-t} $\ast$src)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-copy\_\-new} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-subset} ({\bf doublewf\_\-t} $\ast$sub, {\bf doublewf\_\-t} $\ast$w, int i1, int i2)
+\item 
+EXTERN int {\bf doublewf\_\-reset} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN void {\bf doublewf\_\-delete} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN {\bf intwf\_\-t} $\ast$ {\bf intwf\_\-cast\_\-new} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-cast} ({\bf intwf\_\-t} $\ast$iw, {\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-compat} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf doublewf\_\-add} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf doublewf\_\-subtract} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf doublewf\_\-multiply} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf doublewf\_\-divide} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf doublewf\_\-scale} (double f, {\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-bias} (double c, {\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-add\_\-cwtone} ({\bf doublewf\_\-t} $\ast$w, double amp, double phase, double freq, double phasenoise)
+\item 
+EXTERN int {\bf doublewf\_\-add\_\-dcywave} ({\bf doublewf\_\-t} $\ast$w, double amp, double phase, double freq, double ttrig, double tdcy, double phasenoise)
+\item 
+EXTERN int {\bf doublewf\_\-add\_\-ampnoise} ({\bf doublewf\_\-t} $\ast$w, double sigma)
+\item 
+EXTERN int {\bf doublewf\_\-basic\_\-stats} ({\bf doublewf\_\-t} $\ast$w, int s0, int s1, {\bf wfstat\_\-t} $\ast$stats)
+\item 
+EXTERN int {\bf doublewf\_\-derive} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-integrate} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN void {\bf doublewf\_\-print} (FILE $\ast$of, {\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN double {\bf doublewf\_\-getvalue} ({\bf doublewf\_\-t} $\ast$w, double t, unsigned int mode)
+\item 
+EXTERN int {\bf doublewf\_\-resample} ({\bf doublewf\_\-t} $\ast$w2, double fs, {\bf doublewf\_\-t} $\ast$w1, unsigned int mode)
+\item 
+EXTERN {\bf intwf\_\-t} $\ast$ {\bf intwf} (int ns, double fs)
+\item 
+EXTERN {\bf intwf\_\-t} $\ast$ {\bf intwf\_\-sample\_\-series} (int ns, double fs)
+\item 
+EXTERN int {\bf intwf\_\-setvalues} ({\bf intwf\_\-t} $\ast$w, int $\ast$x)
+\item 
+EXTERN int {\bf intwf\_\-setfunction} ({\bf intwf\_\-t} $\ast$w, int($\ast$wffun)(double t, int, double $\ast$), int npars, double $\ast$par)
+\item 
+EXTERN int {\bf intwf\_\-copy} ({\bf intwf\_\-t} $\ast$copy, {\bf intwf\_\-t} $\ast$src)
+\item 
+EXTERN {\bf intwf\_\-t} $\ast$ {\bf intwf\_\-copy\_\-new} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-subset} ({\bf intwf\_\-t} $\ast$sub, {\bf intwf\_\-t} $\ast$w, int i1, int i2)
+\item 
+EXTERN int {\bf intwf\_\-reset} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN void {\bf intwf\_\-delete} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-cast\_\-new} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-cast} ({\bf doublewf\_\-t} $\ast$w, {\bf intwf\_\-t} $\ast$iw)
+\item 
+EXTERN int {\bf intwf\_\-compat} ({\bf intwf\_\-t} $\ast$w1, {\bf intwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf intwf\_\-add} ({\bf intwf\_\-t} $\ast$w1, {\bf intwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf intwf\_\-subtract} ({\bf intwf\_\-t} $\ast$w1, {\bf intwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf intwf\_\-multiply} ({\bf intwf\_\-t} $\ast$w1, {\bf intwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf intwf\_\-divide} ({\bf intwf\_\-t} $\ast$w1, {\bf intwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf intwf\_\-scale} (int f, {\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-bias} (int c, {\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-add\_\-cwtone} ({\bf intwf\_\-t} $\ast$w, double amp, double phase, double freq, double phasenoise)
+\item 
+EXTERN int {\bf intwf\_\-add\_\-dcywave} ({\bf intwf\_\-t} $\ast$w, double amp, double phase, double freq, double ttrig, double tdcy, double phasenoise)
+\item 
+EXTERN int {\bf intwf\_\-add\_\-ampnoise} ({\bf intwf\_\-t} $\ast$w, double sigma)
+\item 
+EXTERN int {\bf intwf\_\-basic\_\-stats} ({\bf intwf\_\-t} $\ast$w, int s0, int s1, {\bf wfstat\_\-t} $\ast$stats)
+\item 
+EXTERN int {\bf intwf\_\-derive} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-integrate} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN void {\bf intwf\_\-print} (FILE $\ast$of, {\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-getvalue} ({\bf intwf\_\-t} $\ast$w, double t, unsigned int mode)
+\item 
+EXTERN int {\bf intwf\_\-resample} ({\bf intwf\_\-t} $\ast$w2, double fs, {\bf intwf\_\-t} $\ast$w1, unsigned int mode)
+\item 
+EXTERN {\bf complexwf\_\-t} $\ast$ {\bf complexwf} (int ns, double fs)
+\item 
+EXTERN {\bf complexwf\_\-t} $\ast$ {\bf complexwf\_\-copy\_\-new} ({\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf complexwf\_\-copy} ({\bf complexwf\_\-t} $\ast$copy, {\bf complexwf\_\-t} $\ast$src)
+\item 
+EXTERN int {\bf complexwf\_\-subset} ({\bf complexwf\_\-t} $\ast$sub, {\bf complexwf\_\-t} $\ast$w, int i1, int i2)
+\item 
+EXTERN int {\bf complexwf\_\-setvalues} ({\bf complexwf\_\-t} $\ast$w, {\bf complex\_\-t} $\ast$x)
+\item 
+EXTERN int {\bf complexwf\_\-setfunction} ({\bf complexwf\_\-t} $\ast$w, {\bf complex\_\-t}($\ast$wffun)(double, int, double $\ast$), int npars, double $\ast$par)
+\item 
+EXTERN int {\bf complexwf\_\-reset} ({\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN void {\bf complexwf\_\-delete} ({\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf complexwf\_\-compat} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf complexwf\_\-add} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf complexwf\_\-subtract} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf complexwf\_\-multiply} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf complexwf\_\-divide} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf complexwf\_\-scale} ({\bf complex\_\-t} f, {\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf complexwf\_\-bias} ({\bf complex\_\-t} c, {\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf complexwf\_\-add\_\-cwtone} ({\bf complexwf\_\-t} $\ast$w, double amp, double phase, double freq, double phasenoise)
+\item 
+EXTERN int {\bf complexwf\_\-add\_\-dcywave} ({\bf complexwf\_\-t} $\ast$w, double amp, double phase, double freq, double ttrig, double tdcy, double phasenoise)
+\item 
+EXTERN int {\bf complexwf\_\-add\_\-noise} ({\bf complexwf\_\-t} $\ast$w, double sigma)
+\item 
+EXTERN int {\bf complexwf\_\-add\_\-ampnoise} ({\bf complexwf\_\-t} $\ast$w, double sigma)
+\item 
+EXTERN int {\bf complexwf\_\-add\_\-phasenoise} ({\bf complexwf\_\-t} $\ast$w, double sigma)
+\item 
+EXTERN void {\bf complexwf\_\-print} (FILE $\ast$of, {\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf complexwf\_\-getreal} ({\bf doublewf\_\-t} $\ast$re, {\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN int {\bf complexwf\_\-getimag} ({\bf doublewf\_\-t} $\ast$im, {\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN int {\bf complexwf\_\-getamp} ({\bf doublewf\_\-t} $\ast$r, {\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN int {\bf complexwf\_\-getphase} ({\bf doublewf\_\-t} $\ast$theta, {\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getreal\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getimag\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getamp\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getphase\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN int {\bf complexwf\_\-setreal} ({\bf complexwf\_\-t} $\ast$z, {\bf doublewf\_\-t} $\ast$re)
+\item 
+EXTERN int {\bf complexwf\_\-setimag} ({\bf complexwf\_\-t} $\ast$z, {\bf doublewf\_\-t} $\ast$im)
+\item 
+EXTERN int \textbf{time\_\-to\_\-sample} (double fs, int ns, double t, int $\ast$iS)\label{group__wave_g97c0e95c3559f400c84603c768307544}
+
+\item 
+EXTERN int \textbf{freq\_\-to\_\-sample} (double fs, int ns, double f, int $\ast$iS)\label{group__wave_g6f575cd6ad7e547c4d55f530a003337a}
+
+\item 
+EXTERN int \textbf{sample\_\-to\_\-time} (double fs, int ns, int iS, double $\ast$t)\label{group__wave_gc330e9905065c7209c22251d86a20ef7}
+
+\item 
+EXTERN int \textbf{sample\_\-to\_\-freq} (double fs, int ns, int iS, double $\ast$f)\label{group__wave_g6ce85ffae7051ec62a1f19ad23cbd6d5}
+
+\end{CompactItemize}

@@ -1,0 +1,438 @@
+\subsection{bpmnr/bpm\_\-nr.h File Reference}
+\label{bpm__nr_8h}\index{bpmnr/bpm\_\-nr.h@{bpmnr/bpm\_\-nr.h}}
+
+
+\subsubsection{Detailed Description}
+libbpm numerical helper routines 
+
+Header file containing the numerical recipies and GNU Scientific Library routines used in the library. 
+
+Definition in file {\bf bpm\_\-nr.h}.
+
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$math.h$>$}\par
+{\tt \#include $<$float.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-defs.h$>$}\par
+
+
+Include dependency graph for bpm\_\-nr.h:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{bpm__nr_8h__incl}
+\end{center}
+\end{figure}
+
+
+This graph shows which files directly or indirectly include this file:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{bpm__nr_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct {\bf lm\_\-fstate}
+\item 
+struct \textbf{gsl\_\-block\_\-struct}
+\item 
+struct \textbf{gsl\_\-matrix}
+\item 
+struct \textbf{\_\-gsl\_\-matrix\_\-view}
+\item 
+struct \textbf{gsl\_\-vector}
+\item 
+struct \textbf{\_\-gsl\_\-vector\_\-view}
+\item 
+struct \textbf{\_\-gsl\_\-vector\_\-const\_\-view}
+\item 
+struct {\bf complex\_\-t}
+\end{CompactItemize}
+\subsubsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf GCF\_\-ITMAX}
+\item 
+\#define \textbf{GCF\_\-FPMIN}\label{group__nr_g4d2a5b0ed774d7c6cd7ed3aeede02b32}
+
+\item 
+\#define \textbf{GCF\_\-EPS}\label{group__nr_g545baaa7a8baff47a88f64d9e22f85eb}
+
+\item 
+\#define \textbf{GSER\_\-EPS}\label{group__nr_g2f99393cf98b977fa0ed7d77df4b1847}
+
+\item 
+\#define \textbf{GSER\_\-ITMAX}\label{group__nr_ge81a5f817c0ccb9e9b21d0a93a69f1fb}
+
+\item 
+\#define \textbf{RAN1\_\-IA}\label{group__nr_gfac3e13315af7108196380d1e4626fff}
+
+\item 
+\#define \textbf{RAN1\_\-IM}\label{group__nr_g1854f35d8460beeacca2f0538495054e}
+
+\item 
+\#define \textbf{RAN1\_\-AM}\label{group__nr_ga1f56cea0760315b3d77f8d43c214b9f}
+
+\item 
+\#define \textbf{RAN1\_\-IQ}\label{group__nr_g62b55be906a8312d99fa219df59d2603}
+
+\item 
+\#define \textbf{RAN1\_\-IR}\label{group__nr_gd9837af690685692ba3b79204aacda7d}
+
+\item 
+\#define \textbf{RAN1\_\-NTAB}\label{group__nr_g9ed2ef7c12b486ed6bcaa2f865799f39}
+
+\item 
+\#define \textbf{RAN1\_\-NDIV}\label{group__nr_g9e50163471f8a66724a30e90b859683c}
+
+\item 
+\#define \textbf{RAN1\_\-EPS}\label{group__nr_ge7332177f9233d665df2bc8b162d2484}
+
+\item 
+\#define \textbf{RAN1\_\-RNMX}\label{group__nr_g764a79bfff270bb14a93930e3da5d7cc}
+
+\item 
+\#define {\bf \_\-\_\-LM\_\-BLOCKSZ\_\-\_\-}
+\item 
+\#define \textbf{\_\-\_\-LM\_\-BLOCKSZ\_\-\_\-SQ}\label{group__nr_ge730cf8f762cf844c8a987af6be4bd9c}
+
+\item 
+\#define \textbf{LINSOLVERS\_\-RETAIN\_\-MEMORY}\label{group__nr_g24a049e550264f1529e47347e9753f7e}
+
+\item 
+\#define \textbf{\_\-\_\-LM\_\-STATIC\_\-\_\-}\label{group__nr_gf3381d1cf7cf6839730587497fb744b7}
+
+\item 
+\#define \textbf{FABS}(x)\label{group__nr_g9b649f4d878e64a80b4cd2cad45f43b3}
+
+\item 
+\#define \textbf{CNST}(x)\label{group__nr_g8097f2f4c007bf8d2ea1e7558b2248e0}
+
+\item 
+\#define \textbf{\_\-LM\_\-POW\_\-}\label{group__nr_gb28c2198a94b5c5508ab04b28e31aed2}
+
+\item 
+\#define {\bf LM\_\-DER\_\-WORKSZ}(npar, nmeas)
+\item 
+\#define {\bf LM\_\-DIF\_\-WORKSZ}(npar, nmeas)
+\item 
+\#define \textbf{LM\_\-EPSILON}\label{group__nr_g4bd7ce4e1f4cc6be913fc6a383bce112}
+
+\item 
+\#define \textbf{LM\_\-ONE\_\-THIRD}\label{group__nr_g307e270c028a33b97c90f66245f81452}
+
+\item 
+\#define \textbf{LM\_\-OPTS\_\-SZ}\label{group__nr_ge3ee35a37fd4d8532ac769d5bd372a53}
+
+\item 
+\#define \textbf{LM\_\-INFO\_\-SZ}\label{group__nr_g20fee96f47f09233385fb107510b45da}
+
+\item 
+\#define \textbf{LM\_\-INIT\_\-MU}\label{group__nr_g6664bcbe28414c3df4b36063a6823d0c}
+
+\item 
+\#define \textbf{LM\_\-STOP\_\-THRESH}\label{group__nr_g344f3598e6156022e8c5175b060d9201}
+
+\item 
+\#define \textbf{LM\_\-DIFF\_\-DELTA}\label{group__nr_g0560e7d9a262a0c72f156639096a261d}
+
+\item 
+\#define {\bf NR\_\-FFTFORWARD}
+\item 
+\#define {\bf NR\_\-FFTBACKWARD}
+\item 
+\#define {\bf \_\-\_\-LM\_\-MEDIAN3}(a, b, c)
+\item 
+\#define \textbf{NULL\_\-VECTOR}\label{group__nr_g9839236a6f8b2f71c017c7ad3564c12d}
+
+\item 
+\#define \textbf{NULL\_\-VECTOR\_\-VIEW}\label{group__nr_gd53a17dfdfc936b7559bdc08efbe1c7e}
+
+\item 
+\#define \textbf{NULL\_\-MATRIX}\label{group__nr_g9aaa363ea623569297d0fced07b4b263}
+
+\item 
+\#define \textbf{NULL\_\-MATRIX\_\-VIEW}\label{group__nr_g2c402132fe8822a31f21b968666fa188}
+
+\item 
+\#define \textbf{GSL\_\-DBL\_\-EPSILON}\label{group__nr_g2ee9a14250ef1c11d3a454c93703de4e}
+
+\item 
+\#define \textbf{OFFSET}(N, incX)\label{group__nr_g098f1989e95be172fad854c44d1be6ee}
+
+\item 
+\#define \textbf{GSL\_\-MIN}(a, b)\label{group__nr_ga97847b845ae5d3fbbec4d2d8ec3310d}
+
+\end{CompactItemize}
+\subsubsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef enum CBLAS\_\-TRANSPOSE \textbf{CBLAS\_\-TRANSPOSE\_\-t}\label{group__nr_gfe7082539a5d26f5c498526d07ebe8d3}
+
+\item 
+typedef struct gsl\_\-block\_\-struct \textbf{gsl\_\-block}\label{group__nr_g3858db8a10651ceb818008b6db3fed1e}
+
+\item 
+typedef \_\-gsl\_\-matrix\_\-view \textbf{gsl\_\-matrix\_\-view}\label{group__nr_g8aacfa9dbffc4c6918036c329437dc40}
+
+\item 
+typedef \_\-gsl\_\-vector\_\-view \textbf{gsl\_\-vector\_\-view}\label{group__nr_g2a9448788d5ea6053036f94bce37ca9b}
+
+\item 
+typedef const \_\-gsl\_\-vector\_\-const\_\-view \textbf{gsl\_\-vector\_\-const\_\-view}\label{group__nr_gcba10bedbc0a23130b5d8e52b83b925e}
+
+\end{CompactItemize}
+\subsubsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum \textbf{CBLAS\_\-TRANSPOSE} \{ \textbf{CblasNoTrans}, 
+\textbf{CblasTrans}, 
+\textbf{CblasConjTrans}
+ \}
+\item 
+enum \textbf{CBLAS\_\-ORDER} \{ \textbf{CblasRowMajor}, 
+\textbf{CblasColMajor}
+ \}
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN double {\bf nr\_\-gammln} (double xx)
+\item 
+EXTERN double {\bf nr\_\-gammq} (double a, double x)
+\item 
+EXTERN int {\bf nr\_\-gcf} (double $\ast$gammcf, double a, double x, double $\ast$gln)
+\item 
+EXTERN int {\bf nr\_\-gser} (double $\ast$gamser, double a, double x, double $\ast$gln)
+\item 
+EXTERN int {\bf nr\_\-fit} (double $\ast$x, double y[$\,$], int ndata, double sig[$\,$], int mwt, double $\ast$a, double $\ast$b, double $\ast$siga, double $\ast$sigb, double $\ast$chi2, double $\ast$q)
+\item 
+EXTERN int {\bf nr\_\-is\_\-pow2} (unsigned long n)
+\item 
+EXTERN int {\bf nr\_\-four1} (double data[$\,$], unsigned long nn, int isign)
+\item 
+EXTERN int {\bf nr\_\-realft} (double data[$\,$], unsigned long n, int isign)
+\item 
+EXTERN double {\bf nr\_\-ran1} (long $\ast$idum)
+\item 
+EXTERN int {\bf nr\_\-seed} (long seed)
+\item 
+EXTERN double {\bf nr\_\-ranuniform} (double lower, double upper)
+\item 
+EXTERN double {\bf nr\_\-rangauss} (double mean, double std\_\-dev)
+\item 
+EXTERN int \textbf{nr\_\-lmder} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), void($\ast$jacf)(double $\ast$p, double $\ast$j, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$x, int m, int n, int itmax, double $\ast$opts, double $\ast$info, double $\ast$work, double $\ast$covar, void $\ast$adata)\label{group__nr_g59c2090d19b1ad8ed35f50e49539aa0a}
+
+\item 
+EXTERN int \textbf{nr\_\-lmdif} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$x, int m, int n, int itmax, double $\ast$opts, double $\ast$info, double $\ast$work, double $\ast$covar, void $\ast$adata)\label{group__nr_g352d4d338f80dc0fe3db4bac7dc9640e}
+
+\item 
+EXTERN int \textbf{nr\_\-lmder\_\-bc} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), void($\ast$jacf)(double $\ast$p, double $\ast$j, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$x, int m, int n, double $\ast$lb, double $\ast$ub, int itmax, double $\ast$opts, double $\ast$info, double $\ast$work, double $\ast$covar, void $\ast$adata)\label{group__nr_g55db15253f85ccac7c985280705da745}
+
+\item 
+EXTERN int \textbf{nr\_\-lmdif\_\-bc} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$x, int m, int n, double $\ast$lb, double $\ast$ub, int itmax, double $\ast$opts, double $\ast$info, double $\ast$work, double $\ast$covar, void $\ast$adata)\label{group__nr_ga343a39b99f7bb25b97134a743a81a20}
+
+\item 
+EXTERN void \textbf{nr\_\-lmchkjac} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), void($\ast$jacf)(double $\ast$p, double $\ast$j, int m, int n, void $\ast$adata), double $\ast$p, int m, int n, void $\ast$adata, double $\ast$err)\label{group__nr_gc0c5d8dc11fc35234e751fbc54a6a185}
+
+\item 
+EXTERN int \textbf{nr\_\-lmcovar} (double $\ast$JtJ, double $\ast$C, double sumsq, int m, int n)\label{group__nr_g2e38d1d3a33b269e190fb0edd3fc3303}
+
+\item 
+EXTERN int \textbf{nr\_\-ax\_\-eq\_\-b\_\-LU} (double $\ast$A, double $\ast$B, double $\ast$x, int n)\label{group__nr_g50388d5d50f760129a054ea526ed1c07}
+
+\item 
+EXTERN void \textbf{nr\_\-trans\_\-mat\_\-mat\_\-mult} (double $\ast$a, double $\ast$b, int n, int m)\label{group__nr_gb647cf24b2b6ab2a0dd993ba4021447c}
+
+\item 
+EXTERN void \textbf{nr\_\-fdif\_\-forw\_\-jac\_\-approx} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$hx, double $\ast$hxx, double delta, double $\ast$jac, int m, int n, void $\ast$adata)\label{group__nr_gf20223185cc5c2a215cb6559231dd55b}
+
+\item 
+EXTERN void \textbf{nr\_\-fdif\_\-cent\_\-jac\_\-approx} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$hxm, double $\ast$hxp, double delta, double $\ast$jac, int m, int n, void $\ast$adata)\label{group__nr_geab4b93cc9d2f74f4c1859204fc9e694}
+
+\item 
+EXTERN double {\bf nr\_\-median} (int n, double $\ast$arr)
+\item 
+EXTERN double {\bf nr\_\-select} (int k, int n, double $\ast$org\_\-arr)
+\item 
+EXTERN gsl\_\-matrix $\ast$ \textbf{gsl\_\-matrix\_\-calloc} (const size\_\-t n1, const size\_\-t n2)\label{group__nr_gf2e18583a2759c9d0f78b564f40eccd7}
+
+\item 
+EXTERN \_\-gsl\_\-vector\_\-view {\bf gsl\_\-matrix\_\-column} (gsl\_\-matrix $\ast$m, const size\_\-t i)
+\item 
+EXTERN \_\-gsl\_\-matrix\_\-view {\bf gsl\_\-matrix\_\-submatrix} (gsl\_\-matrix $\ast$m, const size\_\-t i, const size\_\-t j, const size\_\-t n1, const size\_\-t n2)
+\item 
+EXTERN double {\bf gsl\_\-matrix\_\-get} (const gsl\_\-matrix $\ast$m, const size\_\-t i, const size\_\-t j)
+\item 
+EXTERN void {\bf gsl\_\-matrix\_\-set} (gsl\_\-matrix $\ast$m, const size\_\-t i, const size\_\-t j, const double x)
+\item 
+EXTERN int {\bf gsl\_\-matrix\_\-swap\_\-columns} (gsl\_\-matrix $\ast$m, const size\_\-t i, const size\_\-t j)
+\item 
+EXTERN gsl\_\-matrix $\ast$ \textbf{gsl\_\-matrix\_\-alloc} (const size\_\-t n1, const size\_\-t n2)\label{group__nr_g3c416b23f730c2e06cb5e9b257f1f571}
+
+\item 
+EXTERN \_\-gsl\_\-vector\_\-const\_\-view \textbf{gsl\_\-matrix\_\-const\_\-row} (const gsl\_\-matrix $\ast$m, const size\_\-t i)\label{group__nr_g1b0f557b9e570f397ab13dcc24e09e35}
+
+\item 
+EXTERN \_\-gsl\_\-vector\_\-view \textbf{gsl\_\-matrix\_\-row} (gsl\_\-matrix $\ast$m, const size\_\-t i)\label{group__nr_gebf16339184d6759f4cdfa9c1724fb98}
+
+\item 
+EXTERN \_\-gsl\_\-vector\_\-const\_\-view \textbf{gsl\_\-matrix\_\-const\_\-column} (const gsl\_\-matrix $\ast$m, const size\_\-t j)\label{group__nr_gf288953bef254a8e2221d778c28f7f97}
+
+\item 
+EXTERN void \textbf{gsl\_\-matrix\_\-set\_\-identity} (gsl\_\-matrix $\ast$m)\label{group__nr_ge37f3f441742e70b1a701d92446e33fc}
+
+\item 
+EXTERN gsl\_\-vector $\ast$ \textbf{gsl\_\-vector\_\-calloc} (const size\_\-t n)\label{group__nr_gac4c2937f0e28c7a00cfe90b4ad886a6}
+
+\item 
+EXTERN \_\-gsl\_\-vector\_\-view {\bf gsl\_\-vector\_\-subvector} (gsl\_\-vector $\ast$v, size\_\-t offset, size\_\-t n)
+\item 
+EXTERN double {\bf gsl\_\-vector\_\-get} (const gsl\_\-vector $\ast$v, const size\_\-t i)
+\item 
+EXTERN void {\bf gsl\_\-vector\_\-set} (gsl\_\-vector $\ast$v, const size\_\-t i, double x)
+\item 
+EXTERN int \textbf{gsl\_\-vector\_\-swap\_\-elements} (gsl\_\-vector $\ast$v, const size\_\-t i, const size\_\-t j)\label{group__nr_g2624694e4157398ba344b90eca6ba070}
+
+\item 
+EXTERN \_\-gsl\_\-vector\_\-const\_\-view \textbf{gsl\_\-vector\_\-const\_\-subvector} (const gsl\_\-vector $\ast$v, size\_\-t i, size\_\-t n)\label{group__nr_ga45e4b3770af5d15171055314b140838}
+
+\item 
+EXTERN void \textbf{gsl\_\-vector\_\-free} (gsl\_\-vector $\ast$v)\label{group__nr_gedc84887915223f87986de6a67c0249d}
+
+\item 
+EXTERN int \textbf{gsl\_\-linalg\_\-SV\_\-solve} (const gsl\_\-matrix $\ast$U, const gsl\_\-matrix $\ast$Q, const gsl\_\-vector $\ast$S, const gsl\_\-vector $\ast$b, gsl\_\-vector $\ast$x)\label{group__nr_g8568eb30743233bab6e1c2d530829f5f}
+
+\item 
+EXTERN int \textbf{gsl\_\-linalg\_\-bidiag\_\-unpack} (const gsl\_\-matrix $\ast$A, const gsl\_\-vector $\ast$tau\_\-U, gsl\_\-matrix $\ast$U, const gsl\_\-vector $\ast$tau\_\-V, gsl\_\-matrix $\ast$V, gsl\_\-vector $\ast$diag, gsl\_\-vector $\ast$superdiag)\label{group__nr_gc4843a336042d90bbacea983a80e29b9}
+
+\item 
+EXTERN int {\bf gsl\_\-linalg\_\-householder\_\-hm} (double tau, const gsl\_\-vector $\ast$v, gsl\_\-matrix $\ast$A)
+\item 
+EXTERN int \textbf{gsl\_\-linalg\_\-bidiag\_\-unpack2} (gsl\_\-matrix $\ast$A, gsl\_\-vector $\ast$tau\_\-U, gsl\_\-vector $\ast$tau\_\-V, gsl\_\-matrix $\ast$V)\label{group__nr_g4881575010a0877aba5efab6f368ab8c}
+
+\item 
+EXTERN int {\bf gsl\_\-linalg\_\-householder\_\-hm1} (double tau, gsl\_\-matrix $\ast$A)
+\item 
+EXTERN void \textbf{create\_\-givens} (const double a, const double b, double $\ast$c, double $\ast$s)\label{group__nr_g2c1eb13f0c90da0f8ef4ef712db29f44}
+
+\item 
+EXTERN double {\bf gsl\_\-linalg\_\-householder\_\-transform} (gsl\_\-vector $\ast$v)
+\item 
+EXTERN int {\bf gsl\_\-linalg\_\-householder\_\-mh} (double tau, const gsl\_\-vector $\ast$v, gsl\_\-matrix $\ast$A)
+\item 
+EXTERN void \textbf{chop\_\-small\_\-elements} (gsl\_\-vector $\ast$d, gsl\_\-vector $\ast$f)\label{group__nr_g7a9b4689f2fcd8d6a417a071903df6f1}
+
+\item 
+EXTERN void \textbf{qrstep} (gsl\_\-vector $\ast$d, gsl\_\-vector $\ast$f, gsl\_\-matrix $\ast$U, gsl\_\-matrix $\ast$V)\label{group__nr_g8e5d28fda0cf04d6d70392fa9580c2eb}
+
+\item 
+EXTERN double \textbf{trailing\_\-eigenvalue} (const gsl\_\-vector $\ast$d, const gsl\_\-vector $\ast$f)\label{group__nr_g615603d99ef3bb2a21b32e13761a1474}
+
+\item 
+EXTERN void \textbf{create\_\-schur} (double d0, double f0, double d1, double $\ast$c, double $\ast$s)\label{group__nr_g31a6def59f109d51a7e9af63a8850f0c}
+
+\item 
+EXTERN void \textbf{svd2} (gsl\_\-vector $\ast$d, gsl\_\-vector $\ast$f, gsl\_\-matrix $\ast$U, gsl\_\-matrix $\ast$V)\label{group__nr_ge8a1bf5b51ec0f7ef1e067f01d466033}
+
+\item 
+EXTERN void \textbf{chase\_\-out\_\-intermediate\_\-zero} (gsl\_\-vector $\ast$d, gsl\_\-vector $\ast$f, gsl\_\-matrix $\ast$U, size\_\-t k0)\label{group__nr_g1b67ba06b6b7daa4f73a163f404dd3d7}
+
+\item 
+EXTERN void \textbf{chase\_\-out\_\-trailing\_\-zero} (gsl\_\-vector $\ast$d, gsl\_\-vector $\ast$f, gsl\_\-matrix $\ast$V)\label{group__nr_g15f37e448cf7eabd56ec2c351f148214}
+
+\item 
+EXTERN int \textbf{gsl\_\-isnan} (const double x)\label{group__nr_gf37b7182e24399515692cc4aa39722dd}
+
+\item 
+EXTERN double {\bf gsl\_\-blas\_\-dnrm2} (const gsl\_\-vector $\ast$X)
+\item 
+EXTERN double \textbf{cblas\_\-dnrm2} (const int N, const double $\ast$X, const int incX)\label{group__nr_g7201c3bc9f98c0b703b326b9178c4965}
+
+\item 
+EXTERN void \textbf{gsl\_\-blas\_\-dscal} (double alpha, gsl\_\-vector $\ast$X)\label{group__nr_g549aa3e6fac9f177535de54692d31df8}
+
+\item 
+EXTERN void \textbf{cblas\_\-dscal} (const int N, const double alpha, double $\ast$X, const int incX)\label{group__nr_ge13bffd83c5432842602645c03f6f26a}
+
+\item 
+EXTERN void \textbf{cblas\_\-dgemv} (const enum CBLAS\_\-ORDER order, const enum CBLAS\_\-TRANSPOSE TransA, const int M, const int N, const double alpha, const double $\ast$A, const int lda, const double $\ast$X, const int incX, const double beta, double $\ast$Y, const int incY)\label{group__nr_g71539c2ec3663bb7ec3bc88882da603a}
+
+\item 
+EXTERN gsl\_\-block $\ast$ {\bf gsl\_\-block\_\-alloc} (const size\_\-t n)
+\item 
+EXTERN void \textbf{gsl\_\-block\_\-free} (gsl\_\-block $\ast$b)\label{group__nr_g0952127372c14dce3c3aa65ec0ad9c1e}
+
+\item 
+EXTERN {\bf complex\_\-t} \textbf{complex} (double re, double im)\label{group__nr_g203888bac468229094352b2bb9456417}
+
+\item 
+EXTERN double \textbf{c\_\-real} ({\bf complex\_\-t} z)\label{group__nr_gbd9dcd9992cad1f6af326811da66fc9a}
+
+\item 
+EXTERN double \textbf{c\_\-imag} ({\bf complex\_\-t} z)\label{group__nr_g6adc8ee3a56fe88de97c3f40c484f824}
+
+\item 
+EXTERN {\bf complex\_\-t} \textbf{c\_\-conj} ({\bf complex\_\-t} z)\label{group__nr_g26f4378875ac801b1b5bb7a13f180f0a}
+
+\item 
+EXTERN {\bf complex\_\-t} \textbf{c\_\-neg} ({\bf complex\_\-t} z)\label{group__nr_g33f198bcc4dd193c4f8c8db9049311d2}
+
+\item 
+EXTERN {\bf complex\_\-t} \textbf{c\_\-sum} ({\bf complex\_\-t} z1, {\bf complex\_\-t} z2)\label{group__nr_g176d351f4b035de54e1fb9974c296bed}
+
+\item 
+EXTERN {\bf complex\_\-t} \textbf{c\_\-diff} ({\bf complex\_\-t} z1, {\bf complex\_\-t} z2)\label{group__nr_g5b48402b525952efb744f5b2804d1957}
+
+\item 
+EXTERN {\bf complex\_\-t} \textbf{c\_\-mult} ({\bf complex\_\-t} z1, {\bf complex\_\-t} z2)\label{group__nr_gbac492f503bff737e6a11c03e44e7ada}
+
+\item 
+EXTERN {\bf complex\_\-t} \textbf{c\_\-div} ({\bf complex\_\-t} z1, {\bf complex\_\-t} z2)\label{group__nr_g3cb3d7ddec167a30a5f7a159dea26c0f}
+
+\item 
+EXTERN {\bf complex\_\-t} \textbf{c\_\-scale} (double r, {\bf complex\_\-t} z)\label{group__nr_g4a8c814a8cb7b92c919b23e1ea64d615}
+
+\item 
+EXTERN {\bf complex\_\-t} \textbf{c\_\-sqr} ({\bf complex\_\-t} z)\label{group__nr_g72516630e1d745f5d1630b4c525cb5f8}
+
+\item 
+EXTERN {\bf complex\_\-t} \textbf{c\_\-sqrt} ({\bf complex\_\-t} z)\label{group__nr_g22d2bd8775120d34e3b700682e67d955}
+
+\item 
+EXTERN double \textbf{c\_\-norm2} ({\bf complex\_\-t} z)\label{group__nr_g98f394b1ddccfeb4d9b5edb6c1f8c652}
+
+\item 
+EXTERN double \textbf{c\_\-abs} ({\bf complex\_\-t} z)\label{group__nr_gdd54790aa13824ee1db3d0558a465071}
+
+\item 
+EXTERN double \textbf{c\_\-abs2} ({\bf complex\_\-t} z)\label{group__nr_g5a31b290dd721358e4270d9686347dde}
+
+\item 
+EXTERN double \textbf{c\_\-arg} ({\bf complex\_\-t} z)\label{group__nr_g5a8776cef7d6ef88a11015d6ec2665ba}
+
+\item 
+EXTERN {\bf complex\_\-t} \textbf{c\_\-exp} ({\bf complex\_\-t} z)\label{group__nr_g41a40da9e1d42de8e76d999abd476f8a}
+
+\item 
+EXTERN int \textbf{c\_\-isequal} ({\bf complex\_\-t} z1, {\bf complex\_\-t} z2)\label{group__nr_gd3e4d63450915ff27b8e506acb21bb2e}
+
+\item 
+EXTERN double {\bf nr\_\-quadinterpol} (double x, double x1, double x2, double x3, double y1, double y2, double y3)
+\item 
+EXTERN double {\bf sinc} (double x)
+\item 
+EXTERN double {\bf lanczos} (double x, int a)
+\item 
+EXTERN double {\bf dround} (double x)
+\end{CompactItemize}
+\subsubsection*{Variables}
+\begin{CompactItemize}
+\item 
+EXTERN long \textbf{bpm\_\-rseed}\label{group__nr_ga0d31375f4ee67d90ba46fbda872d25c}
+
+\end{CompactItemize}

@@ -1,0 +1,81 @@
+\subsection{bpmwf/doublewf.c File Reference}
+\label{doublewf_8c}\index{bpmwf/doublewf.c@{bpmwf/doublewf.c}}
+
+
+\subsubsection{Detailed Description}
+
+
+Definition in file {\bf doublewf.c}.
+
+{\tt \#include $<$bpm/bpm\_\-wf.h$>$}\par
+
+
+Include dependency graph for doublewf.c:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=79pt]{doublewf_8c__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\bf doublewf\_\-t} $\ast$ {\bf doublewf} (int ns, double fs)
+\item 
+{\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-sample\_\-series} (int ns, double fs)
+\item 
+{\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-time\_\-series} (int ns, double fs)
+\item 
+{\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-frequency\_\-series} (int ns, double fs)
+\item 
+{\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-copy\_\-new} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+int {\bf doublewf\_\-copy} ({\bf doublewf\_\-t} $\ast$copy, {\bf doublewf\_\-t} $\ast$src)
+\item 
+int {\bf doublewf\_\-subset} ({\bf doublewf\_\-t} $\ast$sub, {\bf doublewf\_\-t} $\ast$w, int i1, int i2)
+\item 
+int {\bf doublewf\_\-setvalues} ({\bf doublewf\_\-t} $\ast$w, double $\ast$x)
+\item 
+int \textbf{doublewf\_\-setfunction} ({\bf doublewf\_\-t} $\ast$w, double($\ast$wffun)(double, int, double $\ast$), int npars, double $\ast$par)\label{doublewf_8c_381fa1103084cd430eb291c372abad1e}
+
+\item 
+int {\bf doublewf\_\-reset} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+void {\bf doublewf\_\-delete} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+{\bf intwf\_\-t} $\ast$ {\bf intwf\_\-cast\_\-new} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+int {\bf intwf\_\-cast} ({\bf intwf\_\-t} $\ast$iw, {\bf doublewf\_\-t} $\ast$w)
+\item 
+int {\bf doublewf\_\-compat} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+int {\bf doublewf\_\-add} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+int {\bf doublewf\_\-subtract} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+int {\bf doublewf\_\-multiply} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+int {\bf doublewf\_\-divide} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+int {\bf doublewf\_\-scale} (double f, {\bf doublewf\_\-t} $\ast$w)
+\item 
+int {\bf doublewf\_\-bias} (double c, {\bf doublewf\_\-t} $\ast$w)
+\item 
+int {\bf doublewf\_\-add\_\-cwtone} ({\bf doublewf\_\-t} $\ast$w, double amp, double phase, double freq, double phasenoise)
+\item 
+int {\bf doublewf\_\-add\_\-dcywave} ({\bf doublewf\_\-t} $\ast$w, double amp, double phase, double freq, double ttrig, double tdcy, double phasenoise)
+\item 
+int {\bf doublewf\_\-add\_\-ampnoise} ({\bf doublewf\_\-t} $\ast$w, double sigma)
+\item 
+int {\bf doublewf\_\-basic\_\-stats} ({\bf doublewf\_\-t} $\ast$w, int s0, int s1, {\bf wfstat\_\-t} $\ast$stats)
+\item 
+int {\bf doublewf\_\-derive} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+int {\bf doublewf\_\-integrate} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+void {\bf doublewf\_\-print} (FILE $\ast$of, {\bf doublewf\_\-t} $\ast$w)
+\item 
+double {\bf doublewf\_\-getvalue} ({\bf doublewf\_\-t} $\ast$w, double t, unsigned int mode)
+\item 
+int {\bf doublewf\_\-resample} ({\bf doublewf\_\-t} $\ast$w2, double fs, {\bf doublewf\_\-t} $\ast$w1, unsigned int mode)
+\end{CompactItemize}

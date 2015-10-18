@@ -1,0 +1,40 @@
+\subsection{bpmnr/gsl\_\-blas.c File Reference}
+\label{gsl__blas_8c}\index{bpmnr/gsl\_\-blas.c@{bpmnr/gsl\_\-blas.c}}
+
+
+\subsubsection{Detailed Description}
+
+
+Definition in file {\bf gsl\_\-blas.c}.
+
+{\tt \#include $<$bpm/bpm\_\-messages.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-nr.h$>$}\par
+
+
+Include dependency graph for gsl\_\-blas.c:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=147pt]{gsl__blas_8c__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+double {\bf gsl\_\-blas\_\-dnrm2} (const gsl\_\-vector $\ast$X)
+\item 
+double \textbf{cblas\_\-dnrm2} (const int N, const double $\ast$X, const int incX)\label{group__nr_g7201c3bc9f98c0b703b326b9178c4965}
+
+\item 
+void \textbf{gsl\_\-blas\_\-dscal} (double alpha, gsl\_\-vector $\ast$X)\label{group__nr_g549aa3e6fac9f177535de54692d31df8}
+
+\item 
+void \textbf{cblas\_\-dscal} (const int N, const double alpha, double $\ast$X, const int incX)\label{group__nr_ge13bffd83c5432842602645c03f6f26a}
+
+\item 
+int \textbf{gsl\_\-blas\_\-dgemv} (CBLAS\_\-TRANSPOSE\_\-t TransA, double alpha, const gsl\_\-matrix $\ast$A, const gsl\_\-vector $\ast$X, double beta, gsl\_\-vector $\ast$Y)\label{gsl__blas_8c_e75ae29cba0f1bf3c9293e4a993d4cd9}
+
+\item 
+void \textbf{cblas\_\-dgemv} (const enum CBLAS\_\-ORDER order, const enum CBLAS\_\-TRANSPOSE TransA, const int M, const int N, const double alpha, const double $\ast$A, const int lda, const double $\ast$X, const int incX, const double beta, double $\ast$Y, const int incY)\label{group__nr_g71539c2ec3663bb7ec3bc88882da603a}
+
+\end{CompactItemize}

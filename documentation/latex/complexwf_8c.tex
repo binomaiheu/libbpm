@@ -1,0 +1,85 @@
+\subsection{bpmwf/complexwf.c File Reference}
+\label{complexwf_8c}\index{bpmwf/complexwf.c@{bpmwf/complexwf.c}}
+
+
+\subsubsection{Detailed Description}
+
+
+Definition in file {\bf complexwf.c}.
+
+{\tt \#include $<$bpm/bpm\_\-wf.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-dsp.h$>$}\par
+
+
+Include dependency graph for complexwf.c:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=129pt]{complexwf_8c__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+{\bf complexwf\_\-t} $\ast$ {\bf complexwf} (int ns, double fs)
+\item 
+{\bf complexwf\_\-t} $\ast$ {\bf complexwf\_\-copy\_\-new} ({\bf complexwf\_\-t} $\ast$w)
+\item 
+int {\bf complexwf\_\-copy} ({\bf complexwf\_\-t} $\ast$copy, {\bf complexwf\_\-t} $\ast$src)
+\item 
+int {\bf complexwf\_\-subset} ({\bf complexwf\_\-t} $\ast$sub, {\bf complexwf\_\-t} $\ast$w, int i1, int i2)
+\item 
+int {\bf complexwf\_\-setvalues} ({\bf complexwf\_\-t} $\ast$w, {\bf complex\_\-t} $\ast$x)
+\item 
+int {\bf complexwf\_\-setfunction} ({\bf complexwf\_\-t} $\ast$w, {\bf complex\_\-t}($\ast$wffun)(double, int, double $\ast$), int npars, double $\ast$par)
+\item 
+int {\bf complexwf\_\-reset} ({\bf complexwf\_\-t} $\ast$w)
+\item 
+void {\bf complexwf\_\-delete} ({\bf complexwf\_\-t} $\ast$w)
+\item 
+int {\bf complexwf\_\-compat} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+int {\bf complexwf\_\-add} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+int {\bf complexwf\_\-subtract} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+int {\bf complexwf\_\-multiply} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+int {\bf complexwf\_\-divide} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+int {\bf complexwf\_\-scale} ({\bf complex\_\-t} f, {\bf complexwf\_\-t} $\ast$w)
+\item 
+int {\bf complexwf\_\-bias} ({\bf complex\_\-t} c, {\bf complexwf\_\-t} $\ast$w)
+\item 
+int {\bf complexwf\_\-add\_\-cwtone} ({\bf complexwf\_\-t} $\ast$w, double amp, double phase, double freq, double phasenoise)
+\item 
+int {\bf complexwf\_\-add\_\-dcywave} ({\bf complexwf\_\-t} $\ast$w, double amp, double phase, double freq, double ttrig, double tdcy, double phasenoise)
+\item 
+int {\bf complexwf\_\-add\_\-noise} ({\bf complexwf\_\-t} $\ast$w, double sigma)
+\item 
+int {\bf complexwf\_\-add\_\-ampnoise} ({\bf complexwf\_\-t} $\ast$w, double sigma)
+\item 
+int {\bf complexwf\_\-add\_\-phasenoise} ({\bf complexwf\_\-t} $\ast$w, double sigma)
+\item 
+void {\bf complexwf\_\-print} (FILE $\ast$of, {\bf complexwf\_\-t} $\ast$w)
+\item 
+int {\bf complexwf\_\-getreal} ({\bf doublewf\_\-t} $\ast$re, {\bf complexwf\_\-t} $\ast$z)
+\item 
+int {\bf complexwf\_\-getimag} ({\bf doublewf\_\-t} $\ast$im, {\bf complexwf\_\-t} $\ast$z)
+\item 
+int {\bf complexwf\_\-getamp} ({\bf doublewf\_\-t} $\ast$r, {\bf complexwf\_\-t} $\ast$z)
+\item 
+int {\bf complexwf\_\-getphase} ({\bf doublewf\_\-t} $\ast$theta, {\bf complexwf\_\-t} $\ast$z)
+\item 
+int {\bf complexwf\_\-setreal} ({\bf complexwf\_\-t} $\ast$z, {\bf doublewf\_\-t} $\ast$re)
+\item 
+int {\bf complexwf\_\-setimag} ({\bf complexwf\_\-t} $\ast$z, {\bf doublewf\_\-t} $\ast$im)
+\item 
+{\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getreal\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\item 
+{\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getimag\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\item 
+{\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getamp\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\item 
+{\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getphase\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\end{CompactItemize}

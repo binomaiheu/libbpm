@@ -1,0 +1,46 @@
+\subsection{bpmprocess/fit\_\-fft.c File Reference}
+\label{fit__fft_8c}\index{bpmprocess/fit\_\-fft.c@{bpmprocess/fit\_\-fft.c}}
+
+
+\subsubsection{Detailed Description}
+
+
+Definition in file {\bf fit\_\-fft.c}.
+
+{\tt \#include $<$stdio.h$>$}\par
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-nr.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-units.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-messages.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-process.h$>$}\par
+
+
+Include dependency graph for fit\_\-fft.c:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=353pt]{fit__fft_8c__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \textbf{FIT\_\-MAX\_\-ITER}\label{fit__fft_8c_2181690e4757168cb4ff93594aa86a51}
+
+\item 
+\#define \textbf{FIT\_\-WINDOW\_\-FACTOR}\label{fit__fft_8c_59cb4ea26e39cdfcd7398d07297d6e08}
+
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \textbf{fcnlorjac} (double $\ast$p, double $\ast$ljac, int np, int ns, void $\ast$a)\label{fit__fft_8c_33759794c7068e6243cddaae6792bf40}
+
+\item 
+void \textbf{fcnlor} (double $\ast$p, double $\ast$lor, int np, int ns, void $\ast$a)\label{fit__fft_8c_6795d8ac91b98c65ca86e11f3ef9a178}
+
+\item 
+int {\bf fit\_\-fft\_\-prepare} ({\bf complexwf\_\-t} $\ast$ft, int $\ast$n1, int $\ast$n2, double $\ast$amp, double $\ast$freq, double $\ast$fwhm)
+\item 
+int {\bf fit\_\-fft} ({\bf complexwf\_\-t} $\ast$ft, double $\ast$freq, double $\ast$tdecay, double $\ast$A, double $\ast$C)
+\end{CompactItemize}

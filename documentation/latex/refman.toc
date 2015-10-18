@@ -1,0 +1,800 @@
+\contentsline {section}{\numberline {1}libbpm}{1}
+\contentsline {subsection}{\numberline {1.1}Introduction}{1}
+\contentsline {subsection}{\numberline {1.2}Documentation structure}{1}
+\contentsline {subsection}{\numberline {1.3}Compilation}{2}
+\contentsline {subsubsection}{\numberline {1.3.1}Compilation under Linux/Unix/MacOS}{2}
+\contentsline {subsubsection}{\numberline {1.3.2}Note on Compilation under Windows}{2}
+\contentsline {subsection}{\numberline {1.4}Using libbpm in your programs}{2}
+\contentsline {section}{\numberline {2}GNU General Public License, v2}{3}
+\contentsline {section}{\numberline {3}Module Index}{7}
+\contentsline {subsection}{\numberline {3.1}Modules}{7}
+\contentsline {section}{\numberline {4}Data Structure Index}{7}
+\contentsline {subsection}{\numberline {4.1}Data Structures}{7}
+\contentsline {section}{\numberline {5}File Index}{8}
+\contentsline {subsection}{\numberline {5.1}File List}{8}
+\contentsline {section}{\numberline {6}Module Documentation}{12}
+\contentsline {subsection}{\numberline {6.1}Analysis routines}{12}
+\contentsline {subsubsection}{\numberline {6.1.1}Detailed Description}{12}
+\contentsline {subsubsection}{\numberline {6.1.2}Define Documentation}{13}
+\contentsline {paragraph}{\numberline {6.1.2.1}BPM\_\discretionary {-}{}{}GOOD\_\discretionary {-}{}{}EVENT}{13}
+\contentsline {paragraph}{\numberline {6.1.2.2}BPM\_\discretionary {-}{}{}BAD\_\discretionary {-}{}{}EVENT}{13}
+\contentsline {paragraph}{\numberline {6.1.2.3}ANA\_\discretionary {-}{}{}SVD\_\discretionary {-}{}{}TILT}{13}
+\contentsline {paragraph}{\numberline {6.1.2.4}ANA\_\discretionary {-}{}{}SVD\_\discretionary {-}{}{}NOTILT}{13}
+\contentsline {subsubsection}{\numberline {6.1.3}Function Documentation}{13}
+\contentsline {paragraph}{\numberline {6.1.3.1}ana\_\discretionary {-}{}{}set\_\discretionary {-}{}{}cutfn}{13}
+\contentsline {paragraph}{\numberline {6.1.3.2}ana\_\discretionary {-}{}{}get\_\discretionary {-}{}{}svd\_\discretionary {-}{}{}coeffs}{14}
+\contentsline {paragraph}{\numberline {6.1.3.3}ana\_\discretionary {-}{}{}compute\_\discretionary {-}{}{}residual}{14}
+\contentsline {paragraph}{\numberline {6.1.3.4}ana\_\discretionary {-}{}{}def\_\discretionary {-}{}{}cutfn}{15}
+\contentsline {subsubsection}{\numberline {6.1.4}Variable Documentation}{15}
+\contentsline {paragraph}{\numberline {6.1.4.1}ana\_\discretionary {-}{}{}cutfn}{15}
+\contentsline {subsection}{\numberline {6.2}Calibration routines}{15}
+\contentsline {subsubsection}{\numberline {6.2.1}Detailed Description}{15}
+\contentsline {subsubsection}{\numberline {6.2.2}Function Documentation}{15}
+\contentsline {paragraph}{\numberline {6.2.2.1}setup\_\discretionary {-}{}{}calibration}{15}
+\contentsline {paragraph}{\numberline {6.2.2.2}calibrate}{16}
+\contentsline {subsection}{\numberline {6.3}Beam orbit generation}{17}
+\contentsline {subsubsection}{\numberline {6.3.1}Detailed Description}{17}
+\contentsline {subsubsection}{\numberline {6.3.2}Function Documentation}{17}
+\contentsline {paragraph}{\numberline {6.3.2.1}get\_\discretionary {-}{}{}rbend}{17}
+\contentsline {paragraph}{\numberline {6.3.2.2}get\_\discretionary {-}{}{}sbend}{18}
+\contentsline {paragraph}{\numberline {6.3.2.3}get\_\discretionary {-}{}{}bpmhit}{18}
+\contentsline {paragraph}{\numberline {6.3.2.4}get\_\discretionary {-}{}{}bpmhits}{18}
+\contentsline {paragraph}{\numberline {6.3.2.5}v\_\discretionary {-}{}{}copy}{19}
+\contentsline {paragraph}{\numberline {6.3.2.6}v\_\discretionary {-}{}{}mag}{19}
+\contentsline {paragraph}{\numberline {6.3.2.7}v\_\discretionary {-}{}{}scale}{19}
+\contentsline {paragraph}{\numberline {6.3.2.8}v\_\discretionary {-}{}{}norm}{19}
+\contentsline {paragraph}{\numberline {6.3.2.9}v\_\discretionary {-}{}{}matmult}{19}
+\contentsline {paragraph}{\numberline {6.3.2.10}v\_\discretionary {-}{}{}add}{19}
+\contentsline {paragraph}{\numberline {6.3.2.11}v\_\discretionary {-}{}{}sub}{19}
+\contentsline {paragraph}{\numberline {6.3.2.12}v\_\discretionary {-}{}{}dot}{20}
+\contentsline {paragraph}{\numberline {6.3.2.13}v\_\discretionary {-}{}{}cross}{20}
+\contentsline {paragraph}{\numberline {6.3.2.14}v\_\discretionary {-}{}{}print}{20}
+\contentsline {paragraph}{\numberline {6.3.2.15}m\_\discretionary {-}{}{}rotmat}{20}
+\contentsline {paragraph}{\numberline {6.3.2.16}m\_\discretionary {-}{}{}matmult}{20}
+\contentsline {paragraph}{\numberline {6.3.2.17}m\_\discretionary {-}{}{}matadd}{20}
+\contentsline {paragraph}{\numberline {6.3.2.18}m\_\discretionary {-}{}{}print}{21}
+\contentsline {subsection}{\numberline {6.4}Front-end interface}{21}
+\contentsline {subsubsection}{\numberline {6.4.1}Detailed Description}{21}
+\contentsline {subsubsection}{\numberline {6.4.2}Typedef Documentation}{22}
+\contentsline {paragraph}{\numberline {6.4.2.1}bpmconf\_\discretionary {-}{}{}t}{22}
+\contentsline {paragraph}{\numberline {6.4.2.2}bpmcalib\_\discretionary {-}{}{}t}{22}
+\contentsline {paragraph}{\numberline {6.4.2.3}bpmproc\_\discretionary {-}{}{}t}{22}
+\contentsline {paragraph}{\numberline {6.4.2.4}beamconf\_\discretionary {-}{}{}t}{22}
+\contentsline {paragraph}{\numberline {6.4.2.5}bunchconf\_\discretionary {-}{}{}t}{22}
+\contentsline {subsubsection}{\numberline {6.4.3}Enumeration Type Documentation}{22}
+\contentsline {paragraph}{\numberline {6.4.3.1}bpmtype\_\discretionary {-}{}{}t}{22}
+\contentsline {paragraph}{\numberline {6.4.3.2}triggertype}{22}
+\contentsline {paragraph}{\numberline {6.4.3.3}bpmpol\_\discretionary {-}{}{}t}{23}
+\contentsline {paragraph}{\numberline {6.4.3.4}bpmphase\_\discretionary {-}{}{}t}{23}
+\contentsline {subsubsection}{\numberline {6.4.4}Variable Documentation}{23}
+\contentsline {paragraph}{\numberline {6.4.4.1}bpm\_\discretionary {-}{}{}verbose}{23}
+\contentsline {paragraph}{\numberline {6.4.4.2}libbpm\_\discretionary {-}{}{}evtnum}{23}
+\contentsline {subsection}{\numberline {6.5}Error/warning messages}{23}
+\contentsline {subsubsection}{\numberline {6.5.1}Detailed Description}{23}
+\contentsline {subsubsection}{\numberline {6.5.2}Function Documentation}{24}
+\contentsline {paragraph}{\numberline {6.5.2.1}bpm\_\discretionary {-}{}{}error}{24}
+\contentsline {paragraph}{\numberline {6.5.2.2}bpm\_\discretionary {-}{}{}warning}{24}
+\contentsline {subsection}{\numberline {6.6}Numerical routines}{25}
+\contentsline {subsubsection}{\numberline {6.6.1}Detailed Description}{25}
+\contentsline {subsubsection}{\numberline {6.6.2}Define Documentation}{29}
+\contentsline {paragraph}{\numberline {6.6.2.1}GCF\_\discretionary {-}{}{}ITMAX}{29}
+\contentsline {paragraph}{\numberline {6.6.2.2}\_\discretionary {-}{}{}\_\discretionary {-}{}{}LM\_\discretionary {-}{}{}BLOCKSZ\_\discretionary {-}{}{}\_\discretionary {-}{}{}}{29}
+\contentsline {paragraph}{\numberline {6.6.2.3}LM\_\discretionary {-}{}{}DER\_\discretionary {-}{}{}WORKSZ}{29}
+\contentsline {paragraph}{\numberline {6.6.2.4}LM\_\discretionary {-}{}{}DIF\_\discretionary {-}{}{}WORKSZ}{30}
+\contentsline {paragraph}{\numberline {6.6.2.5}NR\_\discretionary {-}{}{}FFTFORWARD}{30}
+\contentsline {paragraph}{\numberline {6.6.2.6}NR\_\discretionary {-}{}{}FFTBACKWARD}{30}
+\contentsline {paragraph}{\numberline {6.6.2.7}\_\discretionary {-}{}{}\_\discretionary {-}{}{}LM\_\discretionary {-}{}{}MEDIAN3}{30}
+\contentsline {subsubsection}{\numberline {6.6.3}Function Documentation}{30}
+\contentsline {paragraph}{\numberline {6.6.3.1}nr\_\discretionary {-}{}{}gammln}{30}
+\contentsline {paragraph}{\numberline {6.6.3.2}nr\_\discretionary {-}{}{}gammq}{30}
+\contentsline {paragraph}{\numberline {6.6.3.3}nr\_\discretionary {-}{}{}gcf}{31}
+\contentsline {paragraph}{\numberline {6.6.3.4}nr\_\discretionary {-}{}{}gser}{31}
+\contentsline {paragraph}{\numberline {6.6.3.5}nr\_\discretionary {-}{}{}fit}{31}
+\contentsline {paragraph}{\numberline {6.6.3.6}nr\_\discretionary {-}{}{}is\_\discretionary {-}{}{}pow2}{31}
+\contentsline {paragraph}{\numberline {6.6.3.7}nr\_\discretionary {-}{}{}four1}{32}
+\contentsline {paragraph}{\numberline {6.6.3.8}nr\_\discretionary {-}{}{}realft}{32}
+\contentsline {paragraph}{\numberline {6.6.3.9}nr\_\discretionary {-}{}{}ran1}{33}
+\contentsline {paragraph}{\numberline {6.6.3.10}nr\_\discretionary {-}{}{}seed}{33}
+\contentsline {paragraph}{\numberline {6.6.3.11}nr\_\discretionary {-}{}{}ranuniform}{33}
+\contentsline {paragraph}{\numberline {6.6.3.12}nr\_\discretionary {-}{}{}rangauss}{33}
+\contentsline {paragraph}{\numberline {6.6.3.13}nr\_\discretionary {-}{}{}median}{34}
+\contentsline {paragraph}{\numberline {6.6.3.14}nr\_\discretionary {-}{}{}select}{34}
+\contentsline {paragraph}{\numberline {6.6.3.15}gsl\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}column}{34}
+\contentsline {paragraph}{\numberline {6.6.3.16}gsl\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}submatrix}{35}
+\contentsline {paragraph}{\numberline {6.6.3.17}gsl\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}get}{35}
+\contentsline {paragraph}{\numberline {6.6.3.18}gsl\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}set}{35}
+\contentsline {paragraph}{\numberline {6.6.3.19}gsl\_\discretionary {-}{}{}matrix\_\discretionary {-}{}{}swap\_\discretionary {-}{}{}columns}{35}
+\contentsline {paragraph}{\numberline {6.6.3.20}gsl\_\discretionary {-}{}{}vector\_\discretionary {-}{}{}subvector}{36}
+\contentsline {paragraph}{\numberline {6.6.3.21}gsl\_\discretionary {-}{}{}vector\_\discretionary {-}{}{}get}{36}
+\contentsline {paragraph}{\numberline {6.6.3.22}gsl\_\discretionary {-}{}{}vector\_\discretionary {-}{}{}set}{36}
+\contentsline {paragraph}{\numberline {6.6.3.23}gsl\_\discretionary {-}{}{}linalg\_\discretionary {-}{}{}householder\_\discretionary {-}{}{}hm}{37}
+\contentsline {paragraph}{\numberline {6.6.3.24}gsl\_\discretionary {-}{}{}linalg\_\discretionary {-}{}{}householder\_\discretionary {-}{}{}hm1}{37}
+\contentsline {paragraph}{\numberline {6.6.3.25}gsl\_\discretionary {-}{}{}linalg\_\discretionary {-}{}{}householder\_\discretionary {-}{}{}transform}{37}
+\contentsline {paragraph}{\numberline {6.6.3.26}gsl\_\discretionary {-}{}{}linalg\_\discretionary {-}{}{}householder\_\discretionary {-}{}{}mh}{37}
+\contentsline {paragraph}{\numberline {6.6.3.27}gsl\_\discretionary {-}{}{}blas\_\discretionary {-}{}{}dnrm2}{37}
+\contentsline {paragraph}{\numberline {6.6.3.28}gsl\_\discretionary {-}{}{}block\_\discretionary {-}{}{}alloc}{38}
+\contentsline {paragraph}{\numberline {6.6.3.29}nr\_\discretionary {-}{}{}quadinterpol}{38}
+\contentsline {paragraph}{\numberline {6.6.3.30}sinc}{38}
+\contentsline {paragraph}{\numberline {6.6.3.31}lanczos}{38}
+\contentsline {paragraph}{\numberline {6.6.3.32}dround}{38}
+\contentsline {subsection}{\numberline {6.7}RF simulation routines}{39}
+\contentsline {subsubsection}{\numberline {6.7.1}Detailed Description}{39}
+\contentsline {subsubsection}{\numberline {6.7.2}Function Documentation}{39}
+\contentsline {paragraph}{\numberline {6.7.2.1}rf\_\discretionary {-}{}{}setup}{39}
+\contentsline {paragraph}{\numberline {6.7.2.2}rf\_\discretionary {-}{}{}rectify}{40}
+\contentsline {paragraph}{\numberline {6.7.2.3}rf\_\discretionary {-}{}{}addLO}{40}
+\contentsline {paragraph}{\numberline {6.7.2.4}rf\_\discretionary {-}{}{}mixer}{41}
+\contentsline {paragraph}{\numberline {6.7.2.5}rf\_\discretionary {-}{}{}amplify}{41}
+\contentsline {paragraph}{\numberline {6.7.2.6}rf\_\discretionary {-}{}{}amplify\_\discretionary {-}{}{}complex}{42}
+\contentsline {paragraph}{\numberline {6.7.2.7}rf\_\discretionary {-}{}{}phase\_\discretionary {-}{}{}shifter}{43}
+\contentsline {subsubsection}{\numberline {6.7.3}Variable Documentation}{43}
+\contentsline {paragraph}{\numberline {6.7.3.1}rf\_\discretionary {-}{}{}nsamples}{43}
+\contentsline {paragraph}{\numberline {6.7.3.2}rf\_\discretionary {-}{}{}samplefreq}{43}
+\contentsline {subsection}{\numberline {6.8}BPM signal simulation routines}{43}
+\contentsline {subsubsection}{\numberline {6.8.1}Detailed Description}{43}
+\contentsline {subsubsection}{\numberline {6.8.2}Define Documentation}{44}
+\contentsline {paragraph}{\numberline {6.8.2.1}K\_\discretionary {-}{}{}SAMPLE}{44}
+\contentsline {subsubsection}{\numberline {6.8.3}Function Documentation}{44}
+\contentsline {paragraph}{\numberline {6.8.3.1}set\_\discretionary {-}{}{}temp}{44}
+\contentsline {paragraph}{\numberline {6.8.3.2}set\_\discretionary {-}{}{}time}{45}
+\contentsline {paragraph}{\numberline {6.8.3.3}generate\_\discretionary {-}{}{}bpmsignal}{45}
+\contentsline {paragraph}{\numberline {6.8.3.4}add\_\discretionary {-}{}{}mode\_\discretionary {-}{}{}response}{45}
+\contentsline {paragraph}{\numberline {6.8.3.5}get\_\discretionary {-}{}{}mode\_\discretionary {-}{}{}amplitude}{46}
+\contentsline {paragraph}{\numberline {6.8.3.6}generate\_\discretionary {-}{}{}diodesignal}{46}
+\contentsline {paragraph}{\numberline {6.8.3.7}get\_\discretionary {-}{}{}mode\_\discretionary {-}{}{}response}{47}
+\contentsline {paragraph}{\numberline {6.8.3.8}digitise}{47}
+\contentsline {subsubsection}{\numberline {6.8.4}Variable Documentation}{48}
+\contentsline {paragraph}{\numberline {6.8.4.1}ambient\_\discretionary {-}{}{}temp}{48}
+\contentsline {paragraph}{\numberline {6.8.4.2}system\_\discretionary {-}{}{}time}{48}
+\contentsline {subsection}{\numberline {6.9}Digital Signal Processing Routines}{48}
+\contentsline {subsubsection}{\numberline {6.9.1}Detailed Description}{48}
+\contentsline {subsubsection}{\numberline {6.9.2}The digital filtering routines}{48}
+\contentsline {paragraph}{\numberline {6.9.2.1}General usage}{48}
+\contentsline {paragraph}{\numberline {6.9.2.2}The Bessel, Butterworth and Chebyshev filters}{49}
+\contentsline {paragraph}{\numberline {6.9.2.3}The Resonator filter}{49}
+\contentsline {paragraph}{\numberline {6.9.2.4}The gaussian filter}{49}
+\contentsline {subsubsection}{\numberline {6.9.3}The Digital Downconversion Algorithm (DDC)}{50}
+\contentsline {subsubsection}{\numberline {6.9.4}Discrete (Fast) Fourier Transforms}{50}
+\contentsline {paragraph}{\numberline {6.9.4.1}Complex Discrete Fourier Transform}{50}
+\contentsline {paragraph}{\numberline {6.9.4.2}Real Discrete Fourier Transform}{51}
+\contentsline {paragraph}{\numberline {6.9.4.3}Reference for FFT routines}{51}
+\contentsline {paragraph}{\numberline {6.9.4.4}Copyright statement for FFT routines}{51}
+\contentsline {subsubsection}{\numberline {6.9.5}DSP example program}{51}
+\contentsline {subsubsection}{\numberline {6.9.6}Define Documentation}{55}
+\contentsline {paragraph}{\numberline {6.9.6.1}BESSEL}{55}
+\contentsline {paragraph}{\numberline {6.9.6.2}BUTTERWORTH}{55}
+\contentsline {paragraph}{\numberline {6.9.6.3}CHEBYSHEV}{55}
+\contentsline {paragraph}{\numberline {6.9.6.4}RAISEDCOSINE}{55}
+\contentsline {paragraph}{\numberline {6.9.6.5}RESONATOR}{56}
+\contentsline {paragraph}{\numberline {6.9.6.6}GAUSSIAN}{56}
+\contentsline {paragraph}{\numberline {6.9.6.7}BILINEAR\_\discretionary {-}{}{}Z\_\discretionary {-}{}{}TRANSFORM}{56}
+\contentsline {paragraph}{\numberline {6.9.6.8}MATCHED\_\discretionary {-}{}{}Z\_\discretionary {-}{}{}TRANSFORM}{56}
+\contentsline {paragraph}{\numberline {6.9.6.9}NO\_\discretionary {-}{}{}PREWARP}{56}
+\contentsline {paragraph}{\numberline {6.9.6.10}CAUSAL}{56}
+\contentsline {paragraph}{\numberline {6.9.6.11}ANTICAUSAL}{56}
+\contentsline {paragraph}{\numberline {6.9.6.12}NONCAUSAL}{56}
+\contentsline {paragraph}{\numberline {6.9.6.13}GAUSSIAN\_\discretionary {-}{}{}SIGMA\_\discretionary {-}{}{}BW}{57}
+\contentsline {paragraph}{\numberline {6.9.6.14}LOWPASS}{57}
+\contentsline {paragraph}{\numberline {6.9.6.15}HIGHPASS}{57}
+\contentsline {paragraph}{\numberline {6.9.6.16}BANDPASS}{57}
+\contentsline {paragraph}{\numberline {6.9.6.17}BANDSTOP}{57}
+\contentsline {paragraph}{\numberline {6.9.6.18}NOTCH}{57}
+\contentsline {paragraph}{\numberline {6.9.6.19}ALLPASS}{57}
+\contentsline {paragraph}{\numberline {6.9.6.20}FIR}{57}
+\contentsline {paragraph}{\numberline {6.9.6.21}IIR}{58}
+\contentsline {paragraph}{\numberline {6.9.6.22}MAXORDER}{58}
+\contentsline {paragraph}{\numberline {6.9.6.23}MAXPZ}{58}
+\contentsline {paragraph}{\numberline {6.9.6.24}FILT\_\discretionary {-}{}{}EPS}{58}
+\contentsline {paragraph}{\numberline {6.9.6.25}MAX\_\discretionary {-}{}{}RESONATOR\_\discretionary {-}{}{}ITER}{58}
+\contentsline {paragraph}{\numberline {6.9.6.26}FFT\_\discretionary {-}{}{}FORWARD}{58}
+\contentsline {paragraph}{\numberline {6.9.6.27}FFT\_\discretionary {-}{}{}BACKWARD}{58}
+\contentsline {subsubsection}{\numberline {6.9.7}Function Documentation}{58}
+\contentsline {paragraph}{\numberline {6.9.7.1}create\_\discretionary {-}{}{}filter}{58}
+\contentsline {paragraph}{\numberline {6.9.7.2}apply\_\discretionary {-}{}{}filter}{59}
+\contentsline {paragraph}{\numberline {6.9.7.3}print\_\discretionary {-}{}{}filter}{60}
+\contentsline {paragraph}{\numberline {6.9.7.4}delete\_\discretionary {-}{}{}filter}{60}
+\contentsline {paragraph}{\numberline {6.9.7.5}filter\_\discretionary {-}{}{}step\_\discretionary {-}{}{}response}{60}
+\contentsline {paragraph}{\numberline {6.9.7.6}filter\_\discretionary {-}{}{}impulse\_\discretionary {-}{}{}response}{61}
+\contentsline {paragraph}{\numberline {6.9.7.7}create\_\discretionary {-}{}{}splane\_\discretionary {-}{}{}representation}{61}
+\contentsline {paragraph}{\numberline {6.9.7.8}create\_\discretionary {-}{}{}resonator\_\discretionary {-}{}{}representation}{61}
+\contentsline {paragraph}{\numberline {6.9.7.9}zplane\_\discretionary {-}{}{}transform}{62}
+\contentsline {paragraph}{\numberline {6.9.7.10}print\_\discretionary {-}{}{}filter\_\discretionary {-}{}{}representation}{62}
+\contentsline {paragraph}{\numberline {6.9.7.11}normalise\_\discretionary {-}{}{}filter}{62}
+\contentsline {paragraph}{\numberline {6.9.7.12}calculate\_\discretionary {-}{}{}filter\_\discretionary {-}{}{}coefficients}{63}
+\contentsline {paragraph}{\numberline {6.9.7.13}gaussian\_\discretionary {-}{}{}filter\_\discretionary {-}{}{}coeffs}{63}
+\contentsline {paragraph}{\numberline {6.9.7.14}\_\discretionary {-}{}{}expand\_\discretionary {-}{}{}complex\_\discretionary {-}{}{}polynomial}{64}
+\contentsline {paragraph}{\numberline {6.9.7.15}\_\discretionary {-}{}{}eval\_\discretionary {-}{}{}complex\_\discretionary {-}{}{}polynomial}{64}
+\contentsline {paragraph}{\numberline {6.9.7.16}ddc\_\discretionary {-}{}{}initialise}{64}
+\contentsline {paragraph}{\numberline {6.9.7.17}ddc\_\discretionary {-}{}{}cleanup}{65}
+\contentsline {paragraph}{\numberline {6.9.7.18}ddc}{65}
+\contentsline {paragraph}{\numberline {6.9.7.19}fft\_\discretionary {-}{}{}gen\_\discretionary {-}{}{}tables}{65}
+\contentsline {paragraph}{\numberline {6.9.7.20}fft\_\discretionary {-}{}{}initialise}{65}
+\contentsline {paragraph}{\numberline {6.9.7.21}fft\_\discretionary {-}{}{}cleanup}{66}
+\contentsline {paragraph}{\numberline {6.9.7.22}complexfft}{66}
+\contentsline {paragraph}{\numberline {6.9.7.23}realfft}{66}
+\contentsline {paragraph}{\numberline {6.9.7.24}norm\_\discretionary {-}{}{}phase}{67}
+\contentsline {subsection}{\numberline {6.10}BPM Processing Routines}{67}
+\contentsline {subsubsection}{\numberline {6.10.1}Detailed Description}{67}
+\contentsline {subsubsection}{\numberline {6.10.2}General structure of the BPM signal processing}{67}
+\contentsline {paragraph}{\numberline {6.10.2.1}Diode signal processing}{67}
+\contentsline {paragraph}{\numberline {6.10.2.2}Monopole signal processing}{67}
+\contentsline {paragraph}{\numberline {6.10.2.3}Dipole signal processing}{69}
+\contentsline {subsubsection}{\numberline {6.10.3}Processing flow}{70}
+\contentsline {subsubsection}{\numberline {6.10.4}About trigger pulses, internal vs. external clock}{70}
+\contentsline {paragraph}{\numberline {6.10.4.1}External clock triggering}{70}
+\contentsline {paragraph}{\numberline {6.10.4.2}Internal clock triggering}{71}
+\contentsline {subsubsection}{\numberline {6.10.5}calibration tone information}{71}
+\contentsline {subsubsection}{\numberline {6.10.6}Define Documentation}{73}
+\contentsline {paragraph}{\numberline {6.10.6.1}PROC\_\discretionary {-}{}{}DEFAULT}{73}
+\contentsline {subsubsection}{\numberline {6.10.7}Function Documentation}{73}
+\contentsline {paragraph}{\numberline {6.10.7.1}process\_\discretionary {-}{}{}diode}{73}
+\contentsline {paragraph}{\numberline {6.10.7.2}process\_\discretionary {-}{}{}monopole}{73}
+\contentsline {paragraph}{\numberline {6.10.7.3}process\_\discretionary {-}{}{}dipole}{74}
+\contentsline {paragraph}{\numberline {6.10.7.4}process\_\discretionary {-}{}{}waveform}{74}
+\contentsline {paragraph}{\numberline {6.10.7.5}postprocess\_\discretionary {-}{}{}waveform}{76}
+\contentsline {paragraph}{\numberline {6.10.7.6}process\_\discretionary {-}{}{}caltone}{76}
+\contentsline {paragraph}{\numberline {6.10.7.7}correct\_\discretionary {-}{}{}gain}{77}
+\contentsline {paragraph}{\numberline {6.10.7.8}fit\_\discretionary {-}{}{}waveform}{77}
+\contentsline {paragraph}{\numberline {6.10.7.9}fit\_\discretionary {-}{}{}diodepulse}{78}
+\contentsline {paragraph}{\numberline {6.10.7.10}fft\_\discretionary {-}{}{}waveform}{78}
+\contentsline {paragraph}{\numberline {6.10.7.11}fit\_\discretionary {-}{}{}fft\_\discretionary {-}{}{}prepare}{79}
+\contentsline {paragraph}{\numberline {6.10.7.12}fit\_\discretionary {-}{}{}fft}{79}
+\contentsline {paragraph}{\numberline {6.10.7.13}check\_\discretionary {-}{}{}saturation}{80}
+\contentsline {paragraph}{\numberline {6.10.7.14}downmix\_\discretionary {-}{}{}waveform}{80}
+\contentsline {paragraph}{\numberline {6.10.7.15}ddc\_\discretionary {-}{}{}waveform}{81}
+\contentsline {paragraph}{\numberline {6.10.7.16}ddc\_\discretionary {-}{}{}sample\_\discretionary {-}{}{}waveform}{81}
+\contentsline {paragraph}{\numberline {6.10.7.17}get\_\discretionary {-}{}{}pedestal}{81}
+\contentsline {paragraph}{\numberline {6.10.7.18}get\_\discretionary {-}{}{}t0}{82}
+\contentsline {paragraph}{\numberline {6.10.7.19}get\_\discretionary {-}{}{}IQ}{82}
+\contentsline {paragraph}{\numberline {6.10.7.20}get\_\discretionary {-}{}{}pos}{83}
+\contentsline {paragraph}{\numberline {6.10.7.21}get\_\discretionary {-}{}{}slope}{83}
+\contentsline {subsection}{\numberline {6.11}Waveform handling routines}{84}
+\contentsline {subsubsection}{\numberline {6.11.1}Detailed Description}{84}
+\contentsline {subsubsection}{\numberline {6.11.2}Memory management}{84}
+\contentsline {subsubsection}{\numberline {6.11.3}Waveform handling}{84}
+\contentsline {subsubsection}{\numberline {6.11.4}Filling the waveforms}{84}
+\contentsline {subsubsection}{\numberline {6.11.5}Note on the interpolation options.}{85}
+\contentsline {subsubsection}{\numberline {6.11.6}For examples...}{85}
+\contentsline {subsubsection}{\numberline {6.11.7}Todo list}{85}
+\contentsline {subsubsection}{\numberline {6.11.8}Define Documentation}{88}
+\contentsline {paragraph}{\numberline {6.11.8.1}WF\_\discretionary {-}{}{}EPS}{88}
+\contentsline {paragraph}{\numberline {6.11.8.2}MAX\_\discretionary {-}{}{}ALLOWED\_\discretionary {-}{}{}NS}{88}
+\contentsline {paragraph}{\numberline {6.11.8.3}WF\_\discretionary {-}{}{}NEAREST}{88}
+\contentsline {paragraph}{\numberline {6.11.8.4}WF\_\discretionary {-}{}{}LINEAR}{88}
+\contentsline {paragraph}{\numberline {6.11.8.5}WF\_\discretionary {-}{}{}QUADRATIC}{88}
+\contentsline {paragraph}{\numberline {6.11.8.6}WF\_\discretionary {-}{}{}SINC}{89}
+\contentsline {paragraph}{\numberline {6.11.8.7}WF\_\discretionary {-}{}{}LANCZOS}{89}
+\contentsline {subsubsection}{\numberline {6.11.9}Function Documentation}{89}
+\contentsline {paragraph}{\numberline {6.11.9.1}wfstat\_\discretionary {-}{}{}reset}{89}
+\contentsline {paragraph}{\numberline {6.11.9.2}wfstat\_\discretionary {-}{}{}print}{89}
+\contentsline {paragraph}{\numberline {6.11.9.3}doublewf}{89}
+\contentsline {paragraph}{\numberline {6.11.9.4}doublewf\_\discretionary {-}{}{}time\_\discretionary {-}{}{}series}{90}
+\contentsline {paragraph}{\numberline {6.11.9.5}doublewf\_\discretionary {-}{}{}sample\_\discretionary {-}{}{}series}{90}
+\contentsline {paragraph}{\numberline {6.11.9.6}doublewf\_\discretionary {-}{}{}frequency\_\discretionary {-}{}{}series}{90}
+\contentsline {paragraph}{\numberline {6.11.9.7}doublewf\_\discretionary {-}{}{}setvalues}{91}
+\contentsline {paragraph}{\numberline {6.11.9.8}doublewf\_\discretionary {-}{}{}setfunction}{91}
+\contentsline {paragraph}{\numberline {6.11.9.9}doublewf\_\discretionary {-}{}{}copy}{91}
+\contentsline {paragraph}{\numberline {6.11.9.10}doublewf\_\discretionary {-}{}{}copy\_\discretionary {-}{}{}new}{92}
+\contentsline {paragraph}{\numberline {6.11.9.11}doublewf\_\discretionary {-}{}{}subset}{92}
+\contentsline {paragraph}{\numberline {6.11.9.12}doublewf\_\discretionary {-}{}{}reset}{92}
+\contentsline {paragraph}{\numberline {6.11.9.13}doublewf\_\discretionary {-}{}{}delete}{93}
+\contentsline {paragraph}{\numberline {6.11.9.14}intwf\_\discretionary {-}{}{}cast\_\discretionary {-}{}{}new}{93}
+\contentsline {paragraph}{\numberline {6.11.9.15}intwf\_\discretionary {-}{}{}cast}{93}
+\contentsline {paragraph}{\numberline {6.11.9.16}doublewf\_\discretionary {-}{}{}compat}{94}
+\contentsline {paragraph}{\numberline {6.11.9.17}doublewf\_\discretionary {-}{}{}add}{94}
+\contentsline {paragraph}{\numberline {6.11.9.18}doublewf\_\discretionary {-}{}{}subtract}{94}
+\contentsline {paragraph}{\numberline {6.11.9.19}doublewf\_\discretionary {-}{}{}multiply}{95}
+\contentsline {paragraph}{\numberline {6.11.9.20}doublewf\_\discretionary {-}{}{}divide}{95}
+\contentsline {paragraph}{\numberline {6.11.9.21}doublewf\_\discretionary {-}{}{}scale}{95}
+\contentsline {paragraph}{\numberline {6.11.9.22}doublewf\_\discretionary {-}{}{}bias}{96}
+\contentsline {paragraph}{\numberline {6.11.9.23}doublewf\_\discretionary {-}{}{}add\_\discretionary {-}{}{}cwtone}{96}
+\contentsline {paragraph}{\numberline {6.11.9.24}doublewf\_\discretionary {-}{}{}add\_\discretionary {-}{}{}dcywave}{96}
+\contentsline {paragraph}{\numberline {6.11.9.25}doublewf\_\discretionary {-}{}{}add\_\discretionary {-}{}{}ampnoise}{97}
+\contentsline {paragraph}{\numberline {6.11.9.26}doublewf\_\discretionary {-}{}{}basic\_\discretionary {-}{}{}stats}{97}
+\contentsline {paragraph}{\numberline {6.11.9.27}doublewf\_\discretionary {-}{}{}derive}{98}
+\contentsline {paragraph}{\numberline {6.11.9.28}doublewf\_\discretionary {-}{}{}integrate}{98}
+\contentsline {paragraph}{\numberline {6.11.9.29}doublewf\_\discretionary {-}{}{}print}{98}
+\contentsline {paragraph}{\numberline {6.11.9.30}doublewf\_\discretionary {-}{}{}getvalue}{98}
+\contentsline {paragraph}{\numberline {6.11.9.31}doublewf\_\discretionary {-}{}{}resample}{99}
+\contentsline {paragraph}{\numberline {6.11.9.32}intwf}{99}
+\contentsline {paragraph}{\numberline {6.11.9.33}intwf\_\discretionary {-}{}{}sample\_\discretionary {-}{}{}series}{100}
+\contentsline {paragraph}{\numberline {6.11.9.34}intwf\_\discretionary {-}{}{}setvalues}{100}
+\contentsline {paragraph}{\numberline {6.11.9.35}intwf\_\discretionary {-}{}{}setfunction}{100}
+\contentsline {paragraph}{\numberline {6.11.9.36}intwf\_\discretionary {-}{}{}copy}{101}
+\contentsline {paragraph}{\numberline {6.11.9.37}intwf\_\discretionary {-}{}{}copy\_\discretionary {-}{}{}new}{101}
+\contentsline {paragraph}{\numberline {6.11.9.38}intwf\_\discretionary {-}{}{}subset}{101}
+\contentsline {paragraph}{\numberline {6.11.9.39}intwf\_\discretionary {-}{}{}reset}{102}
+\contentsline {paragraph}{\numberline {6.11.9.40}intwf\_\discretionary {-}{}{}delete}{102}
+\contentsline {paragraph}{\numberline {6.11.9.41}doublewf\_\discretionary {-}{}{}cast\_\discretionary {-}{}{}new}{102}
+\contentsline {paragraph}{\numberline {6.11.9.42}doublewf\_\discretionary {-}{}{}cast}{102}
+\contentsline {paragraph}{\numberline {6.11.9.43}intwf\_\discretionary {-}{}{}compat}{103}
+\contentsline {paragraph}{\numberline {6.11.9.44}intwf\_\discretionary {-}{}{}add}{103}
+\contentsline {paragraph}{\numberline {6.11.9.45}intwf\_\discretionary {-}{}{}subtract}{103}
+\contentsline {paragraph}{\numberline {6.11.9.46}intwf\_\discretionary {-}{}{}multiply}{104}
+\contentsline {paragraph}{\numberline {6.11.9.47}intwf\_\discretionary {-}{}{}divide}{104}
+\contentsline {paragraph}{\numberline {6.11.9.48}intwf\_\discretionary {-}{}{}scale}{104}
+\contentsline {paragraph}{\numberline {6.11.9.49}intwf\_\discretionary {-}{}{}bias}{105}
+\contentsline {paragraph}{\numberline {6.11.9.50}intwf\_\discretionary {-}{}{}add\_\discretionary {-}{}{}cwtone}{105}
+\contentsline {paragraph}{\numberline {6.11.9.51}intwf\_\discretionary {-}{}{}add\_\discretionary {-}{}{}dcywave}{105}
+\contentsline {paragraph}{\numberline {6.11.9.52}intwf\_\discretionary {-}{}{}add\_\discretionary {-}{}{}ampnoise}{106}
+\contentsline {paragraph}{\numberline {6.11.9.53}intwf\_\discretionary {-}{}{}basic\_\discretionary {-}{}{}stats}{106}
+\contentsline {paragraph}{\numberline {6.11.9.54}intwf\_\discretionary {-}{}{}derive}{106}
+\contentsline {paragraph}{\numberline {6.11.9.55}intwf\_\discretionary {-}{}{}integrate}{107}
+\contentsline {paragraph}{\numberline {6.11.9.56}intwf\_\discretionary {-}{}{}print}{107}
+\contentsline {paragraph}{\numberline {6.11.9.57}intwf\_\discretionary {-}{}{}getvalue}{107}
+\contentsline {paragraph}{\numberline {6.11.9.58}intwf\_\discretionary {-}{}{}resample}{108}
+\contentsline {paragraph}{\numberline {6.11.9.59}complexwf}{108}
+\contentsline {paragraph}{\numberline {6.11.9.60}complexwf\_\discretionary {-}{}{}copy\_\discretionary {-}{}{}new}{108}
+\contentsline {paragraph}{\numberline {6.11.9.61}complexwf\_\discretionary {-}{}{}copy}{109}
+\contentsline {paragraph}{\numberline {6.11.9.62}complexwf\_\discretionary {-}{}{}subset}{109}
+\contentsline {paragraph}{\numberline {6.11.9.63}complexwf\_\discretionary {-}{}{}setvalues}{109}
+\contentsline {paragraph}{\numberline {6.11.9.64}complexwf\_\discretionary {-}{}{}setfunction}{110}
+\contentsline {paragraph}{\numberline {6.11.9.65}complexwf\_\discretionary {-}{}{}reset}{110}
+\contentsline {paragraph}{\numberline {6.11.9.66}complexwf\_\discretionary {-}{}{}delete}{110}
+\contentsline {paragraph}{\numberline {6.11.9.67}complexwf\_\discretionary {-}{}{}compat}{111}
+\contentsline {paragraph}{\numberline {6.11.9.68}complexwf\_\discretionary {-}{}{}add}{111}
+\contentsline {paragraph}{\numberline {6.11.9.69}complexwf\_\discretionary {-}{}{}subtract}{111}
+\contentsline {paragraph}{\numberline {6.11.9.70}complexwf\_\discretionary {-}{}{}multiply}{112}
+\contentsline {paragraph}{\numberline {6.11.9.71}complexwf\_\discretionary {-}{}{}divide}{112}
+\contentsline {paragraph}{\numberline {6.11.9.72}complexwf\_\discretionary {-}{}{}scale}{112}
+\contentsline {paragraph}{\numberline {6.11.9.73}complexwf\_\discretionary {-}{}{}bias}{112}
+\contentsline {paragraph}{\numberline {6.11.9.74}complexwf\_\discretionary {-}{}{}add\_\discretionary {-}{}{}cwtone}{113}
+\contentsline {paragraph}{\numberline {6.11.9.75}complexwf\_\discretionary {-}{}{}add\_\discretionary {-}{}{}dcywave}{113}
+\contentsline {paragraph}{\numberline {6.11.9.76}complexwf\_\discretionary {-}{}{}add\_\discretionary {-}{}{}noise}{114}
+\contentsline {paragraph}{\numberline {6.11.9.77}complexwf\_\discretionary {-}{}{}add\_\discretionary {-}{}{}ampnoise}{114}
+\contentsline {paragraph}{\numberline {6.11.9.78}complexwf\_\discretionary {-}{}{}add\_\discretionary {-}{}{}phasenoise}{114}
+\contentsline {paragraph}{\numberline {6.11.9.79}complexwf\_\discretionary {-}{}{}print}{115}
+\contentsline {paragraph}{\numberline {6.11.9.80}complexwf\_\discretionary {-}{}{}getreal}{115}
+\contentsline {paragraph}{\numberline {6.11.9.81}complexwf\_\discretionary {-}{}{}getimag}{115}
+\contentsline {paragraph}{\numberline {6.11.9.82}complexwf\_\discretionary {-}{}{}getamp}{116}
+\contentsline {paragraph}{\numberline {6.11.9.83}complexwf\_\discretionary {-}{}{}getphase}{116}
+\contentsline {paragraph}{\numberline {6.11.9.84}complexwf\_\discretionary {-}{}{}getreal\_\discretionary {-}{}{}new}{116}
+\contentsline {paragraph}{\numberline {6.11.9.85}complexwf\_\discretionary {-}{}{}getimag\_\discretionary {-}{}{}new}{117}
+\contentsline {paragraph}{\numberline {6.11.9.86}complexwf\_\discretionary {-}{}{}getamp\_\discretionary {-}{}{}new}{117}
+\contentsline {paragraph}{\numberline {6.11.9.87}complexwf\_\discretionary {-}{}{}getphase\_\discretionary {-}{}{}new}{117}
+\contentsline {paragraph}{\numberline {6.11.9.88}complexwf\_\discretionary {-}{}{}setreal}{118}
+\contentsline {paragraph}{\numberline {6.11.9.89}complexwf\_\discretionary {-}{}{}setimag}{118}
+\contentsline {section}{\numberline {7}Data Structure Documentation}{118}
+\contentsline {subsection}{\numberline {7.1}beamconf Struct Reference}{118}
+\contentsline {subsubsection}{\numberline {7.1.1}Detailed Description}{119}
+\contentsline {subsubsection}{\numberline {7.1.2}Field Documentation}{119}
+\contentsline {paragraph}{\numberline {7.1.2.1}train\_\discretionary {-}{}{}num}{119}
+\contentsline {paragraph}{\numberline {7.1.2.2}beamrate}{119}
+\contentsline {paragraph}{\numberline {7.1.2.3}bunchrate}{120}
+\contentsline {paragraph}{\numberline {7.1.2.4}nbunches}{120}
+\contentsline {paragraph}{\numberline {7.1.2.5}bunch}{120}
+\contentsline {paragraph}{\numberline {7.1.2.6}position}{120}
+\contentsline {paragraph}{\numberline {7.1.2.7}positionsigma}{120}
+\contentsline {paragraph}{\numberline {7.1.2.8}slope}{120}
+\contentsline {paragraph}{\numberline {7.1.2.9}slopesigma}{120}
+\contentsline {paragraph}{\numberline {7.1.2.10}tilt}{120}
+\contentsline {paragraph}{\numberline {7.1.2.11}tiltsigma}{120}
+\contentsline {paragraph}{\numberline {7.1.2.12}bunchlength}{121}
+\contentsline {paragraph}{\numberline {7.1.2.13}bunchlengthsigma}{121}
+\contentsline {paragraph}{\numberline {7.1.2.14}energy}{121}
+\contentsline {paragraph}{\numberline {7.1.2.15}energysigma}{121}
+\contentsline {paragraph}{\numberline {7.1.2.16}charge}{121}
+\contentsline {paragraph}{\numberline {7.1.2.17}chargesigma}{121}
+\contentsline {subsection}{\numberline {7.2}bpmcalib Struct Reference}{121}
+\contentsline {subsubsection}{\numberline {7.2.1}Detailed Description}{121}
+\contentsline {subsubsection}{\numberline {7.2.2}Field Documentation}{122}
+\contentsline {paragraph}{\numberline {7.2.2.1}ddc\_\discretionary {-}{}{}IQphase}{122}
+\contentsline {paragraph}{\numberline {7.2.2.2}ddc\_\discretionary {-}{}{}posscale}{122}
+\contentsline {paragraph}{\numberline {7.2.2.3}ddc\_\discretionary {-}{}{}slopescale}{122}
+\contentsline {paragraph}{\numberline {7.2.2.4}ddc\_\discretionary {-}{}{}ct\_\discretionary {-}{}{}amp}{122}
+\contentsline {paragraph}{\numberline {7.2.2.5}ddc\_\discretionary {-}{}{}ct\_\discretionary {-}{}{}phase}{122}
+\contentsline {paragraph}{\numberline {7.2.2.6}fit\_\discretionary {-}{}{}IQphase}{122}
+\contentsline {paragraph}{\numberline {7.2.2.7}fit\_\discretionary {-}{}{}posscale}{123}
+\contentsline {paragraph}{\numberline {7.2.2.8}fit\_\discretionary {-}{}{}slopescale}{123}
+\contentsline {paragraph}{\numberline {7.2.2.9}fit\_\discretionary {-}{}{}ct\_\discretionary {-}{}{}amp}{123}
+\contentsline {paragraph}{\numberline {7.2.2.10}fit\_\discretionary {-}{}{}ct\_\discretionary {-}{}{}phase}{123}
+\contentsline {subsection}{\numberline {7.3}bpmconf Struct Reference}{123}
+\contentsline {subsubsection}{\numberline {7.3.1}Detailed Description}{124}
+\contentsline {subsubsection}{\numberline {7.3.2}Field Documentation}{125}
+\contentsline {paragraph}{\numberline {7.3.2.1}name}{125}
+\contentsline {paragraph}{\numberline {7.3.2.2}cav\_\discretionary {-}{}{}type}{125}
+\contentsline {paragraph}{\numberline {7.3.2.3}cav\_\discretionary {-}{}{}polarisation}{125}
+\contentsline {paragraph}{\numberline {7.3.2.4}cav\_\discretionary {-}{}{}phasetype}{126}
+\contentsline {paragraph}{\numberline {7.3.2.5}cav\_\discretionary {-}{}{}length}{126}
+\contentsline {paragraph}{\numberline {7.3.2.6}cav\_\discretionary {-}{}{}freq}{126}
+\contentsline {paragraph}{\numberline {7.3.2.7}cav\_\discretionary {-}{}{}decaytime}{126}
+\contentsline {paragraph}{\numberline {7.3.2.8}cav\_\discretionary {-}{}{}phase}{126}
+\contentsline {paragraph}{\numberline {7.3.2.9}cav\_\discretionary {-}{}{}iqrotation}{126}
+\contentsline {paragraph}{\numberline {7.3.2.10}cav\_\discretionary {-}{}{}chargesens}{126}
+\contentsline {paragraph}{\numberline {7.3.2.11}cav\_\discretionary {-}{}{}possens}{126}
+\contentsline {paragraph}{\numberline {7.3.2.12}cav\_\discretionary {-}{}{}tiltsens}{126}
+\contentsline {paragraph}{\numberline {7.3.2.13}rf\_\discretionary {-}{}{}LOfreq}{127}
+\contentsline {paragraph}{\numberline {7.3.2.14}digi\_\discretionary {-}{}{}trigtimeoffset}{127}
+\contentsline {paragraph}{\numberline {7.3.2.15}digi\_\discretionary {-}{}{}freq}{127}
+\contentsline {paragraph}{\numberline {7.3.2.16}digi\_\discretionary {-}{}{}nbits}{127}
+\contentsline {paragraph}{\numberline {7.3.2.17}digi\_\discretionary {-}{}{}nsamples}{127}
+\contentsline {paragraph}{\numberline {7.3.2.18}digi\_\discretionary {-}{}{}ampnoise}{127}
+\contentsline {paragraph}{\numberline {7.3.2.19}digi\_\discretionary {-}{}{}voltageoffset}{127}
+\contentsline {paragraph}{\numberline {7.3.2.20}digi\_\discretionary {-}{}{}phasenoise}{127}
+\contentsline {paragraph}{\numberline {7.3.2.21}t0}{127}
+\contentsline {paragraph}{\numberline {7.3.2.22}ddc\_\discretionary {-}{}{}freq}{128}
+\contentsline {paragraph}{\numberline {7.3.2.23}ddc\_\discretionary {-}{}{}tdecay}{128}
+\contentsline {paragraph}{\numberline {7.3.2.24}ddc\_\discretionary {-}{}{}tOffset}{128}
+\contentsline {paragraph}{\numberline {7.3.2.25}ddc\_\discretionary {-}{}{}filter}{128}
+\contentsline {paragraph}{\numberline {7.3.2.26}fit\_\discretionary {-}{}{}inifreq}{128}
+\contentsline {paragraph}{\numberline {7.3.2.27}fit\_\discretionary {-}{}{}initdecay}{128}
+\contentsline {paragraph}{\numberline {7.3.2.28}fit\_\discretionary {-}{}{}tOffset}{128}
+\contentsline {paragraph}{\numberline {7.3.2.29}ddc\_\discretionary {-}{}{}ct\_\discretionary {-}{}{}freq}{128}
+\contentsline {paragraph}{\numberline {7.3.2.30}ddc\_\discretionary {-}{}{}ct\_\discretionary {-}{}{}filter}{129}
+\contentsline {paragraph}{\numberline {7.3.2.31}ddc\_\discretionary {-}{}{}ct\_\discretionary {-}{}{}iSample}{129}
+\contentsline {paragraph}{\numberline {7.3.2.32}geom\_\discretionary {-}{}{}pos}{129}
+\contentsline {paragraph}{\numberline {7.3.2.33}geom\_\discretionary {-}{}{}tilt}{129}
+\contentsline {paragraph}{\numberline {7.3.2.34}ref\_\discretionary {-}{}{}idx}{129}
+\contentsline {paragraph}{\numberline {7.3.2.35}diode\_\discretionary {-}{}{}idx}{129}
+\contentsline {paragraph}{\numberline {7.3.2.36}forced\_\discretionary {-}{}{}trigger}{129}
+\contentsline {paragraph}{\numberline {7.3.2.37}ddc\_\discretionary {-}{}{}buffer\_\discretionary {-}{}{}re}{129}
+\contentsline {paragraph}{\numberline {7.3.2.38}ddc\_\discretionary {-}{}{}buffer\_\discretionary {-}{}{}im}{130}
+\contentsline {subsection}{\numberline {7.4}bpmmode Struct Reference}{130}
+\contentsline {subsubsection}{\numberline {7.4.1}Detailed Description}{130}
+\contentsline {subsubsection}{\numberline {7.4.2}Field Documentation}{130}
+\contentsline {paragraph}{\numberline {7.4.2.1}name}{130}
+\contentsline {paragraph}{\numberline {7.4.2.2}frequency}{131}
+\contentsline {paragraph}{\numberline {7.4.2.3}Q}{131}
+\contentsline {paragraph}{\numberline {7.4.2.4}order}{131}
+\contentsline {paragraph}{\numberline {7.4.2.5}polarisation}{131}
+\contentsline {paragraph}{\numberline {7.4.2.6}sensitivity}{131}
+\contentsline {paragraph}{\numberline {7.4.2.7}response}{131}
+\contentsline {paragraph}{\numberline {7.4.2.8}buffer}{131}
+\contentsline {subsection}{\numberline {7.5}bpmproc Struct Reference}{132}
+\contentsline {subsubsection}{\numberline {7.5.1}Detailed Description}{132}
+\contentsline {subsubsection}{\numberline {7.5.2}Field Documentation}{133}
+\contentsline {paragraph}{\numberline {7.5.2.1}ampnoise}{133}
+\contentsline {paragraph}{\numberline {7.5.2.2}voltageoffset}{133}
+\contentsline {paragraph}{\numberline {7.5.2.3}t0}{133}
+\contentsline {paragraph}{\numberline {7.5.2.4}saturated}{133}
+\contentsline {paragraph}{\numberline {7.5.2.5}iunsat}{133}
+\contentsline {paragraph}{\numberline {7.5.2.6}dc}{134}
+\contentsline {paragraph}{\numberline {7.5.2.7}ft}{134}
+\contentsline {paragraph}{\numberline {7.5.2.8}fft\_\discretionary {-}{}{}success}{134}
+\contentsline {paragraph}{\numberline {7.5.2.9}fft\_\discretionary {-}{}{}amp}{134}
+\contentsline {paragraph}{\numberline {7.5.2.10}fft\_\discretionary {-}{}{}freq}{134}
+\contentsline {paragraph}{\numberline {7.5.2.11}fft\_\discretionary {-}{}{}tdecay}{134}
+\contentsline {paragraph}{\numberline {7.5.2.12}fft\_\discretionary {-}{}{}offset}{134}
+\contentsline {paragraph}{\numberline {7.5.2.13}ddc\_\discretionary {-}{}{}success}{134}
+\contentsline {paragraph}{\numberline {7.5.2.14}ddc\_\discretionary {-}{}{}tSample}{135}
+\contentsline {paragraph}{\numberline {7.5.2.15}ddc\_\discretionary {-}{}{}iSample}{135}
+\contentsline {paragraph}{\numberline {7.5.2.16}ddc\_\discretionary {-}{}{}Q}{135}
+\contentsline {paragraph}{\numberline {7.5.2.17}ddc\_\discretionary {-}{}{}I}{135}
+\contentsline {paragraph}{\numberline {7.5.2.18}ddc\_\discretionary {-}{}{}amp}{135}
+\contentsline {paragraph}{\numberline {7.5.2.19}ddc\_\discretionary {-}{}{}phase}{135}
+\contentsline {paragraph}{\numberline {7.5.2.20}ddc\_\discretionary {-}{}{}tdecay}{135}
+\contentsline {paragraph}{\numberline {7.5.2.21}ddc\_\discretionary {-}{}{}pos}{135}
+\contentsline {paragraph}{\numberline {7.5.2.22}ddc\_\discretionary {-}{}{}slope}{136}
+\contentsline {paragraph}{\numberline {7.5.2.23}ddc\_\discretionary {-}{}{}ct\_\discretionary {-}{}{}amp}{136}
+\contentsline {paragraph}{\numberline {7.5.2.24}ddc\_\discretionary {-}{}{}ct\_\discretionary {-}{}{}phase}{136}
+\contentsline {paragraph}{\numberline {7.5.2.25}fit\_\discretionary {-}{}{}success}{136}
+\contentsline {paragraph}{\numberline {7.5.2.26}fit\_\discretionary {-}{}{}Q}{136}
+\contentsline {paragraph}{\numberline {7.5.2.27}fit\_\discretionary {-}{}{}I}{136}
+\contentsline {paragraph}{\numberline {7.5.2.28}fit\_\discretionary {-}{}{}amp}{136}
+\contentsline {paragraph}{\numberline {7.5.2.29}fit\_\discretionary {-}{}{}phase}{136}
+\contentsline {paragraph}{\numberline {7.5.2.30}fit\_\discretionary {-}{}{}freq}{137}
+\contentsline {paragraph}{\numberline {7.5.2.31}fit\_\discretionary {-}{}{}tdecay}{137}
+\contentsline {paragraph}{\numberline {7.5.2.32}fit\_\discretionary {-}{}{}offset}{137}
+\contentsline {paragraph}{\numberline {7.5.2.33}fit\_\discretionary {-}{}{}pos}{137}
+\contentsline {paragraph}{\numberline {7.5.2.34}fit\_\discretionary {-}{}{}slope}{137}
+\contentsline {paragraph}{\numberline {7.5.2.35}fit\_\discretionary {-}{}{}ct\_\discretionary {-}{}{}amp}{137}
+\contentsline {paragraph}{\numberline {7.5.2.36}fit\_\discretionary {-}{}{}ct\_\discretionary {-}{}{}phase}{137}
+\contentsline {subsection}{\numberline {7.6}bunchconf Struct Reference}{138}
+\contentsline {subsubsection}{\numberline {7.6.1}Detailed Description}{138}
+\contentsline {subsubsection}{\numberline {7.6.2}Field Documentation}{138}
+\contentsline {paragraph}{\numberline {7.6.2.1}train\_\discretionary {-}{}{}num}{138}
+\contentsline {paragraph}{\numberline {7.6.2.2}bunch\_\discretionary {-}{}{}num}{138}
+\contentsline {paragraph}{\numberline {7.6.2.3}energy}{138}
+\contentsline {paragraph}{\numberline {7.6.2.4}energyspread}{138}
+\contentsline {paragraph}{\numberline {7.6.2.5}length}{139}
+\contentsline {paragraph}{\numberline {7.6.2.6}arrival\_\discretionary {-}{}{}time}{139}
+\contentsline {paragraph}{\numberline {7.6.2.7}position}{139}
+\contentsline {paragraph}{\numberline {7.6.2.8}slope}{139}
+\contentsline {paragraph}{\numberline {7.6.2.9}tilt}{139}
+\contentsline {paragraph}{\numberline {7.6.2.10}bpmposition}{139}
+\contentsline {paragraph}{\numberline {7.6.2.11}bpmslope}{139}
+\contentsline {paragraph}{\numberline {7.6.2.12}bpmtilt}{139}
+\contentsline {subsection}{\numberline {7.7}complex\_\discretionary {-}{}{}t Struct Reference}{140}
+\contentsline {subsubsection}{\numberline {7.7.1}Detailed Description}{140}
+\contentsline {subsection}{\numberline {7.8}complexwf\_\discretionary {-}{}{}t Struct Reference}{140}
+\contentsline {subsubsection}{\numberline {7.8.1}Detailed Description}{140}
+\contentsline {subsubsection}{\numberline {7.8.2}Field Documentation}{141}
+\contentsline {paragraph}{\numberline {7.8.2.1}ns}{141}
+\contentsline {paragraph}{\numberline {7.8.2.2}fs}{141}
+\contentsline {paragraph}{\numberline {7.8.2.3}wf}{141}
+\contentsline {subsection}{\numberline {7.9}doublewf\_\discretionary {-}{}{}t Struct Reference}{141}
+\contentsline {subsubsection}{\numberline {7.9.1}Detailed Description}{141}
+\contentsline {subsubsection}{\numberline {7.9.2}Field Documentation}{142}
+\contentsline {paragraph}{\numberline {7.9.2.1}ns}{142}
+\contentsline {paragraph}{\numberline {7.9.2.2}fs}{142}
+\contentsline {paragraph}{\numberline {7.9.2.3}wf}{142}
+\contentsline {subsection}{\numberline {7.10}filter\_\discretionary {-}{}{}t Struct Reference}{143}
+\contentsline {subsubsection}{\numberline {7.10.1}Detailed Description}{143}
+\contentsline {subsubsection}{\numberline {7.10.2}Field Documentation}{144}
+\contentsline {paragraph}{\numberline {7.10.2.1}name}{144}
+\contentsline {paragraph}{\numberline {7.10.2.2}options}{144}
+\contentsline {paragraph}{\numberline {7.10.2.3}order}{144}
+\contentsline {paragraph}{\numberline {7.10.2.4}fs}{144}
+\contentsline {paragraph}{\numberline {7.10.2.5}f1}{144}
+\contentsline {paragraph}{\numberline {7.10.2.6}f2}{145}
+\contentsline {paragraph}{\numberline {7.10.2.7}alpha1}{145}
+\contentsline {paragraph}{\numberline {7.10.2.8}alpha2}{145}
+\contentsline {paragraph}{\numberline {7.10.2.9}w\_\discretionary {-}{}{}alpha1}{145}
+\contentsline {paragraph}{\numberline {7.10.2.10}w\_\discretionary {-}{}{}alpha2}{145}
+\contentsline {paragraph}{\numberline {7.10.2.11}cheb\_\discretionary {-}{}{}ripple}{145}
+\contentsline {paragraph}{\numberline {7.10.2.12}Q}{145}
+\contentsline {paragraph}{\numberline {7.10.2.13}gauss\_\discretionary {-}{}{}cutoff}{145}
+\contentsline {paragraph}{\numberline {7.10.2.14}dc\_\discretionary {-}{}{}gain}{146}
+\contentsline {paragraph}{\numberline {7.10.2.15}fc\_\discretionary {-}{}{}gain}{146}
+\contentsline {paragraph}{\numberline {7.10.2.16}hf\_\discretionary {-}{}{}gain}{146}
+\contentsline {paragraph}{\numberline {7.10.2.17}gain}{146}
+\contentsline {paragraph}{\numberline {7.10.2.18}cplane}{146}
+\contentsline {paragraph}{\numberline {7.10.2.19}nxc}{146}
+\contentsline {paragraph}{\numberline {7.10.2.20}xc}{146}
+\contentsline {paragraph}{\numberline {7.10.2.21}nxc\_\discretionary {-}{}{}ac}{147}
+\contentsline {paragraph}{\numberline {7.10.2.22}xc\_\discretionary {-}{}{}ac}{147}
+\contentsline {paragraph}{\numberline {7.10.2.23}nyc}{147}
+\contentsline {paragraph}{\numberline {7.10.2.24}yc}{147}
+\contentsline {paragraph}{\numberline {7.10.2.25}nyc\_\discretionary {-}{}{}ac}{147}
+\contentsline {paragraph}{\numberline {7.10.2.26}yc\_\discretionary {-}{}{}ac}{147}
+\contentsline {paragraph}{\numberline {7.10.2.27}xv}{147}
+\contentsline {paragraph}{\numberline {7.10.2.28}xv\_\discretionary {-}{}{}ac}{147}
+\contentsline {paragraph}{\numberline {7.10.2.29}yv}{148}
+\contentsline {paragraph}{\numberline {7.10.2.30}yv\_\discretionary {-}{}{}ac}{148}
+\contentsline {paragraph}{\numberline {7.10.2.31}ns}{148}
+\contentsline {paragraph}{\numberline {7.10.2.32}wfbuffer}{148}
+\contentsline {subsection}{\numberline {7.11}filterrep\_\discretionary {-}{}{}t Struct Reference}{148}
+\contentsline {subsubsection}{\numberline {7.11.1}Detailed Description}{148}
+\contentsline {subsubsection}{\numberline {7.11.2}Field Documentation}{149}
+\contentsline {paragraph}{\numberline {7.11.2.1}npoles}{149}
+\contentsline {paragraph}{\numberline {7.11.2.2}nzeros}{149}
+\contentsline {paragraph}{\numberline {7.11.2.3}pole}{149}
+\contentsline {paragraph}{\numberline {7.11.2.4}zero}{149}
+\contentsline {subsection}{\numberline {7.12}intwf\_\discretionary {-}{}{}t Struct Reference}{149}
+\contentsline {subsubsection}{\numberline {7.12.1}Detailed Description}{149}
+\contentsline {subsubsection}{\numberline {7.12.2}Field Documentation}{150}
+\contentsline {paragraph}{\numberline {7.12.2.1}ns}{150}
+\contentsline {paragraph}{\numberline {7.12.2.2}fs}{150}
+\contentsline {paragraph}{\numberline {7.12.2.3}wf}{150}
+\contentsline {subsection}{\numberline {7.13}lm\_\discretionary {-}{}{}fstate Struct Reference}{150}
+\contentsline {subsubsection}{\numberline {7.13.1}Detailed Description}{150}
+\contentsline {subsection}{\numberline {7.14}m33 Struct Reference}{151}
+\contentsline {subsubsection}{\numberline {7.14.1}Detailed Description}{151}
+\contentsline {subsubsection}{\numberline {7.14.2}Field Documentation}{151}
+\contentsline {paragraph}{\numberline {7.14.2.1}e}{151}
+\contentsline {subsection}{\numberline {7.15}rfmodel Struct Reference}{151}
+\contentsline {subsubsection}{\numberline {7.15.1}Detailed Description}{152}
+\contentsline {subsubsection}{\numberline {7.15.2}Field Documentation}{152}
+\contentsline {paragraph}{\numberline {7.15.2.1}name}{152}
+\contentsline {paragraph}{\numberline {7.15.2.2}nmodes}{152}
+\contentsline {paragraph}{\numberline {7.15.2.3}mode}{152}
+\contentsline {subsection}{\numberline {7.16}v3 Struct Reference}{153}
+\contentsline {subsubsection}{\numberline {7.16.1}Detailed Description}{153}
+\contentsline {subsubsection}{\numberline {7.16.2}Field Documentation}{153}
+\contentsline {paragraph}{\numberline {7.16.2.1}x}{153}
+\contentsline {paragraph}{\numberline {7.16.2.2}y}{153}
+\contentsline {paragraph}{\numberline {7.16.2.3}z}{153}
+\contentsline {subsection}{\numberline {7.17}wfstat\_\discretionary {-}{}{}t Struct Reference}{153}
+\contentsline {subsubsection}{\numberline {7.17.1}Detailed Description}{154}
+\contentsline {subsubsection}{\numberline {7.17.2}Field Documentation}{154}
+\contentsline {paragraph}{\numberline {7.17.2.1}imax}{154}
+\contentsline {paragraph}{\numberline {7.17.2.2}imin}{154}
+\contentsline {paragraph}{\numberline {7.17.2.3}max}{154}
+\contentsline {paragraph}{\numberline {7.17.2.4}min}{154}
+\contentsline {paragraph}{\numberline {7.17.2.5}mean}{154}
+\contentsline {paragraph}{\numberline {7.17.2.6}rms}{155}
+\contentsline {section}{\numberline {8}File Documentation}{155}
+\contentsline {subsection}{\numberline {8.1}bpm\_\discretionary {-}{}{}units.h File Reference}{155}
+\contentsline {subsubsection}{\numberline {8.1.1}Detailed Description}{155}
+\contentsline {subsection}{\numberline {8.2}bpmanalysis/ana\_\discretionary {-}{}{}compute\_\discretionary {-}{}{}residual.c File Reference}{156}
+\contentsline {subsubsection}{\numberline {8.2.1}Detailed Description}{156}
+\contentsline {subsection}{\numberline {8.3}bpmanalysis/ana\_\discretionary {-}{}{}def\_\discretionary {-}{}{}cutfn.c File Reference}{156}
+\contentsline {subsubsection}{\numberline {8.3.1}Detailed Description}{156}
+\contentsline {subsection}{\numberline {8.4}bpmanalysis/ana\_\discretionary {-}{}{}get\_\discretionary {-}{}{}svd\_\discretionary {-}{}{}coeffs.c File Reference}{157}
+\contentsline {subsubsection}{\numberline {8.4.1}Detailed Description}{157}
+\contentsline {subsection}{\numberline {8.5}bpmanalysis/ana\_\discretionary {-}{}{}set\_\discretionary {-}{}{}cutfn.c File Reference}{157}
+\contentsline {subsubsection}{\numberline {8.5.1}Detailed Description}{157}
+\contentsline {subsection}{\numberline {8.6}bpmanalysis/bpm\_\discretionary {-}{}{}analysis.h File Reference}{158}
+\contentsline {subsubsection}{\numberline {8.6.1}Detailed Description}{158}
+\contentsline {subsection}{\numberline {8.7}bpmcalibration/bpm\_\discretionary {-}{}{}calibration.h File Reference}{158}
+\contentsline {subsubsection}{\numberline {8.7.1}Detailed Description}{158}
+\contentsline {subsection}{\numberline {8.8}bpmcalibration/calibrate.c File Reference}{159}
+\contentsline {subsubsection}{\numberline {8.8.1}Detailed Description}{159}
+\contentsline {subsection}{\numberline {8.9}bpmcalibration/setup\_\discretionary {-}{}{}calibration.c File Reference}{159}
+\contentsline {subsubsection}{\numberline {8.9.1}Detailed Description}{159}
+\contentsline {subsection}{\numberline {8.10}bpmdsp/bpm\_\discretionary {-}{}{}dsp.h File Reference}{160}
+\contentsline {subsubsection}{\numberline {8.10.1}Detailed Description}{160}
+\contentsline {subsection}{\numberline {8.11}bpmdsp/calculate\_\discretionary {-}{}{}filter\_\discretionary {-}{}{}coefficients.c File Reference}{162}
+\contentsline {subsubsection}{\numberline {8.11.1}Detailed Description}{162}
+\contentsline {subsection}{\numberline {8.12}bpmdsp/create\_\discretionary {-}{}{}filter.c File Reference}{162}
+\contentsline {subsubsection}{\numberline {8.12.1}Detailed Description}{162}
+\contentsline {subsection}{\numberline {8.13}bpmdsp/create\_\discretionary {-}{}{}resonator\_\discretionary {-}{}{}representation.c File Reference}{163}
+\contentsline {subsubsection}{\numberline {8.13.1}Detailed Description}{163}
+\contentsline {subsection}{\numberline {8.14}bpmdsp/create\_\discretionary {-}{}{}splane\_\discretionary {-}{}{}representation.c File Reference}{163}
+\contentsline {subsubsection}{\numberline {8.14.1}Detailed Description}{163}
+\contentsline {subsection}{\numberline {8.15}bpmdsp/ddc.c File Reference}{163}
+\contentsline {subsubsection}{\numberline {8.15.1}Detailed Description}{163}
+\contentsline {subsection}{\numberline {8.16}bpmdsp/delete\_\discretionary {-}{}{}filter.c File Reference}{164}
+\contentsline {subsubsection}{\numberline {8.16.1}Detailed Description}{164}
+\contentsline {subsection}{\numberline {8.17}bpmdsp/discrete\_\discretionary {-}{}{}fourier\_\discretionary {-}{}{}transforms.c File Reference}{164}
+\contentsline {subsubsection}{\numberline {8.17.1}Detailed Description}{164}
+\contentsline {subsection}{\numberline {8.18}bpmdsp/filter\_\discretionary {-}{}{}impulse\_\discretionary {-}{}{}response.c File Reference}{165}
+\contentsline {subsubsection}{\numberline {8.18.1}Detailed Description}{165}
+\contentsline {subsection}{\numberline {8.19}bpmdsp/filter\_\discretionary {-}{}{}step\_\discretionary {-}{}{}response.c File Reference}{165}
+\contentsline {subsubsection}{\numberline {8.19.1}Detailed Description}{165}
+\contentsline {subsection}{\numberline {8.20}bpmdsp/gaussian\_\discretionary {-}{}{}filter\_\discretionary {-}{}{}coeffs.c File Reference}{166}
+\contentsline {subsubsection}{\numberline {8.20.1}Detailed Description}{166}
+\contentsline {subsection}{\numberline {8.21}bpmdsp/norm\_\discretionary {-}{}{}phase.c File Reference}{166}
+\contentsline {subsubsection}{\numberline {8.21.1}Detailed Description}{166}
+\contentsline {subsection}{\numberline {8.22}bpmdsp/normalise\_\discretionary {-}{}{}filter.c File Reference}{167}
+\contentsline {subsubsection}{\numberline {8.22.1}Detailed Description}{167}
+\contentsline {subsection}{\numberline {8.23}bpmdsp/print\_\discretionary {-}{}{}filter.c File Reference}{167}
+\contentsline {subsubsection}{\numberline {8.23.1}Detailed Description}{167}
+\contentsline {subsection}{\numberline {8.24}bpmdsp/print\_\discretionary {-}{}{}filter\_\discretionary {-}{}{}representation.c File Reference}{167}
+\contentsline {subsubsection}{\numberline {8.24.1}Detailed Description}{167}
+\contentsline {subsection}{\numberline {8.25}bpmdsp/zplane\_\discretionary {-}{}{}transform.c File Reference}{168}
+\contentsline {subsubsection}{\numberline {8.25.1}Detailed Description}{168}
+\contentsline {subsection}{\numberline {8.26}bpminterface/bpm\_\discretionary {-}{}{}interface.h File Reference}{168}
+\contentsline {subsubsection}{\numberline {8.26.1}Detailed Description}{168}
+\contentsline {subsection}{\numberline {8.27}bpmmessages/bpm\_\discretionary {-}{}{}error.c File Reference}{169}
+\contentsline {subsubsection}{\numberline {8.27.1}Detailed Description}{169}
+\contentsline {subsection}{\numberline {8.28}bpmmessages/bpm\_\discretionary {-}{}{}messages.h File Reference}{170}
+\contentsline {subsubsection}{\numberline {8.28.1}Detailed Description}{170}
+\contentsline {subsection}{\numberline {8.29}bpmmessages/bpm\_\discretionary {-}{}{}warning.c File Reference}{170}
+\contentsline {subsubsection}{\numberline {8.29.1}Detailed Description}{170}
+\contentsline {subsection}{\numberline {8.30}bpmnr/bpm\_\discretionary {-}{}{}nr.h File Reference}{171}
+\contentsline {subsubsection}{\numberline {8.30.1}Detailed Description}{171}
+\contentsline {subsection}{\numberline {8.31}bpmnr/dround.c File Reference}{175}
+\contentsline {subsubsection}{\numberline {8.31.1}Detailed Description}{175}
+\contentsline {subsection}{\numberline {8.32}bpmnr/gsl\_\discretionary {-}{}{}blas.c File Reference}{175}
+\contentsline {subsubsection}{\numberline {8.32.1}Detailed Description}{175}
+\contentsline {subsection}{\numberline {8.33}bpmnr/gsl\_\discretionary {-}{}{}block.c File Reference}{176}
+\contentsline {subsubsection}{\numberline {8.33.1}Detailed Description}{176}
+\contentsline {subsection}{\numberline {8.34}bpmnr/gsl\_\discretionary {-}{}{}eigen.c File Reference}{176}
+\contentsline {subsubsection}{\numberline {8.34.1}Detailed Description}{176}
+\contentsline {subsection}{\numberline {8.35}bpmnr/gsl\_\discretionary {-}{}{}linalg.c File Reference}{177}
+\contentsline {subsubsection}{\numberline {8.35.1}Detailed Description}{177}
+\contentsline {subsection}{\numberline {8.36}bpmnr/gsl\_\discretionary {-}{}{}matrix.c File Reference}{178}
+\contentsline {subsubsection}{\numberline {8.36.1}Detailed Description}{178}
+\contentsline {subsection}{\numberline {8.37}bpmnr/gsl\_\discretionary {-}{}{}vector.c File Reference}{178}
+\contentsline {subsubsection}{\numberline {8.37.1}Detailed Description}{178}
+\contentsline {subsection}{\numberline {8.38}bpmnr/nr\_\discretionary {-}{}{}checks.c File Reference}{179}
+\contentsline {subsubsection}{\numberline {8.38.1}Detailed Description}{179}
+\contentsline {subsubsection}{\numberline {8.38.2}Function Documentation}{179}
+\contentsline {paragraph}{\numberline {8.38.2.1}nr\_\discretionary {-}{}{}is\_\discretionary {-}{}{}int}{179}
+\contentsline {subsection}{\numberline {8.39}bpmnr/nr\_\discretionary {-}{}{}complex.c File Reference}{180}
+\contentsline {subsubsection}{\numberline {8.39.1}Detailed Description}{180}
+\contentsline {subsection}{\numberline {8.40}bpmnr/nr\_\discretionary {-}{}{}fit.c File Reference}{180}
+\contentsline {subsubsection}{\numberline {8.40.1}Detailed Description}{180}
+\contentsline {subsection}{\numberline {8.41}bpmnr/nr\_\discretionary {-}{}{}four1.c File Reference}{181}
+\contentsline {subsubsection}{\numberline {8.41.1}Detailed Description}{181}
+\contentsline {subsection}{\numberline {8.42}bpmnr/nr\_\discretionary {-}{}{}gammln.c File Reference}{181}
+\contentsline {subsubsection}{\numberline {8.42.1}Detailed Description}{181}
+\contentsline {subsection}{\numberline {8.43}bpmnr/nr\_\discretionary {-}{}{}gammq.c File Reference}{182}
+\contentsline {subsubsection}{\numberline {8.43.1}Detailed Description}{182}
+\contentsline {subsection}{\numberline {8.44}bpmnr/nr\_\discretionary {-}{}{}gcf.c File Reference}{182}
+\contentsline {subsubsection}{\numberline {8.44.1}Detailed Description}{182}
+\contentsline {subsection}{\numberline {8.45}bpmnr/nr\_\discretionary {-}{}{}gser.c File Reference}{182}
+\contentsline {subsubsection}{\numberline {8.45.1}Detailed Description}{182}
+\contentsline {subsection}{\numberline {8.46}bpmnr/nr\_\discretionary {-}{}{}levmar.c File Reference}{183}
+\contentsline {subsubsection}{\numberline {8.46.1}Detailed Description}{183}
+\contentsline {subsection}{\numberline {8.47}bpmnr/nr\_\discretionary {-}{}{}median.c File Reference}{184}
+\contentsline {subsubsection}{\numberline {8.47.1}Detailed Description}{184}
+\contentsline {subsection}{\numberline {8.48}bpmnr/nr\_\discretionary {-}{}{}quadinterpol.c File Reference}{185}
+\contentsline {subsubsection}{\numberline {8.48.1}Detailed Description}{185}
+\contentsline {subsection}{\numberline {8.49}bpmnr/nr\_\discretionary {-}{}{}ran1.c File Reference}{185}
+\contentsline {subsubsection}{\numberline {8.49.1}Detailed Description}{185}
+\contentsline {subsection}{\numberline {8.50}bpmnr/nr\_\discretionary {-}{}{}rangauss.c File Reference}{185}
+\contentsline {subsubsection}{\numberline {8.50.1}Detailed Description}{185}
+\contentsline {subsection}{\numberline {8.51}bpmnr/nr\_\discretionary {-}{}{}ranuniform.c File Reference}{186}
+\contentsline {subsubsection}{\numberline {8.51.1}Detailed Description}{186}
+\contentsline {subsection}{\numberline {8.52}bpmnr/nr\_\discretionary {-}{}{}realft.c File Reference}{186}
+\contentsline {subsubsection}{\numberline {8.52.1}Detailed Description}{186}
+\contentsline {subsection}{\numberline {8.53}bpmnr/nr\_\discretionary {-}{}{}seed.c File Reference}{187}
+\contentsline {subsubsection}{\numberline {8.53.1}Detailed Description}{187}
+\contentsline {subsubsection}{\numberline {8.53.2}Variable Documentation}{187}
+\contentsline {paragraph}{\numberline {8.53.2.1}bpm\_\discretionary {-}{}{}rseed}{187}
+\contentsline {subsection}{\numberline {8.54}bpmnr/nr\_\discretionary {-}{}{}select.c File Reference}{187}
+\contentsline {subsubsection}{\numberline {8.54.1}Detailed Description}{187}
+\contentsline {subsection}{\numberline {8.55}bpmnr/nr\_\discretionary {-}{}{}sinc.c File Reference}{188}
+\contentsline {subsubsection}{\numberline {8.55.1}Detailed Description}{188}
+\contentsline {subsection}{\numberline {8.56}bpmorbit/bpm\_\discretionary {-}{}{}orbit.h File Reference}{188}
+\contentsline {subsubsection}{\numberline {8.56.1}Detailed Description}{188}
+\contentsline {subsection}{\numberline {8.57}bpmorbit/get\_\discretionary {-}{}{}bpmhit.c File Reference}{189}
+\contentsline {subsubsection}{\numberline {8.57.1}Detailed Description}{189}
+\contentsline {subsection}{\numberline {8.58}bpmorbit/vm.c File Reference}{190}
+\contentsline {subsubsection}{\numberline {8.58.1}Detailed Description}{190}
+\contentsline {subsection}{\numberline {8.59}bpmprocess/bpm\_\discretionary {-}{}{}process.h File Reference}{190}
+\contentsline {subsubsection}{\numberline {8.59.1}Detailed Description}{190}
+\contentsline {subsection}{\numberline {8.60}bpmprocess/check\_\discretionary {-}{}{}saturation.c File Reference}{192}
+\contentsline {subsubsection}{\numberline {8.60.1}Detailed Description}{192}
+\contentsline {subsection}{\numberline {8.61}bpmprocess/correct\_\discretionary {-}{}{}gain.c File Reference}{192}
+\contentsline {subsubsection}{\numberline {8.61.1}Detailed Description}{192}
+\contentsline {subsection}{\numberline {8.62}bpmprocess/ddc\_\discretionary {-}{}{}sample\_\discretionary {-}{}{}waveform.c File Reference}{193}
+\contentsline {subsubsection}{\numberline {8.62.1}Detailed Description}{193}
+\contentsline {subsection}{\numberline {8.63}bpmprocess/ddc\_\discretionary {-}{}{}waveform.c File Reference}{193}
+\contentsline {subsubsection}{\numberline {8.63.1}Detailed Description}{193}
+\contentsline {subsection}{\numberline {8.64}bpmprocess/downmix\_\discretionary {-}{}{}waveform.c File Reference}{194}
+\contentsline {subsubsection}{\numberline {8.64.1}Detailed Description}{194}
+\contentsline {subsection}{\numberline {8.65}bpmprocess/fft\_\discretionary {-}{}{}waveform.c File Reference}{194}
+\contentsline {subsubsection}{\numberline {8.65.1}Detailed Description}{194}
+\contentsline {subsection}{\numberline {8.66}bpmprocess/fit\_\discretionary {-}{}{}diodepulse.c File Reference}{195}
+\contentsline {subsubsection}{\numberline {8.66.1}Detailed Description}{195}
+\contentsline {subsection}{\numberline {8.67}bpmprocess/fit\_\discretionary {-}{}{}fft.c File Reference}{195}
+\contentsline {subsubsection}{\numberline {8.67.1}Detailed Description}{195}
+\contentsline {subsection}{\numberline {8.68}bpmprocess/fit\_\discretionary {-}{}{}waveform.c File Reference}{196}
+\contentsline {subsubsection}{\numberline {8.68.1}Detailed Description}{196}
+\contentsline {subsection}{\numberline {8.69}bpmprocess/get\_\discretionary {-}{}{}IQ.c File Reference}{197}
+\contentsline {subsubsection}{\numberline {8.69.1}Detailed Description}{197}
+\contentsline {subsection}{\numberline {8.70}bpmprocess/get\_\discretionary {-}{}{}pedestal.c File Reference}{197}
+\contentsline {subsubsection}{\numberline {8.70.1}Detailed Description}{197}
+\contentsline {subsection}{\numberline {8.71}bpmprocess/get\_\discretionary {-}{}{}pos.c File Reference}{198}
+\contentsline {subsubsection}{\numberline {8.71.1}Detailed Description}{198}
+\contentsline {subsection}{\numberline {8.72}bpmprocess/get\_\discretionary {-}{}{}slope.c File Reference}{198}
+\contentsline {subsubsection}{\numberline {8.72.1}Detailed Description}{198}
+\contentsline {subsection}{\numberline {8.73}bpmprocess/get\_\discretionary {-}{}{}t0.c File Reference}{198}
+\contentsline {subsubsection}{\numberline {8.73.1}Detailed Description}{198}
+\contentsline {subsection}{\numberline {8.74}bpmprocess/postprocess\_\discretionary {-}{}{}waveform.c File Reference}{199}
+\contentsline {subsubsection}{\numberline {8.74.1}Detailed Description}{199}
+\contentsline {subsection}{\numberline {8.75}bpmprocess/process\_\discretionary {-}{}{}caltone.c File Reference}{199}
+\contentsline {subsubsection}{\numberline {8.75.1}Detailed Description}{199}
+\contentsline {subsection}{\numberline {8.76}bpmprocess/process\_\discretionary {-}{}{}diode.c File Reference}{200}
+\contentsline {subsubsection}{\numberline {8.76.1}Detailed Description}{200}
+\contentsline {subsection}{\numberline {8.77}bpmprocess/process\_\discretionary {-}{}{}dipole.c File Reference}{200}
+\contentsline {subsubsection}{\numberline {8.77.1}Detailed Description}{200}
+\contentsline {subsection}{\numberline {8.78}bpmprocess/process\_\discretionary {-}{}{}monopole.c File Reference}{201}
+\contentsline {subsubsection}{\numberline {8.78.1}Detailed Description}{201}
+\contentsline {subsection}{\numberline {8.79}bpmprocess/process\_\discretionary {-}{}{}waveform.c File Reference}{201}
+\contentsline {subsubsection}{\numberline {8.79.1}Detailed Description}{201}
+\contentsline {subsection}{\numberline {8.80}bpmrf/bpm\_\discretionary {-}{}{}rf.h File Reference}{202}
+\contentsline {subsubsection}{\numberline {8.80.1}Detailed Description}{202}
+\contentsline {subsection}{\numberline {8.81}bpmrf/rf\_\discretionary {-}{}{}addLO.c File Reference}{203}
+\contentsline {subsubsection}{\numberline {8.81.1}Detailed Description}{203}
+\contentsline {subsection}{\numberline {8.82}bpmrf/rf\_\discretionary {-}{}{}amplify.c File Reference}{203}
+\contentsline {subsubsection}{\numberline {8.82.1}Detailed Description}{203}
+\contentsline {subsection}{\numberline {8.83}bpmrf/rf\_\discretionary {-}{}{}amplify\_\discretionary {-}{}{}complex.c File Reference}{204}
+\contentsline {subsubsection}{\numberline {8.83.1}Detailed Description}{204}
+\contentsline {subsection}{\numberline {8.84}bpmrf/rf\_\discretionary {-}{}{}mixer.c File Reference}{204}
+\contentsline {subsubsection}{\numberline {8.84.1}Detailed Description}{204}
+\contentsline {subsection}{\numberline {8.85}bpmrf/rf\_\discretionary {-}{}{}phase\_\discretionary {-}{}{}shifter.c File Reference}{205}
+\contentsline {subsubsection}{\numberline {8.85.1}Detailed Description}{205}
+\contentsline {subsection}{\numberline {8.86}bpmrf/rf\_\discretionary {-}{}{}rectify.c File Reference}{205}
+\contentsline {subsubsection}{\numberline {8.86.1}Detailed Description}{205}
+\contentsline {subsection}{\numberline {8.87}bpmrf/rf\_\discretionary {-}{}{}setup.c File Reference}{205}
+\contentsline {subsubsection}{\numberline {8.87.1}Detailed Description}{205}
+\contentsline {subsection}{\numberline {8.88}bpmsimulation/add\_\discretionary {-}{}{}mode\_\discretionary {-}{}{}response.c File Reference}{206}
+\contentsline {subsubsection}{\numberline {8.88.1}Detailed Description}{206}
+\contentsline {subsection}{\numberline {8.89}bpmsimulation/bpm\_\discretionary {-}{}{}simulation.h File Reference}{206}
+\contentsline {subsubsection}{\numberline {8.89.1}Detailed Description}{206}
+\contentsline {subsection}{\numberline {8.90}bpmsimulation/digitise.c File Reference}{208}
+\contentsline {subsubsection}{\numberline {8.90.1}Detailed Description}{208}
+\contentsline {subsection}{\numberline {8.91}bpmsimulation/generate\_\discretionary {-}{}{}bpmsignal.c File Reference}{208}
+\contentsline {subsubsection}{\numberline {8.91.1}Detailed Description}{208}
+\contentsline {subsection}{\numberline {8.92}bpmsimulation/generate\_\discretionary {-}{}{}diodesignal.c File Reference}{209}
+\contentsline {subsubsection}{\numberline {8.92.1}Detailed Description}{209}
+\contentsline {subsection}{\numberline {8.93}bpmsimulation/get\_\discretionary {-}{}{}mode\_\discretionary {-}{}{}amplitude.c File Reference}{209}
+\contentsline {subsubsection}{\numberline {8.93.1}Detailed Description}{209}
+\contentsline {subsection}{\numberline {8.94}bpmsimulation/get\_\discretionary {-}{}{}mode\_\discretionary {-}{}{}response.c File Reference}{209}
+\contentsline {subsubsection}{\numberline {8.94.1}Detailed Description}{209}
+\contentsline {subsection}{\numberline {8.95}bpmsimulation/set\_\discretionary {-}{}{}temp.c File Reference}{210}
+\contentsline {subsubsection}{\numberline {8.95.1}Detailed Description}{210}
+\contentsline {subsection}{\numberline {8.96}bpmsimulation/set\_\discretionary {-}{}{}time.c File Reference}{210}
+\contentsline {subsubsection}{\numberline {8.96.1}Detailed Description}{210}
+\contentsline {subsection}{\numberline {8.97}bpmwf/bpm\_\discretionary {-}{}{}wf.h File Reference}{211}
+\contentsline {subsubsection}{\numberline {8.97.1}Detailed Description}{211}
+\contentsline {subsection}{\numberline {8.98}bpmwf/complexwf.c File Reference}{214}
+\contentsline {subsubsection}{\numberline {8.98.1}Detailed Description}{214}
+\contentsline {subsection}{\numberline {8.99}bpmwf/doublewf.c File Reference}{215}
+\contentsline {subsubsection}{\numberline {8.99.1}Detailed Description}{215}
+\contentsline {subsection}{\numberline {8.100}bpmwf/freq\_\discretionary {-}{}{}to\_\discretionary {-}{}{}sample.c File Reference}{216}
+\contentsline {subsubsection}{\numberline {8.100.1}Detailed Description}{216}
+\contentsline {subsection}{\numberline {8.101}bpmwf/intwf.c File Reference}{216}
+\contentsline {subsubsection}{\numberline {8.101.1}Detailed Description}{216}
+\contentsline {subsection}{\numberline {8.102}bpmwf/sample\_\discretionary {-}{}{}to\_\discretionary {-}{}{}freq.c File Reference}{217}
+\contentsline {subsubsection}{\numberline {8.102.1}Detailed Description}{217}
+\contentsline {subsection}{\numberline {8.103}bpmwf/sample\_\discretionary {-}{}{}to\_\discretionary {-}{}{}time.c File Reference}{218}
+\contentsline {subsubsection}{\numberline {8.103.1}Detailed Description}{218}
+\contentsline {subsection}{\numberline {8.104}bpmwf/time\_\discretionary {-}{}{}to\_\discretionary {-}{}{}sample.c File Reference}{218}
+\contentsline {subsubsection}{\numberline {8.104.1}Detailed Description}{218}
+\contentsline {subsection}{\numberline {8.105}bpmwf/wfstats.c File Reference}{219}
+\contentsline {subsubsection}{\numberline {8.105.1}Detailed Description}{219}

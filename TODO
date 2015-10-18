@@ -1,0 +1,28 @@
+Here's a list of TODO items...
+
+--> still a bit unclear on how to generate the initial beam
+    conditions...
+
+--> maybe at a later point have the reserved memory in routines
+    like fit_waveform be static so we don't have to reserve + free 
+    it call after call, might speed things up...
+
+---> in fit_waveform.c:
+  - Probably need to put in some box constraints for better behaviour at a certain point, 
+    can use the routine nr_lmder_bc for this. 
+  - Maybe program in something to replace the matrix inversion based upon the LU algorithm
+    in nr_levmar.c. The original version had some LAPACK functionality, but as we
+    wanted this standalone, i've cut it out. 
+  - Best way to use it probably to take the parameters from previous fit of last pulse and have
+    them as initials for the current fit.
+
+--> in fit_fft.c
+  - properly check fitting algorithm, works... but question is how well...
+
+
+--> in process_waveform.c
+  - if the waveform is saturated, we now set the tSample to the time of the last
+    unsaturated sample, still need to shift this in order to have a decent sampling
+    window...
+
+  

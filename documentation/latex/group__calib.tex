@@ -1,0 +1,71 @@
+\subsection{Calibration routines}
+\label{group__calib}\index{Calibration routines@{Calibration routines}}
+
+
+\subsubsection{Detailed Description}
+
+
+\subsubsection*{Files}
+\begin{CompactItemize}
+\item 
+file {\bf bpm\_\-calibration.h}
+\begin{CompactList}\small\item\em calibration routines \item\end{CompactList}
+
+\item 
+file {\bf calibrate.c}
+\item 
+file {\bf setup\_\-calibration.c}
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN int {\bf setup\_\-calibration} ({\bf bpmconf\_\-t} $\ast$cnf, {\bf bpmproc\_\-t} $\ast$proc, int npulses, int startpulse, int stoppulse, double angle, double startpos, double endpos, int num\_\-steps, {\bf bunchconf\_\-t} $\ast$bunch)
+\item 
+EXTERN int {\bf calibrate} ({\bf bpmconf\_\-t} $\ast$bpm, {\bf bunchconf\_\-t} $\ast$bunch, {\bf bpmproc\_\-t} $\ast$proc, int npulses, {\bf bpmcalib\_\-t} $\ast$cal)
+\end{CompactItemize}
+
+
+\subsubsection{Function Documentation}
+\index{calib@{calib}!setup\_\-calibration@{setup\_\-calibration}}
+\index{setup\_\-calibration@{setup\_\-calibration}!calib@{calib}}
+\paragraph[setup\_\-calibration]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int setup\_\-calibration ({\bf bpmconf\_\-t} $\ast$ {\em cnf}, \/  {\bf bpmproc\_\-t} $\ast$ {\em proc}, \/  int {\em npulses}, \/  int {\em startpulse}, \/  int {\em stoppulse}, \/  double {\em angle}, \/  double {\em startpos}, \/  double {\em endpos}, \/  int {\em num\_\-steps}, \/  {\bf bunchconf\_\-t} $\ast$ {\em bunch})}\hfill\label{group__calib_g74c67b78d44415fa79998a240a9f9095}
+
+
+This routine basically defines the calibration steps and returns them into the array of beam structures. It needs an array of processed waveform structures, of dimension npulses from a single BPM. From this it determines the corresponding corrector/mover steps and puts them back into the array of beam structures given the bpm configurations.
+
+Startpulse and stoppulse have to be in the first and last calib steps \& will need some extensive error checking for e.g. missed calibration steps...
+
+NOTE: This is not definitive yet - more checking, etc. required!\begin{itemize}
+\item DDC or FIT?\item Sign errors?\item not robust to missing steps\end{itemize}
+
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em proc}]array of processed waveforms for a single bpm, so array of pulses \item[{\em cnf}]array of bpm configuration structures \item[{\em npulses}]number of pulses in the calibration \item[{\em startpulse}]start of calibration range \item[{\em stoppulse}]stop of calibration range \item[{\em angle}]\item[{\em startpos}]start position of calibration \item[{\em endpos}]end position of calibration \item[{\em num\_\-steps}]number of calibration steps \item[{\em bunch}]the returned \doxyref{bunchconf}{p.}{structbunchconf} array which represents where the beam is supposed to be in each bpm during each calibration step\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 8 of file setup\_\-calibration.c.
+
+References bpm\_\-error(), and bunchconf::bpmposition.\index{calib@{calib}!calibrate@{calibrate}}
+\index{calibrate@{calibrate}!calib@{calib}}
+\paragraph[calibrate]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int calibrate ({\bf bpmconf\_\-t} $\ast$ {\em bpm}, \/  {\bf bunchconf\_\-t} $\ast$ {\em bunch}, \/  {\bf bpmproc\_\-t} $\ast$ {\em proc}, \/  int {\em npulses}, \/  {\bf bpmcalib\_\-t} $\ast$ {\em cal})}\hfill\label{group__calib_ga20fe180b4f39ef6ef739c9df76004a7}
+
+
+Gets the calibration constants from an array of npulses of beam positions and processed waveform structures and returns an updated calibration structure. Note that this routine updates the IQ phase, the position scale and the tilt scale but DOES NOT touch the frequency, decay time or the t0Offset.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em bpm}]Bpm structures \item[{\em bunch}]An array of bunch structures, one for each pulse, so essentially this corresponds to where we expect the beam to be in each pulse, so representing corrector positions or mover positions. This information should be filled by the routine setup\_\-calibration( ... ) \item[{\em proc}]An array of processed waveforms, one for each pulse, which correspond to calculated positions that were calculated using IQ phase = 0 and scales equal to 1. \item[{\em npulses}]The number of pulses in the arrays \item[{\em $\ast$cal}]The returned calibration structure for the BPM that was calibrated \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 9 of file calibrate.c.
+
+References bpm\_\-error().

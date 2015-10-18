@@ -1,0 +1,2490 @@
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2008.5.15)  25 JUN 2008 17:33
+entering extended mode
+**refman.tex
+(./refman.tex
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
+ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
+stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
+h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur
+kish, ukrainian, nohyphenation, loaded.
+
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2004/02/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size10.clo
+File: size10.clo 2004/02/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (/usr/share/texmf/tex/latex/a4wide/a4wide.sty
+Package: a4wide 1994/08/30
+(/usr/share/texmf/tex/latex/ntgclass/a4.sty
+Package: a4 2004/04/15 v1.2g A4 based page layout
+)) (/usr/share/texmf/tex/latex/base/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+) (/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip43
+\f@ncyO@elh=\skip44
+\f@ncyO@erh=\skip45
+\f@ncyO@olh=\skip46
+\f@ncyO@orh=\skip47
+\f@ncyO@elf=\skip48
+\f@ncyO@erf=\skip49
+\f@ncyO@olf=\skip50
+\f@ncyO@orf=\skip51
+) (/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+) (/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+) (/usr/share/texmf/tex/latex/graphics/graphics.cfg
+File: graphics.cfg 2005/02/03 v1.3 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+(/usr/share/texmf/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+) (/usr/share/texmf/tex/latex/tools/multicol.sty
+Package: multicol 2004/02/14 v1.6e multicolumn formatting (FMi)
+\c@tracingmulticols=\count88
+\mult@box=\box26
+\multicol@leftmargin=\dimen105
+\c@unbalance=\count89
+\c@collectmore=\count90
+\doublecol@number=\count91
+\multicoltolerance=\count92
+\multicolpretolerance=\count93
+\full@width=\dimen106
+\page@free=\dimen107
+\premulticols=\dimen108
+\postmulticols=\dimen109
+\multicolsep=\skip52
+\multicolbaselineskip=\skip53
+\partial@page=\box27
+\last@line=\box28
+\mult@rightbox=\box29
+\mult@grightbox=\box30
+\mult@gfirstbox=\box31
+\mult@firstbox=\box32
+\@tempa=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\c@columnbadness=\count94
+\c@finalcolumnbadness=\count95
+\last@try=\dimen110
+\multicolovershoot=\dimen111
+\multicolundershoot=\dimen112
+\mult@nat@firstbox=\box50
+\colbreak@box=\box51
+) (/usr/share/texmf/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count96
+\float@exts=\toks15
+\float@box=\box52
+\@float@everytoks=\toks16
+\@floatcapt=\box53
+) (/usr/share/texmf/tex/latex/base/textcomp.sty
+Package: textcomp 2004/02/22 v1.99f Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+(/usr/share/texmf/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 311.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 312.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 313.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 314.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 315.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 316.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 317.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 318.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 319.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 320.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 321.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 322.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 323.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
+) (/usr/share/texmf/tex/latex/base/alltt.sty
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+) (/usr/share/texmf/tex/latex/psnfss/times.sty
+Package: times 2004/09/15 PSNFSS-v9.2 (SPQR) 
+) (/usr/share/texmf/tex/latex/base/inputenc.sty
+Package: inputenc 2004/02/05 v1.0d Input encoding file
+(/usr/share/texmf/tex/latex/base/utf8.def
+File: utf8.def 2004/02/09 v1.1b UTF-8 support for inputenc
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encoding T1
+(/usr/share/texmf/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2004/02/09 v1.1b UTF-8 support for inputenc
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C0 (decimal 192)
+   defining Unicode char U+00C1 (decimal 193)
+   defining Unicode char U+00C2 (decimal 194)
+   defining Unicode char U+00C3 (decimal 195)
+   defining Unicode char U+00C4 (decimal 196)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00C7 (decimal 199)
+   defining Unicode char U+00C8 (decimal 200)
+   defining Unicode char U+00C9 (decimal 201)
+   defining Unicode char U+00CA (decimal 202)
+   defining Unicode char U+00CB (decimal 203)
+   defining Unicode char U+00CC (decimal 204)
+   defining Unicode char U+00CD (decimal 205)
+   defining Unicode char U+00CE (decimal 206)
+   defining Unicode char U+00CF (decimal 207)
+   defining Unicode char U+00D0 (decimal 208)
+   defining Unicode char U+00D1 (decimal 209)
+   defining Unicode char U+00D2 (decimal 210)
+   defining Unicode char U+00D3 (decimal 211)
+   defining Unicode char U+00D4 (decimal 212)
+   defining Unicode char U+00D5 (decimal 213)
+   defining Unicode char U+00D6 (decimal 214)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00D9 (decimal 217)
+   defining Unicode char U+00DA (decimal 218)
+   defining Unicode char U+00DB (decimal 219)
+   defining Unicode char U+00DC (decimal 220)
+   defining Unicode char U+00DD (decimal 221)
+   defining Unicode char U+00DE (decimal 222)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E0 (decimal 224)
+   defining Unicode char U+00E1 (decimal 225)
+   defining Unicode char U+00E2 (decimal 226)
+   defining Unicode char U+00E3 (decimal 227)
+   defining Unicode char U+00E4 (decimal 228)
+   defining Unicode char U+00E5 (decimal 229)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00E7 (decimal 231)
+   defining Unicode char U+00E8 (decimal 232)
+   defining Unicode char U+00E9 (decimal 233)
+   defining Unicode char U+00EA (decimal 234)
+   defining Unicode char U+00EB (decimal 235)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F0 (decimal 240)
+   defining Unicode char U+00F1 (decimal 241)
+   defining Unicode char U+00F2 (decimal 242)
+   defining Unicode char U+00F3 (decimal 243)
+   defining Unicode char U+00F4 (decimal 244)
+   defining Unicode char U+00F5 (decimal 245)
+   defining Unicode char U+00F6 (decimal 246)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+00F9 (decimal 249)
+   defining Unicode char U+00FA (decimal 250)
+   defining Unicode char U+00FB (decimal 251)
+   defining Unicode char U+00FC (decimal 252)
+   defining Unicode char U+00FD (decimal 253)
+   defining Unicode char U+00FE (decimal 254)
+   defining Unicode char U+00FF (decimal 255)
+   defining Unicode char U+0102 (decimal 258)
+   defining Unicode char U+0103 (decimal 259)
+   defining Unicode char U+0104 (decimal 260)
+   defining Unicode char U+0105 (decimal 261)
+   defining Unicode char U+0106 (decimal 262)
+   defining Unicode char U+0107 (decimal 263)
+   defining Unicode char U+010C (decimal 268)
+   defining Unicode char U+010D (decimal 269)
+   defining Unicode char U+010E (decimal 270)
+   defining Unicode char U+010F (decimal 271)
+   defining Unicode char U+0110 (decimal 272)
+   defining Unicode char U+0111 (decimal 273)
+   defining Unicode char U+0118 (decimal 280)
+   defining Unicode char U+0119 (decimal 281)
+   defining Unicode char U+011A (decimal 282)
+   defining Unicode char U+011B (decimal 283)
+   defining Unicode char U+011E (decimal 286)
+   defining Unicode char U+011F (decimal 287)
+   defining Unicode char U+0130 (decimal 304)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0139 (decimal 313)
+   defining Unicode char U+013A (decimal 314)
+   defining Unicode char U+013D (decimal 317)
+   defining Unicode char U+013E (decimal 318)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0143 (decimal 323)
+   defining Unicode char U+0144 (decimal 324)
+   defining Unicode char U+0147 (decimal 327)
+   defining Unicode char U+0148 (decimal 328)
+   defining Unicode char U+014A (decimal 330)
+   defining Unicode char U+014B (decimal 331)
+   defining Unicode char U+0150 (decimal 336)
+   defining Unicode char U+0151 (decimal 337)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0154 (decimal 340)
+   defining Unicode char U+0155 (decimal 341)
+   defining Unicode char U+0158 (decimal 344)
+   defining Unicode char U+0159 (decimal 345)
+   defining Unicode char U+015A (decimal 346)
+   defining Unicode char U+015B (decimal 347)
+   defining Unicode char U+015E (decimal 350)
+   defining Unicode char U+015F (decimal 351)
+   defining Unicode char U+0160 (decimal 352)
+   defining Unicode char U+0161 (decimal 353)
+   defining Unicode char U+0162 (decimal 354)
+   defining Unicode char U+0163 (decimal 355)
+   defining Unicode char U+0164 (decimal 356)
+   defining Unicode char U+0165 (decimal 357)
+   defining Unicode char U+016E (decimal 366)
+   defining Unicode char U+016F (decimal 367)
+   defining Unicode char U+0170 (decimal 368)
+   defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0178 (decimal 376)
+   defining Unicode char U+0179 (decimal 377)
+   defining Unicode char U+017A (decimal 378)
+   defining Unicode char U+017B (decimal 379)
+   defining Unicode char U+017C (decimal 380)
+   defining Unicode char U+017D (decimal 381)
+   defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+2423 (decimal 9251)
+)
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encoding OT1
+(/usr/share/texmf/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2004/02/09 v1.1b UTF-8 support for inputenc
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00B8 (decimal 184)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+)
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encoding OMS
+(/usr/share/texmf/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2004/02/09 v1.1b UTF-8 support for inputenc
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+02D9 (decimal 729)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+)
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+(/usr/share/texmf/tex/latex/base/ts1enc.dfu
+File: ts1enc.dfu 2004/02/09 v1.1b UTF-8 support for inputenc
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E37 (decimal 3639)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+02C6 (decimal 710)
+   defining Unicode char U+02CA (decimal 714)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2026 (decimal 8230)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2423 (decimal 9251)
+)) (./doxygen.sty
+Package: doxygen 
+(/usr/share/texmf/tex/latex/tools/calc.sty
+Package: calc 1998/07/07 v4.1b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count97
+\calc@Bcount=\count98
+\calc@Adimen=\dimen113
+\calc@Bdimen=\dimen114
+\calc@Askip=\skip54
+\calc@Bskip=\skip55
+LaTeX Info: Redefining \setlength on input line 59.
+LaTeX Info: Redefining \addtolength on input line 60.
+\calc@denominator=\count99
+) (/usr/share/texmf/tex/latex/tools/array.sty
+Package: array 2003/12/17 v2.4a Tabular extension package (FMi)
+\col@sep=\dimen115
+\extrarowheight=\dimen116
+\NC@list=\toks17
+\extratabsurround=\skip56
+\backup@length=\skip57
+)
+\tmplength=\skip58
+) (/usr/share/texmf/tex/latex/base/fontenc.sty
+Package: fontenc 2004/02/22 v1.99f Standard LaTeX package
+(/usr/share/texmf/tex/latex/base/t1enc.def
+File: t1enc.def 2004/02/22 v1.99f Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+\@indexfile=\write3
+\openout3 = `refman.idx'.
+
+Writing index file refman.idx
+(./refman.aux
+
+LaTeX Warning: Label `group__interface_g2599c9e0c0e36819170e95dcdcdbdfc0' multi
+ply defined.
+
+
+LaTeX Warning: Label `group__interface_g98c565a46975280f28037fb092e24ec7' multi
+ply defined.
+
+
+LaTeX Warning: Label `group__interface_gbfc973a0ffff9e74bf9dcdad55ecd3ce' multi
+ply defined.
+
+
+LaTeX Warning: Label `group__nr_g4d2a5b0ed774d7c6cd7ed3aeede02b32' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g545baaa7a8baff47a88f64d9e22f85eb' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g2f99393cf98b977fa0ed7d77df4b1847' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ge81a5f817c0ccb9e9b21d0a93a69f1fb' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gfac3e13315af7108196380d1e4626fff' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g1854f35d8460beeacca2f0538495054e' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ga1f56cea0760315b3d77f8d43c214b9f' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g62b55be906a8312d99fa219df59d2603' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gd9837af690685692ba3b79204aacda7d' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g9ed2ef7c12b486ed6bcaa2f865799f39' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g9e50163471f8a66724a30e90b859683c' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ge7332177f9233d665df2bc8b162d2484' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g764a79bfff270bb14a93930e3da5d7cc' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ge730cf8f762cf844c8a987af6be4bd9c' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g24a049e550264f1529e47347e9753f7e' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gf3381d1cf7cf6839730587497fb744b7' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g9b649f4d878e64a80b4cd2cad45f43b3' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g8097f2f4c007bf8d2ea1e7558b2248e0' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gb28c2198a94b5c5508ab04b28e31aed2' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g4bd7ce4e1f4cc6be913fc6a383bce112' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g307e270c028a33b97c90f66245f81452' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ge3ee35a37fd4d8532ac769d5bd372a53' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g20fee96f47f09233385fb107510b45da' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g6664bcbe28414c3df4b36063a6823d0c' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g344f3598e6156022e8c5175b060d9201' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g0560e7d9a262a0c72f156639096a261d' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g9839236a6f8b2f71c017c7ad3564c12d' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gd53a17dfdfc936b7559bdc08efbe1c7e' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g9aaa363ea623569297d0fced07b4b263' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g2c402132fe8822a31f21b968666fa188' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g2ee9a14250ef1c11d3a454c93703de4e' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g098f1989e95be172fad854c44d1be6ee' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ga97847b845ae5d3fbbec4d2d8ec3310d' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gfe7082539a5d26f5c498526d07ebe8d3' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g3858db8a10651ceb818008b6db3fed1e' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g8aacfa9dbffc4c6918036c329437dc40' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g2a9448788d5ea6053036f94bce37ca9b' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gcba10bedbc0a23130b5d8e52b83b925e' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g59c2090d19b1ad8ed35f50e49539aa0a' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g352d4d338f80dc0fe3db4bac7dc9640e' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g55db15253f85ccac7c985280705da745' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ga343a39b99f7bb25b97134a743a81a20' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gc0c5d8dc11fc35234e751fbc54a6a185' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g2e38d1d3a33b269e190fb0edd3fc3303' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g50388d5d50f760129a054ea526ed1c07' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gb647cf24b2b6ab2a0dd993ba4021447c' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gf20223185cc5c2a215cb6559231dd55b' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_geab4b93cc9d2f74f4c1859204fc9e694' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gf2e18583a2759c9d0f78b564f40eccd7' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g3c416b23f730c2e06cb5e9b257f1f571' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g1b0f557b9e570f397ab13dcc24e09e35' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gebf16339184d6759f4cdfa9c1724fb98' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gf288953bef254a8e2221d778c28f7f97' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ge37f3f441742e70b1a701d92446e33fc' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gac4c2937f0e28c7a00cfe90b4ad886a6' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g2624694e4157398ba344b90eca6ba070' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ga45e4b3770af5d15171055314b140838' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gedc84887915223f87986de6a67c0249d' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g8568eb30743233bab6e1c2d530829f5f' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gc4843a336042d90bbacea983a80e29b9' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g4881575010a0877aba5efab6f368ab8c' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g2c1eb13f0c90da0f8ef4ef712db29f44' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g7a9b4689f2fcd8d6a417a071903df6f1' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g8e5d28fda0cf04d6d70392fa9580c2eb' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g615603d99ef3bb2a21b32e13761a1474' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g31a6def59f109d51a7e9af63a8850f0c' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ge8a1bf5b51ec0f7ef1e067f01d466033' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g1b67ba06b6b7daa4f73a163f404dd3d7' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g15f37e448cf7eabd56ec2c351f148214' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gf37b7182e24399515692cc4aa39722dd' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g7201c3bc9f98c0b703b326b9178c4965' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g549aa3e6fac9f177535de54692d31df8' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ge13bffd83c5432842602645c03f6f26a' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g71539c2ec3663bb7ec3bc88882da603a' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g0952127372c14dce3c3aa65ec0ad9c1e' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g203888bac468229094352b2bb9456417' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gbd9dcd9992cad1f6af326811da66fc9a' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g6adc8ee3a56fe88de97c3f40c484f824' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g26f4378875ac801b1b5bb7a13f180f0a' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g33f198bcc4dd193c4f8c8db9049311d2' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g176d351f4b035de54e1fb9974c296bed' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g5b48402b525952efb744f5b2804d1957' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gbac492f503bff737e6a11c03e44e7ada' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g3cb3d7ddec167a30a5f7a159dea26c0f' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g4a8c814a8cb7b92c919b23e1ea64d615' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g72516630e1d745f5d1630b4c525cb5f8' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g22d2bd8775120d34e3b700682e67d955' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g98f394b1ddccfeb4d9b5edb6c1f8c652' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gdd54790aa13824ee1db3d0558a465071' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g5a31b290dd721358e4270d9686347dde' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g5a8776cef7d6ef88a11015d6ec2665ba' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g41a40da9e1d42de8e76d999abd476f8a' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gd3e4d63450915ff27b8e506acb21bb2e' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ga0d31375f4ee67d90ba46fbda872d25c' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g7201c3bc9f98c0b703b326b9178c4965' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g549aa3e6fac9f177535de54692d31df8' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ge13bffd83c5432842602645c03f6f26a' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g71539c2ec3663bb7ec3bc88882da603a' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g0952127372c14dce3c3aa65ec0ad9c1e' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g7a9b4689f2fcd8d6a417a071903df6f1' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g8e5d28fda0cf04d6d70392fa9580c2eb' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g615603d99ef3bb2a21b32e13761a1474' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g31a6def59f109d51a7e9af63a8850f0c' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ge8a1bf5b51ec0f7ef1e067f01d466033' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g1b67ba06b6b7daa4f73a163f404dd3d7' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g15f37e448cf7eabd56ec2c351f148214' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g2c1eb13f0c90da0f8ef4ef712db29f44' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g8568eb30743233bab6e1c2d530829f5f' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gf37b7182e24399515692cc4aa39722dd' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g7a9b4689f2fcd8d6a417a071903df6f1' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g8e5d28fda0cf04d6d70392fa9580c2eb' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g615603d99ef3bb2a21b32e13761a1474' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g31a6def59f109d51a7e9af63a8850f0c' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ge8a1bf5b51ec0f7ef1e067f01d466033' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g1b67ba06b6b7daa4f73a163f404dd3d7' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g15f37e448cf7eabd56ec2c351f148214' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gc4843a336042d90bbacea983a80e29b9' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g4881575010a0877aba5efab6f368ab8c' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g3c416b23f730c2e06cb5e9b257f1f571' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gf2e18583a2759c9d0f78b564f40eccd7' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g1b0f557b9e570f397ab13dcc24e09e35' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gebf16339184d6759f4cdfa9c1724fb98' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gf288953bef254a8e2221d778c28f7f97' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ge37f3f441742e70b1a701d92446e33fc' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g2624694e4157398ba344b90eca6ba070' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gac4c2937f0e28c7a00cfe90b4ad886a6' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_ga45e4b3770af5d15171055314b140838' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gedc84887915223f87986de6a67c0249d' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g203888bac468229094352b2bb9456417' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gbd9dcd9992cad1f6af326811da66fc9a' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g6adc8ee3a56fe88de97c3f40c484f824' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gdd54790aa13824ee1db3d0558a465071' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g5a31b290dd721358e4270d9686347dde' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g5a8776cef7d6ef88a11015d6ec2665ba' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g26f4378875ac801b1b5bb7a13f180f0a' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g33f198bcc4dd193c4f8c8db9049311d2' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g176d351f4b035de54e1fb9974c296bed' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g5b48402b525952efb744f5b2804d1957' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gbac492f503bff737e6a11c03e44e7ada' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g4a8c814a8cb7b92c919b23e1ea64d615' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g3cb3d7ddec167a30a5f7a159dea26c0f' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g72516630e1d745f5d1630b4c525cb5f8' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g98f394b1ddccfeb4d9b5edb6c1f8c652' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g41a40da9e1d42de8e76d999abd476f8a' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g22d2bd8775120d34e3b700682e67d955' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gd3e4d63450915ff27b8e506acb21bb2e' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gb647cf24b2b6ab2a0dd993ba4021447c' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gf20223185cc5c2a215cb6559231dd55b' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_geab4b93cc9d2f74f4c1859204fc9e694' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_gc0c5d8dc11fc35234e751fbc54a6a185' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g2e38d1d3a33b269e190fb0edd3fc3303' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__nr_g50388d5d50f760129a054ea526ed1c07' multiply def
+ined.
+
+
+LaTeX Warning: Label `group__processing_g7753a1dae883290ad0e5ba65147e9f13' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_gf546dfa71990db7bf7eeec36d8d60a59' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_g6c2a8696b49c25e4f29252c3a6d6ac3a' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_g21955fd76a7620b71f44fdd66356e04b' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_gca7f027c67eaec7448bb5df686b7b0d4' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_g5730568b109a13eb72680a14857dbbb9' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_ga79556cfe04c3b7c9c039fa1f277c901' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_g9eb43ef7c8ecd8d8f728efde9ba522a2' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_g516ea3a0590d5902fe107655b03db0c8' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_g1bfa87418a15d7f7e87d6b479c1dcb55' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_ga2774a6d8a9ea83cc4121e385f8e20ec' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_gbe1a2c0c3d7c8f256d3f3b2df2ade610' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_g1b4ba11635f5e3ec0ae70b6eaa858725' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_gd634d8b142407b14b2ed1784764025c0' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_gd99c4784aba9a6afaa18896c5736d60c' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__processing_g40fc552f6d97737b3521d75173f86597' mult
+iply defined.
+
+
+LaTeX Warning: Label `group__sim_g057113600a8f0d237093da56f7c6b490' multiply de
+fined.
+
+
+LaTeX Warning: Label `group__sim_g26762c236ebdbdf60197a9aa519bf6aa' multiply de
+fined.
+
+
+LaTeX Warning: Label `group__wave_g97c0e95c3559f400c84603c768307544' multiply d
+efined.
+
+
+LaTeX Warning: Label `group__wave_g6f575cd6ad7e547c4d55f530a003337a' multiply d
+efined.
+
+
+LaTeX Warning: Label `group__wave_gc330e9905065c7209c22251d86a20ef7' multiply d
+efined.
+
+
+LaTeX Warning: Label `group__wave_g6ce85ffae7051ec62a1f19ad23cbd6d5' multiply d
+efined.
+
+
+LaTeX Warning: Label `group__wave_g6f575cd6ad7e547c4d55f530a003337a' multiply d
+efined.
+
+
+LaTeX Warning: Label `group__wave_g6ce85ffae7051ec62a1f19ad23cbd6d5' multiply d
+efined.
+
+
+LaTeX Warning: Label `group__wave_gc330e9905065c7209c22251d86a20ef7' multiply d
+efined.
+
+
+LaTeX Warning: Label `group__wave_g97c0e95c3559f400c84603c768307544' multiply d
+efined.
+
+)
+\openout1 = `refman.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
+(/usr/share/texmf/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 17.
+(/usr/share/texmf/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+) (/usr/share/texmf/tex/context/base/supp-pdf.tex (/usr/share/texmf/tex/context
+/base/supp-mis.tex
+loading : Context Support Macros / Miscellaneous (2004.10.26)
+\protectiondepth=\count100
+\scratchcounter=\count101
+\scratchtoks=\toks18
+\scratchdimen=\dimen117
+\scratchskip=\skip59
+\scratchmuskip=\muskip10
+\scratchbox=\box54
+\scratchread=\read1
+\scratchwrite=\write4
+\zeropoint=\dimen118
+\onepoint=\dimen119
+\onebasepoint=\dimen120
+\minusone=\count102
+\thousandpoint=\dimen121
+\onerealpoint=\dimen122
+\emptytoks=\toks19
+\nextbox=\box55
+\nextdepth=\dimen123
+\everyline=\toks20
+\!!counta=\count103
+\!!countb=\count104
+\recursecounter=\count105
+)
+loading : Context Support Macros / PDF (2004.03.26)
+\nofMPsegments=\count106
+\nofMParguments=\count107
+\MPscratchCnt=\count108
+\MPscratchDim=\dimen124
+\MPnumerator=\count109
+\everyMPtoPDFconversion=\toks21
+) [1
+
+{/usr/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 29.
+(./refman.toc
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 2.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 74.
+[1] [2] [3] [4] [5] [6] [7] [8] [9])
+\tf@toc=\write5
+\openout5 = `refman.toc'.
+
+(./main.tex
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 9.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 18.
+(/usr/share/texmf/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+) [1]
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 21.
+(/usr/share/texmf/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+) [2]) (./licence.tex [3] [4] [5] [6]) (./modules.tex) (./annotated.tex [7]) (.
+/files.tex
+
+LaTeX Warning: Reference `bpm__defs_8h' on page 8 undefined on input line 3.
+
+
+LaTeX Warning: Reference `bpm__version_8h' on page 8 undefined on input line 5.
+
+
+
+LaTeX Warning: Reference `version_8c' on page 8 undefined on input line 6.
+
+
+LaTeX Warning: Reference `apply__filter_8c' on page 8 undefined on input line 1
+5.
+
+[8]
+
+LaTeX Warning: Reference `fftsg_8c' on page 9 undefined on input line 24.
+
+
+LaTeX Warning: Reference `bpm__evtnum_8c' on page 9 undefined on input line 33.
+
+
+
+LaTeX Warning: Reference `bpm__verbose_8c' on page 9 undefined on input line 35
+.
+
+[9]
+
+LaTeX Warning: Reference `get__bend_8c' on page 10 undefined on input line 66.
+
+[10] [11]) (./group__analysis.tex
+
+LaTeX Warning: Reference `bpm__defs_8h-source' on page 12 undefined on input li
+ne 6.
+
+[12]
+LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 94.
+[13] [14]) (./group__calib.tex [15]) (./group__orbit.tex [16] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
+[]\T1/ptm/m/n/10 References bpm_-error(), bunch-conf::bpmposition, bunch-conf::
+bpmslope, bunch-conf::bpmtilt,
+ []
+
+[18] [19] [20]) (./group__interface.tex [21] [22]) (./group__message.tex [23]
+Underfull \hbox (badness 10000) in paragraph at lines 49--51
+[]\T1/ptm/m/n/10 Referenced by _-expand_-complex_-polynomial(), add_-mode_-resp
+onse(), ana_-set_-cutfn(), apply_-
+ []
+
+
+Underfull \hbox (badness 1502) in paragraph at lines 49--51
+\T1/ptm/m/n/10 filter(), cal-i-brate(), check_-saturation(), com-plexfft(), com
+-plexwf(), complexwf_-add(), complexwf_-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--51
+\T1/ptm/m/n/10 add_-ampnoise(), complexwf_-add_-cwtone(), complexwf_-add_-dcywa
+ve(), complexwf_-add_-noise(),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--51
+\T1/ptm/m/n/10 complexwf_-add_-phasenoise(), complexwf_-bias(), complexwf_-comp
+at(), complexwf_-copy(),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--51
+\T1/ptm/m/n/10 complexwf_-copy_-new(), complexwf_-divide(), complexwf_-getamp()
+, complexwf_-getamp_-new(),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--51
+\T1/ptm/m/n/10 complexwf_-getimag(), complexwf_-getimag_-new(), complexwf_-getp
+hase(), complexwf_-getphase_-
+ []
+
+
+Underfull \hbox (badness 3439) in paragraph at lines 49--51
+\T1/ptm/m/n/10 new(), complexwf_-getreal(), complexwf_-getreal_-new(), complexw
+f_-multiply(), complexwf_-print(),
+ []
+
+
+Underfull \hbox (badness 4467) in paragraph at lines 49--51
+\T1/ptm/m/n/10 waveform(), ddc_-waveform(), digi-tise(), dou-blewf(), doublewf_
+-add(), doublewf_-add_-ampnoise(),
+ []
+
+
+Underfull \hbox (badness 1082) in paragraph at lines 49--51
+\T1/ptm/m/n/10 filter_-coeffs(), generate_-bpmsignal(), generate_-diodesignal()
+, get_-bpmhit(), get_-bpmhits(), get_-IQ(),
+ []
+
+[24]) (./group__nr.tex
+Underfull \hbox (badness 4001) in paragraph at lines 69--1
+\T1/ptm/m/n/10 complexwf_-setimag(), complexwf_-setreal(), complexwf_-subtract(
+), create_-filter(), doublewf_-add(),
+ []
+
+[25] [26]
+Underfull \hbox (badness 1946) in paragraph at lines 257--258
+[]\T1/ptm/m/n/10 EXTERN int \T1/ptm/b/n/10 nr_-lmder \T1/ptm/m/n/10 (void($\OMS
+/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 func)(double $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/
+10 p, dou-ble $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 hx, int m, int n, void $\OMS
+/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 adata),
+ []
+
+[27]
+Underfull \hbox (badness 2426) in paragraph at lines 392--393
+[]\T1/ptm/m/n/10 EXTERN void \T1/ptm/b/n/10 cblas_-dgemv \T1/ptm/m/n/10 (const 
+enum CBLAS_-ORDER or-der, const enum CBLAS_-
+ []
+
+[28]
+Underfull \hbox (badness 1881) in paragraph at lines 485--486
+[]\T1/ptm/m/n/10 Block size for cache-friendly matrix-matrix mul-ti-ply. It sho
+uld be such that _-_-BLOCKSZ_-_-
+ []
+
+[29] [30]
+Underfull \hbox (badness 10000) in paragraph at lines 587--588
+[]\T1/ptm/m/n/10 Fit data to a straight line. Nicked from nu-mer-i-cal recipes,
+ C15.2, p665 See:
+ []
+
+[31]
+Overfull \hbox (17.98227pt too wide) in paragraph at lines 631--632
+[]\T1/ptm/m/n/10 Perform an FFT, NR S12.2 pg507 See: \T1/pcr/m/n/10 http://www.
+library.cornell.edu/nr/cbookcpdf.html 
+ []
+
+[32] [33]
+Underfull \hbox (badness 3260) in paragraph at lines 742--744
+[]\T1/ptm/m/n/10 Referenced by complexwf_-add_-ampnoise(), complexwf_-add_-cwto
+ne(), complexwf_-add_-dcywave(),
+ []
+
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 801--803
+[]\T1/ptm/m/n/10 Referenced by gsl_-linalg_-householder_-hm(), gsl_-linalg_-hou
+seholder_-hm1(), and gsl_-linalg_-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 819--821
+[]\T1/ptm/m/n/10 Referenced by gsl_-linalg_-householder_-hm(), gsl_-linalg_-hou
+seholder_-hm1(), and gsl_-linalg_-
+ []
+
+[35] [36] [37]) (./group__rf.tex
+Underfull \hbox (badness 6348) in paragraph at lines 1026--1
+[]\T1/ptm/m/n/10 Referenced by gaussian_-filter_-coeffs(), intwf_-add_-ampnoise
+(), intwf_-add_-cwtone(), intwf_-add_-
+ []
+
+[38] [39] [40] [41] [42]) (./group__sim.tex [43]
+Underfull \hbox (badness 1496) in paragraph at lines 55--57
+[]\T1/ptm/m/n/10 EXTERN \T1/ptm/b/n/10 doublewf_-t $\OMS/cmsy/m/n/10 ^^C$ \T1/p
+tm/b/n/10 generate_-diodesignal \T1/ptm/m/n/10 (\T1/ptm/b/n/10 doublewf_-t $\OM
+S/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 rf, dou-ble sens, \T1/ptm/b/n/10 filter_-t $\O
+MS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 filt,
+ []
+
+[44]
+Underfull \hbox (badness 3849) in paragraph at lines 133--135
+[]\T1/ptm/m/n/10 References add_-mode_-response(), bunchconf::arrival_-time, bp
+m_-error(), bp-m-mode::buffer, beam-
+ []
+
+[45]
+Underfull \hbox (badness 1360) in paragraph at lines 153--154
+ \T1/ptm/b/n/10 6.8.3.5 EX-TERN complex_-t get_-mode_-amplitude (bpmconf_-t $\O
+MS/cmsy/m/n/10 ^^C$ \T1/ptm/b/it/10 bpm\T1/ptm/b/n/10 ,  bpmmode_-t $\OMS/cmsy/
+m/n/10 ^^C$ \T1/ptm/b/it/10 mode\T1/ptm/b/n/10 ,
+ []
+
+[46]
+Underfull \hbox (badness 10000) in paragraph at lines 201--203
+[]\T1/ptm/m/n/10 References apply_-filter(), BAND-PASS, bpm_-error(), complexwf
+_-reset(), complexwf_-setimag(),
+ []
+
+
+Underfull \hbox (badness 2088) in paragraph at lines 201--203
+\T1/ptm/m/n/10 doublewf_-scale(), bp-m-mode::frequency, complexwf_-t::fs, compl
+exwf_-t::ns, bp-m-mode::order, bp-m-
+ []
+
+[47]) (./group__dsp.tex [48] [49] [50]
+Overfull \hbox (107.04028pt too wide) detected at line 170
+\OML/cmm/m/it/10 X\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 k\OT1/cmr/m/n/10 ] = [] + [
+] \OML/cmm/m/it/10 Re\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 [\OML/c
+mm/m/it/10 j\OT1/cmr/m/n/10 ]) \OMS/cmsy/m/n/10 ^^C []\OT1/cmr/m/n/10 (2 \OMS/c
+msy/m/n/10 ^^C \OML/cmm/m/it/10 ^^Y \OMS/cmsy/m/n/10 ^^C \OML/cmm/m/it/10 j \OM
+S/cmsy/m/n/10 ^^C \OML/cmm/m/it/10 k=n\OT1/cmr/m/n/10 ) + [] \OML/cmm/m/it/10 I
+m\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 j\OT1/cmr
+/m/n/10 ]) \OMS/cmsy/m/n/10 ^^C []\OT1/cmr/m/n/10 (2 \OMS/cmsy/m/n/10 ^^C \OML/
+cmm/m/it/10 ^^Y \OMS/cmsy/m/n/10 ^^C \OML/cmm/m/it/10 j \OMS/cmsy/m/n/10 ^^C \O
+ML/cmm/m/it/10 k=n\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 0 \OML/cm
+m/m/it/10 <\OT1/cmr/m/n/10 = \OML/cmm/m/it/10 k < n
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--172
+[]\T1/ptm/m/n/10 C. S. Bur-rus, Notes on the FFT (with large FFT pa-per list)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 174--174
+ \T1/ptm/b/n/10 6.9.4.4 Copy-right state-ment for FFT rou-tines[] \T1/ptm/m/n/1
+0 Copy-right(C) 1996-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 174--174
+\T1/ptm/m/n/10 2001 Takuya OOURA email: \T1/pcr/m/n/10 ooura@mmm.t.u-tokyo.ac.j
+p \T1/ptm/m/n/10 down-load:
+ []
+
+
+Underfull \hbox (badness 7667) in paragraph at lines 174--174
+\T1/pcr/m/n/10 http://momonga.t.u-tokyo.ac.jp/$\OMS/cmsy/m/n/10 ^^X$\T1/pcr/m/n
+/10 ooura/fft.html \T1/ptm/m/n/10 You may use, copy, mod-ify
+ []
+
+[51]
+Overfull \hbox (26.61404pt too wide) in paragraph at lines 290--290
+[]      \T1/pcr/m/n/8 filter_t *butter = create_filter( "butter", BUTTERWORTH |
+ LOWPASS,4,ns,fs,6.*MHz,0.,0.);[] 
+ []
+
+
+Overfull \hbox (12.21404pt too wide) in paragraph at lines 290--290
+[]      \T1/pcr/m/n/8 filter_t *bessel = create_filter( "bessel", BESSEL | LOWP
+ASS,4,ns, fs,6.*MHz,0., 0.);[] 
+ []
+
+
+Overfull \hbox (26.61404pt too wide) in paragraph at lines 290--290
+[]      \T1/pcr/m/n/8 filter_t *cheby  = create_filter( "cheby",  CHEBYSHEV | L
+OWPASS,4,ns,fs,6.*MHz,0.,-10.);[] 
+ []
+
+[52]
+Overfull \hbox (2.61403pt too wide) in paragraph at lines 290--290
+[]        \T1/pcr/m/n/8 doublewf_add_dcywave( w, gen_amp, gen_phase, 21.4*MHz, 
+0.15*usec, 0.2*usec, 0. );[] 
+ []
+
+[53] [54] [55] [56] [57]
+Underfull \hbox (badness 1253) in paragraph at lines 649--651
+[]\T1/ptm/m/n/10 Referenced by calculate_-filter_-coefficients(), create_-reson
+ator_-representation(), and gaussian_-filter_-
+ []
+
+[58]
+Underfull \hbox (badness 4036) in paragraph at lines 706--707
+\T1/ptm/m/n/10 t::gauss_-cutoff, GAUS-SIAN, gaussian_-filter_-coeffs(), IIR, fi
+lter_-t::name, NO_-PREWARP, NON-
+ []
+
+
+Underfull \hbox (badness 2334) in paragraph at lines 706--707
+\T1/ptm/m/n/10 CAUSAL, normalise_-filter(), filterrep_-t::npoles, filter_-t::ns
+, filter_-t::options, filter_-t::order, filter_-
+ []
+
+[59] [60] [61] [62]
+Underfull \hbox (badness 5064) in paragraph at lines 898--899
+[]\T1/ptm/m/n/10 References BAND-PASS, BAND-STOP, bpm_-error(), HIGH-PASS, LOW-
+PASS, filterrep_-t::npoles,
+ []
+
+
+Underfull \hbox (badness 6493) in paragraph at lines 920--921
+[]\T1/ptm/m/n/10 References _-eval_-complex_-polynomial(), _-expand_-complex_-p
+olynomial(), filter_-t::alpha1, filter_-
+ []
+
+
+Underfull \hbox (badness 4752) in paragraph at lines 920--921
+\T1/ptm/m/n/10 filter_-t::hf_-gain, HIGH-PASS, LOW-PASS, MAXPZ, filterrep_-t::n
+poles, filter_-t::nxc, filter_-t::nyc,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 938--939
+[]\T1/ptm/m/n/10 References bpm_-error(), dround(), filter_-t::f1, filter_-t::f
+s, filter_-t::gain, filter_-t::gauss_-cutoff,
+ []
+
+[63] [64] [65]
+Underfull \hbox (badness 10000) in paragraph at lines 1069--1071
+[]\T1/ptm/m/n/10 References bpm_-error(), bpm_-warning(), FFT_-BACKWARD, FFT_-F
+ORWARD, complex_-t::im,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1085--1086
+[]\T1/ptm/m/n/10 References bpm_-error(), bpm_-warning(), FFT_-BACKWARD, FFT_-F
+ORWARD, complex_-t::im,
+ []
+
+[66]) (./group__processing.tex [67] [68]
+Overfull \hbox (21.81404pt too wide) in paragraph at lines 102--102
+[]    \T1/pcr/m/n/8 int process_dipole( doublewf_t *signal, bpmconf_t *bpm, bpm
+calib_t *cal, bpmproc_t *proc, 
+ []
+
+[69] [70] [71]
+Underfull \hbox (badness 1308) in paragraph at lines 266--268
+[]\T1/ptm/m/n/10 EXTERN int \T1/ptm/b/n/10 process_-monopole \T1/ptm/m/n/10 (\T
+1/ptm/b/n/10 doublewf_-t $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 signal, \T1/ptm/b
+/n/10 bpmconf_-t $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 bpm, \T1/ptm/b/n/10 bpmca
+lib_-t $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 cal,
+ []
+
+[72]
+Underfull \hbox (badness 10000) in paragraph at lines 337--339
+[]\T1/ptm/m/n/10 References bpm_-error(), bpmconf::cav_-type, diode, doublewf_-
+basic_-stats(), fit_-diodepulse(),
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 337--339
+\T1/ptm/m/n/10 bpmconf::forced_-trigger, doublewf_-t::fs, wfstat_-t::mean, bpm-
+conf::name, doublewf_-t::ns, wfstat_-
+ []
+
+[73]
+Underfull \hbox (badness 3942) in paragraph at lines 373--375
+[]\T1/ptm/m/n/10 References bpm_-error(), correct_-gain(), bpm-conf::name, post
+process_-waveform(), and process_-
+ []
+
+
+Underfull \hbox (badness 1024) in paragraph at lines 381--381
+[]\T1/ptm/m/n/10 PROC_-DO_-FFT : The Fourier Trans-form of the wave-form gets c
+om-puted and stored as a
+ []
+
+[74]
+Underfull \hbox (badness 5726) in paragraph at lines 395--396
+[]\T1/ptm/m/n/10 References bpm-proc::ampnoise, bpm_-error(), bpm_-warning(), b
+pmconf::cav_-decaytime, check_-
+ []
+
+
+Underfull \hbox (badness 6575) in paragraph at lines 395--396
+\T1/ptm/m/n/10 saturation(), bpm-proc::dc, bpmproc::ddc_-amp, bpmconf::ddc_-buf
+fer_-im, bpmconf::ddc_-buffer_-re,
+ []
+
+
+Underfull \hbox (badness 5985) in paragraph at lines 395--396
+\T1/ptm/m/n/10 waveform(), bpmproc::ddc_-success, bpmconf::ddc_-tdecay, bpmconf
+::ddc_-tOffset, bpmproc::ddc_-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
+\T1/ptm/m/n/10 tSample, ddc_-waveform(), bpmconf::digi_-freq, bpmconf::digi_-nb
+its, bpmconf::digi_-nsamples,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
+\T1/ptm/m/n/10 doublewf_-bias(), bpmproc::fft_-freq, bpmproc::fft_-success, bpm
+proc::fft_-tdecay, fft_-waveform(),
+ []
+
+
+Underfull \hbox (badness 3579) in paragraph at lines 395--396
+\T1/ptm/m/n/10 tdecay, bpmconf::fit_-tOffset, fit_-waveform(), bpm-proc::ft, ge
+t_-pedestal(), bpm-proc::iunsat, bpm-
+ []
+
+[75]
+Underfull \hbox (badness 10000) in paragraph at lines 419--420
+\T1/ptm/m/n/10 phase, bpmproc::ddc_-pos, bpmcalib::ddc_-posscale, bpmproc::ddc_
+-Q, bpmproc::ddc_-slope,
+ []
+
+
+Underfull \hbox (badness 2875) in paragraph at lines 419--420
+\T1/ptm/m/n/10 bpmcalib::ddc_-slopescale, bpmproc::ddc_-success, bpmproc::fit_-
+amp, bpmproc::fit_-I, bpmcalib::fit_-
+ []
+
+[76]
+Underfull \hbox (badness 10000) in paragraph at lines 443--445
+[]\T1/ptm/m/n/10 References bpm-proc::ampnoise, bpm_-error(), bpm_-warning(), c
+heck_-saturation(), bpm-proc::dc,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 443--445
+\T1/ptm/m/n/10 bpmproc::ddc_-amp, bpmconf::ddc_-buffer_-im, bpmconf::ddc_-buffe
+r_-re, bpmproc::ddc_-ct_-amp,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 443--445
+\T1/ptm/m/n/10 bpmconf::ddc_-ct_-filter, bpmconf::ddc_-ct_-freq, bpmconf::ddc_-
+ct_-iSample, bpmproc::ddc_-ct_-phase,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
+[]\T1/ptm/m/n/10 References bpm_-error(), bpmproc::ddc_-amp, bpmcalib::ddc_-ct_
+-amp, bpmproc::ddc_-ct_-amp,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
+\T1/ptm/m/n/10 bpmcalib::ddc_-ct_-phase, bpmproc::ddc_-ct_-phase, bpmproc::ddc_
+-phase, bpmproc::ddc_-success,
+ []
+
+[77] [78] [79] [80]
+Underfull \hbox (badness 1286) in paragraph at lines 610--611
+ \T1/ptm/b/n/10 6.10.7.15 EX-TERN int ddc_-waveform (doublewf_-t $\OMS/cmsy/m/n
+/10 ^^C$ \T1/ptm/b/it/10 w\T1/ptm/b/n/10 ,  dou-ble \T1/ptm/b/it/10 fre-quency\
+T1/ptm/b/n/10 ,  filter_-t $\OMS/cmsy/m/n/10 ^^C$ \T1/ptm/b/it/10 filt\T1/ptm/b
+/n/10 ,
+ []
+
+[81]
+Underfull \hbox (badness 5908) in paragraph at lines 672--673
+[]\T1/ptm/m/n/10 References bpm_-error(), bpm_-verbose, bpm_-warning(), doublew
+f_-t::fs, get_-pedestal(), nr_-fit(),
+ []
+
+[82]) (./group__wave.tex [83]
+Underfull \hbox (badness 1635) in paragraph at lines 11--11
+[]\T1/ptm/m/n/10 The bpmwf sub-li-brary im-ple-ments 3 wave-form types \T1/ptm/
+b/n/10 doublewf_-t \T1/ptm/m/n/10 (p.141[]), \T1/ptm/b/n/10 intwf_-t \T1/ptm/m/
+n/10 (p.149[]) and
+ []
+
+[84]
+Underfull \hbox (badness 6348) in paragraph at lines 87--88
+\T1/ptm/m/n/10 Here are some ex-am-ples of the dif-fer-ent in-ter-po-la-tion op
+-tions that one can give to the
+ []
+
+[85] [86] [87] [88] [89]
+Underfull \hbox (badness 3078) in paragraph at lines 450--452
+[]\T1/ptm/m/n/10 Referenced by complexwf_-getamp_-new(), complexwf_-getimag_-ne
+w(), complexwf_-getphase_-new(),
+ []
+
+
+Underfull \hbox (badness 1163) in paragraph at lines 450--452
+\T1/ptm/m/n/10 complexwf_-getreal_-new(), ddc_-initialise(), doublewf_-cast_-ne
+w(), doublewf_-copy_-new(), doublewf_-
+ []
+
+
+Underfull \hbox (badness 5217) in paragraph at lines 450--452
+\T1/ptm/m/n/10 frequency_-series(), doublewf_-sample_-series(), doublewf_-time_
+-series(), fit_-waveform(), generate_-
+ []
+
+[90] [91] [92]
+Underfull \hbox (badness 3735) in paragraph at lines 612--614
+[]\T1/ptm/m/n/10 Referenced by ddc_-cleanup(), fit_-waveform(), get_-mode_-resp
+onse(), intwf_-basic_-stats(), intwf_-
+ []
+
+[93]
+Underfull \hbox (badness 5711) in paragraph at lines 662--664
+[]\T1/ptm/m/n/10 Referenced by doublewf_-add(), doublewf_-copy(), doublewf_-div
+ide(), doublewf_-multiply(), and
+ []
+
+[94] [95] [96] [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [
+108] [109] [110] [111] [112] [113] [114]
+Underfull \hbox (badness 6300) in paragraph at lines 1696--1698
+[]\T1/ptm/m/n/10 References bpm_-error(), complexwf_-t::fs, complex_-t::im, com
+plexwf_-t::ns, complex_-t::re, and
+ []
+
+[115]
+Underfull \hbox (badness 2469) in paragraph at lines 1746--1748
+[]\T1/ptm/m/n/10 References bpm_-error(), bpm_-warning(), complexwf_-t::ns, dou
+blewf_-t::ns, complexwf_-t::wf, and
+ []
+
+[116]
+Underfull \hbox (badness 6608) in paragraph at lines 1810--1812
+[]\T1/ptm/m/n/10 References bpm_-error(), dou-blewf(), complexwf_-t::fs, comple
+xwf_-t::ns, complexwf_-t::wf, and
+ []
+
+[117]) (./structbeamconf.tex <structbeamconf__coll__graph.pdf, id=446, 82.3075p
+t x 102.3825pt>
+File: structbeamconf__coll__graph.pdf Graphic file (type pdf)
+<use structbeamconf__coll__graph.pdf> [118] [119 <./structbeamconf__coll__graph
+.pdf>] [120]) (./structbpmcalib.tex [121] [122]) (./structbpmconf.tex <structbp
+mconf__coll__graph.pdf, id=468, 392.46625pt x 365.365pt>
+File: structbpmconf__coll__graph.pdf Graphic file (type pdf)
+<use structbpmconf__coll__graph.pdf> [123] [124 <./structbpmconf__coll__graph.p
+df>] [125] [126] [127] [128] [129]) (./structbpmmode.tex <structbpmmode__coll__
+graph.pdf, id=498, 184.69pt x 174.6525pt>
+File: structbpmmode__coll__graph.pdf Graphic file (type pdf)
+<use structbpmmode__coll__graph.pdf> [130 <./structbpmmode__coll__graph.pdf>] [
+131]) (./structbpmproc.tex <structbpmproc__coll__graph.pdf, id=511, 92.345pt x 
+186.6975pt>
+File: structbpmproc__coll__graph.pdf Graphic file (type pdf)
+<use structbpmproc__coll__graph.pdf> [132 <./structbpmproc__coll__graph.pdf>] [
+133] [134] [135] [136]) (./structbunchconf.tex [137] [138] [139]) (./structcomp
+lex__t.tex) (./structcomplexwf__t.tex <structcomplexwf__t__coll__graph.pdf, id=
+543, 92.345pt x 102.3825pt>
+File: structcomplexwf__t__coll__graph.pdf Graphic file (type pdf)
+<use structcomplexwf__t__coll__graph.pdf> [140 <./structcomplexwf__t__coll__gra
+ph.pdf>]
+Underfull \hbox (badness 2326) in paragraph at lines 38--40
+[]\T1/ptm/m/n/10 Referenced by add_-mode_-response(), com-plexfft(), com-plexwf
+(), complexwf_-add(), complexwf_-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
+\T1/ptm/m/n/10 add_-ampnoise(), complexwf_-add_-cwtone(), complexwf_-add_-dcywa
+ve(), complexwf_-add_-noise(),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
+\T1/ptm/m/n/10 complexwf_-add_-phasenoise(), complexwf_-bias(), complexwf_-comp
+at(), complexwf_-copy(),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
+\T1/ptm/m/n/10 complexwf_-copy_-new(), complexwf_-divide(), complexwf_-getamp()
+, complexwf_-getamp_-new(),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
+\T1/ptm/m/n/10 complexwf_-getimag(), complexwf_-getimag_-new(), complexwf_-getp
+hase(), complexwf_-getphase_-
+ []
+
+
+Underfull \hbox (badness 3439) in paragraph at lines 38--40
+\T1/ptm/m/n/10 new(), complexwf_-getreal(), complexwf_-getreal_-new(), complexw
+f_-multiply(), complexwf_-print(),
+ []
+
+
+Underfull \hbox (badness 3668) in paragraph at lines 47--49
+[]\T1/ptm/m/n/10 Referenced by com-plexwf(), complexwf_-add_-cwtone(), complexw
+f_-add_-dcywave(), complexwf_-
+ []
+
+
+Underfull \hbox (badness 2326) in paragraph at lines 56--57
+[]\T1/ptm/m/n/10 Referenced by add_-mode_-response(), com-plexfft(), com-plexwf
+(), complexwf_-add(), complexwf_-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+\T1/ptm/m/n/10 add_-ampnoise(), complexwf_-add_-cwtone(), complexwf_-add_-dcywa
+ve(), complexwf_-add_-noise(),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+\T1/ptm/m/n/10 complexwf_-add_-phasenoise(), complexwf_-bias(), complexwf_-copy
+(), complexwf_-copy_-new(),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+\T1/ptm/m/n/10 complexwf_-delete(), complexwf_-divide(), complexwf_-getamp(), c
+omplexwf_-getamp_-new(),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
+\T1/ptm/m/n/10 complexwf_-getimag(), complexwf_-getimag_-new(), complexwf_-getp
+hase(), complexwf_-getphase_-
+ []
+
+
+Underfull \hbox (badness 3439) in paragraph at lines 56--57
+\T1/ptm/m/n/10 new(), complexwf_-getreal(), complexwf_-getreal_-new(), complexw
+f_-multiply(), complexwf_-print(),
+ []
+
+
+Underfull \hbox (badness 1264) in paragraph at lines 56--57
+\T1/ptm/m/n/10 setreal(), complexwf_-setvalues(), complexwf_-subset(), complexw
+f_-subtract(), downmix_-waveform(),
+ []
+
+) (./structdoublewf__t.tex [141]
+Underfull \hbox (badness 3492) in paragraph at lines 31--33
+\T1/ptm/m/n/10 doublewf_-sample_-series(), doublewf_-scale(), doublewf_-setvalu
+es(), doublewf_-subset(), doublewf_-
+ []
+
+
+Underfull \hbox (badness 8094) in paragraph at lines 31--33
+\T1/ptm/m/n/10 subtract(), doublewf_-time_-series(), downmix_-waveform(), fit_-
+waveform(), generate_-bpmsignal(),
+ []
+
+
+Underfull \hbox (badness 5161) in paragraph at lines 40--42
+[]\T1/ptm/m/n/10 Referenced by ddc(), digi-tise(), dou-blewf(), doublewf_-add_-
+cwtone(), doublewf_-add_-dcywave(),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+[]\T1/ptm/m/n/10 Referenced by add_-mode_-response(), apply_-filter(), check_-s
+aturation(), complexwf_-getamp(),
+ []
+
+
+Underfull \hbox (badness 3138) in paragraph at lines 49--50
+\T1/ptm/m/n/10 complexwf_-getphase_-new(), complexwf_-getreal(), complexwf_-get
+real_-new(), complexwf_-setimag(),
+ []
+
+
+Underfull \hbox (badness 5316) in paragraph at lines 49--50
+\T1/ptm/m/n/10 complexwf_-setreal(), ddc(), dou-blewf(), doublewf_-add(), doubl
+ewf_-add_-ampnoise(), doublewf_-
+ []
+
+
+Underfull \hbox (badness 2197) in paragraph at lines 49--50
+\T1/ptm/m/n/10 add_-cwtone(), doublewf_-add_-dcywave(), doublewf_-basic_-stats(
+), doublewf_-bias(), doublewf_-cast(),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+\T1/ptm/m/n/10 multiply(), doublewf_-print(), doublewf_-resample(), doublewf_-r
+eset(), doublewf_-sample_-series(),
+ []
+
+
+Underfull \hbox (badness 4242) in paragraph at lines 49--50
+\T1/ptm/m/n/10 doublewf_-scale(), doublewf_-setvalues(), doublewf_-subset(), do
+ublewf_-subtract(), doublewf_-time_-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+\T1/ptm/m/n/10 series(), downmix_-waveform(), filter_-impulse_-response(), filt
+er_-step_-response(), fit_-waveform(),
+ []
+
+[142]) (./structfilter__t.tex <structfilter__t__coll__graph.pdf, id=560, 142.53
+25pt x 204.765pt>
+File: structfilter__t__coll__graph.pdf Graphic file (type pdf)
+<use structfilter__t__coll__graph.pdf> [143 <./structfilter__t__coll__graph.pdf
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 105--107
+[]\T1/ptm/m/n/10 Referenced by apply_-filter(), calculate_-filter_-coefficients
+(), create_-filter(), create_-resonator_-
+ []
+
+[144] [145] [146] [147]
+Underfull \hbox (badness 3260) in paragraph at lines 362--364
+[]\T1/ptm/m/n/10 Referenced by apply_-filter(), create_-filter(), filter_-impul
+se_-response(), filter_-step_-response(), and
+ []
+
+) (./structfilterrep__t.tex <structfilterrep__t__coll__graph.pdf, id=583, 80.3p
+t x 114.4275pt>
+File: structfilterrep__t__coll__graph.pdf Graphic file (type pdf)
+<use structfilterrep__t__coll__graph.pdf> [148 <./structfilterrep__t__coll__gra
+ph.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 58--60
+[]\T1/ptm/m/n/10 Referenced by calculate_-filter_-coefficients(), create_-reson
+ator_-representation(), create_-splane_-
+ []
+
+) (./structintwf__t.tex [149]
+Underfull \hbox (badness 1184) in paragraph at lines 31--33
+[]\T1/ptm/m/n/10 Referenced by digi-tise(), doublewf_-cast(), doublewf_-cast_-n
+ew(), in-twf(), intwf_-add(), intwf_-add_-
+ []
+
+
+Underfull \hbox (badness 2318) in paragraph at lines 31--33
+\T1/ptm/m/n/10 intwf_-compat(), intwf_-copy(), intwf_-copy_-new(), intwf_-deriv
+e(), intwf_-divide(), intwf_-integrate(),
+ []
+
+
+Underfull \hbox (badness 1092) in paragraph at lines 40--42
+[]\T1/ptm/m/n/10 Referenced by digi-tise(), doublewf_-cast_-new(), in-twf(), in
+twf_-add_-cwtone(), intwf_-add_-dcywave(),
+ []
+
+
+Underfull \hbox (badness 1184) in paragraph at lines 49--50
+[]\T1/ptm/m/n/10 Referenced by digi-tise(), doublewf_-cast(), doublewf_-cast_-n
+ew(), in-twf(), intwf_-add(), intwf_-add_-
+ []
+
+) (./structlm__fstate.tex [150]) (./structm33.tex
+Underfull \hbox (badness 1178) in paragraph at lines 27--28
+[]\T1/ptm/m/n/10 Referenced by generate_-diodesignal(), m_-matadd(), m_-matmult
+(), m_-print(), m_-rotmat(), and v_-
+ []
+
+) (./structrfmodel.tex <structrfmodel__coll__graph.pdf, id=599, 184.69pt x 246.
+9225pt>
+File: structrfmodel__coll__graph.pdf Graphic file (type pdf)
+<use structrfmodel__coll__graph.pdf> [151]) (./structv3.tex [152 <./structrfmod
+el__coll__graph.pdf>]) (./structwfstat__t.tex [153] [154]) (./bpm__units_8h.tex
+<bpm__units_8h__incl.pdf, id=619, 114.4275pt x 88.33pt>
+File: bpm__units_8h__incl.pdf Graphic file (type pdf)
+<use bpm__units_8h__incl.pdf> [155 <./bpm__units_8h__incl.pdf>]) (./ana__comput
+e__residual_8c.tex <ana__compute__residual_8c__incl.pdf, id=629, 291.0875pt x 8
+8.33pt>
+File: ana__compute__residual_8c__incl.pdf Graphic file (type pdf)
+<use ana__compute__residual_8c__incl.pdf>) (./ana__def__cutfn_8c.tex <ana__def_
+_cutfn_8c__incl.pdf, id=630, 291.0875pt x 88.33pt>
+File: ana__def__cutfn_8c__incl.pdf Graphic file (type pdf)
+<use ana__def__cutfn_8c__incl.pdf> [156 <./ana__compute__residual_8c__incl.pdf>
+ <./ana__def__cutfn_8c__incl.pdf>]) (./ana__get__svd__coeffs_8c.tex <ana__get__
+svd__coeffs_8c__incl.pdf, id=646, 403.5075pt x 88.33pt>
+File: ana__get__svd__coeffs_8c__incl.pdf Graphic file (type pdf)
+<use ana__get__svd__coeffs_8c__incl.pdf>) (./ana__set__cutfn_8c.tex <ana__set__
+cutfn_8c__incl.pdf, id=647, 291.0875pt x 88.33pt>
+File: ana__set__cutfn_8c__incl.pdf Graphic file (type pdf)
+<use ana__set__cutfn_8c__incl.pdf>) (./bpm__analysis_8h.tex [157 <./ana__get__s
+vd__coeffs_8c__incl.pdf> <./ana__set__cutfn_8c__incl.pdf>] <bpm__analysis_8h__i
+ncl.pdf, id=663, 337.26pt x 88.33pt>
+File: bpm__analysis_8h__incl.pdf Graphic file (type pdf)
+<use bpm__analysis_8h__incl.pdf>) (./bpm__calibration_8h.tex [158 <./bpm__analy
+sis_8h__incl.pdf>] <bpm__calibration_8h__incl.pdf, id=673, 337.26pt x 88.33pt>
+File: bpm__calibration_8h__incl.pdf Graphic file (type pdf)
+<use bpm__calibration_8h__incl.pdf>) (./calibrate_8c.tex <calibrate_8c__incl.pd
+f, id=674, 419.5675pt x 88.33pt>
+File: calibrate_8c__incl.pdf Graphic file (type pdf)
+<use calibrate_8c__incl.pdf>) (./setup__calibration_8c.tex <setup__calibration_
+8c__incl.pdf, id=675, 307.1475pt x 88.33pt>
+File: setup__calibration_8c__incl.pdf Graphic file (type pdf)
+<use setup__calibration_8c__incl.pdf> [159 <./bpm__calibration_8h__incl.pdf> <.
+/calibrate_8c__incl.pdf>]) (./bpm__dsp_8h.tex <bpm__dsp_8h__incl.pdf, id=692, 7
+84.9325pt x 88.33pt>
+File: bpm__dsp_8h__incl.pdf Graphic file (type pdf)
+<use bpm__dsp_8h__incl.pdf> <bpm__dsp_8h__dep__incl.pdf, id=693, 194.7275pt x 8
+8.33pt>
+File: bpm__dsp_8h__dep__incl.pdf Graphic file (type pdf)
+<use bpm__dsp_8h__dep__incl.pdf> [160 <./setup__calibration_8c__incl.pdf> <./bp
+m__dsp_8h__incl.pdf> <./bpm__dsp_8h__dep__incl.pdf>] [161]) (./calculate__filte
+r__coefficients_8c.tex <calculate__filter__coefficients_8c__incl.pdf, id=718, 2
+26.8475pt x 88.33pt>
+File: calculate__filter__coefficients_8c__incl.pdf Graphic file (type pdf)
+<use calculate__filter__coefficients_8c__incl.pdf>) (./create__filter_8c.tex <c
+reate__filter_8c__incl.pdf, id=719, 256.96pt x 88.33pt>
+File: create__filter_8c__incl.pdf Graphic file (type pdf)
+<use create__filter_8c__incl.pdf> [162 <./calculate__filter__coefficients_8c__i
+ncl.pdf> <./create__filter_8c__incl.pdf>]) (./create__resonator__representation
+_8c.tex <create__resonator__representation_8c__incl.pdf, id=735, 256.96pt x 88.
+33pt>
+File: create__resonator__representation_8c__incl.pdf Graphic file (type pdf)
+<use create__resonator__representation_8c__incl.pdf>) (./create__splane__repres
+entation_8c.tex <create__splane__representation_8c__incl.pdf, id=736, 240.9pt x
+ 88.33pt>
+File: create__splane__representation_8c__incl.pdf Graphic file (type pdf)
+<use create__splane__representation_8c__incl.pdf>) (./ddc_8c.tex [163 <./create
+__resonator__representation_8c__incl.pdf> <./create__splane__representation_8c_
+_incl.pdf>] <ddc_8c__incl.pdf, id=752, 110.4125pt x 88.33pt>
+File: ddc_8c__incl.pdf Graphic file (type pdf)
+<use ddc_8c__incl.pdf>) (./delete__filter_8c.tex <delete__filter_8c__incl.pdf, 
+id=753, 142.5325pt x 88.33pt>
+File: delete__filter_8c__incl.pdf Graphic file (type pdf)
+<use delete__filter_8c__incl.pdf>) (./discrete__fourier__transforms_8c.tex <dis
+crete__fourier__transforms_8c__incl.pdf, id=754, 226.8475pt x 88.33pt>
+File: discrete__fourier__transforms_8c__incl.pdf Graphic file (type pdf)
+<use discrete__fourier__transforms_8c__incl.pdf> [164 <./ddc_8c__incl.pdf> <./d
+elete__filter_8c__incl.pdf>]) (./filter__impulse__response_8c.tex <filter__impu
+lse__response_8c__incl.pdf, id=770, 206.7725pt x 88.33pt>
+File: filter__impulse__response_8c__incl.pdf Graphic file (type pdf)
+<use filter__impulse__response_8c__incl.pdf>) (./filter__step__response_8c.tex 
+<filter__step__response_8c__incl.pdf, id=771, 186.6975pt x 88.33pt>
+File: filter__step__response_8c__incl.pdf Graphic file (type pdf)
+<use filter__step__response_8c__incl.pdf> [165 <./discrete__fourier__transforms
+_8c__incl.pdf> <./filter__impulse__response_8c__incl.pdf>]) (./gaussian__filter
+__coeffs_8c.tex <gaussian__filter__coeffs_8c__incl.pdf, id=788, 784.9325pt x 14
+6.5475pt>
+File: gaussian__filter__coeffs_8c__incl.pdf Graphic file (type pdf)
+<use gaussian__filter__coeffs_8c__incl.pdf>) (./norm__phase_8c.tex <norm__phase
+_8c__incl.pdf, id=789, 146.5475pt x 88.33pt>
+File: norm__phase_8c__incl.pdf Graphic file (type pdf)
+<use norm__phase_8c__incl.pdf> [166 <./filter__step__response_8c__incl.pdf> <./
+gaussian__filter__coeffs_8c__incl.pdf> <./norm__phase_8c__incl.pdf>]) (./normal
+ise__filter_8c.tex <normalise__filter_8c__incl.pdf, id=811, 162.6075pt x 88.33p
+t>
+File: normalise__filter_8c__incl.pdf Graphic file (type pdf)
+<use normalise__filter_8c__incl.pdf>) (./print__filter_8c.tex <print__filter_8c
+__incl.pdf, id=812, 132.495pt x 88.33pt>
+File: print__filter_8c__incl.pdf Graphic file (type pdf)
+<use print__filter_8c__incl.pdf>) (./print__filter__representation_8c.tex <prin
+t__filter__representation_8c__incl.pdf, id=813, 218.8175pt x 88.33pt>
+File: print__filter__representation_8c__incl.pdf Graphic file (type pdf)
+<use print__filter__representation_8c__incl.pdf> [167 <./normalise__filter_8c__
+incl.pdf> <./print__filter_8c__incl.pdf>]) (./zplane__transform_8c.tex <zplane_
+_transform_8c__incl.pdf, id=829, 174.6525pt x 88.33pt>
+File: zplane__transform_8c__incl.pdf Graphic file (type pdf)
+<use zplane__transform_8c__incl.pdf>) (./bpm__interface_8h.tex <bpm__interface_
+8h__incl.pdf, id=830, 564.1075pt x 88.33pt>
+File: bpm__interface_8h__incl.pdf Graphic file (type pdf)
+<use bpm__interface_8h__incl.pdf> [168 <./print__filter__representation_8c__inc
+l.pdf> <./zplane__transform_8c__incl.pdf>]) (./bpm__error_8c.tex <bpm__error_8c
+__incl.pdf, id=846, 367.3725pt x 88.33pt>
+File: bpm__error_8c__incl.pdf Graphic file (type pdf)
+<use bpm__error_8c__incl.pdf> [169 <./bpm__interface_8h__incl.pdf>]) (./bpm__me
+ssages_8h.tex <bpm__messages_8h__incl.pdf, id=856, 200.75pt x 88.33pt>
+File: bpm__messages_8h__incl.pdf Graphic file (type pdf)
+<use bpm__messages_8h__incl.pdf>) (./bpm__warning_8c.tex <bpm__warning_8c__incl
+.pdf, id=857, 367.3725pt x 88.33pt>
+File: bpm__warning_8c__incl.pdf Graphic file (type pdf)
+<use bpm__warning_8c__incl.pdf> [170 <./bpm__error_8c__incl.pdf> <./bpm__messag
+es_8h__incl.pdf>]) (./bpm__nr_8h.tex <bpm__nr_8h__incl.pdf, id=873, 471.7625pt 
+x 88.33pt>
+File: bpm__nr_8h__incl.pdf Graphic file (type pdf)
+<use bpm__nr_8h__incl.pdf> <bpm__nr_8h__dep__incl.pdf, id=874, 277.035pt x 88.3
+3pt>
+File: bpm__nr_8h__dep__incl.pdf Graphic file (type pdf)
+<use bpm__nr_8h__dep__incl.pdf> [171 <./bpm__warning_8c__incl.pdf> <./bpm__nr_8
+h__incl.pdf> <./bpm__nr_8h__dep__incl.pdf>] [172]
+Underfull \hbox (badness 1946) in paragraph at lines 228--229
+[]\T1/ptm/m/n/10 EXTERN int \T1/ptm/b/n/10 nr_-lmder \T1/ptm/m/n/10 (void($\OMS
+/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 func)(double $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/
+10 p, dou-ble $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 hx, int m, int n, void $\OMS
+/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 adata),
+ []
+
+[173]
+Underfull \hbox (badness 2426) in paragraph at lines 363--364
+[]\T1/ptm/m/n/10 EXTERN void \T1/ptm/b/n/10 cblas_-dgemv \T1/ptm/m/n/10 (const 
+enum CBLAS_-ORDER or-der, const enum CBLAS_-
+ []
+
+[174]) (./dround_8c.tex) (./gsl__blas_8c.tex <gsl__blas_8c__incl.pdf, id=906, 2
+58.9675pt x 88.33pt>
+File: gsl__blas_8c__incl.pdf Graphic file (type pdf)
+<use gsl__blas_8c__incl.pdf> [175]
+Underfull \hbox (badness 1184) in paragraph at lines 38--39
+[]\T1/ptm/m/n/10 void \T1/ptm/b/n/10 cblas_-dgemv \T1/ptm/m/n/10 (const enum CB
+LAS_-ORDER or-der, const enum CBLAS_-TRANSPOSE
+ []
+
+) (./gsl__block_8c.tex <gsl__block_8c__incl.pdf, id=910, 258.9675pt x 88.33pt>
+File: gsl__block_8c__incl.pdf Graphic file (type pdf)
+<use gsl__block_8c__incl.pdf>) (./gsl__eigen_8c.tex <gsl__eigen_8c__incl.pdf, i
+d=911, 258.9675pt x 88.33pt>
+File: gsl__eigen_8c__incl.pdf Graphic file (type pdf)
+<use gsl__eigen_8c__incl.pdf> [176 <./gsl__blas_8c__incl.pdf> <./gsl__block_8c_
+_incl.pdf>]) (./gsl__linalg_8c.tex <gsl__linalg_8c__incl.pdf, id=927, 258.9675p
+t x 88.33pt>
+File: gsl__linalg_8c__incl.pdf Graphic file (type pdf)
+<use gsl__linalg_8c__incl.pdf> [177 <./gsl__eigen_8c__incl.pdf> <./gsl__linalg_
+8c__incl.pdf>]) (./gsl__matrix_8c.tex <gsl__matrix_8c__incl.pdf, id=944, 258.96
+75pt x 88.33pt>
+File: gsl__matrix_8c__incl.pdf Graphic file (type pdf)
+<use gsl__matrix_8c__incl.pdf>) (./gsl__vector_8c.tex <gsl__vector_8c__incl.pdf
+, id=945, 258.9675pt x 88.33pt>
+File: gsl__vector_8c__incl.pdf Graphic file (type pdf)
+<use gsl__vector_8c__incl.pdf> [178 <./gsl__matrix_8c__incl.pdf>]) (./nr__check
+s_8c.tex <nr__checks_8c__incl.pdf, id=955, 258.9675pt x 88.33pt>
+File: nr__checks_8c__incl.pdf Graphic file (type pdf)
+<use nr__checks_8c__incl.pdf> [179 <./gsl__vector_8c__incl.pdf> <./nr__checks_8
+c__incl.pdf>]) (./nr__complex_8c.tex <nr__complex_8c__incl.pdf, id=971, 134.502
+5pt x 88.33pt>
+File: nr__complex_8c__incl.pdf Graphic file (type pdf)
+<use nr__complex_8c__incl.pdf>) (./nr__fit_8c.tex <nr__fit_8c__incl.pdf, id=972
+, 258.9675pt x 88.33pt>
+File: nr__fit_8c__incl.pdf Graphic file (type pdf)
+<use nr__fit_8c__incl.pdf> [180 <./nr__complex_8c__incl.pdf>]) (./nr__four1_8c.
+tex <nr__four1_8c__incl.pdf, id=982, 258.9675pt x 88.33pt>
+File: nr__four1_8c__incl.pdf Graphic file (type pdf)
+<use nr__four1_8c__incl.pdf>) (./nr__gammln_8c.tex <nr__gammln_8c__incl.pdf, id
+=983, 258.9675pt x 88.33pt>
+File: nr__gammln_8c__incl.pdf Graphic file (type pdf)
+<use nr__gammln_8c__incl.pdf> [181 <./nr__fit_8c__incl.pdf> <./nr__four1_8c__in
+cl.pdf> <./nr__gammln_8c__incl.pdf>]) (./nr__gammq_8c.tex <nr__gammq_8c__incl.p
+df, id=1005, 258.9675pt x 88.33pt>
+File: nr__gammq_8c__incl.pdf Graphic file (type pdf)
+<use nr__gammq_8c__incl.pdf>) (./nr__gcf_8c.tex <nr__gcf_8c__incl.pdf, id=1006,
+ 258.9675pt x 88.33pt>
+File: nr__gcf_8c__incl.pdf Graphic file (type pdf)
+<use nr__gcf_8c__incl.pdf>) (./nr__gser_8c.tex [182 <./nr__gammq_8c__incl.pdf> 
+<./nr__gcf_8c__incl.pdf>] <nr__gser_8c__incl.pdf, id=1022, 258.9675pt x 88.33pt
+>
+File: nr__gser_8c__incl.pdf Graphic file (type pdf)
+<use nr__gser_8c__incl.pdf>) (./nr__levmar_8c.tex
+Underfull \hbox (badness 1430) in paragraph at lines 12--13
+[]\T1/ptm/m/n/10 Levenberg - Mar-quardt non-linear min-i-miza-tion al-go-rithm 
+Copy-right (C) 2004 Mano-lis Lourakis
+ []
+
+<nr__levmar_8c__incl.pdf, id=1023, 258.9675pt x 88.33pt>
+File: nr__levmar_8c__incl.pdf Graphic file (type pdf)
+<use nr__levmar_8c__incl.pdf> [183 <./nr__gser_8c__incl.pdf> <./nr__levmar_8c__
+incl.pdf>]) (./nr__median_8c.tex <nr__median_8c__incl.pdf, id=1040, 258.9675pt 
+x 88.33pt>
+File: nr__median_8c__incl.pdf Graphic file (type pdf)
+<use nr__median_8c__incl.pdf>) (./nr__quadinterpol_8c.tex [184 <./nr__median_8c
+__incl.pdf>] <nr__quadinterpol_8c__incl.pdf, id=1050, 471.7625pt x 146.5475pt>
+File: nr__quadinterpol_8c__incl.pdf Graphic file (type pdf)
+<use nr__quadinterpol_8c__incl.pdf>) (./nr__ran1_8c.tex <nr__ran1_8c__incl.pdf,
+ id=1051, 112.42pt x 88.33pt>
+File: nr__ran1_8c__incl.pdf Graphic file (type pdf)
+<use nr__ran1_8c__incl.pdf>) (./nr__rangauss_8c.tex [185 <./nr__quadinterpol_8c
+__incl.pdf> <./nr__ran1_8c__incl.pdf>] <nr__rangauss_8c__incl.pdf, id=1067, 329
+.23pt x 88.33pt>
+File: nr__rangauss_8c__incl.pdf Graphic file (type pdf)
+<use nr__rangauss_8c__incl.pdf>) (./nr__ranuniform_8c.tex <nr__ranuniform_8c__i
+ncl.pdf, id=1068, 258.9675pt x 88.33pt>
+File: nr__ranuniform_8c__incl.pdf Graphic file (type pdf)
+<use nr__ranuniform_8c__incl.pdf>) (./nr__realft_8c.tex <nr__realft_8c__incl.pd
+f, id=1069, 258.9675pt x 88.33pt>
+File: nr__realft_8c__incl.pdf Graphic file (type pdf)
+<use nr__realft_8c__incl.pdf> [186 <./nr__rangauss_8c__incl.pdf> <./nr__ranunif
+orm_8c__incl.pdf> <./nr__realft_8c__incl.pdf>]) (./nr__seed_8c.tex <nr__seed_8c
+__incl.pdf, id=1091, 258.9675pt x 88.33pt>
+File: nr__seed_8c__incl.pdf Graphic file (type pdf)
+<use nr__seed_8c__incl.pdf>) (./nr__select_8c.tex <nr__select_8c__incl.pdf, id=
+1092, 258.9675pt x 88.33pt>
+File: nr__select_8c__incl.pdf Graphic file (type pdf)
+<use nr__select_8c__incl.pdf> [187 <./nr__seed_8c__incl.pdf>]) (./nr__sinc_8c.t
+ex <nr__sinc_8c__incl.pdf, id=1102, 471.7625pt x 146.5475pt>
+File: nr__sinc_8c__incl.pdf Graphic file (type pdf)
+<use nr__sinc_8c__incl.pdf>) (./bpm__orbit_8h.tex <bpm__orbit_8h__incl.pdf, id=
+1103, 465.74pt x 88.33pt>
+File: bpm__orbit_8h__incl.pdf Graphic file (type pdf)
+<use bpm__orbit_8h__incl.pdf> [188 <./nr__select_8c__incl.pdf> <./nr__sinc_8c__
+incl.pdf>]) (./get__bpmhit_8c.tex <get__bpmhit_8c__incl.pdf, id=1119, 423.5825p
+t x 88.33pt>
+File: get__bpmhit_8c__incl.pdf Graphic file (type pdf)
+<use get__bpmhit_8c__incl.pdf> [189 <./bpm__orbit_8h__incl.pdf> <./get__bpmhit_
+8c__incl.pdf>]) (./vm_8c.tex <vm_8c__incl.pdf, id=1136, 331.2375pt x 88.33pt>
+File: vm_8c__incl.pdf Graphic file (type pdf)
+<use vm_8c__incl.pdf>) (./bpm__process_8h.tex [190 <./vm_8c__incl.pdf>] <bpm__p
+rocess_8h__incl.pdf, id=1146, 638.385pt x 88.33pt>
+File: bpm__process_8h__incl.pdf Graphic file (type pdf)
+<use bpm__process_8h__incl.pdf>
+Underfull \hbox (badness 1308) in paragraph at lines 85--87
+[]\T1/ptm/m/n/10 EXTERN int \T1/ptm/b/n/10 process_-monopole \T1/ptm/m/n/10 (\T
+1/ptm/b/n/10 doublewf_-t $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 signal, \T1/ptm/b
+/n/10 bpmconf_-t $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 bpm, \T1/ptm/b/n/10 bpmca
+lib_-t $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 cal,
+ []
+
+[191 <./bpm__process_8h__incl.pdf>]) (./check__saturation_8c.tex <check__satura
+tion_8c__incl.pdf, id=1156, 433.62pt x 88.33pt>
+File: check__saturation_8c__incl.pdf Graphic file (type pdf)
+<use check__saturation_8c__incl.pdf>) (./correct__gain_8c.tex [192 <./check__sa
+turation_8c__incl.pdf>] <correct__gain_8c__incl.pdf, id=1166, 359.3425pt x 88.3
+3pt>
+File: correct__gain_8c__incl.pdf Graphic file (type pdf)
+<use correct__gain_8c__incl.pdf>) (./ddc__sample__waveform_8c.tex <ddc__sample_
+_waveform_8c__incl.pdf, id=1167, 560.0925pt x 88.33pt>
+File: ddc__sample__waveform_8c__incl.pdf Graphic file (type pdf)
+<use ddc__sample__waveform_8c__incl.pdf>) (./ddc__waveform_8c.tex [193 <./corre
+ct__gain_8c__incl.pdf> <./ddc__sample__waveform_8c__incl.pdf>] <ddc__waveform_8
+c__incl.pdf, id=1183, 560.0925pt x 88.33pt>
+File: ddc__waveform_8c__incl.pdf Graphic file (type pdf)
+<use ddc__waveform_8c__incl.pdf>) (./downmix__waveform_8c.tex <downmix__wavefor
+m_8c__incl.pdf, id=1184, 361.35pt x 88.33pt>
+File: downmix__waveform_8c__incl.pdf Graphic file (type pdf)
+<use downmix__waveform_8c__incl.pdf>) (./fft__waveform_8c.tex <fft__waveform_8c
+__incl.pdf, id=1185, 552.0625pt x 88.33pt>
+File: fft__waveform_8c__incl.pdf Graphic file (type pdf)
+<use fft__waveform_8c__incl.pdf> [194 <./ddc__waveform_8c__incl.pdf> <./downmix
+__waveform_8c__incl.pdf>]) (./fit__diodepulse_8c.tex <fit__diodepulse_8c__incl.
+pdf, id=1201, 289.08pt x 88.33pt>
+File: fit__diodepulse_8c__incl.pdf Graphic file (type pdf)
+<use fit__diodepulse_8c__incl.pdf>) (./fit__fft_8c.tex <fit__fft_8c__incl.pdf, 
+id=1202, 672.5125pt x 88.33pt>
+File: fit__fft_8c__incl.pdf Graphic file (type pdf)
+<use fit__fft_8c__incl.pdf> [195 <./fft__waveform_8c__incl.pdf> <./fit__diodepu
+lse_8c__incl.pdf>]) (./fit__waveform_8c.tex <fit__waveform_8c__incl.pdf, id=121
+9, 401.5pt x 88.33pt>
+File: fit__waveform_8c__incl.pdf Graphic file (type pdf)
+<use fit__waveform_8c__incl.pdf> [196 <./fit__fft_8c__incl.pdf> <./fit__wavefor
+m_8c__incl.pdf>]) (./get__IQ_8c.tex <get__IQ_8c__incl.pdf, id=1235, 289.08pt x 
+88.33pt>
+File: get__IQ_8c__incl.pdf Graphic file (type pdf)
+<use get__IQ_8c__incl.pdf>) (./get__pedestal_8c.tex <get__pedestal_8c__incl.pdf
+, id=1236, 361.35pt x 88.33pt>
+File: get__pedestal_8c__incl.pdf Graphic file (type pdf)
+<use get__pedestal_8c__incl.pdf>) (./get__pos_8c.tex [197 <./get__IQ_8c__incl.p
+df> <./get__pedestal_8c__incl.pdf>] <get__pos_8c__incl.pdf, id=1252, 289.08pt x
+ 88.33pt>
+File: get__pos_8c__incl.pdf Graphic file (type pdf)
+<use get__pos_8c__incl.pdf>) (./get__slope_8c.tex <get__slope_8c__incl.pdf, id=
+1253, 289.08pt x 88.33pt>
+File: get__slope_8c__incl.pdf Graphic file (type pdf)
+<use get__slope_8c__incl.pdf>) (./get__t0_8c.tex [198 <./get__pos_8c__incl.pdf>
+ <./get__slope_8c__incl.pdf>] <get__t0_8c__incl.pdf, id=1269, 546.04pt x 88.33p
+t>
+File: get__t0_8c__incl.pdf Graphic file (type pdf)
+<use get__t0_8c__incl.pdf>) (./postprocess__waveform_8c.tex <postprocess__wavef
+orm_8c__incl.pdf, id=1270, 479.7925pt x 88.33pt>
+File: postprocess__waveform_8c__incl.pdf Graphic file (type pdf)
+<use postprocess__waveform_8c__incl.pdf>) (./process__caltone_8c.tex [199 <./ge
+t__t0_8c__incl.pdf> <./postprocess__waveform_8c__incl.pdf>] <process__caltone_8
+c__incl.pdf, id=1286, 608.2725pt x 88.33pt>
+File: process__caltone_8c__incl.pdf Graphic file (type pdf)
+<use process__caltone_8c__incl.pdf>) (./process__diode_8c.tex <process__diode_8
+c__incl.pdf, id=1287, 359.3425pt x 88.33pt>
+File: process__diode_8c__incl.pdf Graphic file (type pdf)
+<use process__diode_8c__incl.pdf>) (./process__dipole_8c.tex <process__dipole_8
+c__incl.pdf, id=1288, 359.3425pt x 88.33pt>
+File: process__dipole_8c__incl.pdf Graphic file (type pdf)
+<use process__dipole_8c__incl.pdf> [200 <./process__caltone_8c__incl.pdf> <./pr
+ocess__diode_8c__incl.pdf>]) (./process__monopole_8c.tex <process__monopole_8c_
+_incl.pdf, id=1304, 487.8225pt x 88.33pt>
+File: process__monopole_8c__incl.pdf Graphic file (type pdf)
+<use process__monopole_8c__incl.pdf>) (./process__waveform_8c.tex <process__wav
+eform_8c__incl.pdf, id=1305, 608.2725pt x 88.33pt>
+File: process__waveform_8c__incl.pdf Graphic file (type pdf)
+<use process__waveform_8c__incl.pdf> [201 <./process__dipole_8c__incl.pdf> <./p
+rocess__monopole_8c__incl.pdf>]) (./bpm__rf_8h.tex <bpm__rf_8h__incl.pdf, id=13
+22, 449.68pt x 88.33pt>
+File: bpm__rf_8h__incl.pdf Graphic file (type pdf)
+<use bpm__rf_8h__incl.pdf> [202 <./process__waveform_8c__incl.pdf> <./bpm__rf_8
+h__incl.pdf>]) (./rf__addLO_8c.tex <rf__addLO_8c__incl.pdf, id=1338, 546.04pt x
+ 88.33pt>
+File: rf__addLO_8c__incl.pdf Graphic file (type pdf)
+<use rf__addLO_8c__incl.pdf>
+Underfull \hbox (badness 1132) in paragraph at lines 27--28
+[]\T1/ptm/m/n/10 int \T1/ptm/b/n/10 rf_-addLO \T1/ptm/m/n/10 (dou-ble amp, dou-
+ble lofreq, enum \T1/ptm/b/n/10 bpmphase_-t \T1/ptm/m/n/10 type, dou-ble phase,
+ dou-ble
+ []
+
+) (./rf__amplify_8c.tex <rf__amplify_8c__incl.pdf, id=1339, 473.77pt x 88.33pt>
+File: rf__amplify_8c__incl.pdf Graphic file (type pdf)
+<use rf__amplify_8c__incl.pdf> [203 <./rf__addLO_8c__incl.pdf> <./rf__amplify_8
+c__incl.pdf>]) (./rf__amplify__complex_8c.tex <rf__amplify__complex_8c__incl.pd
+f, id=1355, 473.77pt x 88.33pt>
+File: rf__amplify__complex_8c__incl.pdf Graphic file (type pdf)
+<use rf__amplify__complex_8c__incl.pdf>) (./rf__mixer_8c.tex <rf__mixer_8c__inc
+l.pdf, id=1356, 361.35pt x 88.33pt>
+File: rf__mixer_8c__incl.pdf Graphic file (type pdf)
+<use rf__mixer_8c__incl.pdf>) (./rf__phase__shifter_8c.tex [204 <./rf__amplify_
+_complex_8c__incl.pdf> <./rf__mixer_8c__incl.pdf>] <rf__phase__shifter_8c__incl
+.pdf, id=1372, 473.77pt x 88.33pt>
+File: rf__phase__shifter_8c__incl.pdf Graphic file (type pdf)
+<use rf__phase__shifter_8c__incl.pdf>) (./rf__rectify_8c.tex <rf__rectify_8c__i
+ncl.pdf, id=1373, 377.41pt x 88.33pt>
+File: rf__rectify_8c__incl.pdf Graphic file (type pdf)
+<use rf__rectify_8c__incl.pdf>) (./rf__setup_8c.tex [205 <./rf__phase__shifter_
+8c__incl.pdf> <./rf__rectify_8c__incl.pdf>] <rf__setup_8c__incl.pdf, id=1389, 3
+77.41pt x 88.33pt>
+File: rf__setup_8c__incl.pdf Graphic file (type pdf)
+<use rf__setup_8c__incl.pdf>) (./add__mode__response_8c.tex <add__mode__respons
+e_8c__incl.pdf, id=1390, 411.5375pt x 88.33pt>
+File: add__mode__response_8c__incl.pdf Graphic file (type pdf)
+<use add__mode__response_8c__incl.pdf>
+Underfull \hbox (badness 6220) in paragraph at lines 25--26
+[]\T1/ptm/m/n/10 int \T1/ptm/b/n/10 add_-mode_-response \T1/ptm/m/n/10 (\T1/ptm
+/b/n/10 bpmconf_-t $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 bpm, \T1/ptm/b/n/10 bpm
+mode_-t $\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 mode, \T1/ptm/b/n/10 bunchconf_-t 
+$\OMS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 bunch,
+ []
+
+) (./bpm__simulation_8h.tex [206 <./rf__setup_8c__incl.pdf> <./add__mode__respo
+nse_8c__incl.pdf>] <bpm__simulation_8h__incl.pdf, id=1406, 682.55pt x 88.33pt>
+File: bpm__simulation_8h__incl.pdf Graphic file (type pdf)
+<use bpm__simulation_8h__incl.pdf>
+Underfull \hbox (badness 1496) in paragraph at lines 51--53
+[]\T1/ptm/m/n/10 EXTERN \T1/ptm/b/n/10 doublewf_-t $\OMS/cmsy/m/n/10 ^^C$ \T1/p
+tm/b/n/10 generate_-diodesignal \T1/ptm/m/n/10 (\T1/ptm/b/n/10 doublewf_-t $\OM
+S/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 rf, dou-ble sens, \T1/ptm/b/n/10 filter_-t $\O
+MS/cmsy/m/n/10 ^^C$\T1/ptm/m/n/10 filt,
+ []
+
+) (./digitise_8c.tex [207 <./bpm__simulation_8h__incl.pdf>] <digitise_8c__incl.
+pdf, id=1417, 638.385pt x 88.33pt>
+File: digitise_8c__incl.pdf Graphic file (type pdf)
+<use digitise_8c__incl.pdf>) (./generate__bpmsignal_8c.tex <generate__bpmsignal
+_8c__incl.pdf, id=1418, 260.975pt x 88.33pt>
+File: generate__bpmsignal_8c__incl.pdf Graphic file (type pdf)
+<use generate__bpmsignal_8c__incl.pdf>) (./generate__diodesignal_8c.tex [208 <.
+/digitise_8c__incl.pdf> <./generate__bpmsignal_8c__incl.pdf>] <generate__diodes
+ignal_8c__incl.pdf, id=1434, 646.415pt x 88.33pt>
+File: generate__diodesignal_8c__incl.pdf Graphic file (type pdf)
+<use generate__diodesignal_8c__incl.pdf>) (./get__mode__amplitude_8c.tex <get__
+mode__amplitude_8c__incl.pdf, id=1435, 248.93pt x 88.33pt>
+File: get__mode__amplitude_8c__incl.pdf Graphic file (type pdf)
+<use get__mode__amplitude_8c__incl.pdf>) (./get__mode__response_8c.tex [209 <./
+generate__diodesignal_8c__incl.pdf> <./get__mode__amplitude_8c__incl.pdf>] <get
+__mode__response_8c__incl.pdf, id=1451, 531.9875pt x 88.33pt>
+File: get__mode__response_8c__incl.pdf Graphic file (type pdf)
+<use get__mode__response_8c__incl.pdf>) (./set__temp_8c.tex <set__temp_8c__incl
+.pdf, id=1452, 427.5975pt x 88.33pt>
+File: set__temp_8c__incl.pdf Graphic file (type pdf)
+<use set__temp_8c__incl.pdf>) (./set__time_8c.tex [210 <./get__mode__response_8
+c__incl.pdf> <./set__temp_8c__incl.pdf>] <set__time_8c__incl.pdf, id=1468, 427.
+5975pt x 88.33pt>
+File: set__time_8c__incl.pdf Graphic file (type pdf)
+<use set__time_8c__incl.pdf>) (./bpm__wf_8h.tex <bpm__wf_8h__incl.pdf, id=1469,
+ 794.97pt x 88.33pt>
+File: bpm__wf_8h__incl.pdf Graphic file (type pdf)
+<use bpm__wf_8h__incl.pdf> [211 <./set__time_8c__incl.pdf> <./bpm__wf_8h__incl.
+pdf>] [212] [213]) (./complexwf_8c.tex <complexwf_8c__incl.pdf, id=1492, 222.83
+25pt x 88.33pt>
+File: complexwf_8c__incl.pdf Graphic file (type pdf)
+<use complexwf_8c__incl.pdf> [214 <./complexwf_8c__incl.pdf>]) (./doublewf_8c.t
+ex <doublewf_8c__incl.pdf, id=1502, 122.4575pt x 88.33pt>
+File: doublewf_8c__incl.pdf Graphic file (type pdf)
+<use doublewf_8c__incl.pdf> [215 <./doublewf_8c__incl.pdf>]) (./freq__to__sampl
+e_8c.tex <freq__to__sample_8c__incl.pdf, id=1512, 289.08pt x 88.33pt>
+File: freq__to__sample_8c__incl.pdf Graphic file (type pdf)
+<use freq__to__sample_8c__incl.pdf>) (./intwf_8c.tex <intwf_8c__incl.pdf, id=15
+13, 102.3825pt x 88.33pt>
+File: intwf_8c__incl.pdf Graphic file (type pdf)
+<use intwf_8c__incl.pdf> [216 <./freq__to__sample_8c__incl.pdf>]) (./sample__to
+__freq_8c.tex <sample__to__freq_8c__incl.pdf, id=1523, 289.08pt x 88.33pt>
+File: sample__to__freq_8c__incl.pdf Graphic file (type pdf)
+<use sample__to__freq_8c__incl.pdf> [217 <./intwf_8c__incl.pdf>]) (./sample__to
+__time_8c.tex <sample__to__time_8c__incl.pdf, id=1533, 289.08pt x 88.33pt>
+File: sample__to__time_8c__incl.pdf Graphic file (type pdf)
+<use sample__to__time_8c__incl.pdf>) (./time__to__sample_8c.tex <time__to__samp
+le_8c__incl.pdf, id=1534, 289.08pt x 88.33pt>
+File: time__to__sample_8c__incl.pdf Graphic file (type pdf)
+<use time__to__sample_8c__incl.pdf> [218 <./sample__to__freq_8c__incl.pdf> <./s
+ample__to__time_8c__incl.pdf> <./time__to__sample_8c__incl.pdf>]) (./wfstats_8c
+.tex <wfstats_8c__incl.pdf, id=1556, 110.4125pt x 88.33pt>
+File: wfstats_8c__incl.pdf Graphic file (type pdf)
+<use wfstats_8c__incl.pdf>) (./refman.ind [219 <./wfstats_8c__incl.pdf>] [220
+
+] [221] [222] [223] [224] [225] [226] [227] [228] [229] [230] [231] [232] [233]
+[234
+
+]) (./refman.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4188 strings out of 94500
+ 88860 string characters out of 1176766
+ 92500 words of memory out of 1000000
+ 6784 multiletter control sequences out of 10000+50000
+ 35319 words of font info for 41 fonts, out of 500000 for 2000
+ 580 hyphenation exceptions out of 1000
+ 36i,12n,43p,3402b,394s stack positions out of 1500i,500n,5000p,200000b,5000s
+PDF statistics:
+ 1613 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 571 words of extra memory for PDF output out of 65536
+</usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/typ
+e1/bluesky/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr5.pfb></usr
+/share/texmf/fonts/type1/bluesky/cm/cmmi5.pfb></usr/share/texmf/fonts/type1/blu
+esky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/sha
+re/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesk
+y/cm/cmsy7.pfb>{/usr/share/texmf/fonts/enc/dvips/psnfss/8r.enc}</usr/share/texm
+f/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
+sy10.pfb></usr/share/texmf/fonts/type1/urw/times/utmri8a.pfb></usr/share/texmf/
+fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf/fonts/type1/urw/times/utmb
+8a.pfb></usr/share/texmf/fonts/type1/urw/times/utmr8a.pfb>
+Output written on refman.pdf (244 pages, 975647 bytes).

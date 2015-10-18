@@ -1,0 +1,82 @@
+\subsection{bpmnr/nr\_\-levmar.c File Reference}
+\label{nr__levmar_8c}\index{bpmnr/nr\_\-levmar.c@{bpmnr/nr\_\-levmar.c}}
+
+
+\subsubsection{Detailed Description}
+These routines have been written by : and were released under GPL
+
+Manolis Lourakis Institute of Computer Science, Foundation for Research and Technology - Hellas, Heraklion, Crete, Greece
+
+//////////////////////////////////////////////////////////////////////////////
+
+Levenberg - Marquardt non-linear minimization algorithm Copyright (C) 2004 Manolis Lourakis ({\tt lourakis@ics.forth.gr}) Institute of Computer Science, Foundation for Research \& Technology - Hellas Heraklion, Crete, Greece.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+//////////////////////////////////////////////////////////////////////////////
+
+Changes: BM. Modified the names of the routines somewhat to have them correspond to the rest of libbpm 
+
+Definition in file {\bf nr\_\-levmar.c}.
+
+{\tt \#include $<$bpm/bpm\_\-messages.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-nr.h$>$}\par
+
+
+Include dependency graph for nr\_\-levmar.c:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=147pt]{nr__levmar_8c__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define \textbf{\_\-\_\-MIN\_\-\_\-}(x, y)\label{nr__levmar_8c_dd73ec9a0a73a097f8b71a96880aee73}
+
+\item 
+\#define \textbf{\_\-\_\-MAX\_\-\_\-}(x, y)\label{nr__levmar_8c_d2fc73ab898a3b72dda204a835aad51b}
+
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+void \textbf{nr\_\-trans\_\-mat\_\-mat\_\-mult} (double $\ast$a, double $\ast$b, int n, int m)\label{group__nr_gb647cf24b2b6ab2a0dd993ba4021447c}
+
+\item 
+void \textbf{nr\_\-fdif\_\-forw\_\-jac\_\-approx} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$hx, double $\ast$hxx, double delta, double $\ast$jac, int m, int n, void $\ast$adata)\label{group__nr_gf20223185cc5c2a215cb6559231dd55b}
+
+\item 
+void \textbf{nr\_\-fdif\_\-cent\_\-jac\_\-approx} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$hxm, double $\ast$hxp, double delta, double $\ast$jac, int m, int n, void $\ast$adata)\label{group__nr_geab4b93cc9d2f74f4c1859204fc9e694}
+
+\item 
+void \textbf{nr\_\-lmchkjac} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), void($\ast$jacf)(double $\ast$p, double $\ast$j, int m, int n, void $\ast$adata), double $\ast$p, int m, int n, void $\ast$adata, double $\ast$err)\label{group__nr_gc0c5d8dc11fc35234e751fbc54a6a185}
+
+\item 
+int \textbf{nr\_\-lmcovar} (double $\ast$JtJ, double $\ast$C, double sumsq, int m, int n)\label{group__nr_g2e38d1d3a33b269e190fb0edd3fc3303}
+
+\item 
+int \textbf{nr\_\-lmder} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), void($\ast$jacf)(double $\ast$p, double $\ast$j, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$x, int m, int n, int itmax, double opts[4], double info[LM\_\-INFO\_\-SZ], double $\ast$work, double $\ast$covar, void $\ast$adata)\label{nr__levmar_8c_4e3627752472ab793c8c484b1a69c87e}
+
+\item 
+int \textbf{nr\_\-lmdif} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$x, int m, int n, int itmax, double opts[5], double info[LM\_\-INFO\_\-SZ], double $\ast$work, double $\ast$covar, void $\ast$adata)\label{nr__levmar_8c_70e64815dc077832e55d0e97747f3a2d}
+
+\item 
+int \textbf{nr\_\-ax\_\-eq\_\-b\_\-LU} (double $\ast$A, double $\ast$B, double $\ast$x, int m)\label{group__nr_g50388d5d50f760129a054ea526ed1c07}
+
+\item 
+int \textbf{nr\_\-lmder\_\-bc} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), void($\ast$jacf)(double $\ast$p, double $\ast$j, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$x, int m, int n, double $\ast$lb, double $\ast$ub, int itmax, double opts[4], double info[LM\_\-INFO\_\-SZ], double $\ast$work, double $\ast$covar, void $\ast$adata)\label{nr__levmar_8c_1a6631bd454e7f929d3d6f050d090f48}
+
+\item 
+void \textbf{lmbc\_\-dif\_\-func} (double $\ast$p, double $\ast$hx, int m, int n, void $\ast$data)\label{nr__levmar_8c_353a1c2f31d7a4ba23bf49de06f11887}
+
+\item 
+void \textbf{lmbc\_\-dif\_\-jacf} (double $\ast$p, double $\ast$jac, int m, int n, void $\ast$data)\label{nr__levmar_8c_afc1acb2a7b662755edf7b0cb0985e75}
+
+\item 
+int \textbf{nr\_\-lmdif\_\-bc} (void($\ast$func)(double $\ast$p, double $\ast$hx, int m, int n, void $\ast$adata), double $\ast$p, double $\ast$x, int m, int n, double $\ast$lb, double $\ast$ub, int itmax, double opts[5], double info[LM\_\-INFO\_\-SZ], double $\ast$work, double $\ast$covar, void $\ast$adata)\label{nr__levmar_8c_5218f124b704f39964d9c12592e7f629}
+
+\end{CompactItemize}

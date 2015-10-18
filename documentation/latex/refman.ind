@@ -1,0 +1,1581 @@
+\begin{theindex}
+
+  \item {\_\-\_\-LM\_\-BLOCKSZ\_\-\_\-}
+    \subitem {nr}, 29
+  \item {\_\-\_\-LM\_\-MEDIAN3}
+    \subitem {nr}, 30
+  \item {\_\-eval\_\-complex\_\-polynomial}
+    \subitem {dsp}, 64
+  \item {\_\-expand\_\-complex\_\-polynomial}
+    \subitem {dsp}, 64
+
+  \indexspace
+
+  \item {add\_\-mode\_\-response}
+    \subitem {sim}, 45
+  \item {ALLPASS}
+    \subitem {dsp}, 57
+  \item {alpha1}
+    \subitem {filter\_\-t}, 145
+  \item {alpha2}
+    \subitem {filter\_\-t}, 145
+  \item {ambient\_\-temp}
+    \subitem {sim}, 48
+  \item {ampnoise}
+    \subitem {bpmproc}, 133
+  \item {ana\_\-compute\_\-residual}
+    \subitem {analysis}, 14
+  \item {ana\_\-cutfn}
+    \subitem {analysis}, 14
+  \item {ana\_\-def\_\-cutfn}
+    \subitem {analysis}, 14
+  \item {ana\_\-get\_\-svd\_\-coeffs}
+    \subitem {analysis}, 13
+  \item {ana\_\-set\_\-cutfn}
+    \subitem {analysis}, 13
+  \item {ANA\_\-SVD\_\-NOTILT}
+    \subitem {analysis}, 13
+  \item {ANA\_\-SVD\_\-TILT}
+    \subitem {analysis}, 13
+  \item {analysis}
+    \subitem {ana\_\-compute\_\-residual}, 14
+    \subitem {ana\_\-cutfn}, 14
+    \subitem {ana\_\-def\_\-cutfn}, 14
+    \subitem {ana\_\-get\_\-svd\_\-coeffs}, 13
+    \subitem {ana\_\-set\_\-cutfn}, 13
+    \subitem {ANA\_\-SVD\_\-NOTILT}, 13
+    \subitem {ANA\_\-SVD\_\-TILT}, 13
+    \subitem {BPM\_\-BAD\_\-EVENT}, 12
+    \subitem {BPM\_\-GOOD\_\-EVENT}, 12
+  \item {Analysis routines}, 12
+  \item {ANTICAUSAL}
+    \subitem {dsp}, 56
+  \item {apply\_\-filter}
+    \subitem {dsp}, 59
+  \item {arrival\_\-time}
+    \subitem {bunchconf}, 139
+
+  \indexspace
+
+  \item {BANDPASS}
+    \subitem {dsp}, 57
+  \item {BANDSTOP}
+    \subitem {dsp}, 57
+  \item {Beam orbit generation}, 16
+  \item {beamconf}, 118
+    \subitem {beamrate}, 119
+    \subitem {bunch}, 120
+    \subitem {bunchlength}, 120
+    \subitem {bunchlengthsigma}, 121
+    \subitem {bunchrate}, 119
+    \subitem {charge}, 121
+    \subitem {chargesigma}, 121
+    \subitem {energy}, 121
+    \subitem {energysigma}, 121
+    \subitem {nbunches}, 120
+    \subitem {position}, 120
+    \subitem {positionsigma}, 120
+    \subitem {slope}, 120
+    \subitem {slopesigma}, 120
+    \subitem {tilt}, 120
+    \subitem {tiltsigma}, 120
+    \subitem {train\_\-num}, 119
+  \item {beamconf\_\-t}
+    \subitem {interface}, 21
+  \item {beamrate}
+    \subitem {beamconf}, 119
+  \item {BESSEL}
+    \subitem {dsp}, 55
+  \item {BILINEAR\_\-Z\_\-TRANSFORM}
+    \subitem {dsp}, 56
+  \item {bipolar}
+    \subitem {interface}, 22
+  \item {BPM Processing Routines}, 67
+  \item {BPM signal simulation routines}, 43
+  \item {BPM\_\-BAD\_\-EVENT}
+    \subitem {analysis}, 12
+  \item {bpm\_\-error}
+    \subitem {message}, 23
+  \item {BPM\_\-GOOD\_\-EVENT}
+    \subitem {analysis}, 12
+  \item {bpm\_\-rseed}
+    \subitem {nr\_\-seed.c}, 187
+  \item {bpm\_\-units.h}, 155
+  \item {bpm\_\-verbose}
+    \subitem {interface}, 23
+  \item {bpm\_\-warning}
+    \subitem {message}, 24
+  \item {bpmanalysis/ana\_\-compute\_\-residual.c}, 156
+  \item {bpmanalysis/ana\_\-def\_\-cutfn.c}, 156
+  \item {bpmanalysis/ana\_\-get\_\-svd\_\-coeffs.c}, 157
+  \item {bpmanalysis/ana\_\-set\_\-cutfn.c}, 157
+  \item {bpmanalysis/bpm\_\-analysis.h}, 158
+  \item {bpmcalib}, 121
+    \subitem {ddc\_\-ct\_\-amp}, 122
+    \subitem {ddc\_\-ct\_\-phase}, 122
+    \subitem {ddc\_\-IQphase}, 122
+    \subitem {ddc\_\-posscale}, 122
+    \subitem {ddc\_\-slopescale}, 122
+    \subitem {fit\_\-ct\_\-amp}, 123
+    \subitem {fit\_\-ct\_\-phase}, 123
+    \subitem {fit\_\-IQphase}, 122
+    \subitem {fit\_\-posscale}, 122
+    \subitem {fit\_\-slopescale}, 123
+  \item {bpmcalib\_\-t}
+    \subitem {interface}, 21
+  \item {bpmcalibration/bpm\_\-calibration.h}, 158
+  \item {bpmcalibration/calibrate.c}, 159
+  \item {bpmcalibration/setup\_\-calibration.c}, 159
+  \item {bpmconf}, 123
+    \subitem {cav\_\-chargesens}, 126
+    \subitem {cav\_\-decaytime}, 126
+    \subitem {cav\_\-freq}, 126
+    \subitem {cav\_\-iqrotation}, 126
+    \subitem {cav\_\-length}, 126
+    \subitem {cav\_\-phase}, 126
+    \subitem {cav\_\-phasetype}, 125
+    \subitem {cav\_\-polarisation}, 125
+    \subitem {cav\_\-possens}, 126
+    \subitem {cav\_\-tiltsens}, 126
+    \subitem {cav\_\-type}, 125
+    \subitem {ddc\_\-buffer\_\-im}, 130
+    \subitem {ddc\_\-buffer\_\-re}, 129
+    \subitem {ddc\_\-ct\_\-filter}, 129
+    \subitem {ddc\_\-ct\_\-freq}, 128
+    \subitem {ddc\_\-ct\_\-iSample}, 129
+    \subitem {ddc\_\-filter}, 128
+    \subitem {ddc\_\-freq}, 128
+    \subitem {ddc\_\-tdecay}, 128
+    \subitem {ddc\_\-tOffset}, 128
+    \subitem {digi\_\-ampnoise}, 127
+    \subitem {digi\_\-freq}, 127
+    \subitem {digi\_\-nbits}, 127
+    \subitem {digi\_\-nsamples}, 127
+    \subitem {digi\_\-phasenoise}, 127
+    \subitem {digi\_\-trigtimeoffset}, 127
+    \subitem {digi\_\-voltageoffset}, 127
+    \subitem {diode\_\-idx}, 129
+    \subitem {fit\_\-inifreq}, 128
+    \subitem {fit\_\-initdecay}, 128
+    \subitem {fit\_\-tOffset}, 128
+    \subitem {forced\_\-trigger}, 129
+    \subitem {geom\_\-pos}, 129
+    \subitem {geom\_\-tilt}, 129
+    \subitem {name}, 125
+    \subitem {ref\_\-idx}, 129
+    \subitem {rf\_\-LOfreq}, 126
+    \subitem {t0}, 127
+  \item {bpmconf\_\-t}
+    \subitem {interface}, 21
+  \item {bpmdsp/bpm\_\-dsp.h}, 160
+  \item {bpmdsp/calculate\_\-filter\_\-coefficients.c}, 162
+  \item {bpmdsp/create\_\-filter.c}, 162
+  \item {bpmdsp/create\_\-resonator\_\-representation.c}, 163
+  \item {bpmdsp/create\_\-splane\_\-representation.c}, 163
+  \item {bpmdsp/ddc.c}, 163
+  \item {bpmdsp/delete\_\-filter.c}, 164
+  \item {bpmdsp/discrete\_\-fourier\_\-transforms.c}, 164
+  \item {bpmdsp/filter\_\-impulse\_\-response.c}, 165
+  \item {bpmdsp/filter\_\-step\_\-response.c}, 165
+  \item {bpmdsp/gaussian\_\-filter\_\-coeffs.c}, 166
+  \item {bpmdsp/norm\_\-phase.c}, 166
+  \item {bpmdsp/normalise\_\-filter.c}, 167
+  \item {bpmdsp/print\_\-filter.c}, 167
+  \item {bpmdsp/print\_\-filter\_\-representation.c}, 167
+  \item {bpmdsp/zplane\_\-transform.c}, 168
+  \item {bpminterface/bpm\_\-interface.h}, 168
+  \item {bpmmessages/bpm\_\-error.c}, 169
+  \item {bpmmessages/bpm\_\-messages.h}, 170
+  \item {bpmmessages/bpm\_\-warning.c}, 170
+  \item {bpmmode}, 130
+    \subitem {buffer}, 131
+    \subitem {frequency}, 131
+    \subitem {name}, 130
+    \subitem {order}, 131
+    \subitem {polarisation}, 131
+    \subitem {Q}, 131
+    \subitem {response}, 131
+    \subitem {sensitivity}, 131
+  \item {bpmnr/bpm\_\-nr.h}, 171
+  \item {bpmnr/dround.c}, 175
+  \item {bpmnr/gsl\_\-blas.c}, 175
+  \item {bpmnr/gsl\_\-block.c}, 176
+  \item {bpmnr/gsl\_\-eigen.c}, 176
+  \item {bpmnr/gsl\_\-linalg.c}, 177
+  \item {bpmnr/gsl\_\-matrix.c}, 178
+  \item {bpmnr/gsl\_\-vector.c}, 178
+  \item {bpmnr/nr\_\-checks.c}, 179
+  \item {bpmnr/nr\_\-complex.c}, 180
+  \item {bpmnr/nr\_\-fit.c}, 180
+  \item {bpmnr/nr\_\-four1.c}, 181
+  \item {bpmnr/nr\_\-gammln.c}, 181
+  \item {bpmnr/nr\_\-gammq.c}, 182
+  \item {bpmnr/nr\_\-gcf.c}, 182
+  \item {bpmnr/nr\_\-gser.c}, 182
+  \item {bpmnr/nr\_\-levmar.c}, 183
+  \item {bpmnr/nr\_\-median.c}, 184
+  \item {bpmnr/nr\_\-quadinterpol.c}, 185
+  \item {bpmnr/nr\_\-ran1.c}, 185
+  \item {bpmnr/nr\_\-rangauss.c}, 185
+  \item {bpmnr/nr\_\-ranuniform.c}, 186
+  \item {bpmnr/nr\_\-realft.c}, 186
+  \item {bpmnr/nr\_\-seed.c}, 187
+  \item {bpmnr/nr\_\-select.c}, 187
+  \item {bpmnr/nr\_\-sinc.c}, 188
+  \item {bpmorbit/bpm\_\-orbit.h}, 188
+  \item {bpmorbit/get\_\-bpmhit.c}, 189
+  \item {bpmorbit/vm.c}, 190
+  \item {bpmphase\_\-t}
+    \subitem {interface}, 22
+  \item {bpmpol\_\-t}
+    \subitem {interface}, 22
+  \item {bpmposition}
+    \subitem {bunchconf}, 139
+  \item {bpmproc}, 132
+    \subitem {ampnoise}, 133
+    \subitem {dc}, 133
+    \subitem {ddc\_\-amp}, 135
+    \subitem {ddc\_\-ct\_\-amp}, 136
+    \subitem {ddc\_\-ct\_\-phase}, 136
+    \subitem {ddc\_\-I}, 135
+    \subitem {ddc\_\-iSample}, 135
+    \subitem {ddc\_\-phase}, 135
+    \subitem {ddc\_\-pos}, 135
+    \subitem {ddc\_\-Q}, 135
+    \subitem {ddc\_\-slope}, 135
+    \subitem {ddc\_\-success}, 134
+    \subitem {ddc\_\-tdecay}, 135
+    \subitem {ddc\_\-tSample}, 134
+    \subitem {fft\_\-amp}, 134
+    \subitem {fft\_\-freq}, 134
+    \subitem {fft\_\-offset}, 134
+    \subitem {fft\_\-success}, 134
+    \subitem {fft\_\-tdecay}, 134
+    \subitem {fit\_\-amp}, 136
+    \subitem {fit\_\-ct\_\-amp}, 137
+    \subitem {fit\_\-ct\_\-phase}, 137
+    \subitem {fit\_\-freq}, 137
+    \subitem {fit\_\-I}, 136
+    \subitem {fit\_\-offset}, 137
+    \subitem {fit\_\-phase}, 136
+    \subitem {fit\_\-pos}, 137
+    \subitem {fit\_\-Q}, 136
+    \subitem {fit\_\-slope}, 137
+    \subitem {fit\_\-success}, 136
+    \subitem {fit\_\-tdecay}, 137
+    \subitem {ft}, 134
+    \subitem {iunsat}, 133
+    \subitem {saturated}, 133
+    \subitem {t0}, 133
+    \subitem {voltageoffset}, 133
+  \item {bpmproc\_\-t}
+    \subitem {interface}, 21
+  \item {bpmprocess/bpm\_\-process.h}, 190
+  \item {bpmprocess/check\_\-saturation.c}, 192
+  \item {bpmprocess/correct\_\-gain.c}, 192
+  \item {bpmprocess/ddc\_\-sample\_\-waveform.c}, 193
+  \item {bpmprocess/ddc\_\-waveform.c}, 193
+  \item {bpmprocess/downmix\_\-waveform.c}, 194
+  \item {bpmprocess/fft\_\-waveform.c}, 194
+  \item {bpmprocess/fit\_\-diodepulse.c}, 195
+  \item {bpmprocess/fit\_\-fft.c}, 195
+  \item {bpmprocess/fit\_\-waveform.c}, 196
+  \item {bpmprocess/get\_\-IQ.c}, 197
+  \item {bpmprocess/get\_\-pedestal.c}, 197
+  \item {bpmprocess/get\_\-pos.c}, 198
+  \item {bpmprocess/get\_\-slope.c}, 198
+  \item {bpmprocess/get\_\-t0.c}, 198
+  \item {bpmprocess/postprocess\_\-waveform.c}, 199
+  \item {bpmprocess/process\_\-caltone.c}, 199
+  \item {bpmprocess/process\_\-diode.c}, 200
+  \item {bpmprocess/process\_\-dipole.c}, 200
+  \item {bpmprocess/process\_\-monopole.c}, 201
+  \item {bpmprocess/process\_\-waveform.c}, 201
+  \item {bpmrf/bpm\_\-rf.h}, 202
+  \item {bpmrf/rf\_\-addLO.c}, 203
+  \item {bpmrf/rf\_\-amplify.c}, 203
+  \item {bpmrf/rf\_\-amplify\_\-complex.c}, 204
+  \item {bpmrf/rf\_\-mixer.c}, 204
+  \item {bpmrf/rf\_\-phase\_\-shifter.c}, 205
+  \item {bpmrf/rf\_\-rectify.c}, 205
+  \item {bpmrf/rf\_\-setup.c}, 205
+  \item {bpmsimulation/add\_\-mode\_\-response.c}, 206
+  \item {bpmsimulation/bpm\_\-simulation.h}, 206
+  \item {bpmsimulation/digitise.c}, 208
+  \item {bpmsimulation/generate\_\-bpmsignal.c}, 208
+  \item {bpmsimulation/generate\_\-diodesignal.c}, 209
+  \item {bpmsimulation/get\_\-mode\_\-amplitude.c}, 209
+  \item {bpmsimulation/get\_\-mode\_\-response.c}, 209
+  \item {bpmsimulation/set\_\-temp.c}, 210
+  \item {bpmsimulation/set\_\-time.c}, 210
+  \item {bpmslope}
+    \subitem {bunchconf}, 139
+  \item {bpmtilt}
+    \subitem {bunchconf}, 139
+  \item {bpmtype\_\-t}
+    \subitem {interface}, 22
+  \item {bpmwf/bpm\_\-wf.h}, 211
+  \item {bpmwf/complexwf.c}, 214
+  \item {bpmwf/doublewf.c}, 215
+  \item {bpmwf/freq\_\-to\_\-sample.c}, 216
+  \item {bpmwf/intwf.c}, 216
+  \item {bpmwf/sample\_\-to\_\-freq.c}, 217
+  \item {bpmwf/sample\_\-to\_\-time.c}, 218
+  \item {bpmwf/time\_\-to\_\-sample.c}, 218
+  \item {bpmwf/wfstats.c}, 219
+  \item {buffer}
+    \subitem {bpmmode}, 131
+  \item {bunch}
+    \subitem {beamconf}, 120
+  \item {bunch\_\-num}
+    \subitem {bunchconf}, 138
+  \item {bunchconf}, 138
+    \subitem {arrival\_\-time}, 139
+    \subitem {bpmposition}, 139
+    \subitem {bpmslope}, 139
+    \subitem {bpmtilt}, 139
+    \subitem {bunch\_\-num}, 138
+    \subitem {energy}, 138
+    \subitem {energyspread}, 138
+    \subitem {length}, 138
+    \subitem {position}, 139
+    \subitem {slope}, 139
+    \subitem {tilt}, 139
+    \subitem {train\_\-num}, 138
+  \item {bunchconf\_\-t}
+    \subitem {interface}, 22
+  \item {bunchlength}
+    \subitem {beamconf}, 120
+  \item {bunchlengthsigma}
+    \subitem {beamconf}, 121
+  \item {bunchrate}
+    \subitem {beamconf}, 119
+  \item {BUTTERWORTH}
+    \subitem {dsp}, 55
+
+  \indexspace
+
+  \item {calculate\_\-filter\_\-coefficients}
+    \subitem {dsp}, 63
+  \item {calib}
+    \subitem {calibrate}, 16
+    \subitem {setup\_\-calibration}, 15
+  \item {calibrate}
+    \subitem {calib}, 16
+  \item {Calibration routines}, 15
+  \item {CAUSAL}
+    \subitem {dsp}, 56
+  \item {cav\_\-chargesens}
+    \subitem {bpmconf}, 126
+  \item {cav\_\-decaytime}
+    \subitem {bpmconf}, 126
+  \item {cav\_\-freq}
+    \subitem {bpmconf}, 126
+  \item {cav\_\-iqrotation}
+    \subitem {bpmconf}, 126
+  \item {cav\_\-length}
+    \subitem {bpmconf}, 126
+  \item {cav\_\-phase}
+    \subitem {bpmconf}, 126
+  \item {cav\_\-phasetype}
+    \subitem {bpmconf}, 125
+  \item {cav\_\-polarisation}
+    \subitem {bpmconf}, 125
+  \item {cav\_\-possens}
+    \subitem {bpmconf}, 126
+  \item {cav\_\-tiltsens}
+    \subitem {bpmconf}, 126
+  \item {cav\_\-type}
+    \subitem {bpmconf}, 125
+  \item {charge}
+    \subitem {beamconf}, 121
+  \item {chargesigma}
+    \subitem {beamconf}, 121
+  \item {cheb\_\-ripple}
+    \subitem {filter\_\-t}, 145
+  \item {CHEBYSHEV}
+    \subitem {dsp}, 55
+  \item {check\_\-saturation}
+    \subitem {processing}, 80
+  \item {complex\_\-t}, 140
+  \item {complexfft}
+    \subitem {dsp}, 66
+  \item {complexwf}
+    \subitem {wave}, 108
+  \item {complexwf\_\-add}
+    \subitem {wave}, 111
+  \item {complexwf\_\-add\_\-ampnoise}
+    \subitem {wave}, 114
+  \item {complexwf\_\-add\_\-cwtone}
+    \subitem {wave}, 113
+  \item {complexwf\_\-add\_\-dcywave}
+    \subitem {wave}, 113
+  \item {complexwf\_\-add\_\-noise}
+    \subitem {wave}, 114
+  \item {complexwf\_\-add\_\-phasenoise}
+    \subitem {wave}, 114
+  \item {complexwf\_\-bias}
+    \subitem {wave}, 112
+  \item {complexwf\_\-compat}
+    \subitem {wave}, 110
+  \item {complexwf\_\-copy}
+    \subitem {wave}, 108
+  \item {complexwf\_\-copy\_\-new}
+    \subitem {wave}, 108
+  \item {complexwf\_\-delete}
+    \subitem {wave}, 110
+  \item {complexwf\_\-divide}
+    \subitem {wave}, 112
+  \item {complexwf\_\-getamp}
+    \subitem {wave}, 116
+  \item {complexwf\_\-getamp\_\-new}
+    \subitem {wave}, 117
+  \item {complexwf\_\-getimag}
+    \subitem {wave}, 115
+  \item {complexwf\_\-getimag\_\-new}
+    \subitem {wave}, 117
+  \item {complexwf\_\-getphase}
+    \subitem {wave}, 116
+  \item {complexwf\_\-getphase\_\-new}
+    \subitem {wave}, 117
+  \item {complexwf\_\-getreal}
+    \subitem {wave}, 115
+  \item {complexwf\_\-getreal\_\-new}
+    \subitem {wave}, 116
+  \item {complexwf\_\-multiply}
+    \subitem {wave}, 111
+  \item {complexwf\_\-print}
+    \subitem {wave}, 115
+  \item {complexwf\_\-reset}
+    \subitem {wave}, 110
+  \item {complexwf\_\-scale}
+    \subitem {wave}, 112
+  \item {complexwf\_\-setfunction}
+    \subitem {wave}, 109
+  \item {complexwf\_\-setimag}
+    \subitem {wave}, 118
+  \item {complexwf\_\-setreal}
+    \subitem {wave}, 118
+  \item {complexwf\_\-setvalues}
+    \subitem {wave}, 109
+  \item {complexwf\_\-subset}
+    \subitem {wave}, 109
+  \item {complexwf\_\-subtract}
+    \subitem {wave}, 111
+  \item {complexwf\_\-t}, 140
+    \subitem {fs}, 141
+    \subitem {ns}, 141
+    \subitem {wf}, 141
+  \item {correct\_\-gain}
+    \subitem {processing}, 77
+  \item {cplane}
+    \subitem {filter\_\-t}, 146
+  \item {create\_\-filter}
+    \subitem {dsp}, 58
+  \item {create\_\-resonator\_\-representation}
+    \subitem {dsp}, 61
+  \item {create\_\-splane\_\-representation}
+    \subitem {dsp}, 61
+
+  \indexspace
+
+  \item {dc}
+    \subitem {bpmproc}, 133
+  \item {dc\_\-gain}
+    \subitem {filter\_\-t}, 146
+  \item {ddc}
+    \subitem {dsp}, 65
+  \item {ddc\_\-amp}
+    \subitem {bpmproc}, 135
+  \item {ddc\_\-buffer\_\-im}
+    \subitem {bpmconf}, 130
+  \item {ddc\_\-buffer\_\-re}
+    \subitem {bpmconf}, 129
+  \item {ddc\_\-cleanup}
+    \subitem {dsp}, 65
+  \item {ddc\_\-ct\_\-amp}
+    \subitem {bpmcalib}, 122
+    \subitem {bpmproc}, 136
+  \item {ddc\_\-ct\_\-filter}
+    \subitem {bpmconf}, 129
+  \item {ddc\_\-ct\_\-freq}
+    \subitem {bpmconf}, 128
+  \item {ddc\_\-ct\_\-iSample}
+    \subitem {bpmconf}, 129
+  \item {ddc\_\-ct\_\-phase}
+    \subitem {bpmcalib}, 122
+    \subitem {bpmproc}, 136
+  \item {ddc\_\-filter}
+    \subitem {bpmconf}, 128
+  \item {ddc\_\-freq}
+    \subitem {bpmconf}, 128
+  \item {ddc\_\-I}
+    \subitem {bpmproc}, 135
+  \item {ddc\_\-initialise}
+    \subitem {dsp}, 64
+  \item {ddc\_\-IQphase}
+    \subitem {bpmcalib}, 122
+  \item {ddc\_\-iSample}
+    \subitem {bpmproc}, 135
+  \item {ddc\_\-phase}
+    \subitem {bpmproc}, 135
+  \item {ddc\_\-pos}
+    \subitem {bpmproc}, 135
+  \item {ddc\_\-posscale}
+    \subitem {bpmcalib}, 122
+  \item {ddc\_\-Q}
+    \subitem {bpmproc}, 135
+  \item {ddc\_\-sample\_\-waveform}
+    \subitem {processing}, 81
+  \item {ddc\_\-slope}
+    \subitem {bpmproc}, 135
+  \item {ddc\_\-slopescale}
+    \subitem {bpmcalib}, 122
+  \item {ddc\_\-success}
+    \subitem {bpmproc}, 134
+  \item {ddc\_\-tdecay}
+    \subitem {bpmconf}, 128
+    \subitem {bpmproc}, 135
+  \item {ddc\_\-tOffset}
+    \subitem {bpmconf}, 128
+  \item {ddc\_\-tSample}
+    \subitem {bpmproc}, 134
+  \item {ddc\_\-waveform}
+    \subitem {processing}, 81
+  \item {delete\_\-filter}
+    \subitem {dsp}, 60
+  \item {digi\_\-ampnoise}
+    \subitem {bpmconf}, 127
+  \item {digi\_\-freq}
+    \subitem {bpmconf}, 127
+  \item {digi\_\-nbits}
+    \subitem {bpmconf}, 127
+  \item {digi\_\-nsamples}
+    \subitem {bpmconf}, 127
+  \item {digi\_\-phasenoise}
+    \subitem {bpmconf}, 127
+  \item {digi\_\-trigtimeoffset}
+    \subitem {bpmconf}, 127
+  \item {digi\_\-voltageoffset}
+    \subitem {bpmconf}, 127
+  \item {Digital Signal Processing Routines}, 48
+  \item {digitise}
+    \subitem {sim}, 47
+  \item {diode}
+    \subitem {interface}, 22
+  \item {diode\_\-idx}
+    \subitem {bpmconf}, 129
+  \item {dipole}
+    \subitem {interface}, 22
+  \item {doublewf}
+    \subitem {wave}, 89
+  \item {doublewf\_\-add}
+    \subitem {wave}, 94
+  \item {doublewf\_\-add\_\-ampnoise}
+    \subitem {wave}, 97
+  \item {doublewf\_\-add\_\-cwtone}
+    \subitem {wave}, 96
+  \item {doublewf\_\-add\_\-dcywave}
+    \subitem {wave}, 96
+  \item {doublewf\_\-basic\_\-stats}
+    \subitem {wave}, 97
+  \item {doublewf\_\-bias}
+    \subitem {wave}, 96
+  \item {doublewf\_\-cast}
+    \subitem {wave}, 102
+  \item {doublewf\_\-cast\_\-new}
+    \subitem {wave}, 102
+  \item {doublewf\_\-compat}
+    \subitem {wave}, 94
+  \item {doublewf\_\-copy}
+    \subitem {wave}, 91
+  \item {doublewf\_\-copy\_\-new}
+    \subitem {wave}, 92
+  \item {doublewf\_\-delete}
+    \subitem {wave}, 93
+  \item {doublewf\_\-derive}
+    \subitem {wave}, 97
+  \item {doublewf\_\-divide}
+    \subitem {wave}, 95
+  \item {doublewf\_\-frequency\_\-series}
+    \subitem {wave}, 90
+  \item {doublewf\_\-getvalue}
+    \subitem {wave}, 98
+  \item {doublewf\_\-integrate}
+    \subitem {wave}, 98
+  \item {doublewf\_\-multiply}
+    \subitem {wave}, 95
+  \item {doublewf\_\-print}
+    \subitem {wave}, 98
+  \item {doublewf\_\-resample}
+    \subitem {wave}, 99
+  \item {doublewf\_\-reset}
+    \subitem {wave}, 92
+  \item {doublewf\_\-sample\_\-series}
+    \subitem {wave}, 90
+  \item {doublewf\_\-scale}
+    \subitem {wave}, 95
+  \item {doublewf\_\-setfunction}
+    \subitem {wave}, 91
+  \item {doublewf\_\-setvalues}
+    \subitem {wave}, 91
+  \item {doublewf\_\-subset}
+    \subitem {wave}, 92
+  \item {doublewf\_\-subtract}
+    \subitem {wave}, 94
+  \item {doublewf\_\-t}, 141
+    \subitem {fs}, 142
+    \subitem {ns}, 142
+    \subitem {wf}, 142
+  \item {doublewf\_\-time\_\-series}
+    \subitem {wave}, 90
+  \item {downmix\_\-waveform}
+    \subitem {processing}, 80
+  \item {dround}
+    \subitem {nr}, 38
+  \item {dsp}
+    \subitem {\_\-eval\_\-complex\_\-polynomial}, 64
+    \subitem {\_\-expand\_\-complex\_\-polynomial}, 64
+    \subitem {ALLPASS}, 57
+    \subitem {ANTICAUSAL}, 56
+    \subitem {apply\_\-filter}, 59
+    \subitem {BANDPASS}, 57
+    \subitem {BANDSTOP}, 57
+    \subitem {BESSEL}, 55
+    \subitem {BILINEAR\_\-Z\_\-TRANSFORM}, 56
+    \subitem {BUTTERWORTH}, 55
+    \subitem {calculate\_\-filter\_\-coefficients}, 63
+    \subitem {CAUSAL}, 56
+    \subitem {CHEBYSHEV}, 55
+    \subitem {complexfft}, 66
+    \subitem {create\_\-filter}, 58
+    \subitem {create\_\-resonator\_\-representation}, 61
+    \subitem {create\_\-splane\_\-representation}, 61
+    \subitem {ddc}, 65
+    \subitem {ddc\_\-cleanup}, 65
+    \subitem {ddc\_\-initialise}, 64
+    \subitem {delete\_\-filter}, 60
+    \subitem {FFT\_\-BACKWARD}, 58
+    \subitem {fft\_\-cleanup}, 66
+    \subitem {FFT\_\-FORWARD}, 58
+    \subitem {fft\_\-gen\_\-tables}, 65
+    \subitem {fft\_\-initialise}, 65
+    \subitem {FILT\_\-EPS}, 58
+    \subitem {filter\_\-impulse\_\-response}, 60
+    \subitem {filter\_\-step\_\-response}, 60
+    \subitem {FIR}, 57
+    \subitem {GAUSSIAN}, 56
+    \subitem {gaussian\_\-filter\_\-coeffs}, 63
+    \subitem {GAUSSIAN\_\-SIGMA\_\-BW}, 56
+    \subitem {HIGHPASS}, 57
+    \subitem {IIR}, 57
+    \subitem {LOWPASS}, 57
+    \subitem {MATCHED\_\-Z\_\-TRANSFORM}, 56
+    \subitem {MAX\_\-RESONATOR\_\-ITER}, 58
+    \subitem {MAXORDER}, 58
+    \subitem {MAXPZ}, 58
+    \subitem {NO\_\-PREWARP}, 56
+    \subitem {NONCAUSAL}, 56
+    \subitem {norm\_\-phase}, 66
+    \subitem {normalise\_\-filter}, 62
+    \subitem {NOTCH}, 57
+    \subitem {print\_\-filter}, 59
+    \subitem {print\_\-filter\_\-representation}, 62
+    \subitem {RAISEDCOSINE}, 55
+    \subitem {realfft}, 66
+    \subitem {RESONATOR}, 55
+    \subitem {zplane\_\-transform}, 62
+
+  \indexspace
+
+  \item {e}
+    \subitem {m33}, 151
+  \item {energy}
+    \subitem {beamconf}, 121
+    \subitem {bunchconf}, 138
+  \item {energysigma}
+    \subitem {beamconf}, 121
+  \item {energyspread}
+    \subitem {bunchconf}, 138
+  \item {Error/warning messages}, 23
+
+  \indexspace
+
+  \item {f1}
+    \subitem {filter\_\-t}, 144
+  \item {f2}
+    \subitem {filter\_\-t}, 144
+  \item {fc\_\-gain}
+    \subitem {filter\_\-t}, 146
+  \item {fft\_\-amp}
+    \subitem {bpmproc}, 134
+  \item {FFT\_\-BACKWARD}
+    \subitem {dsp}, 58
+  \item {fft\_\-cleanup}
+    \subitem {dsp}, 66
+  \item {FFT\_\-FORWARD}
+    \subitem {dsp}, 58
+  \item {fft\_\-freq}
+    \subitem {bpmproc}, 134
+  \item {fft\_\-gen\_\-tables}
+    \subitem {dsp}, 65
+  \item {fft\_\-initialise}
+    \subitem {dsp}, 65
+  \item {fft\_\-offset}
+    \subitem {bpmproc}, 134
+  \item {fft\_\-success}
+    \subitem {bpmproc}, 134
+  \item {fft\_\-tdecay}
+    \subitem {bpmproc}, 134
+  \item {fft\_\-waveform}
+    \subitem {processing}, 78
+  \item {FILT\_\-EPS}
+    \subitem {dsp}, 58
+  \item {filter\_\-impulse\_\-response}
+    \subitem {dsp}, 60
+  \item {filter\_\-step\_\-response}
+    \subitem {dsp}, 60
+  \item {filter\_\-t}, 143
+    \subitem {alpha1}, 145
+    \subitem {alpha2}, 145
+    \subitem {cheb\_\-ripple}, 145
+    \subitem {cplane}, 146
+    \subitem {dc\_\-gain}, 146
+    \subitem {f1}, 144
+    \subitem {f2}, 144
+    \subitem {fc\_\-gain}, 146
+    \subitem {fs}, 144
+    \subitem {gain}, 146
+    \subitem {gauss\_\-cutoff}, 145
+    \subitem {hf\_\-gain}, 146
+    \subitem {name}, 144
+    \subitem {ns}, 148
+    \subitem {nxc}, 146
+    \subitem {nxc\_\-ac}, 146
+    \subitem {nyc}, 147
+    \subitem {nyc\_\-ac}, 147
+    \subitem {options}, 144
+    \subitem {order}, 144
+    \subitem {Q}, 145
+    \subitem {w\_\-alpha1}, 145
+    \subitem {w\_\-alpha2}, 145
+    \subitem {wfbuffer}, 148
+    \subitem {xc}, 146
+    \subitem {xc\_\-ac}, 147
+    \subitem {xv}, 147
+    \subitem {xv\_\-ac}, 147
+    \subitem {yc}, 147
+    \subitem {yc\_\-ac}, 147
+    \subitem {yv}, 147
+    \subitem {yv\_\-ac}, 148
+  \item {filterrep\_\-t}, 148
+    \subitem {npoles}, 149
+    \subitem {nzeros}, 149
+    \subitem {pole}, 149
+    \subitem {zero}, 149
+  \item {FIR}
+    \subitem {dsp}, 57
+  \item {fit\_\-amp}
+    \subitem {bpmproc}, 136
+  \item {fit\_\-ct\_\-amp}
+    \subitem {bpmcalib}, 123
+    \subitem {bpmproc}, 137
+  \item {fit\_\-ct\_\-phase}
+    \subitem {bpmcalib}, 123
+    \subitem {bpmproc}, 137
+  \item {fit\_\-diodepulse}
+    \subitem {processing}, 78
+  \item {fit\_\-fft}
+    \subitem {processing}, 79
+  \item {fit\_\-fft\_\-prepare}
+    \subitem {processing}, 78
+  \item {fit\_\-freq}
+    \subitem {bpmproc}, 137
+  \item {fit\_\-I}
+    \subitem {bpmproc}, 136
+  \item {fit\_\-inifreq}
+    \subitem {bpmconf}, 128
+  \item {fit\_\-initdecay}
+    \subitem {bpmconf}, 128
+  \item {fit\_\-IQphase}
+    \subitem {bpmcalib}, 122
+  \item {fit\_\-offset}
+    \subitem {bpmproc}, 137
+  \item {fit\_\-phase}
+    \subitem {bpmproc}, 136
+  \item {fit\_\-pos}
+    \subitem {bpmproc}, 137
+  \item {fit\_\-posscale}
+    \subitem {bpmcalib}, 122
+  \item {fit\_\-Q}
+    \subitem {bpmproc}, 136
+  \item {fit\_\-slope}
+    \subitem {bpmproc}, 137
+  \item {fit\_\-slopescale}
+    \subitem {bpmcalib}, 123
+  \item {fit\_\-success}
+    \subitem {bpmproc}, 136
+  \item {fit\_\-tdecay}
+    \subitem {bpmproc}, 137
+  \item {fit\_\-tOffset}
+    \subitem {bpmconf}, 128
+  \item {fit\_\-waveform}
+    \subitem {processing}, 77
+  \item {forced\_\-trigger}
+    \subitem {bpmconf}, 129
+  \item {frequency}
+    \subitem {bpmmode}, 131
+  \item {Front-end interface}, 20
+  \item {fs}
+    \subitem {complexwf\_\-t}, 141
+    \subitem {doublewf\_\-t}, 142
+    \subitem {filter\_\-t}, 144
+    \subitem {intwf\_\-t}, 150
+  \item {ft}
+    \subitem {bpmproc}, 134
+
+  \indexspace
+
+  \item {gain}
+    \subitem {filter\_\-t}, 146
+  \item {gauss\_\-cutoff}
+    \subitem {filter\_\-t}, 145
+  \item {GAUSSIAN}
+    \subitem {dsp}, 56
+  \item {gaussian\_\-filter\_\-coeffs}
+    \subitem {dsp}, 63
+  \item {GAUSSIAN\_\-SIGMA\_\-BW}
+    \subitem {dsp}, 56
+  \item {GCF\_\-ITMAX}
+    \subitem {nr}, 29
+  \item {generate\_\-bpmsignal}
+    \subitem {sim}, 45
+  \item {generate\_\-diodesignal}
+    \subitem {sim}, 46
+  \item {geom\_\-pos}
+    \subitem {bpmconf}, 129
+  \item {geom\_\-tilt}
+    \subitem {bpmconf}, 129
+  \item {get\_\-bpmhit}
+    \subitem {orbit}, 18
+  \item {get\_\-bpmhits}
+    \subitem {orbit}, 18
+  \item {get\_\-IQ}
+    \subitem {processing}, 82
+  \item {get\_\-mode\_\-amplitude}
+    \subitem {sim}, 46
+  \item {get\_\-mode\_\-response}
+    \subitem {sim}, 47
+  \item {get\_\-pedestal}
+    \subitem {processing}, 81
+  \item {get\_\-pos}
+    \subitem {processing}, 82
+  \item {get\_\-rbend}
+    \subitem {orbit}, 17
+  \item {get\_\-sbend}
+    \subitem {orbit}, 17
+  \item {get\_\-slope}
+    \subitem {processing}, 83
+  \item {get\_\-t0}
+    \subitem {processing}, 81
+  \item {gsl\_\-blas\_\-dnrm2}
+    \subitem {nr}, 37
+  \item {gsl\_\-block\_\-alloc}
+    \subitem {nr}, 38
+  \item {gsl\_\-linalg\_\-householder\_\-hm}
+    \subitem {nr}, 36
+  \item {gsl\_\-linalg\_\-householder\_\-hm1}
+    \subitem {nr}, 37
+  \item {gsl\_\-linalg\_\-householder\_\-mh}
+    \subitem {nr}, 37
+  \item {gsl\_\-linalg\_\-householder\_\-transform}
+    \subitem {nr}, 37
+  \item {gsl\_\-matrix\_\-column}
+    \subitem {nr}, 34
+  \item {gsl\_\-matrix\_\-get}
+    \subitem {nr}, 35
+  \item {gsl\_\-matrix\_\-set}
+    \subitem {nr}, 35
+  \item {gsl\_\-matrix\_\-submatrix}
+    \subitem {nr}, 34
+  \item {gsl\_\-matrix\_\-swap\_\-columns}
+    \subitem {nr}, 35
+  \item {gsl\_\-vector\_\-get}
+    \subitem {nr}, 36
+  \item {gsl\_\-vector\_\-set}
+    \subitem {nr}, 36
+  \item {gsl\_\-vector\_\-subvector}
+    \subitem {nr}, 36
+
+  \indexspace
+
+  \item {hf\_\-gain}
+    \subitem {filter\_\-t}, 146
+  \item {HIGHPASS}
+    \subitem {dsp}, 57
+  \item {horiz}
+    \subitem {interface}, 22
+
+  \indexspace
+
+  \item {IIR}
+    \subitem {dsp}, 57
+  \item {imax}
+    \subitem {wfstat\_\-t}, 154
+  \item {imin}
+    \subitem {wfstat\_\-t}, 154
+  \item {interface}
+    \subitem {beamconf\_\-t}, 21
+    \subitem {bipolar}, 22
+    \subitem {bpm\_\-verbose}, 23
+    \subitem {bpmcalib\_\-t}, 21
+    \subitem {bpmconf\_\-t}, 21
+    \subitem {bpmphase\_\-t}, 22
+    \subitem {bpmpol\_\-t}, 22
+    \subitem {bpmproc\_\-t}, 21
+    \subitem {bpmtype\_\-t}, 22
+    \subitem {bunchconf\_\-t}, 22
+    \subitem {diode}, 22
+    \subitem {dipole}, 22
+    \subitem {horiz}, 22
+    \subitem {libbpm\_\-evtnum}, 23
+    \subitem {locked}, 22
+    \subitem {monopole}, 22
+    \subitem {negative}, 22
+    \subitem {positive}, 22
+    \subitem {randomised}, 22
+    \subitem {triggertype}, 22
+    \subitem {vert}, 22
+  \item {intwf}
+    \subitem {wave}, 99
+  \item {intwf\_\-add}
+    \subitem {wave}, 103
+  \item {intwf\_\-add\_\-ampnoise}
+    \subitem {wave}, 106
+  \item {intwf\_\-add\_\-cwtone}
+    \subitem {wave}, 105
+  \item {intwf\_\-add\_\-dcywave}
+    \subitem {wave}, 105
+  \item {intwf\_\-basic\_\-stats}
+    \subitem {wave}, 106
+  \item {intwf\_\-bias}
+    \subitem {wave}, 104
+  \item {intwf\_\-cast}
+    \subitem {wave}, 93
+  \item {intwf\_\-cast\_\-new}
+    \subitem {wave}, 93
+  \item {intwf\_\-compat}
+    \subitem {wave}, 103
+  \item {intwf\_\-copy}
+    \subitem {wave}, 100
+  \item {intwf\_\-copy\_\-new}
+    \subitem {wave}, 101
+  \item {intwf\_\-delete}
+    \subitem {wave}, 102
+  \item {intwf\_\-derive}
+    \subitem {wave}, 106
+  \item {intwf\_\-divide}
+    \subitem {wave}, 104
+  \item {intwf\_\-getvalue}
+    \subitem {wave}, 107
+  \item {intwf\_\-integrate}
+    \subitem {wave}, 107
+  \item {intwf\_\-multiply}
+    \subitem {wave}, 104
+  \item {intwf\_\-print}
+    \subitem {wave}, 107
+  \item {intwf\_\-resample}
+    \subitem {wave}, 107
+  \item {intwf\_\-reset}
+    \subitem {wave}, 101
+  \item {intwf\_\-sample\_\-series}
+    \subitem {wave}, 99
+  \item {intwf\_\-scale}
+    \subitem {wave}, 104
+  \item {intwf\_\-setfunction}
+    \subitem {wave}, 100
+  \item {intwf\_\-setvalues}
+    \subitem {wave}, 100
+  \item {intwf\_\-subset}
+    \subitem {wave}, 101
+  \item {intwf\_\-subtract}
+    \subitem {wave}, 103
+  \item {intwf\_\-t}, 149
+    \subitem {fs}, 150
+    \subitem {ns}, 150
+    \subitem {wf}, 150
+  \item {iunsat}
+    \subitem {bpmproc}, 133
+
+  \indexspace
+
+  \item {K\_\-SAMPLE}
+    \subitem {sim}, 44
+
+  \indexspace
+
+  \item {lanczos}
+    \subitem {nr}, 38
+  \item {length}
+    \subitem {bunchconf}, 138
+  \item {libbpm\_\-evtnum}
+    \subitem {interface}, 23
+  \item {LM\_\-DER\_\-WORKSZ}
+    \subitem {nr}, 29
+  \item {LM\_\-DIF\_\-WORKSZ}
+    \subitem {nr}, 29
+  \item {lm\_\-fstate}, 150
+  \item {locked}
+    \subitem {interface}, 22
+  \item {LOWPASS}
+    \subitem {dsp}, 57
+
+  \indexspace
+
+  \item {m33}, 151
+    \subitem {e}, 151
+  \item {m\_\-matadd}
+    \subitem {orbit}, 20
+  \item {m\_\-matmult}
+    \subitem {orbit}, 20
+  \item {m\_\-print}
+    \subitem {orbit}, 20
+  \item {m\_\-rotmat}
+    \subitem {orbit}, 20
+  \item {MATCHED\_\-Z\_\-TRANSFORM}
+    \subitem {dsp}, 56
+  \item {max}
+    \subitem {wfstat\_\-t}, 154
+  \item {MAX\_\-ALLOWED\_\-NS}
+    \subitem {wave}, 88
+  \item {MAX\_\-RESONATOR\_\-ITER}
+    \subitem {dsp}, 58
+  \item {MAXORDER}
+    \subitem {dsp}, 58
+  \item {MAXPZ}
+    \subitem {dsp}, 58
+  \item {mean}
+    \subitem {wfstat\_\-t}, 154
+  \item {message}
+    \subitem {bpm\_\-error}, 23
+    \subitem {bpm\_\-warning}, 24
+  \item {min}
+    \subitem {wfstat\_\-t}, 154
+  \item {mode}
+    \subitem {rfmodel}, 152
+  \item {monopole}
+    \subitem {interface}, 22
+
+  \indexspace
+
+  \item {name}
+    \subitem {bpmconf}, 125
+    \subitem {bpmmode}, 130
+    \subitem {filter\_\-t}, 144
+    \subitem {rfmodel}, 152
+  \item {nbunches}
+    \subitem {beamconf}, 120
+  \item {negative}
+    \subitem {interface}, 22
+  \item {nmodes}
+    \subitem {rfmodel}, 152
+  \item {NO\_\-PREWARP}
+    \subitem {dsp}, 56
+  \item {NONCAUSAL}
+    \subitem {dsp}, 56
+  \item {norm\_\-phase}
+    \subitem {dsp}, 66
+  \item {normalise\_\-filter}
+    \subitem {dsp}, 62
+  \item {NOTCH}
+    \subitem {dsp}, 57
+  \item {npoles}
+    \subitem {filterrep\_\-t}, 149
+  \item {nr}
+    \subitem {\_\-\_\-LM\_\-BLOCKSZ\_\-\_\-}, 29
+    \subitem {\_\-\_\-LM\_\-MEDIAN3}, 30
+    \subitem {dround}, 38
+    \subitem {GCF\_\-ITMAX}, 29
+    \subitem {gsl\_\-blas\_\-dnrm2}, 37
+    \subitem {gsl\_\-block\_\-alloc}, 38
+    \subitem {gsl\_\-linalg\_\-householder\_\-hm}, 36
+    \subitem {gsl\_\-linalg\_\-householder\_\-hm1}, 37
+    \subitem {gsl\_\-linalg\_\-householder\_\-mh}, 37
+    \subitem {gsl\_\-linalg\_\-householder\_\-transform}, 37
+    \subitem {gsl\_\-matrix\_\-column}, 34
+    \subitem {gsl\_\-matrix\_\-get}, 35
+    \subitem {gsl\_\-matrix\_\-set}, 35
+    \subitem {gsl\_\-matrix\_\-submatrix}, 34
+    \subitem {gsl\_\-matrix\_\-swap\_\-columns}, 35
+    \subitem {gsl\_\-vector\_\-get}, 36
+    \subitem {gsl\_\-vector\_\-set}, 36
+    \subitem {gsl\_\-vector\_\-subvector}, 36
+    \subitem {lanczos}, 38
+    \subitem {LM\_\-DER\_\-WORKSZ}, 29
+    \subitem {LM\_\-DIF\_\-WORKSZ}, 29
+    \subitem {NR\_\-FFTBACKWARD}, 29
+    \subitem {NR\_\-FFTFORWARD}, 29
+    \subitem {nr\_\-fit}, 31
+    \subitem {nr\_\-four1}, 31
+    \subitem {nr\_\-gammln}, 30
+    \subitem {nr\_\-gammq}, 30
+    \subitem {nr\_\-gcf}, 30
+    \subitem {nr\_\-gser}, 30
+    \subitem {nr\_\-is\_\-pow2}, 31
+    \subitem {nr\_\-median}, 34
+    \subitem {nr\_\-quadinterpol}, 38
+    \subitem {nr\_\-ran1}, 32
+    \subitem {nr\_\-rangauss}, 33
+    \subitem {nr\_\-ranuniform}, 33
+    \subitem {nr\_\-realft}, 32
+    \subitem {nr\_\-seed}, 33
+    \subitem {nr\_\-select}, 34
+    \subitem {sinc}, 38
+  \item {nr\_\-checks.c}
+    \subitem {nr\_\-is\_\-int}, 179
+  \item {NR\_\-FFTBACKWARD}
+    \subitem {nr}, 29
+  \item {NR\_\-FFTFORWARD}
+    \subitem {nr}, 29
+  \item {nr\_\-fit}
+    \subitem {nr}, 31
+  \item {nr\_\-four1}
+    \subitem {nr}, 31
+  \item {nr\_\-gammln}
+    \subitem {nr}, 30
+  \item {nr\_\-gammq}
+    \subitem {nr}, 30
+  \item {nr\_\-gcf}
+    \subitem {nr}, 30
+  \item {nr\_\-gser}
+    \subitem {nr}, 30
+  \item {nr\_\-is\_\-int}
+    \subitem {nr\_\-checks.c}, 179
+  \item {nr\_\-is\_\-pow2}
+    \subitem {nr}, 31
+  \item {nr\_\-median}
+    \subitem {nr}, 34
+  \item {nr\_\-quadinterpol}
+    \subitem {nr}, 38
+  \item {nr\_\-ran1}
+    \subitem {nr}, 32
+  \item {nr\_\-rangauss}
+    \subitem {nr}, 33
+  \item {nr\_\-ranuniform}
+    \subitem {nr}, 33
+  \item {nr\_\-realft}
+    \subitem {nr}, 32
+  \item {nr\_\-seed}
+    \subitem {nr}, 33
+  \item {nr\_\-seed.c}
+    \subitem {bpm\_\-rseed}, 187
+  \item {nr\_\-select}
+    \subitem {nr}, 34
+  \item {ns}
+    \subitem {complexwf\_\-t}, 141
+    \subitem {doublewf\_\-t}, 142
+    \subitem {filter\_\-t}, 148
+    \subitem {intwf\_\-t}, 150
+  \item {Numerical routines}, 25
+  \item {nxc}
+    \subitem {filter\_\-t}, 146
+  \item {nxc\_\-ac}
+    \subitem {filter\_\-t}, 146
+  \item {nyc}
+    \subitem {filter\_\-t}, 147
+  \item {nyc\_\-ac}
+    \subitem {filter\_\-t}, 147
+  \item {nzeros}
+    \subitem {filterrep\_\-t}, 149
+
+  \indexspace
+
+  \item {options}
+    \subitem {filter\_\-t}, 144
+  \item {orbit}
+    \subitem {get\_\-bpmhit}, 18
+    \subitem {get\_\-bpmhits}, 18
+    \subitem {get\_\-rbend}, 17
+    \subitem {get\_\-sbend}, 17
+    \subitem {m\_\-matadd}, 20
+    \subitem {m\_\-matmult}, 20
+    \subitem {m\_\-print}, 20
+    \subitem {m\_\-rotmat}, 20
+    \subitem {v\_\-add}, 19
+    \subitem {v\_\-copy}, 18
+    \subitem {v\_\-cross}, 19
+    \subitem {v\_\-dot}, 19
+    \subitem {v\_\-mag}, 18
+    \subitem {v\_\-matmult}, 19
+    \subitem {v\_\-norm}, 19
+    \subitem {v\_\-print}, 20
+    \subitem {v\_\-scale}, 18
+    \subitem {v\_\-sub}, 19
+  \item {order}
+    \subitem {bpmmode}, 131
+    \subitem {filter\_\-t}, 144
+
+  \indexspace
+
+  \item {polarisation}
+    \subitem {bpmmode}, 131
+  \item {pole}
+    \subitem {filterrep\_\-t}, 149
+  \item {position}
+    \subitem {beamconf}, 120
+    \subitem {bunchconf}, 139
+  \item {positionsigma}
+    \subitem {beamconf}, 120
+  \item {positive}
+    \subitem {interface}, 22
+  \item {postprocess\_\-waveform}
+    \subitem {processing}, 75
+  \item {print\_\-filter}
+    \subitem {dsp}, 59
+  \item {print\_\-filter\_\-representation}
+    \subitem {dsp}, 62
+  \item {PROC\_\-DEFAULT}
+    \subitem {processing}, 73
+  \item {process\_\-caltone}
+    \subitem {processing}, 76
+  \item {process\_\-diode}
+    \subitem {processing}, 73
+  \item {process\_\-dipole}
+    \subitem {processing}, 74
+  \item {process\_\-monopole}
+    \subitem {processing}, 73
+  \item {process\_\-waveform}
+    \subitem {processing}, 74
+  \item {processing}
+    \subitem {check\_\-saturation}, 80
+    \subitem {correct\_\-gain}, 77
+    \subitem {ddc\_\-sample\_\-waveform}, 81
+    \subitem {ddc\_\-waveform}, 81
+    \subitem {downmix\_\-waveform}, 80
+    \subitem {fft\_\-waveform}, 78
+    \subitem {fit\_\-diodepulse}, 78
+    \subitem {fit\_\-fft}, 79
+    \subitem {fit\_\-fft\_\-prepare}, 78
+    \subitem {fit\_\-waveform}, 77
+    \subitem {get\_\-IQ}, 82
+    \subitem {get\_\-pedestal}, 81
+    \subitem {get\_\-pos}, 82
+    \subitem {get\_\-slope}, 83
+    \subitem {get\_\-t0}, 81
+    \subitem {postprocess\_\-waveform}, 75
+    \subitem {PROC\_\-DEFAULT}, 73
+    \subitem {process\_\-caltone}, 76
+    \subitem {process\_\-diode}, 73
+    \subitem {process\_\-dipole}, 74
+    \subitem {process\_\-monopole}, 73
+    \subitem {process\_\-waveform}, 74
+
+  \indexspace
+
+  \item {Q}
+    \subitem {bpmmode}, 131
+    \subitem {filter\_\-t}, 145
+
+  \indexspace
+
+  \item {RAISEDCOSINE}
+    \subitem {dsp}, 55
+  \item {randomised}
+    \subitem {interface}, 22
+  \item {realfft}
+    \subitem {dsp}, 66
+  \item {ref\_\-idx}
+    \subitem {bpmconf}, 129
+  \item {RESONATOR}
+    \subitem {dsp}, 55
+  \item {response}
+    \subitem {bpmmode}, 131
+  \item {rf}
+    \subitem {rf\_\-addLO}, 40
+    \subitem {rf\_\-amplify}, 41
+    \subitem {rf\_\-amplify\_\-complex}, 42
+    \subitem {rf\_\-mixer}, 41
+    \subitem {rf\_\-nsamples}, 43
+    \subitem {rf\_\-phase\_\-shifter}, 42
+    \subitem {rf\_\-rectify}, 40
+    \subitem {rf\_\-samplefreq}, 43
+    \subitem {rf\_\-setup}, 39
+  \item {RF simulation routines}, 39
+  \item {rf\_\-addLO}
+    \subitem {rf}, 40
+  \item {rf\_\-amplify}
+    \subitem {rf}, 41
+  \item {rf\_\-amplify\_\-complex}
+    \subitem {rf}, 42
+  \item {rf\_\-LOfreq}
+    \subitem {bpmconf}, 126
+  \item {rf\_\-mixer}
+    \subitem {rf}, 41
+  \item {rf\_\-nsamples}
+    \subitem {rf}, 43
+  \item {rf\_\-phase\_\-shifter}
+    \subitem {rf}, 42
+  \item {rf\_\-rectify}
+    \subitem {rf}, 40
+  \item {rf\_\-samplefreq}
+    \subitem {rf}, 43
+  \item {rf\_\-setup}
+    \subitem {rf}, 39
+  \item {rfmodel}, 151
+    \subitem {mode}, 152
+    \subitem {name}, 152
+    \subitem {nmodes}, 152
+  \item {rms}
+    \subitem {wfstat\_\-t}, 154
+
+  \indexspace
+
+  \item {saturated}
+    \subitem {bpmproc}, 133
+  \item {sensitivity}
+    \subitem {bpmmode}, 131
+  \item {set\_\-temp}
+    \subitem {sim}, 44
+  \item {set\_\-time}
+    \subitem {sim}, 45
+  \item {setup\_\-calibration}
+    \subitem {calib}, 15
+  \item {sim}
+    \subitem {add\_\-mode\_\-response}, 45
+    \subitem {ambient\_\-temp}, 48
+    \subitem {digitise}, 47
+    \subitem {generate\_\-bpmsignal}, 45
+    \subitem {generate\_\-diodesignal}, 46
+    \subitem {get\_\-mode\_\-amplitude}, 46
+    \subitem {get\_\-mode\_\-response}, 47
+    \subitem {K\_\-SAMPLE}, 44
+    \subitem {set\_\-temp}, 44
+    \subitem {set\_\-time}, 45
+    \subitem {system\_\-time}, 48
+  \item {sinc}
+    \subitem {nr}, 38
+  \item {slope}
+    \subitem {beamconf}, 120
+    \subitem {bunchconf}, 139
+  \item {slopesigma}
+    \subitem {beamconf}, 120
+  \item {system\_\-time}
+    \subitem {sim}, 48
+
+  \indexspace
+
+  \item {t0}
+    \subitem {bpmconf}, 127
+    \subitem {bpmproc}, 133
+  \item {tilt}
+    \subitem {beamconf}, 120
+    \subitem {bunchconf}, 139
+  \item {tiltsigma}
+    \subitem {beamconf}, 120
+  \item {train\_\-num}
+    \subitem {beamconf}, 119
+    \subitem {bunchconf}, 138
+  \item {triggertype}
+    \subitem {interface}, 22
+
+  \indexspace
+
+  \item {v3}, 153
+    \subitem {x}, 153
+    \subitem {y}, 153
+    \subitem {z}, 153
+  \item {v\_\-add}
+    \subitem {orbit}, 19
+  \item {v\_\-copy}
+    \subitem {orbit}, 18
+  \item {v\_\-cross}
+    \subitem {orbit}, 19
+  \item {v\_\-dot}
+    \subitem {orbit}, 19
+  \item {v\_\-mag}
+    \subitem {orbit}, 18
+  \item {v\_\-matmult}
+    \subitem {orbit}, 19
+  \item {v\_\-norm}
+    \subitem {orbit}, 19
+  \item {v\_\-print}
+    \subitem {orbit}, 20
+  \item {v\_\-scale}
+    \subitem {orbit}, 18
+  \item {v\_\-sub}
+    \subitem {orbit}, 19
+  \item {vert}
+    \subitem {interface}, 22
+  \item {voltageoffset}
+    \subitem {bpmproc}, 133
+
+  \indexspace
+
+  \item {w\_\-alpha1}
+    \subitem {filter\_\-t}, 145
+  \item {w\_\-alpha2}
+    \subitem {filter\_\-t}, 145
+  \item {wave}
+    \subitem {complexwf}, 108
+    \subitem {complexwf\_\-add}, 111
+    \subitem {complexwf\_\-add\_\-ampnoise}, 114
+    \subitem {complexwf\_\-add\_\-cwtone}, 113
+    \subitem {complexwf\_\-add\_\-dcywave}, 113
+    \subitem {complexwf\_\-add\_\-noise}, 114
+    \subitem {complexwf\_\-add\_\-phasenoise}, 114
+    \subitem {complexwf\_\-bias}, 112
+    \subitem {complexwf\_\-compat}, 110
+    \subitem {complexwf\_\-copy}, 108
+    \subitem {complexwf\_\-copy\_\-new}, 108
+    \subitem {complexwf\_\-delete}, 110
+    \subitem {complexwf\_\-divide}, 112
+    \subitem {complexwf\_\-getamp}, 116
+    \subitem {complexwf\_\-getamp\_\-new}, 117
+    \subitem {complexwf\_\-getimag}, 115
+    \subitem {complexwf\_\-getimag\_\-new}, 117
+    \subitem {complexwf\_\-getphase}, 116
+    \subitem {complexwf\_\-getphase\_\-new}, 117
+    \subitem {complexwf\_\-getreal}, 115
+    \subitem {complexwf\_\-getreal\_\-new}, 116
+    \subitem {complexwf\_\-multiply}, 111
+    \subitem {complexwf\_\-print}, 115
+    \subitem {complexwf\_\-reset}, 110
+    \subitem {complexwf\_\-scale}, 112
+    \subitem {complexwf\_\-setfunction}, 109
+    \subitem {complexwf\_\-setimag}, 118
+    \subitem {complexwf\_\-setreal}, 118
+    \subitem {complexwf\_\-setvalues}, 109
+    \subitem {complexwf\_\-subset}, 109
+    \subitem {complexwf\_\-subtract}, 111
+    \subitem {doublewf}, 89
+    \subitem {doublewf\_\-add}, 94
+    \subitem {doublewf\_\-add\_\-ampnoise}, 97
+    \subitem {doublewf\_\-add\_\-cwtone}, 96
+    \subitem {doublewf\_\-add\_\-dcywave}, 96
+    \subitem {doublewf\_\-basic\_\-stats}, 97
+    \subitem {doublewf\_\-bias}, 96
+    \subitem {doublewf\_\-cast}, 102
+    \subitem {doublewf\_\-cast\_\-new}, 102
+    \subitem {doublewf\_\-compat}, 94
+    \subitem {doublewf\_\-copy}, 91
+    \subitem {doublewf\_\-copy\_\-new}, 92
+    \subitem {doublewf\_\-delete}, 93
+    \subitem {doublewf\_\-derive}, 97
+    \subitem {doublewf\_\-divide}, 95
+    \subitem {doublewf\_\-frequency\_\-series}, 90
+    \subitem {doublewf\_\-getvalue}, 98
+    \subitem {doublewf\_\-integrate}, 98
+    \subitem {doublewf\_\-multiply}, 95
+    \subitem {doublewf\_\-print}, 98
+    \subitem {doublewf\_\-resample}, 99
+    \subitem {doublewf\_\-reset}, 92
+    \subitem {doublewf\_\-sample\_\-series}, 90
+    \subitem {doublewf\_\-scale}, 95
+    \subitem {doublewf\_\-setfunction}, 91
+    \subitem {doublewf\_\-setvalues}, 91
+    \subitem {doublewf\_\-subset}, 92
+    \subitem {doublewf\_\-subtract}, 94
+    \subitem {doublewf\_\-time\_\-series}, 90
+    \subitem {intwf}, 99
+    \subitem {intwf\_\-add}, 103
+    \subitem {intwf\_\-add\_\-ampnoise}, 106
+    \subitem {intwf\_\-add\_\-cwtone}, 105
+    \subitem {intwf\_\-add\_\-dcywave}, 105
+    \subitem {intwf\_\-basic\_\-stats}, 106
+    \subitem {intwf\_\-bias}, 104
+    \subitem {intwf\_\-cast}, 93
+    \subitem {intwf\_\-cast\_\-new}, 93
+    \subitem {intwf\_\-compat}, 103
+    \subitem {intwf\_\-copy}, 100
+    \subitem {intwf\_\-copy\_\-new}, 101
+    \subitem {intwf\_\-delete}, 102
+    \subitem {intwf\_\-derive}, 106
+    \subitem {intwf\_\-divide}, 104
+    \subitem {intwf\_\-getvalue}, 107
+    \subitem {intwf\_\-integrate}, 107
+    \subitem {intwf\_\-multiply}, 104
+    \subitem {intwf\_\-print}, 107
+    \subitem {intwf\_\-resample}, 107
+    \subitem {intwf\_\-reset}, 101
+    \subitem {intwf\_\-sample\_\-series}, 99
+    \subitem {intwf\_\-scale}, 104
+    \subitem {intwf\_\-setfunction}, 100
+    \subitem {intwf\_\-setvalues}, 100
+    \subitem {intwf\_\-subset}, 101
+    \subitem {intwf\_\-subtract}, 103
+    \subitem {MAX\_\-ALLOWED\_\-NS}, 88
+    \subitem {WF\_\-EPS}, 88
+    \subitem {WF\_\-LANCZOS}, 89
+    \subitem {WF\_\-LINEAR}, 88
+    \subitem {WF\_\-NEAREST}, 88
+    \subitem {WF\_\-QUADRATIC}, 88
+    \subitem {WF\_\-SINC}, 88
+    \subitem {wfstat\_\-print}, 89
+    \subitem {wfstat\_\-reset}, 89
+  \item {Waveform handling routines}, 84
+  \item {wf}
+    \subitem {complexwf\_\-t}, 141
+    \subitem {doublewf\_\-t}, 142
+    \subitem {intwf\_\-t}, 150
+  \item {WF\_\-EPS}
+    \subitem {wave}, 88
+  \item {WF\_\-LANCZOS}
+    \subitem {wave}, 89
+  \item {WF\_\-LINEAR}
+    \subitem {wave}, 88
+  \item {WF\_\-NEAREST}
+    \subitem {wave}, 88
+  \item {WF\_\-QUADRATIC}
+    \subitem {wave}, 88
+  \item {WF\_\-SINC}
+    \subitem {wave}, 88
+  \item {wfbuffer}
+    \subitem {filter\_\-t}, 148
+  \item {wfstat\_\-print}
+    \subitem {wave}, 89
+  \item {wfstat\_\-reset}
+    \subitem {wave}, 89
+  \item {wfstat\_\-t}, 153
+    \subitem {imax}, 154
+    \subitem {imin}, 154
+    \subitem {max}, 154
+    \subitem {mean}, 154
+    \subitem {min}, 154
+    \subitem {rms}, 154
+
+  \indexspace
+
+  \item {x}
+    \subitem {v3}, 153
+  \item {xc}
+    \subitem {filter\_\-t}, 146
+  \item {xc\_\-ac}
+    \subitem {filter\_\-t}, 147
+  \item {xv}
+    \subitem {filter\_\-t}, 147
+  \item {xv\_\-ac}
+    \subitem {filter\_\-t}, 147
+
+  \indexspace
+
+  \item {y}
+    \subitem {v3}, 153
+  \item {yc}
+    \subitem {filter\_\-t}, 147
+  \item {yc\_\-ac}
+    \subitem {filter\_\-t}, 147
+  \item {yv}
+    \subitem {filter\_\-t}, 147
+  \item {yv\_\-ac}
+    \subitem {filter\_\-t}, 148
+
+  \indexspace
+
+  \item {z}
+    \subitem {v3}, 153
+  \item {zero}
+    \subitem {filterrep\_\-t}, 149
+  \item {zplane\_\-transform}
+    \subitem {dsp}, 62
+
+\end{theindex}

@@ -1,0 +1,30 @@
+\subsection{bpmcalibration/bpm\_\-calibration.h File Reference}
+\label{bpm__calibration_8h}\index{bpmcalibration/bpm\_\-calibration.h@{bpmcalibration/bpm\_\-calibration.h}}
+
+
+\subsubsection{Detailed Description}
+calibration routines 
+
+This header contains some BPM calibration routines 
+
+Definition in file {\bf bpm\_\-calibration.h}.
+
+{\tt \#include $<$math.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-defs.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-interface.h$>$}\par
+
+
+Include dependency graph for bpm\_\-calibration.h:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{bpm__calibration_8h__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN int {\bf setup\_\-calibration} ({\bf bpmconf\_\-t} $\ast$cnf, {\bf bpmproc\_\-t} $\ast$proc, int npulses, int startpulse, int stoppulse, double angle, double startpos, double endpos, int num\_\-steps, {\bf bunchconf\_\-t} $\ast$bunch)
+\item 
+EXTERN int {\bf calibrate} ({\bf bpmconf\_\-t} $\ast$bpm, {\bf bunchconf\_\-t} $\ast$bunch, {\bf bpmproc\_\-t} $\ast$proc, int npulses, {\bf bpmcalib\_\-t} $\ast$cal)
+\end{CompactItemize}

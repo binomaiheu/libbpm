@@ -1,0 +1,14 @@
+README - libbpm examples
+************************
+
+
+data/         -- contains some datafiles for the examples
+wfprocess.c   -- simple libbpm based waveform processing program
+libbpm-test.c -- some testing routines
+
+c-project/    -- example C project with Makefile using libbpm
+
+root-project/ -- example C++ project marrying ROOT and libbpm, just
+                 generates a waveform, DDC's it and spits the
+		 generated amplitudes, phases and reconstructed ones
+		 into a tree

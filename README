@@ -1,0 +1,66 @@
+libbpm
+This is the README file
+Author: Bino Maiheu, University College London (2006-2007)
+
+The main library is in fact a collection of little sublibraries which
+represent different components of the processing/simulation chain :
+
+These are : 
+bpmanalysis/     : resolution calculation etc..
+bpmcalibration/  : calibration routines  
+bpminterface/    : the interface structures between different 
+                   components, this piece will implement
+                   bpmconf_t, beamconf_t etc...
+bpmmessages/     : some messaging routines used thoughout the lib
+bpmnr/           : numerical recipies
+bpmorbit/        : orbit generation routines, get positions in the bpm
+bpmprocess/      : signal processing, fitting, ddc, ...
+bpmrf/           : RF simulation routines
+bpmsimulation/   : waveform simulation routines
+
+
+Also there will be some wrappers for the library for other people to
+use
+like labview, matlab and root, these will reside in 
+
+labview/         
+matlab/
+root-wrapper/
+
+One special directory "bpm/" is used to collect all the header files
+from all the sublibraries during compilation. Each individual
+sublibrary comes with its own header file and there are all collected
+so we can clearly have in each source e.g. 
+#include <bpm/bpm_interface.h>
+
+The bootstrapping of the CVS version is done using "autogen.sh",
+simply executing this script should be enough to create the configure
+script. 
+
+The library comes with a script "libbpm-config", which analogous to
+"root-config" returns the installation path and library paths for use
+in Makefiles that depend upon libbpm, so e.g. :
+
+[niblap] ~/ilc/devel/cvs/especSoft/libbpm $ libbpm-config --libs
+
+prints out : "-L/home/bino/local/lib -lbpm -lm"
+
+It also comes with a default libbpm.pc which will be installed under
+@prefix@/lib/pkgconfig, this is used under some build systems that use
+"pkgconfig". This is the more general version of the above script, 
+so 
+
+[niblap] ~/ilc/devel/cvs/especSoft/libbpm $ pkg-config --libs libbpm
+
+prints out : "-L/home/bino/local/lib -lbpm -lm"
+
+This should make using this library in a build environment reasonably
+monkey proof.
+
+Currently the library installs .so and .a files for each sublibrary
+and one for the main library as well, so a bit redundant, we can
+change that later on.
+
+Versioning is done in the beginning of configure.ac, so please keep
+track there if you change the version of the library.
+

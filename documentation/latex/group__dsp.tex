@@ -1,0 +1,1101 @@
+\subsection{Digital Signal Processing Routines}
+\label{group__dsp}\index{Digital Signal Processing Routines@{Digital Signal Processing Routines}}
+
+
+\subsubsection{Detailed Description}
+\label{group__dsp_dsp}
+
+
+This module contains the definitions for the digital signal processing routines for libbpm.\subsubsection{The digital filtering routines}\label{group__dsp_dsp_filtering}
+\paragraph{General usage}\label{group__dsp_dsp_filtering_usage}
+Setup a filter using the \doxyref{create\_\-filter()}{p.}{group__dsp_g9a69282273c256d3fd7481652b360b93} routine. 
+
+\begin{Code}\begin{verbatim}    filter_t *filter = create_filter( "the_filter", RESONATOR | , 0,
+                                       nsamples, 40.*kHz, 8.*kHz, 0., 200. );
+\end{verbatim}
+\end{Code}
+
+
+
+The arguments the filter expects is a name for the filter (just for esthetic purposes when printing the filter), the filter options, which are explained below, the order of the filter, where it is meaning full (e.g. Butterworth, Bessel, Chebyshev). Then it needs the number of samples in the waveforms which will be filtered by this filter, the sampling frequency and one (optionally two) frequency parameter. For lowpass/highpass filters and the resonater, only the first frequency defines respectively the -3dB frequency level for the low/high pass and the resonance frequency for the resonator (the witdh is defined by the Q value in this case). For bandpass/stop filters the two frequencies are required and define the -3dB level which defines the bandwidth of the filter, with f1 being the lower end frequency and f2 the higher end.
+
+The implemented filters are :\begin{itemize}
+\item BESSEL : Bessel IIR filter\item BUTTERWORTH : Butterwordth IIR filter\item CHEBYSHEV : Chebyshev IIR filter\item RESONATOR : Resonators\item GAUSSIAN : Non-causal Gaussian FIR filter\end{itemize}
+
+
+The IIR Bessel, Butterworth and Chebyshev filters can be normalised as lowpass (option LOWPASS) which is the default, highpass (option HIGHPASS), bandstop (option BANDSTOP) or bandpass (option BANDPASS) filters. They are designed with poles and zeros in the s plane that are transformed to the z plane either by bilinear z transform (option BILINEAR\_\-Z\_\-TRANSFORM) or matched z transform (option MATCHED\_\-Z\_\-TRANSFORM). Just \char`\"{}OR\char`\"{} the options together to setup the filter, e.g. :
+
+
+
+\begin{Code}\begin{verbatim}    filter_t *filter = create_filter( "lp", BESSEL | HIGHPASS | MATCHED_Z_TRANSFORM, 0,
+                                       ns, 40.*kHz, 8.*kHz, 0., 200. );
+\end{verbatim}
+\end{Code}
+
+
+
+The resonators are designed directly with their 2 poles and 2 zeros in the z plane and can be normalised either as BANDPASS (default), BANDSTOP (or NOTCH) or ALLPASS resonators.
+
+The last argument to the \doxyref{create\_\-filter()}{p.}{group__dsp_g9a69282273c256d3fd7481652b360b93} routine is a parameter which can optionally be given to the filter. It depends on the filter chosen, currently the parameter has meaning for the following filters :
+
+\begin{itemize}
+\item BESSEL : the parameter defines the ripple in dB, has to be negative !\item RESONATOR : the parameter gives the Q value of the resonator, if you want to have a pure oscillator (so infinite Q), then set the parameter to a negative number or zero.\item GAUSSIAN : the filter cut-off parameter, or the fraction of the gaussian convolution function below which it is set to 0. (default is 0.001)\end{itemize}
+
+
+The filter coefficients for the difference equation are calculated and checked for consistency, upon which they are stored in the filter structure. Once this is done and the filter is setup, application to various waveforms is fairly straightforward. Note that you only have to define your filter once during initialisation. Once setup, it can be used to filter any number of waveforms of the same type.
+
+
+
+\begin{Code}\begin{verbatim}    apply_filter( filter, wave );
+\end{verbatim}
+\end{Code}
+
+
+
+To get an impulse response from the filter into the secified waveform, where the impulse is given at sample 1000, the following routine is implemented.
+
+
+
+\begin{Code}\begin{verbatim}    filter_impulse_response( filter, wave, 1000 );
+\end{verbatim}
+\end{Code}
+
+
+
+This routine creates an impulse function (zero everywhere, except at the sample you enter, where it's value is 1) and puts it through the filter. The FFT of this impulse response gives you the filter characteristic in frequency domain. Also you can check the filter's response to a step function, it's so-called step response :
+
+
+
+\begin{Code}\begin{verbatim}    filter_step_response( filter, wave, 1000 )
+\end{verbatim}
+\end{Code}
+
+
+
+The step response is defined as the response of the filter to an input function which is zero at the beginning and 1 for samples $>$= the sample you specify.\paragraph{The Bessel, Butterworth and Chebyshev filters}\label{group__dsp_dsp_filtering_bbc}
+\paragraph{The Resonator filter}\label{group__dsp_dsp_filtering_resonator}
+\paragraph{The gaussian filter}\label{group__dsp_dsp_filtering_gaus}
+The gaussian filter is implemented as a FIR convolution with both causal and anti-causal coefficients. Note that the frequency given is treated as the -3dB level for the gaussian. There is an option to restore the definition for bandwith which was used in early ESA processing, being the gaussian sigma, use GAUSSIAN\_\-SIGMA\_\-BW.\subsubsection{The Digital Downconversion Algorithm (DDC)}\label{group__dsp_dsp_ddc}
+The digital downconversion routine was developped to process digitised BPM waveforms and to retreive their position and amplitude. It basically implements an RF mixer in software. You need to supply it with the \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} holding the waveform to mix down and the frequency for the software LO. Also you need to give a pointer to a low-pass filter in order to filter out the resulting double frequency component from the downmixing. The routine
+
+
+
+\begin{Code}\begin{verbatim}    int ddc( doublewf_t *w, double f, filter_t *filter, complexwf_t *dcw );
+\end{verbatim}
+\end{Code}
+
+
+
+returns then the complex DC waveform (dcw), where it's amplitude and phase can then be used in further calculations for beam position and slope in the BPM. We recommend the usage of a GAUSSIAN low-pass filter for the double frequency filtering as this shows the best phase behaviour combined with linearity (see \doxyref{create\_\-filter()}{p.}{group__dsp_g9a69282273c256d3fd7481652b360b93}).
+
+For fast execution, the DDC routine comes with a buffer which it only allocates once by doing
+
+
+
+\begin{Code}\begin{verbatim}    ddc_initialise();
+\end{verbatim}
+\end{Code}
+
+
+
+This buffer is used in the filtering routine, you can clean up after the execution of the buffer by having
+
+
+
+\begin{Code}\begin{verbatim}    ddc_cleanup();
+\end{verbatim}
+\end{Code}
+
+\subsubsection{Discrete (Fast) Fourier Transforms}\label{group__dsp_dsp_fft}
+The FFT routines in the dsp section of libbpm are based upon the General Purpose FFT Package by Takuya OOURA, 1996-2001, see {\tt http://www.kurims.kyoto-u.ac.jp/$\sim$ooura/fft.html} More specifically on it's split-radix fast version (fftsg). These set of routines needs a buffer for bitswapping an a buffer to store a table with sin and cos values so they needn't be calculated for every FFT. The routine
+
+
+
+\begin{Code}\begin{verbatim}    fft_initialise( int ns )
+\end{verbatim}
+\end{Code}
+
+
+
+intialises the buffers for waveforms of a certain sample length ns. Note that ns has to be a power of 2. You can clear the FFT buffers by issuing
+
+
+
+\begin{Code}\begin{verbatim}    fft_cleanup( );
+\end{verbatim}
+\end{Code}
+
+
+
+Then two wrapper routines are implemented which take \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} and \doxyref{complexwf\_\-t}{p.}{structcomplexwf__t} data.\paragraph{Complex Discrete Fourier Transform}\label{group__dsp_dsp_fft_complex}
+The first one is
+
+
+
+\begin{Code}\begin{verbatim}    int complexfft( complexwf_t *z, int fft_mode );
+\end{verbatim}
+\end{Code}
+
+
+
+which takes a complex waveform and performs an FFT in place. The fft\_\-mode argument can be either\begin{itemize}
+\item FFT\_\-FORWARD : forward discrete Fourier transform (plus-sign)\end{itemize}
+
+
+\[ X[k] = \sum_{j=0}^{n-1} x[j]*\exp(2*\pi*i*j*k/n), 0<=k<n \]
+
+\begin{itemize}
+\item FFT\_\-BACKWARD : backward discrete Fourier transform (minus-sign)\end{itemize}
+
+
+\[ X[k] = \sum_{j=0}^{n-1} x[j]*\exp(-2*\pi*i*j*k/n), 0<=k<n \]
+
+Note the backward and forward FFT's have a factor of n inbetween them, so to get the orginal wf back after applying both the backward and the forward FFT, you need to divdide by the number of samples z-$>$n.\paragraph{Real Discrete Fourier Transform}\label{group__dsp_dsp_fft_real}
+The second routine implements the real discrete Fourier transform when having FFT\_\-FORWARD and the other way around when having FFT\_\-BACKWARD.
+
+
+
+\begin{Code}\begin{verbatim}    int realfft( doublewf_t *y, int fft_mode, complexwf_t *z );
+\end{verbatim}
+\end{Code}
+
+
+
+So for FFT\_\-FORWARD
+
+\[ Re( X[k] ) = \sum_{j=0}^{n-1} a[j]*\cos(2*\pi*j*k/n), 0<=k<=n/2 \] \[ Im( X[k] ) = \sum_{j=0}^{n-1} a[j]*\sin(2*\pi*j*k/n), 0<k<n/2 \]
+
+and FFT\_\-BACKWARD takes the input frmo the first half (n/2) of the \doxyref{complexwf\_\-t}{p.}{structcomplexwf__t} and FFTs it, expanding to a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} of length n.
+
+\[ X[k] = \frac{(Re(x[0]) + Re(x[n/2])*\cos(\pi*k) )}{2} + \sum_{j=1}^{n/2-1} Re(x[j])*\cos(2*\pi*j*k/n) + \sum_{j=1}^{n/2-1} Im(x[j])*\sin(2*\pi*j*k/n), 0<=k<n \]\paragraph{Reference for FFT routines}\label{group__dsp_dsp_fft_ref}
+\begin{itemize}
+\item Masatake MORI, Makoto NATORI, Tatuo TORII: Suchikeisan, Iwanamikouzajyouhoukagaku18, Iwanami, 1982 (Japanese)\item Henri J. Nussbaumer: Fast Fourier Transform and Convolution Algorithms, Springer Verlag, 1982\item C. S. Burrus, Notes on the FFT (with large FFT paper list) {\tt http://www-dsp.rice.edu/research/fft/fftnote.asc}\end{itemize}
+\paragraph{Copyright statement for FFT routines}\label{group__dsp_dsp_fft_copy}
+Copyright(C) 1996-2001 Takuya OOURA email: {\tt ooura@mmm.t.u-tokyo.ac.jp} download: {\tt http://momonga.t.u-tokyo.ac.jp/$\sim$ooura/fft.html} You may use, copy, modify this code for any purpose and without fee. You may distribute this ORIGINAL package.\subsubsection{DSP example program}\label{group__dsp_dsp_examples}
+There is an example program, which can be found in the examples directory under dsp. It shows how to work with the filtering and the DDC routines...
+
+
+
+\begin{Code}\begin{verbatim}    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+    #include <math.h>
+
+    #include <iostream>
+    
+    #include <TROOT.h>
+    #include <TFile.h>
+    #include <TTree.h>
+    
+    #include <bpm/bpm_process.h>
+    #include <bpm/bpm_units.h>
+    #include <bpm/bpm_simulation.h>
+    #include <bpm/bpm_nr.h>
+    #include <bpm/bpm_rf.h>
+    #include <bpm/bpm_dsp.h>
+    #include <bpm/bpm_wf.h>
+    
+    using namespace std;
+
+    int main( int argc, char **argv ) {
+    
+      cout << "Welcome to the libbpm DSP sandbox" << endl;
+    
+      int ns    = 256;
+      double fs = 119.*MHz;
+      
+      doublewf_t *w = doublewf( ns, fs );
+      doublewf_t *s = doublewf_sample_series( ns, fs );
+      
+      doublewf_t *ddc_amp   = doublewf( ns, fs );
+      doublewf_t *ddc_phase = doublewf( ns, fs );
+      
+      // setup the root trees...
+      TFile *rootfile = new TFile( "dsp.root", "recreate" );
+      TTree *roottree = new TTree( "dsp", "libbpm dsp tests" );
+      
+      int evt;
+      double amp, phase;
+      double gen_amp, gen_phase;
+      
+      // setup the branches in the tree
+      roottree->Branch( "evt",       &evt,          "evt/I"            );
+      roottree->Branch( "wf",        w->wf,         "wf[256]/D"        );
+      roottree->Branch( "s",         s->wf,         "s[256]/D"         );
+      roottree->Branch( "gen_amp",   &gen_amp,      "gen_amp/D"        );
+      roottree->Branch( "gen_phase", &gen_phase,    "gen_phase/D"      );
+      roottree->Branch( "ddc_amp",   ddc_amp->wf,   "ddc_amp[256]/D"   );
+      roottree->Branch( "ddc_phase", ddc_phase->wf, "ddc_phase[256]/D" );
+      
+      complexwf_t *ddcwf = complexwf( ns, fs ); 
+
+      filter_t *gauss  = create_filter( "gauss", GAUSSIAN,0,ns,fs,6.*MHz,0.,0.001);
+      filter_t *butter = create_filter( "butter", BUTTERWORTH | LOWPASS,4,ns,fs,6.*MHz,0.,0.);
+      filter_t *bessel = create_filter( "bessel", BESSEL | LOWPASS,4,ns, fs,6.*MHz,0., 0.);
+      filter_t *cheby  = create_filter( "cheby",  CHEBYSHEV | LOWPASS,4,ns,fs,6.*MHz,0.,-10.);
+      
+      // init the DDC
+      ddc_initialise( ns, fs );
+      
+      for ( evt = 1; evt<=1000; evt++ ) {
+      
+        // Make the waveform
+        gen_amp   = (double) evt * 10.;
+        gen_phase = PI / (double) evt;
+        
+        // reset the w to 0... quite important :D
+        doublewf_reset( w );
+        
+        doublewf_add_dcywave( w, gen_amp, gen_phase, 21.4*MHz, 0.15*usec, 0.2*usec, 0. );
+        
+        // do the DDC :)
+        if ( ddc( w, 21.4*MHz, gauss, ddcwf ) ) return 1;
+        
+        // want to try differen filters ?
+        //if ( ddc( w, 21.4*MHz, butter, ddcwf ) ) return 1;
+        //if ( ddc( w, 21.4*MHz, bessel, ddcwf ) ) return 1;
+        //if ( ddc( w, 21.4*MHz, cheby, ddcwf ) ) return 1;
+        
+        
+        // get amplitude and phase from complex wf
+        complexwf_getamp( ddc_amp, ddcwf );
+        complexwf_getphase( ddc_phase, ddcwf );
+        
+        // fill the tree...
+        roottree->Fill();
+        
+        if ( evt % 100 == 0 ) cout << "Simulated " << evt << " events." << endl;
+      }    
+
+      // clear the DDC memory buffers
+      ddc_cleanup();
+      
+      rootfile->Write();
+      rootfile->Close();
+      
+      delete_filter( gauss );
+      delete_filter( butter );
+      delete_filter( bessel);
+      delete_filter( cheby );
+      
+      complexwf_delete( ddcwf );
+      
+      doublewf_delete( w );
+      doublewf_delete( s );
+      doublewf_delete( ddc_amp );
+      doublewf_delete( ddc_phase );
+      
+      return 0;
+    }
+\end{verbatim}
+\end{Code}
+
+
+
+\subsubsection*{Files}
+\begin{CompactItemize}
+\item 
+file {\bf bpm\_\-dsp.h}
+\begin{CompactList}\small\item\em libbpm digital signal processing routines \item\end{CompactList}
+
+\item 
+file {\bf calculate\_\-filter\_\-coefficients.c}
+\item 
+file {\bf create\_\-filter.c}
+\item 
+file {\bf create\_\-resonator\_\-representation.c}
+\item 
+file {\bf create\_\-splane\_\-representation.c}
+\item 
+file {\bf ddc.c}
+\item 
+file {\bf delete\_\-filter.c}
+\item 
+file {\bf discrete\_\-fourier\_\-transforms.c}
+\item 
+file {\bf filter\_\-impulse\_\-response.c}
+\item 
+file {\bf filter\_\-step\_\-response.c}
+\item 
+file {\bf gaussian\_\-filter\_\-coeffs.c}
+\item 
+file {\bf norm\_\-phase.c}
+\item 
+file {\bf normalise\_\-filter.c}
+\item 
+file {\bf print\_\-filter.c}
+\item 
+file {\bf print\_\-filter\_\-representation.c}
+\item 
+file {\bf zplane\_\-transform.c}
+\end{CompactItemize}
+\subsubsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct {\bf filterrep\_\-t}
+\item 
+struct {\bf filter\_\-t}
+\end{CompactItemize}
+\subsubsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf BESSEL}
+\item 
+\#define {\bf BUTTERWORTH}
+\item 
+\#define {\bf CHEBYSHEV}
+\item 
+\#define {\bf RAISEDCOSINE}
+\item 
+\#define {\bf RESONATOR}
+\item 
+\#define {\bf GAUSSIAN}
+\item 
+\#define {\bf BILINEAR\_\-Z\_\-TRANSFORM}
+\item 
+\#define {\bf MATCHED\_\-Z\_\-TRANSFORM}
+\item 
+\#define {\bf NO\_\-PREWARP}
+\item 
+\#define {\bf CAUSAL}
+\item 
+\#define {\bf ANTICAUSAL}
+\item 
+\#define {\bf NONCAUSAL}
+\item 
+\#define {\bf GAUSSIAN\_\-SIGMA\_\-BW}
+\item 
+\#define {\bf LOWPASS}
+\item 
+\#define {\bf HIGHPASS}
+\item 
+\#define {\bf BANDPASS}
+\item 
+\#define {\bf BANDSTOP}
+\item 
+\#define {\bf NOTCH}
+\item 
+\#define {\bf ALLPASS}
+\item 
+\#define {\bf FIR}
+\item 
+\#define {\bf IIR}
+\item 
+\#define {\bf MAXORDER}
+\item 
+\#define {\bf MAXPZ}
+\item 
+\#define {\bf FILT\_\-EPS}
+\item 
+\#define {\bf MAX\_\-RESONATOR\_\-ITER}
+\item 
+\#define {\bf FFT\_\-FORWARD}
+\item 
+\#define {\bf FFT\_\-BACKWARD}
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN {\bf filter\_\-t} $\ast$ {\bf create\_\-filter} (char name[$\,$], unsigned int options, int order, int ns, double fs, double f1, double f2, double par)
+\item 
+EXTERN int {\bf apply\_\-filter} ({\bf filter\_\-t} $\ast$f, {\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN void {\bf print\_\-filter} (FILE $\ast$of, {\bf filter\_\-t} $\ast$f)
+\item 
+EXTERN void {\bf delete\_\-filter} ({\bf filter\_\-t} $\ast$f)
+\item 
+EXTERN int {\bf filter\_\-step\_\-response} ({\bf filter\_\-t} $\ast$f, {\bf doublewf\_\-t} $\ast$w, int itrig)
+\item 
+EXTERN int {\bf filter\_\-impulse\_\-response} ({\bf filter\_\-t} $\ast$f, {\bf doublewf\_\-t} $\ast$w, int itrig)
+\item 
+EXTERN {\bf filterrep\_\-t} $\ast$ {\bf create\_\-splane\_\-representation} ({\bf filter\_\-t} $\ast$f)
+\item 
+EXTERN {\bf filterrep\_\-t} $\ast$ {\bf create\_\-resonator\_\-representation} ({\bf filter\_\-t} $\ast$f)
+\item 
+EXTERN {\bf filterrep\_\-t} $\ast$ {\bf zplane\_\-transform} ({\bf filter\_\-t} $\ast$f, {\bf filterrep\_\-t} $\ast$s)
+\item 
+EXTERN void {\bf print\_\-filter\_\-representation} (FILE $\ast$of, {\bf filterrep\_\-t} $\ast$r)
+\item 
+EXTERN int {\bf normalise\_\-filter} ({\bf filter\_\-t} $\ast$f, {\bf filterrep\_\-t} $\ast$s)
+\item 
+EXTERN int {\bf calculate\_\-filter\_\-coefficients} ({\bf filter\_\-t} $\ast$f)
+\item 
+EXTERN int {\bf gaussian\_\-filter\_\-coeffs} ({\bf filter\_\-t} $\ast$f)
+\item 
+EXTERN int {\bf \_\-expand\_\-complex\_\-polynomial} ({\bf complex\_\-t} $\ast$w, int n, {\bf complex\_\-t} $\ast$a)
+\item 
+EXTERN {\bf complex\_\-t} {\bf \_\-eval\_\-complex\_\-polynomial} ({\bf complex\_\-t} $\ast$a, int n, {\bf complex\_\-t} z)
+\item 
+EXTERN int {\bf ddc\_\-initialise} (int ns, double fs)
+\item 
+EXTERN void {\bf ddc\_\-cleanup} (void)
+\item 
+int {\bf ddc} ({\bf doublewf\_\-t} $\ast$w, double f, {\bf filter\_\-t} $\ast$filter, {\bf complexwf\_\-t} $\ast$dcw, {\bf doublewf\_\-t} $\ast$bufre, {\bf doublewf\_\-t} $\ast$bufim)
+\item 
+EXTERN int {\bf fft\_\-gen\_\-tables} (void)
+\item 
+EXTERN int {\bf fft\_\-initialise} (int ns)
+\item 
+EXTERN void {\bf fft\_\-cleanup} (void)
+\item 
+EXTERN int {\bf complexfft} ({\bf complexwf\_\-t} $\ast$z, int fft\_\-mode)
+\item 
+EXTERN int {\bf realfft} ({\bf doublewf\_\-t} $\ast$y, int fft\_\-mode, {\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN void {\bf norm\_\-phase} (double $\ast$phase)
+\end{CompactItemize}
+
+
+\subsubsection{Define Documentation}
+\index{dsp@{dsp}!BESSEL@{BESSEL}}
+\index{BESSEL@{BESSEL}!dsp@{dsp}}
+\paragraph[BESSEL]{\setlength{\rightskip}{0pt plus 5cm}\#define BESSEL}\hfill\label{group__dsp_ga1703a42f41a941e1b8542e2aa7725b8}
+
+
+Bitmask for Bessel filter 
+
+Definition at line 384 of file bpm\_\-dsp.h.
+
+Referenced by create\_\-filter(), and create\_\-splane\_\-representation().\index{dsp@{dsp}!BUTTERWORTH@{BUTTERWORTH}}
+\index{BUTTERWORTH@{BUTTERWORTH}!dsp@{dsp}}
+\paragraph[BUTTERWORTH]{\setlength{\rightskip}{0pt plus 5cm}\#define BUTTERWORTH}\hfill\label{group__dsp_g5d0a54629b87a77272d7979fa69eb0f4}
+
+
+Bitmask for Butterworth filter 
+
+Definition at line 385 of file bpm\_\-dsp.h.
+
+Referenced by create\_\-filter(), and create\_\-splane\_\-representation().\index{dsp@{dsp}!CHEBYSHEV@{CHEBYSHEV}}
+\index{CHEBYSHEV@{CHEBYSHEV}!dsp@{dsp}}
+\paragraph[CHEBYSHEV]{\setlength{\rightskip}{0pt plus 5cm}\#define CHEBYSHEV}\hfill\label{group__dsp_g8d2af0f448fbf14aae730419d05e9aae}
+
+
+Bitmask for Chebyshev filter 
+
+Definition at line 386 of file bpm\_\-dsp.h.
+
+Referenced by create\_\-filter(), and create\_\-splane\_\-representation().\index{dsp@{dsp}!RAISEDCOSINE@{RAISEDCOSINE}}
+\index{RAISEDCOSINE@{RAISEDCOSINE}!dsp@{dsp}}
+\paragraph[RAISEDCOSINE]{\setlength{\rightskip}{0pt plus 5cm}\#define RAISEDCOSINE}\hfill\label{group__dsp_gad132a516e77ed236f2fc783d4a0a76a}
+
+
+Bitmask for Raised Cosine filter 
+
+Definition at line 387 of file bpm\_\-dsp.h.\index{dsp@{dsp}!RESONATOR@{RESONATOR}}
+\index{RESONATOR@{RESONATOR}!dsp@{dsp}}
+\paragraph[RESONATOR]{\setlength{\rightskip}{0pt plus 5cm}\#define RESONATOR}\hfill\label{group__dsp_gfe7637a70564a23668795435de22932c}
+
+
+Bitmask for Resonator filter 
+
+Definition at line 388 of file bpm\_\-dsp.h.
+
+Referenced by create\_\-filter(), and get\_\-mode\_\-response().\index{dsp@{dsp}!GAUSSIAN@{GAUSSIAN}}
+\index{GAUSSIAN@{GAUSSIAN}!dsp@{dsp}}
+\paragraph[GAUSSIAN]{\setlength{\rightskip}{0pt plus 5cm}\#define GAUSSIAN}\hfill\label{group__dsp_gd751f1b6909c0124a4ca151036b28a0e}
+
+
+Bitmask for Gaussian filter 
+
+Definition at line 389 of file bpm\_\-dsp.h.
+
+Referenced by create\_\-filter().\index{dsp@{dsp}!BILINEAR\_\-Z\_\-TRANSFORM@{BILINEAR\_\-Z\_\-TRANSFORM}}
+\index{BILINEAR\_\-Z\_\-TRANSFORM@{BILINEAR\_\-Z\_\-TRANSFORM}!dsp@{dsp}}
+\paragraph[BILINEAR\_\-Z\_\-TRANSFORM]{\setlength{\rightskip}{0pt plus 5cm}\#define BILINEAR\_\-Z\_\-TRANSFORM}\hfill\label{group__dsp_g2b8825fbaecce70ee62e88c392c3a5cc}
+
+
+Get z poles via bilinear z transform from s plane 
+
+Definition at line 391 of file bpm\_\-dsp.h.\index{dsp@{dsp}!MATCHED\_\-Z\_\-TRANSFORM@{MATCHED\_\-Z\_\-TRANSFORM}}
+\index{MATCHED\_\-Z\_\-TRANSFORM@{MATCHED\_\-Z\_\-TRANSFORM}!dsp@{dsp}}
+\paragraph[MATCHED\_\-Z\_\-TRANSFORM]{\setlength{\rightskip}{0pt plus 5cm}\#define MATCHED\_\-Z\_\-TRANSFORM}\hfill\label{group__dsp_g3760e0e98d0cc986cc0cd5ad69f327c8}
+
+
+Get z poles via matches z transform from s plane 
+
+Definition at line 392 of file bpm\_\-dsp.h.
+
+Referenced by zplane\_\-transform().\index{dsp@{dsp}!NO\_\-PREWARP@{NO\_\-PREWARP}}
+\index{NO\_\-PREWARP@{NO\_\-PREWARP}!dsp@{dsp}}
+\paragraph[NO\_\-PREWARP]{\setlength{\rightskip}{0pt plus 5cm}\#define NO\_\-PREWARP}\hfill\label{group__dsp_g00c885f3fbae267b1a194a1451c6c0fd}
+
+
+Don't do the prewarp correction 
+
+Definition at line 393 of file bpm\_\-dsp.h.
+
+Referenced by create\_\-filter().\index{dsp@{dsp}!CAUSAL@{CAUSAL}}
+\index{CAUSAL@{CAUSAL}!dsp@{dsp}}
+\paragraph[CAUSAL]{\setlength{\rightskip}{0pt plus 5cm}\#define CAUSAL}\hfill\label{group__dsp_g1325d477c181914de6e34377f85e1782}
+
+
+Filter is purely causal (only depends on past ) 
+
+Definition at line 394 of file bpm\_\-dsp.h.
+
+Referenced by apply\_\-filter(), create\_\-filter(), and print\_\-filter().\index{dsp@{dsp}!ANTICAUSAL@{ANTICAUSAL}}
+\index{ANTICAUSAL@{ANTICAUSAL}!dsp@{dsp}}
+\paragraph[ANTICAUSAL]{\setlength{\rightskip}{0pt plus 5cm}\#define ANTICAUSAL}\hfill\label{group__dsp_g7ac031f6a8bf39034b82cb3910c5ae64}
+
+
+.... purely anticausal (only depends on future) 
+
+Definition at line 395 of file bpm\_\-dsp.h.
+
+Referenced by apply\_\-filter(), and print\_\-filter().\index{dsp@{dsp}!NONCAUSAL@{NONCAUSAL}}
+\index{NONCAUSAL@{NONCAUSAL}!dsp@{dsp}}
+\paragraph[NONCAUSAL]{\setlength{\rightskip}{0pt plus 5cm}\#define NONCAUSAL}\hfill\label{group__dsp_g1ca4ab5665f98b5fa329196b585a591d}
+
+
+Filter is both causal and acausal 
+
+Definition at line 396 of file bpm\_\-dsp.h.
+
+Referenced by create\_\-filter().\index{dsp@{dsp}!GAUSSIAN\_\-SIGMA\_\-BW@{GAUSSIAN\_\-SIGMA\_\-BW}}
+\index{GAUSSIAN\_\-SIGMA\_\-BW@{GAUSSIAN\_\-SIGMA\_\-BW}!dsp@{dsp}}
+\paragraph[GAUSSIAN\_\-SIGMA\_\-BW]{\setlength{\rightskip}{0pt plus 5cm}\#define GAUSSIAN\_\-SIGMA\_\-BW}\hfill\label{group__dsp_g542c0ef4de56e474ddde83cf0f4c7f75}
+
+
+Gaussian sigma bandwidth in stead of -3 dB (def) 
+
+Definition at line 397 of file bpm\_\-dsp.h.
+
+Referenced by gaussian\_\-filter\_\-coeffs().\index{dsp@{dsp}!LOWPASS@{LOWPASS}}
+\index{LOWPASS@{LOWPASS}!dsp@{dsp}}
+\paragraph[LOWPASS]{\setlength{\rightskip}{0pt plus 5cm}\#define LOWPASS}\hfill\label{group__dsp_gb88b316b336dadc6e77f04d6f035d86e}
+
+
+Normalise filter as lowpass 
+
+Definition at line 399 of file bpm\_\-dsp.h.
+
+Referenced by calculate\_\-filter\_\-coefficients(), and normalise\_\-filter().\index{dsp@{dsp}!HIGHPASS@{HIGHPASS}}
+\index{HIGHPASS@{HIGHPASS}!dsp@{dsp}}
+\paragraph[HIGHPASS]{\setlength{\rightskip}{0pt plus 5cm}\#define HIGHPASS}\hfill\label{group__dsp_gb55942c743e16f6629ad144214ced198}
+
+
+Normalise filter as highpass 
+
+Definition at line 400 of file bpm\_\-dsp.h.
+
+Referenced by calculate\_\-filter\_\-coefficients(), and normalise\_\-filter().\index{dsp@{dsp}!BANDPASS@{BANDPASS}}
+\index{BANDPASS@{BANDPASS}!dsp@{dsp}}
+\paragraph[BANDPASS]{\setlength{\rightskip}{0pt plus 5cm}\#define BANDPASS}\hfill\label{group__dsp_g3ebfa4d7e384f53e6a37ff0d0d98627d}
+
+
+Normalise filter as bandpass 
+
+Definition at line 401 of file bpm\_\-dsp.h.
+
+Referenced by calculate\_\-filter\_\-coefficients(), get\_\-mode\_\-response(), and normalise\_\-filter().\index{dsp@{dsp}!BANDSTOP@{BANDSTOP}}
+\index{BANDSTOP@{BANDSTOP}!dsp@{dsp}}
+\paragraph[BANDSTOP]{\setlength{\rightskip}{0pt plus 5cm}\#define BANDSTOP}\hfill\label{group__dsp_g889ef557cbf5adfd002eab3f69d59a4c}
+
+
+Normalise filter as bandstop 
+
+Definition at line 402 of file bpm\_\-dsp.h.
+
+Referenced by calculate\_\-filter\_\-coefficients(), create\_\-resonator\_\-representation(), and normalise\_\-filter().\index{dsp@{dsp}!NOTCH@{NOTCH}}
+\index{NOTCH@{NOTCH}!dsp@{dsp}}
+\paragraph[NOTCH]{\setlength{\rightskip}{0pt plus 5cm}\#define NOTCH}\hfill\label{group__dsp_gfc5c94321c320b7db339b511e6905cce}
+
+
+Normalise filter as notch filter (=bandstop) 
+
+Definition at line 403 of file bpm\_\-dsp.h.\index{dsp@{dsp}!ALLPASS@{ALLPASS}}
+\index{ALLPASS@{ALLPASS}!dsp@{dsp}}
+\paragraph[ALLPASS]{\setlength{\rightskip}{0pt plus 5cm}\#define ALLPASS}\hfill\label{group__dsp_g88cf96ad30a3bdf745ac7cc883b4cc25}
+
+
+Normalise filter as allpass ( resonator ) 
+
+Definition at line 404 of file bpm\_\-dsp.h.
+
+Referenced by create\_\-resonator\_\-representation().\index{dsp@{dsp}!FIR@{FIR}}
+\index{FIR@{FIR}!dsp@{dsp}}
+\paragraph[FIR]{\setlength{\rightskip}{0pt plus 5cm}\#define FIR}\hfill\label{group__dsp_g34e4945cab9dbce5d535cd599409014d}
+
+
+Filter is of FIR type 
+
+Definition at line 406 of file bpm\_\-dsp.h.
+
+Referenced by apply\_\-filter(), and create\_\-filter().\index{dsp@{dsp}!IIR@{IIR}}
+\index{IIR@{IIR}!dsp@{dsp}}
+\paragraph[IIR]{\setlength{\rightskip}{0pt plus 5cm}\#define IIR}\hfill\label{group__dsp_g67004975983f9c99226d63db17ba74c4}
+
+
+Filter is of IIR type 
+
+Definition at line 407 of file bpm\_\-dsp.h.
+
+Referenced by create\_\-filter().\index{dsp@{dsp}!MAXORDER@{MAXORDER}}
+\index{MAXORDER@{MAXORDER}!dsp@{dsp}}
+\paragraph[MAXORDER]{\setlength{\rightskip}{0pt plus 5cm}\#define MAXORDER}\hfill\label{group__dsp_g623810946946d9e0d69affd3906871cf}
+
+
+Maximum filter order 
+
+Definition at line 409 of file bpm\_\-dsp.h.\index{dsp@{dsp}!MAXPZ@{MAXPZ}}
+\index{MAXPZ@{MAXPZ}!dsp@{dsp}}
+\paragraph[MAXPZ]{\setlength{\rightskip}{0pt plus 5cm}\#define MAXPZ}\hfill\label{group__dsp_ge6099fd066a0d0ccea7af9a725451cdd}
+
+
+Maximum number of poles and zeros $>$2$\ast$MAXORDER 
+
+Definition at line 410 of file bpm\_\-dsp.h.
+
+Referenced by calculate\_\-filter\_\-coefficients(), create\_\-resonator\_\-representation(), and gaussian\_\-filter\_\-coeffs().\index{dsp@{dsp}!FILT\_\-EPS@{FILT\_\-EPS}}
+\index{FILT\_\-EPS@{FILT\_\-EPS}!dsp@{dsp}}
+\paragraph[FILT\_\-EPS]{\setlength{\rightskip}{0pt plus 5cm}\#define FILT\_\-EPS}\hfill\label{group__dsp_g7782897f56b1db64e9aef60d5fcb8867}
+
+
+A small number used in bpmdsp 
+
+Definition at line 411 of file bpm\_\-dsp.h.
+
+Referenced by \_\-expand\_\-complex\_\-polynomial(), create\_\-resonator\_\-representation(), and print\_\-filter().\index{dsp@{dsp}!MAX\_\-RESONATOR\_\-ITER@{MAX\_\-RESONATOR\_\-ITER}}
+\index{MAX\_\-RESONATOR\_\-ITER@{MAX\_\-RESONATOR\_\-ITER}!dsp@{dsp}}
+\paragraph[MAX\_\-RESONATOR\_\-ITER]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-RESONATOR\_\-ITER}\hfill\label{group__dsp_g7eeaec212ff7b30e0f1aaea1f75090d2}
+
+
+Maximum iterations in resonator poles calculation 
+
+Definition at line 412 of file bpm\_\-dsp.h.
+
+Referenced by create\_\-resonator\_\-representation().\index{dsp@{dsp}!FFT\_\-FORWARD@{FFT\_\-FORWARD}}
+\index{FFT\_\-FORWARD@{FFT\_\-FORWARD}!dsp@{dsp}}
+\paragraph[FFT\_\-FORWARD]{\setlength{\rightskip}{0pt plus 5cm}\#define FFT\_\-FORWARD}\hfill\label{group__dsp_g7769d6eabe1e3ec538cf182e453b0e9c}
+
+
+Perform FFT from time -$>$ frequency 
+
+Definition at line 414 of file bpm\_\-dsp.h.
+
+Referenced by complexfft(), fft\_\-waveform(), and realfft().\index{dsp@{dsp}!FFT\_\-BACKWARD@{FFT\_\-BACKWARD}}
+\index{FFT\_\-BACKWARD@{FFT\_\-BACKWARD}!dsp@{dsp}}
+\paragraph[FFT\_\-BACKWARD]{\setlength{\rightskip}{0pt plus 5cm}\#define FFT\_\-BACKWARD}\hfill\label{group__dsp_g5fcdb491cd42667dc09e79aa17caea60}
+
+
+Perform FFT from frequency -$>$ time 
+
+Definition at line 415 of file bpm\_\-dsp.h.
+
+Referenced by complexfft(), and realfft().
+
+\subsubsection{Function Documentation}
+\index{dsp@{dsp}!create\_\-filter@{create\_\-filter}}
+\index{create\_\-filter@{create\_\-filter}!dsp@{dsp}}
+\paragraph[create\_\-filter]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf filter\_\-t}$\ast$ create\_\-filter (char {\em name}[$\,$], \/  unsigned int {\em options}, \/  int {\em order}, \/  int {\em ns}, \/  double {\em fs}, \/  double {\em f1}, \/  double {\em f2}, \/  double {\em par})}\hfill\label{group__dsp_g9a69282273c256d3fd7481652b360b93}
+
+
+Creates the filter. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em name}]a name for the filter \item[{\em options}]filter specification and options bitword \item[{\em order}]filter order \item[{\em ns}]number of samples of the waveforms \item[{\em fs}]sampling frequency \item[{\em f1}]first frequency \item[{\em f2}]optional second frequency ( bandpass/bandstop ) \item[{\em par}]optional parameter\begin{itemize}
+\item for chebyshev : ripple in dB\item for resonator : Q factor \end{itemize}
+\end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the created filter structure, memory is allocated on the heap inside this routine, the user has to take of deleting it using \doxyref{delete\_\-filter()}{p.}{group__dsp_g182f6ed138d07cce1940be6c7dc7d843}. \end{Desc}
+
+
+Definition at line 10 of file create\_\-filter.c.
+
+References filter\_\-t::alpha1, filter\_\-t::alpha2, BESSEL, bpm\_\-error(), bpm\_\-warning(), BUTTERWORTH, calculate\_\-filter\_\-coefficients(), CAUSAL, filter\_\-t::cheb\_\-ripple, CHEBYSHEV, filter\_\-t::cplane, create\_\-resonator\_\-representation(), create\_\-splane\_\-representation(), filter\_\-t::f1, filter\_\-t::f2, FIR, filter\_\-t::fs, filter\_\-t::gauss\_\-cutoff, GAUSSIAN, gaussian\_\-filter\_\-coeffs(), IIR, filter\_\-t::name, NO\_\-PREWARP, NONCAUSAL, normalise\_\-filter(), filterrep\_\-t::npoles, filter\_\-t::ns, filter\_\-t::options, filter\_\-t::order, filter\_\-t::Q, RESONATOR, filter\_\-t::w\_\-alpha1, filter\_\-t::w\_\-alpha2, filter\_\-t::wfbuffer, filter\_\-t::yc, and zplane\_\-transform().
+
+Referenced by get\_\-mode\_\-response().\index{dsp@{dsp}!apply\_\-filter@{apply\_\-filter}}
+\index{apply\_\-filter@{apply\_\-filter}!dsp@{dsp}}
+\paragraph[apply\_\-filter]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int apply\_\-filter ({\bf filter\_\-t} $\ast$ {\em f}, \/  {\bf doublewf\_\-t} $\ast$ {\em w})}\hfill\label{group__dsp_g06e897b615044a7169dc84b8eb4a7cfc}
+
+
+Apply the filter to the given waveform. Note that the filter is applied in place, the user has to make a copy of the waveform if he/she wants to keep the original before applying the filter. The number of samples in the waveform has to be set in advance when creating the filter, it is stored in the filter structure (f-$>$ns).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]pointer to a filter that was created using create\_\-filter \item[{\em wf}]an array containing the waveform to be filtered \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success and BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 19 of file apply\_\-filter.c.
+
+References ANTICAUSAL, bpm\_\-error(), CAUSAL, FIR, filter\_\-t::gain, filter\_\-t::ns, filter\_\-t::nxc, filter\_\-t::nxc\_\-ac, filter\_\-t::nyc, filter\_\-t::options, doublewf\_\-t::wf, filter\_\-t::wfbuffer, filter\_\-t::xc, filter\_\-t::xc\_\-ac, filter\_\-t::xv, filter\_\-t::xv\_\-ac, filter\_\-t::yc, filter\_\-t::yv, and filter\_\-t::yv\_\-ac.
+
+Referenced by ddc(), filter\_\-impulse\_\-response(), filter\_\-step\_\-response(), generate\_\-diodesignal(), and get\_\-mode\_\-response().\index{dsp@{dsp}!print\_\-filter@{print\_\-filter}}
+\index{print\_\-filter@{print\_\-filter}!dsp@{dsp}}
+\paragraph[print\_\-filter]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void print\_\-filter (FILE $\ast$ {\em of}, \/  {\bf filter\_\-t} $\ast$ {\em f})}\hfill\label{group__dsp_gb1dc802390cc2794e545a635b833e819}
+
+
+Prints the filter to the given file pointer. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em of}]the filepointer, use \char`\"{}stdout\char`\"{} to print to the terminal \item[{\em f}]the filter to be printed \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 8 of file print\_\-filter.c.
+
+References ANTICAUSAL, bpm\_\-error(), CAUSAL, filter\_\-t::cplane, filter\_\-t::dc\_\-gain, filter\_\-t::fc\_\-gain, FILT\_\-EPS, filter\_\-t::gain, filter\_\-t::hf\_\-gain, filter\_\-t::name, filter\_\-t::nxc, filter\_\-t::nxc\_\-ac, filter\_\-t::nyc, filter\_\-t::options, print\_\-filter\_\-representation(), filter\_\-t::xc, filter\_\-t::xc\_\-ac, and filter\_\-t::yc.\index{dsp@{dsp}!delete\_\-filter@{delete\_\-filter}}
+\index{delete\_\-filter@{delete\_\-filter}!dsp@{dsp}}
+\paragraph[delete\_\-filter]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void delete\_\-filter ({\bf filter\_\-t} $\ast$ {\em f})}\hfill\label{group__dsp_g182f6ed138d07cce1940be6c7dc7d843}
+
+
+Clears the memory that was allocated on the heap for the filter f. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]a pointer to the filter \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 7 of file delete\_\-filter.c.
+
+References filter\_\-t::cplane, and filter\_\-t::wfbuffer.
+
+Referenced by get\_\-mode\_\-response().\index{dsp@{dsp}!filter\_\-step\_\-response@{filter\_\-step\_\-response}}
+\index{filter\_\-step\_\-response@{filter\_\-step\_\-response}!dsp@{dsp}}
+\paragraph[filter\_\-step\_\-response]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int filter\_\-step\_\-response ({\bf filter\_\-t} $\ast$ {\em f}, \/  {\bf doublewf\_\-t} $\ast$ {\em w}, \/  int {\em itrig})}\hfill\label{group__dsp_g8ffa4c94e6673b1a73fe7266f1321e44}
+
+
+This routine fills the given wf with the step response of the filter. The step response is defined as wf[i] = 0. for i $<$ itrig and wf[i] = 1. for i $>$= itrig.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]a pointer to the filter to use \item[{\em wf}]pointer to a waveform which will be overwritten with the step response \item[{\em itrig}]the sample number in the waveform which will have the step \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes and BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Produces a stepresponse for the filter, step is defined by the trigger sample number the starting level and the endlevel 
+
+Definition at line 8 of file filter\_\-step\_\-response.c.
+
+References apply\_\-filter(), bpm\_\-error(), filter\_\-t::ns, and doublewf\_\-t::wf.\index{dsp@{dsp}!filter\_\-impulse\_\-response@{filter\_\-impulse\_\-response}}
+\index{filter\_\-impulse\_\-response@{filter\_\-impulse\_\-response}!dsp@{dsp}}
+\paragraph[filter\_\-impulse\_\-response]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int filter\_\-impulse\_\-response ({\bf filter\_\-t} $\ast$ {\em f}, \/  {\bf doublewf\_\-t} $\ast$ {\em w}, \/  int {\em itrig})}\hfill\label{group__dsp_gf12c84bb45e297f3bb0799341298942c}
+
+
+This routine fills the given wf with the impulse response of the filter. The impulse response is defined as wf[i] = 1. for i == itrig and wf[i] = 0. elsewhere.
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]a pointer to the filter to use \item[{\em wf}]pointer to a waveform which will be overwritten with the impulse response \item[{\em itrig}]the sample number in the waveform which will have the impulse \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes and BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Produces an impulse response for the filter, step is defined by the trigger sample number the starting level and the endlevel 
+
+Definition at line 7 of file filter\_\-impulse\_\-response.c.
+
+References apply\_\-filter(), bpm\_\-error(), filter\_\-t::ns, and doublewf\_\-t::wf.\index{dsp@{dsp}!create\_\-splane\_\-representation@{create\_\-splane\_\-representation}}
+\index{create\_\-splane\_\-representation@{create\_\-splane\_\-representation}!dsp@{dsp}}
+\paragraph[create\_\-splane\_\-representation]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf filterrep\_\-t}$\ast$ create\_\-splane\_\-representation ({\bf filter\_\-t} $\ast$ {\em f})}\hfill\label{group__dsp_g22c12acc1f0031b41236dd009182f0b3}
+
+
+This routine returns a pointer to a filter representation \doxyref{filterrep\_\-t}{p.}{structfilterrep__t} in the s plane for Butterworth, Chebyshev and Bessel filters. It need an initialised filter structure which has the filter type and the order set. Memory is allocated for this routine on the heap, so the user is responsible to delete this memory using free().
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]the initialised filter with the correct options in f-$>$options \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the filter representation in the s plane \end{Desc}
+
+
+Definition at line 32 of file create\_\-splane\_\-representation.c.
+
+References BESSEL, bpm\_\-error(), BUTTERWORTH, filter\_\-t::cheb\_\-ripple, CHEBYSHEV, filterrep\_\-t::npoles, filter\_\-t::options, filter\_\-t::order, and filterrep\_\-t::pole.
+
+Referenced by create\_\-filter().\index{dsp@{dsp}!create\_\-resonator\_\-representation@{create\_\-resonator\_\-representation}}
+\index{create\_\-resonator\_\-representation@{create\_\-resonator\_\-representation}!dsp@{dsp}}
+\paragraph[create\_\-resonator\_\-representation]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf filterrep\_\-t}$\ast$ create\_\-resonator\_\-representation ({\bf filter\_\-t} $\ast$ {\em f})}\hfill\label{group__dsp_g21615df94a81d7f49ebab1b94843b796}
+
+
+This routine returns a pointer to a filter representation \doxyref{filterrep\_\-t}{p.}{structfilterrep__t} in the z plane for resonance filters. It needs an initialised filter structure which has the filter type and the Q factor set. Memory is allocated for this routine on the heap, so the user is responsible to delete this memory using free().
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]the initialised filter with the correct options in f-$>$options \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the filter representation in the z plane \end{Desc}
+
+
+Definition at line 15 of file create\_\-resonator\_\-representation.c.
+
+References \_\-eval\_\-complex\_\-polynomial(), \_\-expand\_\-complex\_\-polynomial(), ALLPASS, filter\_\-t::alpha1, BANDSTOP, bpm\_\-error(), FILT\_\-EPS, complex\_\-t::im, MAX\_\-RESONATOR\_\-ITER, MAXPZ, filterrep\_\-t::npoles, filterrep\_\-t::nzeros, filter\_\-t::options, filterrep\_\-t::pole, filter\_\-t::Q, complex\_\-t::re, and filterrep\_\-t::zero.
+
+Referenced by create\_\-filter().\index{dsp@{dsp}!zplane\_\-transform@{zplane\_\-transform}}
+\index{zplane\_\-transform@{zplane\_\-transform}!dsp@{dsp}}
+\paragraph[zplane\_\-transform]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf filterrep\_\-t}$\ast$ zplane\_\-transform ({\bf filter\_\-t} $\ast$ {\em f}, \/  {\bf filterrep\_\-t} $\ast$ {\em s})}\hfill\label{group__dsp_g56db3510d9bcff5794866f57edf626f8}
+
+
+This routine transforms the poles and zeros for Bessel, Chebyshev and Butterworth filters to the z plane either via matched z transform or bilinear z transform. This is set in f-$>$options. Memory is allocated for this routine on the heap, so the user is responsible to delete this memory using free().
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]the filter, needs the options from it to check how to transform \item[{\em s}]filter s plane poles and zeros \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]a pointer to the z plane representation \end{Desc}
+
+
+Definition at line 8 of file zplane\_\-transform.c.
+
+References bpm\_\-error(), MATCHED\_\-Z\_\-TRANSFORM, filterrep\_\-t::npoles, filterrep\_\-t::nzeros, filter\_\-t::options, filterrep\_\-t::pole, and filterrep\_\-t::zero.
+
+Referenced by create\_\-filter().\index{dsp@{dsp}!print\_\-filter\_\-representation@{print\_\-filter\_\-representation}}
+\index{print\_\-filter\_\-representation@{print\_\-filter\_\-representation}!dsp@{dsp}}
+\paragraph[print\_\-filter\_\-representation]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void print\_\-filter\_\-representation (FILE $\ast$ {\em of}, \/  {\bf filterrep\_\-t} $\ast$ {\em r})}\hfill\label{group__dsp_g77d84f27e5a88390cd5f263249256958}
+
+
+Prints the filter representation in terms of poles and zeros to the filepointer. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em of}]the filepointer, use \char`\"{}stdout\char`\"{} to print to the terminal \item[{\em r}]the filter representation to be printed \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Display filter representation 
+
+Definition at line 8 of file print\_\-filter\_\-representation.c.
+
+References filterrep\_\-t::npoles, filterrep\_\-t::nzeros, filterrep\_\-t::pole, and filterrep\_\-t::zero.
+
+Referenced by print\_\-filter().\index{dsp@{dsp}!normalise\_\-filter@{normalise\_\-filter}}
+\index{normalise\_\-filter@{normalise\_\-filter}!dsp@{dsp}}
+\paragraph[normalise\_\-filter]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int normalise\_\-filter ({\bf filter\_\-t} $\ast$ {\em f}, \/  {\bf filterrep\_\-t} $\ast$ {\em s})}\hfill\label{group__dsp_g086b8f12f06df3ac5d3892c6c378346c}
+
+
+Normalises the Butterworth, Chebyshev or Bessel filters to be Bandpass/stop or Low/Highpass \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]the filter \item[{\em s}]the filter's representation in the s plane \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success or BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 7 of file normalise\_\-filter.c.
+
+References BANDPASS, BANDSTOP, bpm\_\-error(), HIGHPASS, LOWPASS, filterrep\_\-t::npoles, filterrep\_\-t::nzeros, filter\_\-t::options, filterrep\_\-t::pole, filter\_\-t::w\_\-alpha1, filter\_\-t::w\_\-alpha2, and filterrep\_\-t::zero.
+
+Referenced by create\_\-filter().\index{dsp@{dsp}!calculate\_\-filter\_\-coefficients@{calculate\_\-filter\_\-coefficients}}
+\index{calculate\_\-filter\_\-coefficients@{calculate\_\-filter\_\-coefficients}!dsp@{dsp}}
+\paragraph[calculate\_\-filter\_\-coefficients]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int calculate\_\-filter\_\-coefficients ({\bf filter\_\-t} $\ast$ {\em f})}\hfill\label{group__dsp_gd51e74023863f312dc8f78143203cdda}
+
+
+Calculates the filter coefficients from the z plane representation for Butterworth, Chebyshev, Bessel and Resonators. Before this routine is called, one has to make sure that the member cplane, which holds a pointer to the filter's representation in the complex plane is set. This routine than calculates the filter coefficients and stores them in f-$>$xc ( coefficients of x[n], x[n-1], x[n-2]...) and f-$>$yc ( coefficients of y[n-1], y[n-2], y[n-3], ... in case of IIR filters ).
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]the filter, having it's f-$>$cplane member set to the z plan representation \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success or BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Calculates the filter coefficients from the poles and zeros in the cplane representation... Also calculates the filter gains... 
+
+Definition at line 56 of file calculate\_\-filter\_\-coefficients.c.
+
+References \_\-eval\_\-complex\_\-polynomial(), \_\-expand\_\-complex\_\-polynomial(), filter\_\-t::alpha1, filter\_\-t::alpha2, BANDPASS, BANDSTOP, filter\_\-t::cplane, filter\_\-t::dc\_\-gain, filter\_\-t::fc\_\-gain, filter\_\-t::gain, filter\_\-t::hf\_\-gain, HIGHPASS, LOWPASS, MAXPZ, filterrep\_\-t::npoles, filter\_\-t::nxc, filter\_\-t::nyc, filterrep\_\-t::nzeros, filter\_\-t::options, filterrep\_\-t::pole, filter\_\-t::xc, filter\_\-t::yc, and filterrep\_\-t::zero.
+
+Referenced by create\_\-filter().\index{dsp@{dsp}!gaussian\_\-filter\_\-coeffs@{gaussian\_\-filter\_\-coeffs}}
+\index{gaussian\_\-filter\_\-coeffs@{gaussian\_\-filter\_\-coeffs}!dsp@{dsp}}
+\paragraph[gaussian\_\-filter\_\-coeffs]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int gaussian\_\-filter\_\-coeffs ({\bf filter\_\-t} $\ast$ {\em f})}\hfill\label{group__dsp_ga890982cd403efa5e312ab0877021d16}
+
+
+Calculates the gaussian filter coefficients from the original gaussian filter implementation in the digital downconversion algortithm in Yury's code. Note that this filter is implemented as a FIR non-causal filter. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]the filter structure with the coefficients to fill \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success or BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 8 of file gaussian\_\-filter\_\-coeffs.c.
+
+References bpm\_\-error(), dround(), filter\_\-t::f1, filter\_\-t::fs, filter\_\-t::gain, filter\_\-t::gauss\_\-cutoff, GAUSSIAN\_\-SIGMA\_\-BW, MAXPZ, filter\_\-t::ns, filter\_\-t::nxc, filter\_\-t::nxc\_\-ac, filter\_\-t::options, filter\_\-t::xc, and filter\_\-t::xc\_\-ac.
+
+Referenced by create\_\-filter().\index{dsp@{dsp}!\_\-expand\_\-complex\_\-polynomial@{\_\-expand\_\-complex\_\-polynomial}}
+\index{\_\-expand\_\-complex\_\-polynomial@{\_\-expand\_\-complex\_\-polynomial}!dsp@{dsp}}
+\paragraph[\_\-expand\_\-complex\_\-polynomial]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int \_\-expand\_\-complex\_\-polynomial ({\bf complex\_\-t} $\ast$ {\em w}, \/  int {\em n}, \/  {\bf complex\_\-t} $\ast$ {\em a})}\hfill\label{group__dsp_gf174b4706cf2aa8dc8223d21e10b066a}
+
+
+Helper routine to expand a complex polynomial from a set of zeros. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]array of complex zeros for the polynomial \item[{\em n}]nunber of zeros \item[{\em a}]array of coeffiecients for the polynomial that is returned \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success or BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Calculate the polynomial coefficients in a0 + a1 $\ast$ z + a2 $\ast$ z$^\wedge$2 + a3 $\ast$ z$^\wedge$3 + ... = (z-w1)(z-w2)(z-w3)... from the n polynomial's zero's \char`\"{}w\char`\"{} returns the results in a, the array of coefficients... 
+
+Definition at line 8 of file calculate\_\-filter\_\-coefficients.c.
+
+References bpm\_\-error(), and FILT\_\-EPS.
+
+Referenced by calculate\_\-filter\_\-coefficients(), and create\_\-resonator\_\-representation().\index{dsp@{dsp}!\_\-eval\_\-complex\_\-polynomial@{\_\-eval\_\-complex\_\-polynomial}}
+\index{\_\-eval\_\-complex\_\-polynomial@{\_\-eval\_\-complex\_\-polynomial}!dsp@{dsp}}
+\paragraph[\_\-eval\_\-complex\_\-polynomial]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf complex\_\-t} \_\-eval\_\-complex\_\-polynomial ({\bf complex\_\-t} $\ast$ {\em a}, \/  int {\em n}, \/  {\bf complex\_\-t} {\em z})}\hfill\label{group__dsp_gaa71bf94e489845a3c6f193146eecd51}
+
+
+Helper routine to evaluate a complex polynomial for value z \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a}]array of coeffiecients for the polynomial that is returned \item[{\em n}]number of zeros \item[{\em z}]the value for which to evalute the polynomial \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the value of the polynomial for z ( \doxyref{complex\_\-t}{p.}{structcomplex__t} ) \end{Desc}
+
+
+Definition at line 44 of file calculate\_\-filter\_\-coefficients.c.
+
+Referenced by calculate\_\-filter\_\-coefficients(), and create\_\-resonator\_\-representation().\index{dsp@{dsp}!ddc\_\-initialise@{ddc\_\-initialise}}
+\index{ddc\_\-initialise@{ddc\_\-initialise}!dsp@{dsp}}
+\paragraph[ddc\_\-initialise]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int ddc\_\-initialise (int {\em ns}, \/  double {\em fs})}\hfill\label{group__dsp_gf449577391d3318d8434c5533e35336e}
+
+
+Initialises and allocates memory for the DDC buffers with the correct number of samples and sampling frequency \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ns}]Nuber of samples in waveforms to be processed \item[{\em fs}]The sampling frequency of the waveforms \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 50 of file ddc.c.
+
+References bpm\_\-error(), and doublewf().\index{dsp@{dsp}!ddc\_\-cleanup@{ddc\_\-cleanup}}
+\index{ddc\_\-cleanup@{ddc\_\-cleanup}!dsp@{dsp}}
+\paragraph[ddc\_\-cleanup]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void ddc\_\-cleanup (void)}\hfill\label{group__dsp_g86ecee7954632e5f6588fab658ad57e4}
+
+
+Clears up and frees the buffer memory for the ddc routines 
+
+Definition at line 70 of file ddc.c.
+
+References doublewf\_\-delete().\index{dsp@{dsp}!ddc@{ddc}}
+\index{ddc@{ddc}!dsp@{dsp}}
+\paragraph[ddc]{\setlength{\rightskip}{0pt plus 5cm}int ddc ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double {\em f}, \/  {\bf filter\_\-t} $\ast$ {\em filter}, \/  {\bf complexwf\_\-t} $\ast$ {\em dcw}, \/  {\bf doublewf\_\-t} $\ast$ {\em bufre}, \/  {\bf doublewf\_\-t} $\ast$ {\em bufim})}\hfill\label{group__dsp_g9d8c64898ae5afc694d20c3b7224f728}
+
+
+Do a digital downconversion on the waveform f. The routine returns a complex DC waveform \char`\"{}wdc\char`\"{}. If the buffer arguments are NULL pointers, the DDC routine will use an internal buffer. This is a good option when all the BPMs in the system have the same sampling frequency and number of samples. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]The waveform of doubles to process \item[{\em f}]The frequency of the digital local oscillator \item[{\em filter}]The lowpass filter to get rid of the 2omega component \item[{\em dcw}]The complex DC waveform \item[{\em bufre}]The real ddc buffer \item[{\em bufim}]The imaginary ddc buffer \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 78 of file ddc.c.
+
+References apply\_\-filter(), complexwf\_\-setimag(), complexwf\_\-setreal(), doublewf\_\-t::fs, complexwf\_\-t::fs, doublewf\_\-t::ns, complexwf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by ddc\_\-waveform().\index{dsp@{dsp}!fft\_\-gen\_\-tables@{fft\_\-gen\_\-tables}}
+\index{fft\_\-gen\_\-tables@{fft\_\-gen\_\-tables}!dsp@{dsp}}
+\paragraph[fft\_\-gen\_\-tables]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int fft\_\-gen\_\-tables (void)}\hfill\label{group__dsp_g0044b20270242b942305a7a8308751fa}
+
+
+Regenerates the sin/cos tables that are needed for the fast DFT algorithm. 
+
+Definition at line 116 of file discrete\_\-fourier\_\-transforms.c.
+
+References bpm\_\-error().
+
+Referenced by fft\_\-initialise().\index{dsp@{dsp}!fft\_\-initialise@{fft\_\-initialise}}
+\index{fft\_\-initialise@{fft\_\-initialise}!dsp@{dsp}}
+\paragraph[fft\_\-initialise]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int fft\_\-initialise (int {\em ns})}\hfill\label{group__dsp_gfc4c99bc5d39d6b118e1ccd629bc0967}
+
+
+This one initialised the FFT buffers, checks whether they are large enough for the given number of samples and frees and re-allocates memory where necessary \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ns}]The number of samples in the waveforms to be transformed \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 130 of file discrete\_\-fourier\_\-transforms.c.
+
+References bpm\_\-error(), and fft\_\-gen\_\-tables().\index{dsp@{dsp}!fft\_\-cleanup@{fft\_\-cleanup}}
+\index{fft\_\-cleanup@{fft\_\-cleanup}!dsp@{dsp}}
+\paragraph[fft\_\-cleanup]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void fft\_\-cleanup (void)}\hfill\label{group__dsp_gc994a163e29de65a3d7eaee79c91f6a7}
+
+
+This routine frees up the memory used by the FFT buffers 
+
+Definition at line 163 of file discrete\_\-fourier\_\-transforms.c.\index{dsp@{dsp}!complexfft@{complexfft}}
+\index{complexfft@{complexfft}!dsp@{dsp}}
+\paragraph[complexfft]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexfft ({\bf complexwf\_\-t} $\ast$ {\em z}, \/  int {\em fft\_\-mode})}\hfill\label{group__dsp_g1c5a7dc710dd12ebdb8418623d0a3a91}
+
+
+Executes a complex fast fourier transform in line. See the reference guide for details. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em z}]The complex waveform to transform (original waveform is destroyed) Note that the number of samples need to be a power of 2. \item[{\em fft\_\-mode}]Specifies whether to do the forward or backward transform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 178 of file discrete\_\-fourier\_\-transforms.c.
+
+References bpm\_\-error(), bpm\_\-warning(), FFT\_\-BACKWARD, FFT\_\-FORWARD, complex\_\-t::im, complexwf\_\-t::ns, complex\_\-t::re, and complexwf\_\-t::wf.\index{dsp@{dsp}!realfft@{realfft}}
+\index{realfft@{realfft}!dsp@{dsp}}
+\paragraph[realfft]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int realfft ({\bf doublewf\_\-t} $\ast$ {\em y}, \/  int {\em fft\_\-mode}, \/  {\bf complexwf\_\-t} $\ast$ {\em z})}\hfill\label{group__dsp_g897fcf096d8b347969edcba67759d83e}
+
+
+Executes a real fast fourier transform, between the real waveform y and the complex waveform z. See documentation for further explanation. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em y}]Pointer to the real wavefrom \item[{\em fft\_\-mode}]Specifies whether to do the forward or backward transform \item[{\em z}]Pointer to the complex waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 230 of file discrete\_\-fourier\_\-transforms.c.
+
+References bpm\_\-error(), bpm\_\-warning(), FFT\_\-BACKWARD, FFT\_\-FORWARD, complex\_\-t::im, complexwf\_\-t::ns, complex\_\-t::re, complexwf\_\-t::wf, and doublewf\_\-t::wf.
+
+Referenced by fft\_\-waveform().\index{dsp@{dsp}!norm\_\-phase@{norm\_\-phase}}
+\index{norm\_\-phase@{norm\_\-phase}!dsp@{dsp}}
+\paragraph[norm\_\-phase]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void norm\_\-phase (double $\ast$ {\em phase})}\hfill\label{group__dsp_g42ddaa15fe4fde56ada52d19ec786e8a}
+
+
+Normalises the phase, to the interval [0,2pi[ \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em phase}]Pointer to the phase value to normalise \end{description}
+\end{Desc}
+
+
+Definition at line 8 of file norm\_\-phase.c.
+
+Referenced by complexwf\_\-getphase(), complexwf\_\-getphase\_\-new(), postprocess\_\-waveform(), process\_\-caltone(), and process\_\-waveform().

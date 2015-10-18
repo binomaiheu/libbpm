@@ -1,0 +1,124 @@
+\subsection{bpmprocess/bpm\_\-process.h File Reference}
+\label{bpm__process_8h}\index{bpmprocess/bpm\_\-process.h@{bpmprocess/bpm\_\-process.h}}
+
+
+\subsubsection{Detailed Description}
+libbpm main processing routines 
+
+This header contains the definitions for libbpm's main BPM processing routines 
+
+Definition in file {\bf bpm\_\-process.h}.
+
+{\tt \#include $<$float.h$>$}\par
+{\tt \#include $<$math.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-defs.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-interface.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-wf.h$>$}\par
+{\tt \#include $<$bpm/bpm\_\-dsp.h$>$}\par
+
+
+Include dependency graph for bpm\_\-process.h:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{bpm__process_8h__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf PROC\_\-DEFAULT}
+\item 
+\#define \textbf{PROC\_\-DO\_\-FFT}\label{group__processing_g7753a1dae883290ad0e5ba65147e9f13}
+
+\item 
+\#define \textbf{PROC\_\-DO\_\-FIT}\label{group__processing_gf546dfa71990db7bf7eeec36d8d60a59}
+
+\item 
+\#define \textbf{PROC\_\-DO\_\-DDC}\label{group__processing_g6c2a8696b49c25e4f29252c3a6d6ac3a}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-CALIBFREQ}\label{group__processing_g21955fd76a7620b71f44fdd66356e04b}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-CALIBTDECAY}\label{group__processing_gca7f027c67eaec7448bb5df686b7b0d4}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-FITFREQ}\label{group__processing_g5730568b109a13eb72680a14857dbbb9}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-FITTDECAY}\label{group__processing_ga79556cfe04c3b7c9c039fa1f277c901}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-FFTFREQ}\label{group__processing_g9eb43ef7c8ecd8d8f728efde9ba522a2}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-FFTTDECAY}\label{group__processing_g516ea3a0590d5902fe107655b03db0c8}
+
+\item 
+\#define \textbf{PROC\_\-DDC\_\-FULL}\label{group__processing_g1bfa87418a15d7f7e87d6b479c1dcb55}
+
+\item 
+\#define \textbf{PROC\_\-FIT\_\-DDC}\label{group__processing_ga2774a6d8a9ea83cc4121e385f8e20ec}
+
+\item 
+\#define \textbf{PROC\_\-FIT\_\-FFT}\label{group__processing_gbe1a2c0c3d7c8f256d3f3b2df2ade610}
+
+\item 
+\#define \textbf{PROC\_\-RAW\_\-PHASE}\label{group__processing_g1b4ba11635f5e3ec0ae70b6eaa858725}
+
+\item 
+\#define \textbf{PROC\_\-CORR\_\-AMP}\label{group__processing_gd634d8b142407b14b2ed1784764025c0}
+
+\item 
+\#define \textbf{PROC\_\-CORR\_\-PHASE}\label{group__processing_gd99c4784aba9a6afaa18896c5736d60c}
+
+\item 
+\#define \textbf{PROC\_\-CORR\_\-GAIN}\label{group__processing_g40fc552f6d97737b3521d75173f86597}
+
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN int {\bf process\_\-diode} ({\bf doublewf\_\-t} $\ast$signal, {\bf bpmconf\_\-t} $\ast$conf, {\bf bpmproc\_\-t} $\ast$proc)
+\item 
+EXTERN int {\bf process\_\-monopole} ({\bf doublewf\_\-t} $\ast$signal, {\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmcalib\_\-t} $\ast$cal, {\bf bpmproc\_\-t} $\ast$proc, {\bf bpmproc\_\-t} $\ast$trig, unsigned int mode)
+\item 
+EXTERN int {\bf process\_\-dipole} ({\bf doublewf\_\-t} $\ast$signal, {\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmcalib\_\-t} $\ast$cal, {\bf bpmproc\_\-t} $\ast$proc, {\bf bpmproc\_\-t} $\ast$trig, {\bf bpmproc\_\-t} $\ast$ampref, {\bf bpmproc\_\-t} $\ast$phaseref, unsigned int mode)
+\item 
+EXTERN int {\bf process\_\-waveform} ({\bf doublewf\_\-t} $\ast$signal, {\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmproc\_\-t} $\ast$proc, {\bf bpmproc\_\-t} $\ast$trig, unsigned int mode)
+\item 
+EXTERN int {\bf postprocess\_\-waveform} ({\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmproc\_\-t} $\ast$proc, {\bf bpmcalib\_\-t} $\ast$cal, {\bf bpmproc\_\-t} $\ast$ampref, {\bf bpmproc\_\-t} $\ast$phaseref, unsigned int mode)
+\item 
+EXTERN int {\bf process\_\-caltone} ({\bf doublewf\_\-t} $\ast$signal, {\bf bpmconf\_\-t} $\ast$bpm, {\bf bpmproc\_\-t} $\ast$proc, unsigned int mode)
+\item 
+EXTERN int {\bf correct\_\-gain} ({\bf bpmproc\_\-t} $\ast$proc, {\bf bpmcalib\_\-t} $\ast$cal, unsigned int mode)
+\item 
+EXTERN int {\bf fit\_\-waveform} ({\bf doublewf\_\-t} $\ast$w, double t0, double i\_\-freq, double i\_\-tdecay, double i\_\-amp, double i\_\-phase, double $\ast$freq, double $\ast$tdecay, double $\ast$amp, double $\ast$phase)
+\item 
+EXTERN int {\bf fit\_\-diodepulse} ({\bf doublewf\_\-t} $\ast$w, double $\ast$t0)
+\item 
+EXTERN int {\bf fft\_\-waveform} ({\bf doublewf\_\-t} $\ast$w, {\bf complexwf\_\-t} $\ast$ft)
+\item 
+EXTERN int {\bf fit\_\-fft\_\-prepare} ({\bf complexwf\_\-t} $\ast$ft, int $\ast$n1, int $\ast$n2, double $\ast$amp, double $\ast$freq, double $\ast$fwhm)
+\item 
+EXTERN int {\bf fit\_\-fft} ({\bf complexwf\_\-t} $\ast$ft, double $\ast$freq, double $\ast$tdecay, double $\ast$A, double $\ast$C)
+\item 
+EXTERN int {\bf check\_\-saturation} ({\bf doublewf\_\-t} $\ast$w, int nbits, int $\ast$iunsat)
+\item 
+EXTERN int {\bf downmix\_\-waveform} ({\bf doublewf\_\-t} $\ast$w, double frequency, {\bf complexwf\_\-t} $\ast$out)
+\item 
+EXTERN int {\bf ddc\_\-waveform} ({\bf doublewf\_\-t} $\ast$w, double frequency, {\bf filter\_\-t} $\ast$filt, {\bf complexwf\_\-t} $\ast$dc, {\bf doublewf\_\-t} $\ast$buf\_\-re, {\bf doublewf\_\-t} $\ast$buf\_\-im)
+\item 
+EXTERN int {\bf ddc\_\-sample\_\-waveform} ({\bf doublewf\_\-t} $\ast$w, double frequency, {\bf filter\_\-t} $\ast$filt, int iSample, double t0, double tdecay, double $\ast$amp, double $\ast$phase, {\bf doublewf\_\-t} $\ast$buf\_\-re, {\bf doublewf\_\-t} $\ast$buf\_\-im)
+\item 
+EXTERN int {\bf get\_\-pedestal} ({\bf doublewf\_\-t} $\ast$wf, int range, double $\ast$offset, double $\ast$rms)
+\item 
+EXTERN int {\bf get\_\-t0} ({\bf doublewf\_\-t} $\ast$w, double $\ast$t0)
+\item 
+EXTERN int {\bf get\_\-IQ} (double amp, double phase, double refamp, double refphase, double $\ast$Q, double $\ast$I)
+\item 
+EXTERN int {\bf get\_\-pos} (double Q, double I, double IQphase, double posscale, double $\ast$pos)
+\item 
+EXTERN int {\bf get\_\-slope} (double Q, double I, double IQphase, double slopescale, double $\ast$slope)
+\end{CompactItemize}

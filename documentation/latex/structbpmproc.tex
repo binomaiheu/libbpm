@@ -1,0 +1,415 @@
+\subsection{bpmproc Struct Reference}
+\label{structbpmproc}\index{bpmproc@{bpmproc}}
+{\tt \#include $<$bpm\_\-interface.h$>$}
+
+Collaboration diagram for bpmproc:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=64pt]{structbpmproc__coll__graph}
+\end{center}
+\end{figure}
+
+
+\subsubsection{Detailed Description}
+A structure containing the processed waveform information 
+
+Definition at line 171 of file bpm\_\-interface.h.\subsubsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+double {\bf ampnoise}
+\item 
+double {\bf voltageoffset}
+\item 
+double {\bf t0}
+\item 
+int {\bf saturated}
+\item 
+int {\bf iunsat}
+\item 
+{\bf complexwf\_\-t} $\ast$ {\bf dc}
+\item 
+{\bf complexwf\_\-t} $\ast$ {\bf ft}
+\item 
+int {\bf fft\_\-success}
+\item 
+double {\bf fft\_\-amp}
+\item 
+double {\bf fft\_\-freq}
+\item 
+double {\bf fft\_\-tdecay}
+\item 
+double {\bf fft\_\-offset}
+\item 
+int {\bf ddc\_\-success}
+\item 
+double {\bf ddc\_\-tSample}
+\item 
+int {\bf ddc\_\-iSample}
+\item 
+double {\bf ddc\_\-Q}
+\item 
+double {\bf ddc\_\-I}
+\item 
+double {\bf ddc\_\-amp}
+\item 
+double {\bf ddc\_\-phase}
+\item 
+double {\bf ddc\_\-tdecay}
+\item 
+double {\bf ddc\_\-pos}
+\item 
+double {\bf ddc\_\-slope}
+\item 
+double {\bf ddc\_\-ct\_\-amp}
+\item 
+double {\bf ddc\_\-ct\_\-phase}
+\item 
+int {\bf fit\_\-success}
+\item 
+double {\bf fit\_\-Q}
+\item 
+double {\bf fit\_\-I}
+\item 
+double {\bf fit\_\-amp}
+\item 
+double {\bf fit\_\-phase}
+\item 
+double {\bf fit\_\-freq}
+\item 
+double {\bf fit\_\-tdecay}
+\item 
+double {\bf fit\_\-offset}
+\item 
+double {\bf fit\_\-pos}
+\item 
+double {\bf fit\_\-slope}
+\item 
+double {\bf fit\_\-ct\_\-amp}
+\item 
+double {\bf fit\_\-ct\_\-phase}
+\end{CompactItemize}
+
+
+\subsubsection{Field Documentation}
+\index{bpmproc@{bpmproc}!ampnoise@{ampnoise}}
+\index{ampnoise@{ampnoise}!bpmproc@{bpmproc}}
+\paragraph[ampnoise]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::ampnoise}}\hfill\label{structbpmproc_03a2fb57c6fdaa5ea8558235bf69e5b2}
+
+
+calculated (processed) amplitude noise 
+
+Definition at line 172 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!voltageoffset@{voltageoffset}}
+\index{voltageoffset@{voltageoffset}!bpmproc@{bpmproc}}
+\paragraph[voltageoffset]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::voltageoffset}}\hfill\label{structbpmproc_3be3f5398b06d6bb81f3fee29b6b904a}
+
+
+calculated voltage offset 
+
+Definition at line 173 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!t0@{t0}}
+\index{t0@{t0}!bpmproc@{bpmproc}}
+\paragraph[t0]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::t0}}\hfill\label{structbpmproc_882cae0e540fd6d8557628a7edcb449d}
+
+
+trigger t0 for int, copied from \doxyref{bpmconf\_\-t::t0}{p.}{structbpmconf_59157c2831c6191ccabfc702acddf02a} for ext 
+
+Definition at line 175 of file bpm\_\-interface.h.
+
+Referenced by process\_\-diode(), and process\_\-waveform().\index{bpmproc@{bpmproc}!saturated@{saturated}}
+\index{saturated@{saturated}!bpmproc@{bpmproc}}
+\paragraph[saturated]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmproc::saturated}}\hfill\label{structbpmproc_611e04c6377faf4db9eb24a4edc1ac3f}
+
+
+this signal was saturated 
+
+Definition at line 177 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!iunsat@{iunsat}}
+\index{iunsat@{iunsat}!bpmproc@{bpmproc}}
+\paragraph[iunsat]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmproc::iunsat}}\hfill\label{structbpmproc_714ac2e4b3b26339aae97a0e5b32a300}
+
+
+the last unsaturated sample index 
+
+Definition at line 178 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!dc@{dc}}
+\index{dc@{dc}!bpmproc@{bpmproc}}
+\paragraph[dc]{\setlength{\rightskip}{0pt plus 5cm}{\bf complexwf\_\-t}$\ast$ {\bf bpmproc::dc}}\hfill\label{structbpmproc_64c8db22258e28f24d7db38244b5df98}
+
+
+The signal's DC waveform 
+
+Definition at line 180 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!ft@{ft}}
+\index{ft@{ft}!bpmproc@{bpmproc}}
+\paragraph[ft]{\setlength{\rightskip}{0pt plus 5cm}{\bf complexwf\_\-t}$\ast$ {\bf bpmproc::ft}}\hfill\label{structbpmproc_c6f3c265a080e664e10cc6f2339662a7}
+
+
+The signal's fourier transform 
+
+Definition at line 181 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!fft\_\-success@{fft\_\-success}}
+\index{fft\_\-success@{fft\_\-success}!bpmproc@{bpmproc}}
+\paragraph[fft\_\-success]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmproc::fft\_\-success}}\hfill\label{structbpmproc_cc0d36d5432742b3c68a7b3b4513e35e}
+
+
+do we have proper fft info ? 
+
+Definition at line 184 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!fft\_\-amp@{fft\_\-amp}}
+\index{fft\_\-amp@{fft\_\-amp}!bpmproc@{bpmproc}}
+\paragraph[fft\_\-amp]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fft\_\-amp}}\hfill\label{structbpmproc_31d52ab7354ff7176af4907efd51e4d0}
+
+
+amplitude of fft 
+
+Definition at line 185 of file bpm\_\-interface.h.\index{bpmproc@{bpmproc}!fft\_\-freq@{fft\_\-freq}}
+\index{fft\_\-freq@{fft\_\-freq}!bpmproc@{bpmproc}}
+\paragraph[fft\_\-freq]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fft\_\-freq}}\hfill\label{structbpmproc_17d339f93b81bc99d632b9c5ffc8da85}
+
+
+frequency obtained from fft (MHz) 
+
+Definition at line 186 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!fft\_\-tdecay@{fft\_\-tdecay}}
+\index{fft\_\-tdecay@{fft\_\-tdecay}!bpmproc@{bpmproc}}
+\paragraph[fft\_\-tdecay]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fft\_\-tdecay}}\hfill\label{structbpmproc_ff324567b6af56170b2efe3f658eeac4}
+
+
+decay time obtained from fft (usec) 
+
+Definition at line 187 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!fft\_\-offset@{fft\_\-offset}}
+\index{fft\_\-offset@{fft\_\-offset}!bpmproc@{bpmproc}}
+\paragraph[fft\_\-offset]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fft\_\-offset}}\hfill\label{structbpmproc_6f8e0607ed73cdf3947ebfce7a876c79}
+
+
+offset of fft in fit 
+
+Definition at line 188 of file bpm\_\-interface.h.\index{bpmproc@{bpmproc}!ddc\_\-success@{ddc\_\-success}}
+\index{ddc\_\-success@{ddc\_\-success}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-success]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmproc::ddc\_\-success}}\hfill\label{structbpmproc_7fdd95b16a37f79bec65bf7caaafe208}
+
+
+do we have proper ddc info ? 
+
+Definition at line 191 of file bpm\_\-interface.h.
+
+Referenced by correct\_\-gain(), postprocess\_\-waveform(), process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!ddc\_\-tSample@{ddc\_\-tSample}}
+\index{ddc\_\-tSample@{ddc\_\-tSample}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-tSample]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::ddc\_\-tSample}}\hfill\label{structbpmproc_53c95ca0b2fa62c817fa4a14052f2a92}
+
+
+time at which the ddc was sampled, t0+t0Offset 
+
+Definition at line 192 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmproc@{bpmproc}!ddc\_\-iSample@{ddc\_\-iSample}}
+\index{ddc\_\-iSample@{ddc\_\-iSample}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-iSample]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmproc::ddc\_\-iSample}}\hfill\label{structbpmproc_c0632d46a0208577c352ea34bb69d983}
+
+
+index of sample at which ddc sample was taken 
+
+Definition at line 193 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmproc@{bpmproc}!ddc\_\-Q@{ddc\_\-Q}}
+\index{ddc\_\-Q@{ddc\_\-Q}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-Q]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::ddc\_\-Q}}\hfill\label{structbpmproc_5c38241ca4aa400c93988106e8325d74}
+
+
+ddc Q value 
+
+Definition at line 194 of file bpm\_\-interface.h.
+
+Referenced by postprocess\_\-waveform().\index{bpmproc@{bpmproc}!ddc\_\-I@{ddc\_\-I}}
+\index{ddc\_\-I@{ddc\_\-I}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-I]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::ddc\_\-I}}\hfill\label{structbpmproc_0f0ce52541c5965067e05669dbe96e5d}
+
+
+ddc I value 
+
+Definition at line 195 of file bpm\_\-interface.h.
+
+Referenced by postprocess\_\-waveform().\index{bpmproc@{bpmproc}!ddc\_\-amp@{ddc\_\-amp}}
+\index{ddc\_\-amp@{ddc\_\-amp}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-amp]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::ddc\_\-amp}}\hfill\label{structbpmproc_f2defdec0144996a00deab9a30461241}
+
+
+downconverted amplitude 
+
+Definition at line 196 of file bpm\_\-interface.h.
+
+Referenced by correct\_\-gain(), postprocess\_\-waveform(), process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!ddc\_\-phase@{ddc\_\-phase}}
+\index{ddc\_\-phase@{ddc\_\-phase}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-phase]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::ddc\_\-phase}}\hfill\label{structbpmproc_f2a86e422e93b453b91206abccc0b351}
+
+
+downconverted phase 
+
+Definition at line 197 of file bpm\_\-interface.h.
+
+Referenced by correct\_\-gain(), postprocess\_\-waveform(), process\_\-caltone(), and process\_\-waveform().\index{bpmproc@{bpmproc}!ddc\_\-tdecay@{ddc\_\-tdecay}}
+\index{ddc\_\-tdecay@{ddc\_\-tdecay}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-tdecay]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::ddc\_\-tdecay}}\hfill\label{structbpmproc_0995020ee3f75e51ec9e07c054da14c2}
+
+
+downconverted decay time of waveform 
+
+Definition at line 198 of file bpm\_\-interface.h.\index{bpmproc@{bpmproc}!ddc\_\-pos@{ddc\_\-pos}}
+\index{ddc\_\-pos@{ddc\_\-pos}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-pos]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::ddc\_\-pos}}\hfill\label{structbpmproc_854f812a0660f45b42785180575f03af}
+
+
+calculated position from ddc 
+
+Definition at line 200 of file bpm\_\-interface.h.
+
+Referenced by ana\_\-compute\_\-residual(), and postprocess\_\-waveform().\index{bpmproc@{bpmproc}!ddc\_\-slope@{ddc\_\-slope}}
+\index{ddc\_\-slope@{ddc\_\-slope}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-slope]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::ddc\_\-slope}}\hfill\label{structbpmproc_77e55611d4500f3be3d9c3d0437cf033}
+
+
+calculated slope from ddc 
+
+Definition at line 201 of file bpm\_\-interface.h.
+
+Referenced by ana\_\-compute\_\-residual(), and postprocess\_\-waveform().\index{bpmproc@{bpmproc}!ddc\_\-ct\_\-amp@{ddc\_\-ct\_\-amp}}
+\index{ddc\_\-ct\_\-amp@{ddc\_\-ct\_\-amp}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-ct\_\-amp]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::ddc\_\-ct\_\-amp}}\hfill\label{structbpmproc_e3b787a2ed21acdf52ad9b667f57976e}
+
+
+last measured calibration tone amplitude for this bpm 
+
+Definition at line 203 of file bpm\_\-interface.h.
+
+Referenced by correct\_\-gain(), and process\_\-caltone().\index{bpmproc@{bpmproc}!ddc\_\-ct\_\-phase@{ddc\_\-ct\_\-phase}}
+\index{ddc\_\-ct\_\-phase@{ddc\_\-ct\_\-phase}!bpmproc@{bpmproc}}
+\paragraph[ddc\_\-ct\_\-phase]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::ddc\_\-ct\_\-phase}}\hfill\label{structbpmproc_5461033608c7c42d900d25b7ead44153}
+
+
+last measured calibration tone phase for this bpm 
+
+Definition at line 204 of file bpm\_\-interface.h.
+
+Referenced by correct\_\-gain(), and process\_\-caltone().\index{bpmproc@{bpmproc}!fit\_\-success@{fit\_\-success}}
+\index{fit\_\-success@{fit\_\-success}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-success]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmproc::fit\_\-success}}\hfill\label{structbpmproc_bcca38f653578b267a8b378c0bf22dee}
+
+
+do we have proper fit info ? 
+
+Definition at line 207 of file bpm\_\-interface.h.
+
+Referenced by correct\_\-gain(), postprocess\_\-waveform(), and process\_\-waveform().\index{bpmproc@{bpmproc}!fit\_\-Q@{fit\_\-Q}}
+\index{fit\_\-Q@{fit\_\-Q}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-Q]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fit\_\-Q}}\hfill\label{structbpmproc_ad1d52ffea6d3a39b6e0d672c693ae36}
+
+
+fit Q value 
+
+Definition at line 208 of file bpm\_\-interface.h.
+
+Referenced by postprocess\_\-waveform().\index{bpmproc@{bpmproc}!fit\_\-I@{fit\_\-I}}
+\index{fit\_\-I@{fit\_\-I}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-I]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fit\_\-I}}\hfill\label{structbpmproc_59924e30e71461ad0a2146a0be873bdf}
+
+
+fit I value 
+
+Definition at line 209 of file bpm\_\-interface.h.
+
+Referenced by postprocess\_\-waveform().\index{bpmproc@{bpmproc}!fit\_\-amp@{fit\_\-amp}}
+\index{fit\_\-amp@{fit\_\-amp}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-amp]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fit\_\-amp}}\hfill\label{structbpmproc_ad6477fbcd2c2ead538bef6e17c27022}
+
+
+fitted amplitude 
+
+Definition at line 210 of file bpm\_\-interface.h.
+
+Referenced by correct\_\-gain(), postprocess\_\-waveform(), and process\_\-waveform().\index{bpmproc@{bpmproc}!fit\_\-phase@{fit\_\-phase}}
+\index{fit\_\-phase@{fit\_\-phase}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-phase]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fit\_\-phase}}\hfill\label{structbpmproc_eb36a2ab357ca13c3c8352feb8cb6e8d}
+
+
+fitted phase 
+
+Definition at line 211 of file bpm\_\-interface.h.
+
+Referenced by correct\_\-gain(), postprocess\_\-waveform(), and process\_\-waveform().\index{bpmproc@{bpmproc}!fit\_\-freq@{fit\_\-freq}}
+\index{fit\_\-freq@{fit\_\-freq}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-freq]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fit\_\-freq}}\hfill\label{structbpmproc_95c3ffbd8041ee333f7fb197b80d79b3}
+
+
+fitted frequency (MHz) 
+
+Definition at line 212 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmproc@{bpmproc}!fit\_\-tdecay@{fit\_\-tdecay}}
+\index{fit\_\-tdecay@{fit\_\-tdecay}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-tdecay]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fit\_\-tdecay}}\hfill\label{structbpmproc_7f14eec6bdb4338ddc1f25b7f83d6c27}
+
+
+fitted decay time of waveform (usec) 
+
+Definition at line 213 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmproc@{bpmproc}!fit\_\-offset@{fit\_\-offset}}
+\index{fit\_\-offset@{fit\_\-offset}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-offset]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fit\_\-offset}}\hfill\label{structbpmproc_b63c916c7ecdc62e9b39485892129d90}
+
+
+fitted offset for waveform 
+
+Definition at line 214 of file bpm\_\-interface.h.\index{bpmproc@{bpmproc}!fit\_\-pos@{fit\_\-pos}}
+\index{fit\_\-pos@{fit\_\-pos}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-pos]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fit\_\-pos}}\hfill\label{structbpmproc_96e0fb7e2c1ca6d244d3becd82a4aead}
+
+
+calculated position from fit 
+
+Definition at line 216 of file bpm\_\-interface.h.
+
+Referenced by postprocess\_\-waveform().\index{bpmproc@{bpmproc}!fit\_\-slope@{fit\_\-slope}}
+\index{fit\_\-slope@{fit\_\-slope}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-slope]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fit\_\-slope}}\hfill\label{structbpmproc_735a81b589d083cfa4f5c172577774a1}
+
+
+calculated slope from fit 
+
+Definition at line 217 of file bpm\_\-interface.h.
+
+Referenced by postprocess\_\-waveform().\index{bpmproc@{bpmproc}!fit\_\-ct\_\-amp@{fit\_\-ct\_\-amp}}
+\index{fit\_\-ct\_\-amp@{fit\_\-ct\_\-amp}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-ct\_\-amp]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fit\_\-ct\_\-amp}}\hfill\label{structbpmproc_642c32e284ca90dc6f0f13a8a0e60176}
+
+
+last measured calibration tone amplitude for this bpm 
+
+Definition at line 219 of file bpm\_\-interface.h.
+
+Referenced by correct\_\-gain().\index{bpmproc@{bpmproc}!fit\_\-ct\_\-phase@{fit\_\-ct\_\-phase}}
+\index{fit\_\-ct\_\-phase@{fit\_\-ct\_\-phase}!bpmproc@{bpmproc}}
+\paragraph[fit\_\-ct\_\-phase]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmproc::fit\_\-ct\_\-phase}}\hfill\label{structbpmproc_047ed884dc6bc77d4829d83176943ef1}
+
+
+last measured calibration tone phase for this bpm 
+
+Definition at line 220 of file bpm\_\-interface.h.
+
+Referenced by correct\_\-gain().
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+bpminterface/{\bf bpm\_\-interface.h}\end{CompactItemize}

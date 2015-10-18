@@ -1,0 +1,272 @@
+\subsection{Beam orbit generation}
+\label{group__orbit}\index{Beam orbit generation@{Beam orbit generation}}
+
+
+\subsubsection{Detailed Description}
+
+
+\subsubsection*{Files}
+\begin{CompactItemize}
+\item 
+file {\bf bpm\_\-orbit.h}
+\begin{CompactList}\small\item\em libbpm orbit generation routines \item\end{CompactList}
+
+\item 
+file {\bf get\_\-bpmhit.c}
+\item 
+file {\bf vm.c}
+\end{CompactItemize}
+\subsubsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct {\bf v3}
+\item 
+struct {\bf m33}
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN double {\bf get\_\-rbend} (double e, double B, double l, double p)
+\item 
+EXTERN double {\bf get\_\-sbend} (double e, double B, double l, double p)
+\item 
+EXTERN int {\bf get\_\-bpmhit} ({\bf bunchconf\_\-t} $\ast$bunch, {\bf bpmconf\_\-t} $\ast$bpm)
+\item 
+EXTERN int {\bf get\_\-bpmhits} ({\bf beamconf\_\-t} $\ast$beam, {\bf bpmconf\_\-t} $\ast$bpm)
+\item 
+void {\bf v\_\-copy} (struct {\bf v3} $\ast$v1, struct {\bf v3} $\ast$v2)
+\item 
+double {\bf v\_\-mag} (struct {\bf v3} $\ast$v1)
+\item 
+void {\bf v\_\-scale} (struct {\bf v3} $\ast$v1, double dscale)
+\item 
+void {\bf v\_\-norm} (struct {\bf v3} $\ast$v1)
+\item 
+void {\bf v\_\-matmult} (struct {\bf m33} $\ast$m1, struct {\bf v3} $\ast$v1)
+\item 
+void {\bf v\_\-add} (struct {\bf v3} $\ast$v1, struct {\bf v3} $\ast$v2)
+\item 
+void {\bf v\_\-sub} (struct {\bf v3} $\ast$v1, struct {\bf v3} $\ast$v2)
+\item 
+double {\bf v\_\-dot} (struct {\bf v3} $\ast$v1, struct {\bf v3} $\ast$v2)
+\item 
+void {\bf v\_\-cross} (struct {\bf v3} $\ast$v1, struct {\bf v3} $\ast$v2)
+\item 
+void {\bf v\_\-print} (struct {\bf v3} $\ast$v1)
+\item 
+void {\bf m\_\-rotmat} (struct {\bf m33} $\ast$m1, double alpha, double beta, double gamma)
+\item 
+void {\bf m\_\-matmult} (struct {\bf m33} $\ast$m, struct {\bf m33} $\ast$m1, struct {\bf m33} $\ast$m2)
+\item 
+void {\bf m\_\-matadd} (struct {\bf m33} $\ast$m1, struct {\bf m33} $\ast$m2)
+\item 
+void {\bf m\_\-print} (struct {\bf m33} $\ast$m1)
+\end{CompactItemize}
+
+
+\subsubsection{Function Documentation}
+\index{orbit@{orbit}!get\_\-rbend@{get\_\-rbend}}
+\index{get\_\-rbend@{get\_\-rbend}!orbit@{orbit}}
+\paragraph[get\_\-rbend]{\setlength{\rightskip}{0pt plus 5cm}EXTERN double get\_\-rbend (double {\em e}, \/  double {\em B}, \/  double {\em l}, \/  double {\em p})}\hfill\label{group__orbit_gee282e464a594845816e3d2815ca9431}
+
+
+Get the bending angle through a rectangular bending magnet \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em e}]the particle's charge in units of e, take sign into account ! \item[{\em B}]the magnetic field in Tesla \item[{\em l}]the length of the magnet in meter \item[{\em p}]the momentum of the particle in GeV \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the bending angle\end{Desc}
+get\_\-rbend.c 
+
+Definition at line 12 of file get\_\-bend.c.\index{orbit@{orbit}!get\_\-sbend@{get\_\-sbend}}
+\index{get\_\-sbend@{get\_\-sbend}!orbit@{orbit}}
+\paragraph[get\_\-sbend]{\setlength{\rightskip}{0pt plus 5cm}EXTERN double get\_\-sbend (double {\em e}, \/  double {\em B}, \/  double {\em l}, \/  double {\em p})}\hfill\label{group__orbit_ga34909631cf7159d9ec175e1a2231a9f}
+
+
+Get the bending angle through a sector bending magnet \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em e}]the particle's charge in units of e, take sign into account ! \item[{\em B}]the magnetic field in Tesla \item[{\em l}]the sector length of the magnet in meter \item[{\em p}]the momentum of the particle in GeV \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the bending angle \end{Desc}
+
+
+Definition at line 17 of file get\_\-bend.c.\index{orbit@{orbit}!get\_\-bpmhit@{get\_\-bpmhit}}
+\index{get\_\-bpmhit@{get\_\-bpmhit}!orbit@{orbit}}
+\paragraph[get\_\-bpmhit]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int get\_\-bpmhit ({\bf bunchconf\_\-t} $\ast$ {\em bunch}, \/  {\bf bpmconf\_\-t} $\ast$ {\em bpm})}\hfill\label{group__orbit_g8d1844c98e078a204eba6e1930464c0c}
+
+
+Get the bunch hit in the local BPM coordinate frame \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em bunch}]the bunch structure \item[{\em bpm}]the bpm config \end{description}
+\end{Desc}
+
+
+Definition at line 34 of file get\_\-bpmhit.c.
+
+References bpm\_\-error(), bunchconf::bpmposition, bunchconf::bpmslope, bunchconf::bpmtilt, bpmconf::geom\_\-pos, bpmconf::geom\_\-tilt, m\_\-rotmat(), bunchconf::position, bunchconf::slope, v\_\-add(), v\_\-copy(), v\_\-cross(), v\_\-dot(), v\_\-matmult(), v\_\-scale(), v\_\-sub(), v3::x, v3::y, and v3::z.
+
+Referenced by get\_\-bpmhits().\index{orbit@{orbit}!get\_\-bpmhits@{get\_\-bpmhits}}
+\index{get\_\-bpmhits@{get\_\-bpmhits}!orbit@{orbit}}
+\paragraph[get\_\-bpmhits]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int get\_\-bpmhits ({\bf beamconf\_\-t} $\ast$ {\em beam}, \/  {\bf bpmconf\_\-t} $\ast$ {\em bpm})}\hfill\label{group__orbit_g0120d351d159676f9630cd633419ddd2}
+
+
+Calls get\_\-bpmhit for every bunch in the beam... \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em beam}]the beam structure \item[{\em bpm}]the bpm config \end{description}
+\end{Desc}
+
+
+Definition at line 9 of file get\_\-bpmhit.c.
+
+References bpm\_\-error(), beamconf::bunch, get\_\-bpmhit(), and beamconf::nbunches.\index{orbit@{orbit}!v\_\-copy@{v\_\-copy}}
+\index{v\_\-copy@{v\_\-copy}!orbit@{orbit}}
+\paragraph[v\_\-copy]{\setlength{\rightskip}{0pt plus 5cm}void v\_\-copy (struct {\bf v3} $\ast$ {\em v1}, \/  struct {\bf v3} $\ast$ {\em v2})}\hfill\label{group__orbit_gdb58fd2d8c710a31eb6ee8391cbf012f}
+
+
+Copy 3-vector v2 into 3-vector v1 
+
+Definition at line 11 of file vm.c.
+
+References v3::x, v3::y, and v3::z.
+
+Referenced by get\_\-bpmhit().\index{orbit@{orbit}!v\_\-mag@{v\_\-mag}}
+\index{v\_\-mag@{v\_\-mag}!orbit@{orbit}}
+\paragraph[v\_\-mag]{\setlength{\rightskip}{0pt plus 5cm}double v\_\-mag (struct {\bf v3} $\ast$ {\em v1})}\hfill\label{group__orbit_gb3e57df2a294ae61eca6e6a8a1a7eb71}
+
+
+Return the magnitude of 3-vector v1 
+
+Definition at line 18 of file vm.c.
+
+References v\_\-dot().
+
+Referenced by v\_\-norm().\index{orbit@{orbit}!v\_\-scale@{v\_\-scale}}
+\index{v\_\-scale@{v\_\-scale}!orbit@{orbit}}
+\paragraph[v\_\-scale]{\setlength{\rightskip}{0pt plus 5cm}void v\_\-scale (struct {\bf v3} $\ast$ {\em v1}, \/  double {\em dscale})}\hfill\label{group__orbit_g8911c86e1bd11d9f7c827dea0f51b5ee}
+
+
+Scale 3-vector v1 with factor dscale 
+
+Definition at line 22 of file vm.c.
+
+References v3::x, v3::y, and v3::z.
+
+Referenced by get\_\-bpmhit(), and v\_\-norm().\index{orbit@{orbit}!v\_\-norm@{v\_\-norm}}
+\index{v\_\-norm@{v\_\-norm}!orbit@{orbit}}
+\paragraph[v\_\-norm]{\setlength{\rightskip}{0pt plus 5cm}void v\_\-norm (struct {\bf v3} $\ast$ {\em v1})}\hfill\label{group__orbit_g7afd07e7d2ea7026d420501405ea689f}
+
+
+Normalise 3-vector v1 to unit vector 
+
+Definition at line 28 of file vm.c.
+
+References v\_\-mag(), and v\_\-scale().\index{orbit@{orbit}!v\_\-matmult@{v\_\-matmult}}
+\index{v\_\-matmult@{v\_\-matmult}!orbit@{orbit}}
+\paragraph[v\_\-matmult]{\setlength{\rightskip}{0pt plus 5cm}void v\_\-matmult (struct {\bf m33} $\ast$ {\em m1}, \/  struct {\bf v3} $\ast$ {\em v1})}\hfill\label{group__orbit_gf8bb2c454749d7f96ab0cebf33a43004}
+
+
+Multiply matrix m1 with 3-vector v1 : m1.v1, result is in v1 
+
+Definition at line 32 of file vm.c.
+
+References m33::e, v3::x, v3::y, and v3::z.
+
+Referenced by get\_\-bpmhit().\index{orbit@{orbit}!v\_\-add@{v\_\-add}}
+\index{v\_\-add@{v\_\-add}!orbit@{orbit}}
+\paragraph[v\_\-add]{\setlength{\rightskip}{0pt plus 5cm}void v\_\-add (struct {\bf v3} $\ast$ {\em v1}, \/  struct {\bf v3} $\ast$ {\em v2})}\hfill\label{group__orbit_g99d84c29fa30fb2d9747cae551170114}
+
+
+Add two 3-vectors v1 and v2, result is in v1 
+
+Definition at line 44 of file vm.c.
+
+References v3::x, v3::y, and v3::z.
+
+Referenced by get\_\-bpmhit().\index{orbit@{orbit}!v\_\-sub@{v\_\-sub}}
+\index{v\_\-sub@{v\_\-sub}!orbit@{orbit}}
+\paragraph[v\_\-sub]{\setlength{\rightskip}{0pt plus 5cm}void v\_\-sub (struct {\bf v3} $\ast$ {\em v1}, \/  struct {\bf v3} $\ast$ {\em v2})}\hfill\label{group__orbit_gf867ce20f9120602a08d0469f94807bf}
+
+
+Subtract 3-vectors v1 - v2, result is in v1 
+
+Definition at line 50 of file vm.c.
+
+References v3::x, v3::y, and v3::z.
+
+Referenced by get\_\-bpmhit().\index{orbit@{orbit}!v\_\-dot@{v\_\-dot}}
+\index{v\_\-dot@{v\_\-dot}!orbit@{orbit}}
+\paragraph[v\_\-dot]{\setlength{\rightskip}{0pt plus 5cm}double v\_\-dot (struct {\bf v3} $\ast$ {\em v1}, \/  struct {\bf v3} $\ast$ {\em v2})}\hfill\label{group__orbit_gaab575d66a39e7cb15f9d6bada3681f8}
+
+
+Return Scalar product of 3-vectors v1 and v2 
+
+Definition at line 56 of file vm.c.
+
+References v3::x, v3::y, and v3::z.
+
+Referenced by get\_\-bpmhit(), and v\_\-mag().\index{orbit@{orbit}!v\_\-cross@{v\_\-cross}}
+\index{v\_\-cross@{v\_\-cross}!orbit@{orbit}}
+\paragraph[v\_\-cross]{\setlength{\rightskip}{0pt plus 5cm}void v\_\-cross (struct {\bf v3} $\ast$ {\em v1}, \/  struct {\bf v3} $\ast$ {\em v2})}\hfill\label{group__orbit_gddc6a06d3b3a2cdb76c87b293f3da57e}
+
+
+Return the vector product of 3 vectors v1 x v2, result is in v1 
+
+Definition at line 60 of file vm.c.
+
+References v3::x, v3::y, and v3::z.
+
+Referenced by get\_\-bpmhit().\index{orbit@{orbit}!v\_\-print@{v\_\-print}}
+\index{v\_\-print@{v\_\-print}!orbit@{orbit}}
+\paragraph[v\_\-print]{\setlength{\rightskip}{0pt plus 5cm}void v\_\-print (struct {\bf v3} $\ast$ {\em v1})}\hfill\label{group__orbit_g5c483baf2b96daffe1c12c39ba306443}
+
+
+Print the 3-vector to stdout 
+
+Definition at line 74 of file vm.c.
+
+References v3::x, v3::y, and v3::z.\index{orbit@{orbit}!m\_\-rotmat@{m\_\-rotmat}}
+\index{m\_\-rotmat@{m\_\-rotmat}!orbit@{orbit}}
+\paragraph[m\_\-rotmat]{\setlength{\rightskip}{0pt plus 5cm}void m\_\-rotmat (struct {\bf m33} $\ast$ {\em m1}, \/  double {\em alpha}, \/  double {\em beta}, \/  double {\em gamma})}\hfill\label{group__orbit_gf6919d2e8076c7414dfbbcf292b77596}
+
+
+Create rotation 3x3 matrix with the 3 euler angles alpha, beta and gamma, result in m1 
+
+Definition at line 78 of file vm.c.
+
+References m33::e, and m\_\-matmult().
+
+Referenced by get\_\-bpmhit().\index{orbit@{orbit}!m\_\-matmult@{m\_\-matmult}}
+\index{m\_\-matmult@{m\_\-matmult}!orbit@{orbit}}
+\paragraph[m\_\-matmult]{\setlength{\rightskip}{0pt plus 5cm}void m\_\-matmult (struct {\bf m33} $\ast$ {\em m}, \/  struct {\bf m33} $\ast$ {\em m1}, \/  struct {\bf m33} $\ast$ {\em m2})}\hfill\label{group__orbit_ga872e461b36c6760734cd7be2a21c305}
+
+
+3x3 Matrix multiplication m1.m2, result in m 
+
+Definition at line 126 of file vm.c.
+
+References m33::e.
+
+Referenced by m\_\-rotmat().\index{orbit@{orbit}!m\_\-matadd@{m\_\-matadd}}
+\index{m\_\-matadd@{m\_\-matadd}!orbit@{orbit}}
+\paragraph[m\_\-matadd]{\setlength{\rightskip}{0pt plus 5cm}void m\_\-matadd (struct {\bf m33} $\ast$ {\em m1}, \/  struct {\bf m33} $\ast$ {\em m2})}\hfill\label{group__orbit_g1cee40ff55ef0d50e4178602a44d6a26}
+
+
+3x3 Matrix addition m1+m2, result in m1 
+
+Definition at line 140 of file vm.c.
+
+References m33::e.\index{orbit@{orbit}!m\_\-print@{m\_\-print}}
+\index{m\_\-print@{m\_\-print}!orbit@{orbit}}
+\paragraph[m\_\-print]{\setlength{\rightskip}{0pt plus 5cm}void m\_\-print (struct {\bf m33} $\ast$ {\em m1})}\hfill\label{group__orbit_g263940d9c1e4fe8e5873cca9fb6ea0cc}
+
+
+Print 3x3 matrix m1 to stdout 
+
+Definition at line 151 of file vm.c.
+
+References m33::e.

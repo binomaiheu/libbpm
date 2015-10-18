@@ -1,0 +1,19 @@
+#ifndef BPM_VERSION_H_LOADED
+#define BPM_VERSION_H_LOADED
+
+#include <bpm/bpm_defs.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#define BPM_VERSION "@VERSION@"
+#define BPM_VERSION_VAL @VERSION@
+
+EXTERN const char * bpm_version;
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

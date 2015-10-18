@@ -1,0 +1,1862 @@
+\subsection{Waveform handling routines}
+\label{group__wave}\index{Waveform handling routines@{Waveform handling routines}}
+
+
+\subsubsection{Detailed Description}
+\label{group__wave_wave}
+
+
+This module contains the basic waveform handling routines and structures for libbpm
+
+The bpmwf sublibrary implements 3 waveform types \doxyref{doublewf\_\-t}{p.}{structdoublewf__t}, \doxyref{intwf\_\-t}{p.}{structintwf__t} and \doxyref{complexwf\_\-t}{p.}{structcomplexwf__t}, all of which are simple structure typedefs which hold the number of samples, the sampling frequency and a pointer \char`\"{}wf\char`\"{} to the waveform. So the data array is accessible via \doxyref{doublewf\_\-t::wf}{p.}{structdoublewf__t_dc4cb6d4fa6bd72c1c252d00cbf2f2a4} as a normal array of integers, doubles and \doxyref{complex\_\-t}{p.}{structcomplex__t} 's.\subsubsection{Memory management}\label{group__wave_wave_mem}
+All have memory management routines (allocation/deletion) and routines to cast to other times ( eg \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} -$>$ \doxyref{intwf\_\-t}{p.}{structintwf__t} or the other way around ). This can be done either by filling existing waveforms ( convenient when you e.g. have already allocated memory and referenced it into a root branch ) or by having the casting routine allocate memory itself and return a pointer to it. e.g:
+
+
+
+\begin{Code}\begin{verbatim}   intwf_t *w = intwf_cast_new( doublewf_t *dw );
+\end{verbatim}
+\end{Code}
+
+
+
+this allocates memory for \doxyref{intwf\_\-t}{p.}{structintwf__t} and returns a pointer it, or
+
+
+
+\begin{Code}\begin{verbatim}   intwf_cast( intwf_t *w, doublewf_t *dw );  
+\end{verbatim}
+\end{Code}
+
+
+
+this casts dw into existing intwf w.
+
+The sublibrary employs the sampling convention, where the sample is taken at the time index corresponding to
+
+
+
+\begin{Code}\begin{verbatim}   t = (double) i / sampling_freq
+\end{verbatim}
+\end{Code}
+
+\subsubsection{Waveform handling}\label{group__wave_wave_handle}
+The sublibrary implements basic waveform hanlding like addition, subtraction, multiplication, division, biasing and scaling.
+
+Some advanced routines like differentiation, integration of the waveforms are also present. Also interpolation is impemented using various schemes which are more applicable depending on the type of waveform : linear, parabolic : for non repeatative signals, sinc and lanczos for repeatative signals (cfr. Shannon-Whittaker interpolation). (thinking of cubic-spline as well... but not implemented yet). Using these interpolation schemes, the sublibrary also implements resampling routines.
+
+The complex waveforms have a set of routines to extract real/imag parts as well as phase and amplitude. Similar comments apply as for the casting routines, where the \char`\"{}\_\-new\char`\"{} versions allocate memory in the routine and return a pointer to it.\subsubsection{Filling the waveforms}\label{group__wave_wave_fill}
+The values of the waveforms can be set by either filling them from a given array of values using e.g.
+
+
+
+\begin{Code}\begin{verbatim}   doublewf_setvalues( doublewf_t *w, double *a)
+\end{verbatim}
+\end{Code}
+
+
+
+or by calculating them from a function which returns the basic type of the waveform.
+
+E.g. define a complex valued function in your code:
+
+
+
+\begin{Code}\begin{verbatim}   complex_t csin( double t, int npars, double a ) {
+     complex_t z
+     // calculate a complex number z from the time t and parameters...
+     return z;
+   }
+\end{verbatim}
+\end{Code}
+
+
+
+which returns a complex value from the time {\tt t} and having {\tt npar} paramaters {\tt a}[0] ... {\tt a}[n-1]
+
+You can fill a waveform ( and so bascially sample the function at sampling frequency fs ) by executing
+
+
+
+\begin{Code}\begin{verbatim}   complexwf_setfunction( complexwf_t *z, &csin, npars, a )
+\end{verbatim}
+\end{Code}
+
+
+
+Also some routines are added to fill the waveforms with CW tones and decaying waves, along with some noise adding routines etc...\subsubsection{Note on the interpolation options.}\label{group__wave_wave_interpol}
+Here are some examples of the different interpolation options that one can give to the doublewf/complexwf\_\-getvalue() or \_\-resample() routines.
+
+    \subsubsection{For examples...}\label{group__wave_wave_example}
+For examples on library use, please see the examples/wf directory in the libbpm main tree...\subsubsection{Todo list}\label{group__wave_wave_todo}
+\begin{itemize}
+\item implement cubic spline interpolation ?\end{itemize}
+
+
+\subsubsection*{Files}
+\begin{CompactItemize}
+\item 
+file {\bf bpm\_\-wf.h}
+\begin{CompactList}\small\item\em Simple waveform handling routines for libbpm. \item\end{CompactList}
+
+\item 
+file {\bf complexwf.c}
+\item 
+file {\bf doublewf.c}
+\item 
+file {\bf intwf.c}
+\item 
+file {\bf wfstats.c}
+\end{CompactItemize}
+\subsubsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct {\bf doublewf\_\-t}
+\item 
+struct {\bf intwf\_\-t}
+\item 
+struct {\bf complexwf\_\-t}
+\item 
+struct {\bf wfstat\_\-t}
+\end{CompactItemize}
+\subsubsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf WF\_\-EPS}
+\item 
+\#define {\bf MAX\_\-ALLOWED\_\-NS}
+\item 
+\#define {\bf WF\_\-NEAREST}
+\item 
+\#define {\bf WF\_\-LINEAR}
+\item 
+\#define {\bf WF\_\-QUADRATIC}
+\item 
+\#define {\bf WF\_\-SINC}
+\item 
+\#define {\bf WF\_\-LANCZOS}
+\end{CompactItemize}
+\subsubsection*{Functions}
+\begin{CompactItemize}
+\item 
+EXTERN int {\bf wfstat\_\-reset} ({\bf wfstat\_\-t} $\ast$s)
+\item 
+EXTERN void {\bf wfstat\_\-print} (FILE $\ast$of, {\bf wfstat\_\-t} $\ast$s)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf} (int ns, double fs)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-time\_\-series} (int ns, double fs)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-sample\_\-series} (int ns, double fs)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-frequency\_\-series} (int ns, double fs)
+\item 
+EXTERN int {\bf doublewf\_\-setvalues} ({\bf doublewf\_\-t} $\ast$w, double $\ast$x)
+\item 
+EXTERN int {\bf doublewf\_\-setfunction} ({\bf doublewf\_\-t} $\ast$w, double($\ast$wffun)(double t, int, double $\ast$), int npars, double $\ast$par)
+\item 
+EXTERN int {\bf doublewf\_\-copy} ({\bf doublewf\_\-t} $\ast$copy, {\bf doublewf\_\-t} $\ast$src)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-copy\_\-new} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-subset} ({\bf doublewf\_\-t} $\ast$sub, {\bf doublewf\_\-t} $\ast$w, int i1, int i2)
+\item 
+EXTERN int {\bf doublewf\_\-reset} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN void {\bf doublewf\_\-delete} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN {\bf intwf\_\-t} $\ast$ {\bf intwf\_\-cast\_\-new} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-cast} ({\bf intwf\_\-t} $\ast$iw, {\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-compat} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf doublewf\_\-add} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf doublewf\_\-subtract} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf doublewf\_\-multiply} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf doublewf\_\-divide} ({\bf doublewf\_\-t} $\ast$w1, {\bf doublewf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf doublewf\_\-scale} (double f, {\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-bias} (double c, {\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-add\_\-cwtone} ({\bf doublewf\_\-t} $\ast$w, double amp, double phase, double freq, double phasenoise)
+\item 
+EXTERN int {\bf doublewf\_\-add\_\-dcywave} ({\bf doublewf\_\-t} $\ast$w, double amp, double phase, double freq, double ttrig, double tdcy, double phasenoise)
+\item 
+EXTERN int {\bf doublewf\_\-add\_\-ampnoise} ({\bf doublewf\_\-t} $\ast$w, double sigma)
+\item 
+EXTERN int {\bf doublewf\_\-basic\_\-stats} ({\bf doublewf\_\-t} $\ast$w, int s0, int s1, {\bf wfstat\_\-t} $\ast$stats)
+\item 
+EXTERN int {\bf doublewf\_\-derive} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-integrate} ({\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN void {\bf doublewf\_\-print} (FILE $\ast$of, {\bf doublewf\_\-t} $\ast$w)
+\item 
+EXTERN double {\bf doublewf\_\-getvalue} ({\bf doublewf\_\-t} $\ast$w, double t, unsigned int mode)
+\item 
+EXTERN int {\bf doublewf\_\-resample} ({\bf doublewf\_\-t} $\ast$w2, double fs, {\bf doublewf\_\-t} $\ast$w1, unsigned int mode)
+\item 
+EXTERN {\bf intwf\_\-t} $\ast$ {\bf intwf} (int ns, double fs)
+\item 
+EXTERN {\bf intwf\_\-t} $\ast$ {\bf intwf\_\-sample\_\-series} (int ns, double fs)
+\item 
+EXTERN int {\bf intwf\_\-setvalues} ({\bf intwf\_\-t} $\ast$w, int $\ast$x)
+\item 
+EXTERN int {\bf intwf\_\-setfunction} ({\bf intwf\_\-t} $\ast$w, int($\ast$wffun)(double t, int, double $\ast$), int npars, double $\ast$par)
+\item 
+EXTERN int {\bf intwf\_\-copy} ({\bf intwf\_\-t} $\ast$copy, {\bf intwf\_\-t} $\ast$src)
+\item 
+EXTERN {\bf intwf\_\-t} $\ast$ {\bf intwf\_\-copy\_\-new} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-subset} ({\bf intwf\_\-t} $\ast$sub, {\bf intwf\_\-t} $\ast$w, int i1, int i2)
+\item 
+EXTERN int {\bf intwf\_\-reset} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN void {\bf intwf\_\-delete} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf doublewf\_\-cast\_\-new} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf doublewf\_\-cast} ({\bf doublewf\_\-t} $\ast$w, {\bf intwf\_\-t} $\ast$iw)
+\item 
+EXTERN int {\bf intwf\_\-compat} ({\bf intwf\_\-t} $\ast$w1, {\bf intwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf intwf\_\-add} ({\bf intwf\_\-t} $\ast$w1, {\bf intwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf intwf\_\-subtract} ({\bf intwf\_\-t} $\ast$w1, {\bf intwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf intwf\_\-multiply} ({\bf intwf\_\-t} $\ast$w1, {\bf intwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf intwf\_\-divide} ({\bf intwf\_\-t} $\ast$w1, {\bf intwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf intwf\_\-scale} (int f, {\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-bias} (int c, {\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-add\_\-cwtone} ({\bf intwf\_\-t} $\ast$w, double amp, double phase, double freq, double phasenoise)
+\item 
+EXTERN int {\bf intwf\_\-add\_\-dcywave} ({\bf intwf\_\-t} $\ast$w, double amp, double phase, double freq, double ttrig, double tdcy, double phasenoise)
+\item 
+EXTERN int {\bf intwf\_\-add\_\-ampnoise} ({\bf intwf\_\-t} $\ast$w, double sigma)
+\item 
+EXTERN int {\bf intwf\_\-basic\_\-stats} ({\bf intwf\_\-t} $\ast$w, int s0, int s1, {\bf wfstat\_\-t} $\ast$stats)
+\item 
+EXTERN int {\bf intwf\_\-derive} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-integrate} ({\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN void {\bf intwf\_\-print} (FILE $\ast$of, {\bf intwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf intwf\_\-getvalue} ({\bf intwf\_\-t} $\ast$w, double t, unsigned int mode)
+\item 
+EXTERN int {\bf intwf\_\-resample} ({\bf intwf\_\-t} $\ast$w2, double fs, {\bf intwf\_\-t} $\ast$w1, unsigned int mode)
+\item 
+EXTERN {\bf complexwf\_\-t} $\ast$ {\bf complexwf} (int ns, double fs)
+\item 
+EXTERN {\bf complexwf\_\-t} $\ast$ {\bf complexwf\_\-copy\_\-new} ({\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf complexwf\_\-copy} ({\bf complexwf\_\-t} $\ast$copy, {\bf complexwf\_\-t} $\ast$src)
+\item 
+EXTERN int {\bf complexwf\_\-subset} ({\bf complexwf\_\-t} $\ast$sub, {\bf complexwf\_\-t} $\ast$w, int i1, int i2)
+\item 
+EXTERN int {\bf complexwf\_\-setvalues} ({\bf complexwf\_\-t} $\ast$w, {\bf complex\_\-t} $\ast$x)
+\item 
+EXTERN int {\bf complexwf\_\-setfunction} ({\bf complexwf\_\-t} $\ast$w, {\bf complex\_\-t}($\ast$wffun)(double, int, double $\ast$), int npars, double $\ast$par)
+\item 
+EXTERN int {\bf complexwf\_\-reset} ({\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN void {\bf complexwf\_\-delete} ({\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf complexwf\_\-compat} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf complexwf\_\-add} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf complexwf\_\-subtract} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf complexwf\_\-multiply} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf complexwf\_\-divide} ({\bf complexwf\_\-t} $\ast$w1, {\bf complexwf\_\-t} $\ast$w2)
+\item 
+EXTERN int {\bf complexwf\_\-scale} ({\bf complex\_\-t} f, {\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf complexwf\_\-bias} ({\bf complex\_\-t} c, {\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf complexwf\_\-add\_\-cwtone} ({\bf complexwf\_\-t} $\ast$w, double amp, double phase, double freq, double phasenoise)
+\item 
+EXTERN int {\bf complexwf\_\-add\_\-dcywave} ({\bf complexwf\_\-t} $\ast$w, double amp, double phase, double freq, double ttrig, double tdcy, double phasenoise)
+\item 
+EXTERN int {\bf complexwf\_\-add\_\-noise} ({\bf complexwf\_\-t} $\ast$w, double sigma)
+\item 
+EXTERN int {\bf complexwf\_\-add\_\-ampnoise} ({\bf complexwf\_\-t} $\ast$w, double sigma)
+\item 
+EXTERN int {\bf complexwf\_\-add\_\-phasenoise} ({\bf complexwf\_\-t} $\ast$w, double sigma)
+\item 
+EXTERN void {\bf complexwf\_\-print} (FILE $\ast$of, {\bf complexwf\_\-t} $\ast$w)
+\item 
+EXTERN int {\bf complexwf\_\-getreal} ({\bf doublewf\_\-t} $\ast$re, {\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN int {\bf complexwf\_\-getimag} ({\bf doublewf\_\-t} $\ast$im, {\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN int {\bf complexwf\_\-getamp} ({\bf doublewf\_\-t} $\ast$r, {\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN int {\bf complexwf\_\-getphase} ({\bf doublewf\_\-t} $\ast$theta, {\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getreal\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getimag\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getamp\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN {\bf doublewf\_\-t} $\ast$ {\bf complexwf\_\-getphase\_\-new} ({\bf complexwf\_\-t} $\ast$z)
+\item 
+EXTERN int {\bf complexwf\_\-setreal} ({\bf complexwf\_\-t} $\ast$z, {\bf doublewf\_\-t} $\ast$re)
+\item 
+EXTERN int {\bf complexwf\_\-setimag} ({\bf complexwf\_\-t} $\ast$z, {\bf doublewf\_\-t} $\ast$im)
+\item 
+EXTERN int \textbf{time\_\-to\_\-sample} (double fs, int ns, double t, int $\ast$iS)\label{group__wave_g97c0e95c3559f400c84603c768307544}
+
+\item 
+EXTERN int \textbf{freq\_\-to\_\-sample} (double fs, int ns, double f, int $\ast$iS)\label{group__wave_g6f575cd6ad7e547c4d55f530a003337a}
+
+\item 
+EXTERN int \textbf{sample\_\-to\_\-time} (double fs, int ns, int iS, double $\ast$t)\label{group__wave_gc330e9905065c7209c22251d86a20ef7}
+
+\item 
+EXTERN int \textbf{sample\_\-to\_\-freq} (double fs, int ns, int iS, double $\ast$f)\label{group__wave_g6ce85ffae7051ec62a1f19ad23cbd6d5}
+
+\end{CompactItemize}
+
+
+\subsubsection{Define Documentation}
+\index{wave@{wave}!WF\_\-EPS@{WF\_\-EPS}}
+\index{WF\_\-EPS@{WF\_\-EPS}!wave@{wave}}
+\paragraph[WF\_\-EPS]{\setlength{\rightskip}{0pt plus 5cm}\#define WF\_\-EPS}\hfill\label{group__wave_g89ba7924a59237165de649a7dacc3653}
+
+
+A small number 
+
+Definition at line 157 of file bpm\_\-wf.h.
+
+Referenced by complexwf\_\-compat(), doublewf\_\-compat(), and intwf\_\-compat().\index{wave@{wave}!MAX\_\-ALLOWED\_\-NS@{MAX\_\-ALLOWED\_\-NS}}
+\index{MAX\_\-ALLOWED\_\-NS@{MAX\_\-ALLOWED\_\-NS}!wave@{wave}}
+\paragraph[MAX\_\-ALLOWED\_\-NS]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-ALLOWED\_\-NS}\hfill\label{group__wave_gf4f66f2afde7537690684ad4e228a00a}
+
+
+Maximum allowed number of samples (2$^\wedge$18) 
+
+Definition at line 158 of file bpm\_\-wf.h.
+
+Referenced by complexwf(), doublewf(), doublewf\_\-resample(), intwf(), and intwf\_\-resample().\index{wave@{wave}!WF\_\-NEAREST@{WF\_\-NEAREST}}
+\index{WF\_\-NEAREST@{WF\_\-NEAREST}!wave@{wave}}
+\paragraph[WF\_\-NEAREST]{\setlength{\rightskip}{0pt plus 5cm}\#define WF\_\-NEAREST}\hfill\label{group__wave_g9b46f7598390e4627a51533af68be08a}
+
+
+No interpolation, return nearest sample 
+
+Definition at line 160 of file bpm\_\-wf.h.\index{wave@{wave}!WF\_\-LINEAR@{WF\_\-LINEAR}}
+\index{WF\_\-LINEAR@{WF\_\-LINEAR}!wave@{wave}}
+\paragraph[WF\_\-LINEAR]{\setlength{\rightskip}{0pt plus 5cm}\#define WF\_\-LINEAR}\hfill\label{group__wave_ga4201ea584afd459b35354677735cc74}
+
+
+Perform linear interpolation in XXXwf\_\-getsample() 
+
+Definition at line 161 of file bpm\_\-wf.h.
+
+Referenced by doublewf\_\-getvalue().\index{wave@{wave}!WF\_\-QUADRATIC@{WF\_\-QUADRATIC}}
+\index{WF\_\-QUADRATIC@{WF\_\-QUADRATIC}!wave@{wave}}
+\paragraph[WF\_\-QUADRATIC]{\setlength{\rightskip}{0pt plus 5cm}\#define WF\_\-QUADRATIC}\hfill\label{group__wave_g295589a086f9dff120aca9348ab0b97d}
+
+
+Perform quadratic (parabolic) interpolation 
+
+Definition at line 162 of file bpm\_\-wf.h.
+
+Referenced by doublewf\_\-getvalue(), and generate\_\-bpmsignal().\index{wave@{wave}!WF\_\-SINC@{WF\_\-SINC}}
+\index{WF\_\-SINC@{WF\_\-SINC}!wave@{wave}}
+\paragraph[WF\_\-SINC]{\setlength{\rightskip}{0pt plus 5cm}\#define WF\_\-SINC}\hfill\label{group__wave_gdc54c7e5a625ebc8d9473753a0c37126}
+
+
+signal reconstruction using sinc kernel (0..ns) 
+
+Definition at line 163 of file bpm\_\-wf.h.
+
+Referenced by doublewf\_\-getvalue().\index{wave@{wave}!WF\_\-LANCZOS@{WF\_\-LANCZOS}}
+\index{WF\_\-LANCZOS@{WF\_\-LANCZOS}!wave@{wave}}
+\paragraph[WF\_\-LANCZOS]{\setlength{\rightskip}{0pt plus 5cm}\#define WF\_\-LANCZOS}\hfill\label{group__wave_g7615bf8aef68205fd3f83f6d819b9e7e}
+
+
+signal reconstruction using lanczos kernel (a=3) 
+
+Definition at line 164 of file bpm\_\-wf.h.
+
+Referenced by doublewf\_\-getvalue().
+
+\subsubsection{Function Documentation}
+\index{wave@{wave}!wfstat\_\-reset@{wfstat\_\-reset}}
+\index{wfstat\_\-reset@{wfstat\_\-reset}!wave@{wave}}
+\paragraph[wfstat\_\-reset]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int wfstat\_\-reset ({\bf wfstat\_\-t} $\ast$ {\em s})}\hfill\label{group__wave_gca14393b65b20de1b09bf7aa262aa182}
+
+
+Reset the waveform statistics structure. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]A pointer to a \doxyref{wfstat\_\-t}{p.}{structwfstat__t} structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 8 of file wfstats.c.
+
+References bpm\_\-error(), wfstat\_\-t::imax, wfstat\_\-t::imin, wfstat\_\-t::max, wfstat\_\-t::mean, wfstat\_\-t::min, and wfstat\_\-t::rms.
+
+Referenced by doublewf\_\-basic\_\-stats().\index{wave@{wave}!wfstat\_\-print@{wfstat\_\-print}}
+\index{wfstat\_\-print@{wfstat\_\-print}!wave@{wave}}
+\paragraph[wfstat\_\-print]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void wfstat\_\-print (FILE $\ast$ {\em of}, \/  {\bf wfstat\_\-t} $\ast$ {\em s})}\hfill\label{group__wave_g3824598909a295e294ff9f2354690028}
+
+
+Prints the waveform statistics to the screen, \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em of}]A filepointer \item[{\em s}]A pointer to the waveform statistics structure \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 29 of file wfstats.c.
+
+References bpm\_\-error(), wfstat\_\-t::imax, wfstat\_\-t::imin, wfstat\_\-t::max, wfstat\_\-t::mean, wfstat\_\-t::min, and wfstat\_\-t::rms.\index{wave@{wave}!doublewf@{doublewf}}
+\index{doublewf@{doublewf}!wave@{wave}}
+\paragraph[doublewf]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf doublewf\_\-t}$\ast$ doublewf (int {\em ns}, \/  double {\em fs})}\hfill\label{group__wave_gacd29427dda1a2dc73e05e438c3ccabd}
+
+
+Allocates memory for a new waveform of doubles \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ns}]The number of samples in the waveform \item[{\em fs}]The sampling frequency of the waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the allocated waveform structure \end{Desc}
+
+
+Definition at line 8 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::fs, MAX\_\-ALLOWED\_\-NS, doublewf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by complexwf\_\-getamp\_\-new(), complexwf\_\-getimag\_\-new(), complexwf\_\-getphase\_\-new(), complexwf\_\-getreal\_\-new(), ddc\_\-initialise(), doublewf\_\-cast\_\-new(), doublewf\_\-copy\_\-new(), doublewf\_\-frequency\_\-series(), doublewf\_\-sample\_\-series(), doublewf\_\-time\_\-series(), fit\_\-waveform(), generate\_\-bpmsignal(), generate\_\-diodesignal(), and get\_\-mode\_\-response().\index{wave@{wave}!doublewf\_\-time\_\-series@{doublewf\_\-time\_\-series}}
+\index{doublewf\_\-time\_\-series@{doublewf\_\-time\_\-series}!wave@{wave}}
+\paragraph[doublewf\_\-time\_\-series]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf doublewf\_\-t}$\ast$ doublewf\_\-time\_\-series (int {\em ns}, \/  double {\em fs})}\hfill\label{group__wave_g9c6d08f47ab0eae5b8d417cf058070de}
+
+
+Allocates memory for a new waveform of doubles and fills it with the sample time values \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ns}]The number of samples in the waveform \item[{\em fs}]The sampling frequency of the waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the allocated waveform structure \end{Desc}
+
+
+Definition at line 63 of file doublewf.c.
+
+References doublewf(), doublewf\_\-t::fs, doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-sample\_\-series@{doublewf\_\-sample\_\-series}}
+\index{doublewf\_\-sample\_\-series@{doublewf\_\-sample\_\-series}!wave@{wave}}
+\paragraph[doublewf\_\-sample\_\-series]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf doublewf\_\-t}$\ast$ doublewf\_\-sample\_\-series (int {\em ns}, \/  double {\em fs})}\hfill\label{group__wave_g1bc161bf04ce585bbed17b175c4c6aea}
+
+
+Allocates memory for a new waveform of doubles and fills it with sample numbers. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ns}]The number of samples in the waveform \item[{\em fs}]The sampling frequency of the waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the allocated waveform structure \end{Desc}
+
+
+Definition at line 50 of file doublewf.c.
+
+References doublewf(), doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-frequency\_\-series@{doublewf\_\-frequency\_\-series}}
+\index{doublewf\_\-frequency\_\-series@{doublewf\_\-frequency\_\-series}!wave@{wave}}
+\paragraph[doublewf\_\-frequency\_\-series]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf doublewf\_\-t}$\ast$ doublewf\_\-frequency\_\-series (int {\em ns}, \/  double {\em fs})}\hfill\label{group__wave_gb6af36436a41e76109f810c74b8c8102}
+
+
+Allocates memory for a new waveform of doubles and fills it with the frequency values \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ns}]The number of samples in the waveform \item[{\em fs}]The sampling frequency of the waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the allocated waveform structure \end{Desc}
+
+
+Definition at line 76 of file doublewf.c.
+
+References doublewf(), doublewf\_\-t::fs, doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-setvalues@{doublewf\_\-setvalues}}
+\index{doublewf\_\-setvalues@{doublewf\_\-setvalues}!wave@{wave}}
+\paragraph[doublewf\_\-setvalues]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-setvalues ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double $\ast$ {\em x})}\hfill\label{group__wave_g64d54587d368f37cb42ba7fcd797aec0}
+
+
+Fills the waveform of doubles with the values from the array x. No check is performed whether x contains enough samples, the user needs to be sure this is the case ! \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of doubles \item[{\em x}]A pointer to the x values \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 151 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-setfunction@{doublewf\_\-setfunction}}
+\index{doublewf\_\-setfunction@{doublewf\_\-setfunction}!wave@{wave}}
+\paragraph[doublewf\_\-setfunction]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-setfunction ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double($\ast$)(double t, int, double $\ast$) {\em wffun}, \/  int {\em npars}, \/  double $\ast$ {\em par})}\hfill\label{group__wave_g798d5bc10ff02a70a9f8776ef63b7081}
+
+
+Fills the waveform with values from the function wffun(), this function has to return a double from argument t ( time ) and has npars parameters given by the array $\ast$par. The function will be evaluated at the time t of each sample... \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of doubles \item[{\em wffun}]A pointer to the function to fill the waveform with \item[{\em t}]The time parameter in the function \item[{\em npars}]Number of parameters for the function \item[{\em par}]Array of parameters for the function \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+\index{wave@{wave}!doublewf\_\-copy@{doublewf\_\-copy}}
+\index{doublewf\_\-copy@{doublewf\_\-copy}!wave@{wave}}
+\paragraph[doublewf\_\-copy]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-copy ({\bf doublewf\_\-t} $\ast$ {\em copy}, \/  {\bf doublewf\_\-t} $\ast$ {\em src})}\hfill\label{group__wave_g6a9a8a638438dcc9df0397d1dcf54f36}
+
+
+Copies the values from existing waveform src into copy checks first whether the waveforms are compatible... This routine doesn't allocate memory internally and the waveforms should already have been created by the user... \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em copy}]A pointer to the copy waveform \item[{\em src}]A pointer to the original waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 106 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-compat(), doublewf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by rf\_\-mixer().\index{wave@{wave}!doublewf\_\-copy\_\-new@{doublewf\_\-copy\_\-new}}
+\index{doublewf\_\-copy\_\-new@{doublewf\_\-copy\_\-new}!wave@{wave}}
+\paragraph[doublewf\_\-copy\_\-new]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf doublewf\_\-t}$\ast$ doublewf\_\-copy\_\-new ({\bf doublewf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_gc1904edd943e09b2716af890d2c50922}
+
+
+Allocates memory and produces a copy of the waveform w; \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the original waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the copy of w \end{Desc}
+
+
+Definition at line 89 of file doublewf.c.
+
+References bpm\_\-error(), doublewf(), doublewf\_\-t::fs, doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-subset@{doublewf\_\-subset}}
+\index{doublewf\_\-subset@{doublewf\_\-subset}!wave@{wave}}
+\paragraph[doublewf\_\-subset]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-subset ({\bf doublewf\_\-t} $\ast$ {\em sub}, \/  {\bf doublewf\_\-t} $\ast$ {\em w}, \/  int {\em i1}, \/  int {\em i2})}\hfill\label{group__wave_g05ed9330401cd655d7b151ae754b0e07}
+
+
+Copies a subset from sample i1 to sample i2 ( inclusive ) to the sub waveform from waveform w. The routine expects the sub waveform to already exist with enough samples. ( this is not checked ! ) The sub-$>$fs and sub-$>$ns will be overwritten. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em sub}]Pointer to the waveform which will hold the subset \item[{\em w}]Pointer to the original waveform \item[{\em i1}]First sample of w to copy \item[{\em i2}]Last sample of w to copy \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 127 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::fs, doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-reset@{doublewf\_\-reset}}
+\index{doublewf\_\-reset@{doublewf\_\-reset}!wave@{wave}}
+\paragraph[doublewf\_\-reset]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-reset ({\bf doublewf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_ga75e86090de5e2d36afe24a6e5dd2f79}
+
+
+Resets the waveform of doubles to 0. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of doubles \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 185 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by generate\_\-bpmsignal().\index{wave@{wave}!doublewf\_\-delete@{doublewf\_\-delete}}
+\index{doublewf\_\-delete@{doublewf\_\-delete}!wave@{wave}}
+\paragraph[doublewf\_\-delete]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void doublewf\_\-delete ({\bf doublewf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_gf9761d7316328c78183205bf4129df08}
+
+
+Frees up the memory used by the waveform \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of doubles \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 202 of file doublewf.c.
+
+References bpm\_\-warning(), and doublewf\_\-t::wf.
+
+Referenced by ddc\_\-cleanup(), fit\_\-waveform(), get\_\-mode\_\-response(), intwf\_\-basic\_\-stats(), intwf\_\-getvalue(), and intwf\_\-resample().\index{wave@{wave}!intwf\_\-cast\_\-new@{intwf\_\-cast\_\-new}}
+\index{intwf\_\-cast\_\-new@{intwf\_\-cast\_\-new}!wave@{wave}}
+\paragraph[intwf\_\-cast\_\-new]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf intwf\_\-t}$\ast$ intwf\_\-cast\_\-new ({\bf doublewf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_gd452b9cd33b9c6cd0606cac4db78c8b2}
+
+
+Cast the waveform of doubles to a new waveform of integers. Memory is allocated inside this routine so the user just needs to have a inwf\_\-t pointer ready. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of doubles \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A newly created \doxyref{intwf\_\-t}{p.}{structintwf__t} representation of the waveform of doubles \end{Desc}
+
+
+Definition at line 219 of file doublewf.c.
+
+References bpm\_\-error(), dround(), doublewf\_\-t::fs, intwf(), intwf\_\-t::ns, doublewf\_\-t::ns, doublewf\_\-t::wf, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-cast@{intwf\_\-cast}}
+\index{intwf\_\-cast@{intwf\_\-cast}!wave@{wave}}
+\paragraph[intwf\_\-cast]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-cast ({\bf intwf\_\-t} $\ast$ {\em iw}, \/  {\bf doublewf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_g5529a85b9bdb4d0fa7a253057438499f}
+
+
+Cast the waveform of doubles to an already existing waveform of integers. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em iw}]A pointer to an existing waveform of integers \item[{\em w}]A pointer to the waveform of doubles \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 245 of file doublewf.c.
+
+References bpm\_\-error(), dround(), intwf\_\-t::ns, doublewf\_\-t::wf, and intwf\_\-t::wf.\index{wave@{wave}!doublewf\_\-compat@{doublewf\_\-compat}}
+\index{doublewf\_\-compat@{doublewf\_\-compat}!wave@{wave}}
+\paragraph[doublewf\_\-compat]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-compat ({\bf doublewf\_\-t} $\ast$ {\em w1}, \/  {\bf doublewf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_g518ca353eff8241537b67cf7b078791e}
+
+
+Checks compatiblity of the two waveforms, returns true if the number of samples and the sampling frequencies match. For the sampling frequency, it is simply checked whether they match to WF\_\-EPS. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of doubles \item[{\em w2}]A pointer to the second waveform of doubles \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]1 if the waveforms match, 0 if not. \end{Desc}
+
+
+Definition at line 263 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::fs, doublewf\_\-t::ns, and WF\_\-EPS.
+
+Referenced by doublewf\_\-add(), doublewf\_\-copy(), doublewf\_\-divide(), doublewf\_\-multiply(), and doublewf\_\-subtract().\index{wave@{wave}!doublewf\_\-add@{doublewf\_\-add}}
+\index{doublewf\_\-add@{doublewf\_\-add}!wave@{wave}}
+\paragraph[doublewf\_\-add]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-add ({\bf doublewf\_\-t} $\ast$ {\em w1}, \/  {\bf doublewf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_g62ef43c79d5dea12a84c855b6860ffd9}
+
+
+Adds two waveforms of doubles w1+w2 sample per sample. The result is stored in w1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of doubles \item[{\em w2}]A pointer to the second waveform of doubles \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 276 of file doublewf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), doublewf\_\-compat(), doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-subtract@{doublewf\_\-subtract}}
+\index{doublewf\_\-subtract@{doublewf\_\-subtract}!wave@{wave}}
+\paragraph[doublewf\_\-subtract]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-subtract ({\bf doublewf\_\-t} $\ast$ {\em w1}, \/  {\bf doublewf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_g298e8ecb033c7c8149195451a3d02147}
+
+
+Subtracts two waveforms of doubles w1-w2 sample per sample. The result is stored in w1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of doubles \item[{\em w2}]A pointer to the second waveform of doubles \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 297 of file doublewf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), doublewf\_\-compat(), doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-multiply@{doublewf\_\-multiply}}
+\index{doublewf\_\-multiply@{doublewf\_\-multiply}!wave@{wave}}
+\paragraph[doublewf\_\-multiply]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-multiply ({\bf doublewf\_\-t} $\ast$ {\em w1}, \/  {\bf doublewf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_gdee39b1ed52a5574da6db319cdd2f9d5}
+
+
+Multiplies two waveforms of doubles w1$\ast$w2 sample per sample. The result is stored in w1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of doubles \item[{\em w2}]A pointer to the second waveform of doubles \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 317 of file doublewf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), doublewf\_\-compat(), doublewf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by rf\_\-mixer().\index{wave@{wave}!doublewf\_\-divide@{doublewf\_\-divide}}
+\index{doublewf\_\-divide@{doublewf\_\-divide}!wave@{wave}}
+\paragraph[doublewf\_\-divide]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-divide ({\bf doublewf\_\-t} $\ast$ {\em w1}, \/  {\bf doublewf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_gc46ea8cd620a69ae929c7690fdf6cb5f}
+
+
+Divides two waveforms of doubles w1/w2 sample per sample. The result is stored in w1. When w2[i] is 0, w1[i] will be set to 0. and a warning message is printed. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of doubles \item[{\em w2}]A pointer to the second waveform of doubles \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 338 of file doublewf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), doublewf\_\-compat(), doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-scale@{doublewf\_\-scale}}
+\index{doublewf\_\-scale@{doublewf\_\-scale}!wave@{wave}}
+\paragraph[doublewf\_\-scale]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-scale (double {\em f}, \/  {\bf doublewf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_g0210f11eacadf58f2ebfd7a3c329bd41}
+
+
+Scales the waveform of doubles w by factor f. The result is stored in w. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]The scalefactor \item[{\em w}]A pointer to the waveform of doubles \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 368 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by get\_\-mode\_\-response(), and rf\_\-amplify().\index{wave@{wave}!doublewf\_\-bias@{doublewf\_\-bias}}
+\index{doublewf\_\-bias@{doublewf\_\-bias}!wave@{wave}}
+\paragraph[doublewf\_\-bias]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-bias (double {\em c}, \/  {\bf doublewf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_ga001d279790949aba691429bbfb005ec}
+
+
+Biases the waveform of doubles w by a constant c. The result is stored in w. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em c}]The constant bias. \item[{\em w}]A pointer to the waveform of doubles \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 385 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{wave@{wave}!doublewf\_\-add\_\-cwtone@{doublewf\_\-add\_\-cwtone}}
+\index{doublewf\_\-add\_\-cwtone@{doublewf\_\-add\_\-cwtone}!wave@{wave}}
+\paragraph[doublewf\_\-add\_\-cwtone]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-add\_\-cwtone ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double {\em amp}, \/  double {\em phase}, \/  double {\em freq}, \/  double {\em phasenoise})}\hfill\label{group__wave_g8e06d470d7c0fe97296cf21491f6fece}
+
+
+Adds a cosine-like CW tone to the entire waveform. The sampling time is taken on the array index, so t=(double)i/w-$>$fs. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em amp}]Amplitude of the CW tone \item[{\em phase}]Phase of the CW tone \item[{\em freq}]Frequency of the CW tone \item[{\em phasenoise}]Sigma of the gaussian phasenoise \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 402 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::fs, nr\_\-rangauss(), doublewf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by rf\_\-addLO().\index{wave@{wave}!doublewf\_\-add\_\-dcywave@{doublewf\_\-add\_\-dcywave}}
+\index{doublewf\_\-add\_\-dcywave@{doublewf\_\-add\_\-dcywave}!wave@{wave}}
+\paragraph[doublewf\_\-add\_\-dcywave]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-add\_\-dcywave ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double {\em amp}, \/  double {\em phase}, \/  double {\em freq}, \/  double {\em ttrig}, \/  double {\em tdcy}, \/  double {\em phasenoise})}\hfill\label{group__wave_g19020b5ecb749bf036f012058764118d}
+
+
+Adds a decaying wave pulse to the waveform. The sampling time is taken on the array index, so t=(double)i/w-$>$fs. The added signal is of the form : \[ amp e^{- ( t - ttrig ) / tdcy } cos( 2 \pi freq ( t- ttrig ) + phase ) \] If desired, phasenoise is added to the phase of the waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em amp}]Amplitude of the CW tone \item[{\em phase}]Phase of the CW tone \item[{\em freq}]Frequency of the CW tone \item[{\em ttrig}]Trigger time of the pulse \item[{\em tdcy}]Decay time of the pulse \item[{\em phasenoise}]Sigma of the gaussian phasenoise \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 422 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::fs, nr\_\-rangauss(), doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-add\_\-ampnoise@{doublewf\_\-add\_\-ampnoise}}
+\index{doublewf\_\-add\_\-ampnoise@{doublewf\_\-add\_\-ampnoise}!wave@{wave}}
+\paragraph[doublewf\_\-add\_\-ampnoise]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-add\_\-ampnoise ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double {\em sigma})}\hfill\label{group__wave_g3b7beca615e8bf3a2858e7de91aa9395}
+
+
+Adds gaussian amplitude noise to the waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em sigma}]The gaussian sigma of the amplitude noise \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 447 of file doublewf.c.
+
+References bpm\_\-error(), nr\_\-rangauss(), doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-basic\_\-stats@{doublewf\_\-basic\_\-stats}}
+\index{doublewf\_\-basic\_\-stats@{doublewf\_\-basic\_\-stats}!wave@{wave}}
+\paragraph[doublewf\_\-basic\_\-stats]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-basic\_\-stats ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  int {\em s0}, \/  int {\em s1}, \/  {\bf wfstat\_\-t} $\ast$ {\em stats})}\hfill\label{group__wave_gb4a360b53cf85f4b0381819f59047154}
+
+
+Retrieves some basic statistics about the waveform of doubles in w, only considers samples between s0 and s1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em s0}]First sample to consider \item[{\em s1}]Last sample to consider \item[{\em stats}]A filled \doxyref{wfstat\_\-t}{p.}{structwfstat__t} structure is returned. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 467 of file doublewf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), wfstat\_\-t::imax, wfstat\_\-t::imin, wfstat\_\-t::max, wfstat\_\-t::mean, wfstat\_\-t::min, doublewf\_\-t::ns, wfstat\_\-t::rms, doublewf\_\-t::wf, and wfstat\_\-reset().
+
+Referenced by get\_\-pedestal(), intwf\_\-basic\_\-stats(), and process\_\-diode().\index{wave@{wave}!doublewf\_\-derive@{doublewf\_\-derive}}
+\index{doublewf\_\-derive@{doublewf\_\-derive}!wave@{wave}}
+\paragraph[doublewf\_\-derive]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-derive ({\bf doublewf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_g6ea52c62a821e89566b7ec86e2f328a0}
+
+
+Produce the derivative waveform for w : dw/dt. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 507 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::fs, doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-integrate@{doublewf\_\-integrate}}
+\index{doublewf\_\-integrate@{doublewf\_\-integrate}!wave@{wave}}
+\paragraph[doublewf\_\-integrate]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-integrate ({\bf doublewf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_gb8652aca81d127e1074c00c07ec0f963}
+
+
+Produce the integrated waveform for w : $^\wedge$t w(s)ds. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 532 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::fs, doublewf\_\-t::ns, and doublewf\_\-t::wf.
+
+Referenced by get\_\-mode\_\-response().\index{wave@{wave}!doublewf\_\-print@{doublewf\_\-print}}
+\index{doublewf\_\-print@{doublewf\_\-print}!wave@{wave}}
+\paragraph[doublewf\_\-print]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void doublewf\_\-print (FILE $\ast$ {\em of}, \/  {\bf doublewf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_gc4411f381de7f86814ccb47c2dcd5a8e}
+
+
+Print the waveform to the filepointer \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em of}]A filepointer, use stdout for the terminal \item[{\em w}]A pointer to the waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 556 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::fs, doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!doublewf\_\-getvalue@{doublewf\_\-getvalue}}
+\index{doublewf\_\-getvalue@{doublewf\_\-getvalue}!wave@{wave}}
+\paragraph[doublewf\_\-getvalue]{\setlength{\rightskip}{0pt plus 5cm}EXTERN double doublewf\_\-getvalue ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  double {\em t}, \/  unsigned int {\em mode})}\hfill\label{group__wave_gc0d42d516eec4e92f7d3cfdea49eccd4}
+
+
+Return the value for the waveform at sample time t, according to the interpolation mode. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em t}]A time at which to sample the waveform \item[{\em mode}]Interpolation mode \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the value of the waveform at time t \end{Desc}
+
+
+Definition at line 575 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-t::fs, lanczos(), nr\_\-quadinterpol(), doublewf\_\-t::ns, sinc(), doublewf\_\-t::wf, WF\_\-LANCZOS, WF\_\-LINEAR, WF\_\-QUADRATIC, and WF\_\-SINC.
+
+Referenced by digitise(), doublewf\_\-resample(), generate\_\-bpmsignal(), intwf\_\-getvalue(), and intwf\_\-resample().\index{wave@{wave}!doublewf\_\-resample@{doublewf\_\-resample}}
+\index{doublewf\_\-resample@{doublewf\_\-resample}!wave@{wave}}
+\paragraph[doublewf\_\-resample]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-resample ({\bf doublewf\_\-t} $\ast$ {\em w2}, \/  double {\em fs}, \/  {\bf doublewf\_\-t} $\ast$ {\em w1}, \/  unsigned int {\em mode})}\hfill\label{group__wave_g46ee0570966da873e4e4121cf708147b}
+
+
+Resamples the waveform w1 into w2 with new fs sampling frequency This routine recalculates the correct number of samples required. However the user needs to make sure that there are enough samples in w2 available as this is not checked. The w2-$>$ns value will be overwritten with the correct amount. The routine checkes whether the maximum allowed number of samples is not exceeded to avoid memory problems. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em t}]A time at which to sample the waveform \item[{\em mode}]Interpolation mode \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the value of the waveform at time t \end{Desc}
+
+
+Definition at line 664 of file doublewf.c.
+
+References bpm\_\-error(), doublewf\_\-getvalue(), doublewf\_\-t::fs, MAX\_\-ALLOWED\_\-NS, doublewf\_\-t::ns, and doublewf\_\-t::wf.\index{wave@{wave}!intwf@{intwf}}
+\index{intwf@{intwf}!wave@{wave}}
+\paragraph[intwf]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf intwf\_\-t}$\ast$ intwf (int {\em ns}, \/  double {\em fs})}\hfill\label{group__wave_gf6425ee9b693e6f17b5747039027b761}
+
+
+Allocates memory for a new waveform of integers \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ns}]The number of samples in the waveform \item[{\em fs}]The sampling frequency of the waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the allocated waveform structure \end{Desc}
+
+
+Definition at line 8 of file intwf.c.
+
+References bpm\_\-error(), intwf\_\-t::fs, MAX\_\-ALLOWED\_\-NS, intwf\_\-t::ns, and intwf\_\-t::wf.
+
+Referenced by intwf\_\-cast\_\-new(), intwf\_\-copy\_\-new(), and intwf\_\-sample\_\-series().\index{wave@{wave}!intwf\_\-sample\_\-series@{intwf\_\-sample\_\-series}}
+\index{intwf\_\-sample\_\-series@{intwf\_\-sample\_\-series}!wave@{wave}}
+\paragraph[intwf\_\-sample\_\-series]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf intwf\_\-t}$\ast$ intwf\_\-sample\_\-series (int {\em ns}, \/  double {\em fs})}\hfill\label{group__wave_gdef06cfdb15af4597a7e939d6c0a6397}
+
+
+Allocates memory for a new waveform of integers and fills it with sample numbers. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ns}]The number of samples in the waveform \item[{\em fs}]The sampling frequency of the waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the allocated waveform structure \end{Desc}
+
+
+Definition at line 50 of file intwf.c.
+
+References intwf(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-setvalues@{intwf\_\-setvalues}}
+\index{intwf\_\-setvalues@{intwf\_\-setvalues}!wave@{wave}}
+\paragraph[intwf\_\-setvalues]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-setvalues ({\bf intwf\_\-t} $\ast$ {\em w}, \/  int $\ast$ {\em x})}\hfill\label{group__wave_gf36f00d2a95ab2d0597252aa01bd8e39}
+
+
+Fills the waveform of integers with the values from the array x. No check is performed whether x contains enough samples, the user needs to be sure this is the case ! \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of integers \item[{\em x}]A pointer to the x values \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 126 of file intwf.c.
+
+References bpm\_\-error(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-setfunction@{intwf\_\-setfunction}}
+\index{intwf\_\-setfunction@{intwf\_\-setfunction}!wave@{wave}}
+\paragraph[intwf\_\-setfunction]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-setfunction ({\bf intwf\_\-t} $\ast$ {\em w}, \/  int($\ast$)(double t, int, double $\ast$) {\em wffun}, \/  int {\em npars}, \/  double $\ast$ {\em par})}\hfill\label{group__wave_g967ec1dde9cfdc4ba8c08a1988bbebe6}
+
+
+Fills the waveform with values from the function wffun(), this function has to return a double from argument t ( time ) and has npars parameters given by the array $\ast$par. The function will be evaluated at the time t of each sample... \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of integers \item[{\em wffun}]A pointer to the function to fill the waveform with \item[{\em t}]The time parameter in the function \item[{\em npars}]Number of parameters for the function \item[{\em par}]Array of parameters for the function \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+\index{wave@{wave}!intwf\_\-copy@{intwf\_\-copy}}
+\index{intwf\_\-copy@{intwf\_\-copy}!wave@{wave}}
+\paragraph[intwf\_\-copy]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-copy ({\bf intwf\_\-t} $\ast$ {\em copy}, \/  {\bf intwf\_\-t} $\ast$ {\em src})}\hfill\label{group__wave_g184cf7b138de7ef86da39e9e68458107}
+
+
+Copies the values from existing waveform src into copy checks first whether the waveforms are compatible... This routine doesn't allocate memory internally and the waveforms should already have been created by the user... \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em copy}]A pointer to the copy waveform \item[{\em src}]A pointer to the original waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 81 of file intwf.c.
+
+References bpm\_\-error(), intwf\_\-compat(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-copy\_\-new@{intwf\_\-copy\_\-new}}
+\index{intwf\_\-copy\_\-new@{intwf\_\-copy\_\-new}!wave@{wave}}
+\paragraph[intwf\_\-copy\_\-new]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf intwf\_\-t}$\ast$ intwf\_\-copy\_\-new ({\bf intwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_g36ff9802dd25dec32dac9a5a568dab24}
+
+
+Allocates memory and produces a copy of the waveform w; \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the original waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the copy of w \end{Desc}
+
+
+Definition at line 63 of file intwf.c.
+
+References bpm\_\-error(), intwf\_\-t::fs, intwf(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-subset@{intwf\_\-subset}}
+\index{intwf\_\-subset@{intwf\_\-subset}!wave@{wave}}
+\paragraph[intwf\_\-subset]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-subset ({\bf intwf\_\-t} $\ast$ {\em sub}, \/  {\bf intwf\_\-t} $\ast$ {\em w}, \/  int {\em i1}, \/  int {\em i2})}\hfill\label{group__wave_g9c33701488f562237407b44289802a36}
+
+
+Copies a subset from sample i1 to sample i2 ( inclusive ) to the sub waveform from waveform w. The routine expects the sub waveform to already exist with enough samples. ( this is not checked ! ) The sub-$>$fs and sub-$>$ns will be overwritten. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em sub}]Pointer to the waveform which will hold the subset \item[{\em w}]Pointer to the original waveform \item[{\em i1}]First sample of w to copy \item[{\em i2}]Last sample of w to copy \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 102 of file intwf.c.
+
+References bpm\_\-error(), intwf\_\-t::fs, intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-reset@{intwf\_\-reset}}
+\index{intwf\_\-reset@{intwf\_\-reset}!wave@{wave}}
+\paragraph[intwf\_\-reset]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-reset ({\bf intwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_g5af5a49dccef3430f7b7890af23f7fb9}
+
+
+Resets the waveform of integers to 0. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of integers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 160 of file intwf.c.
+
+References bpm\_\-error(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-delete@{intwf\_\-delete}}
+\index{intwf\_\-delete@{intwf\_\-delete}!wave@{wave}}
+\paragraph[intwf\_\-delete]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void intwf\_\-delete ({\bf intwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_gbd07b00ad5de64e164da1dd178aac8e3}
+
+
+Frees up the memory used by the waveform \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of integers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 177 of file intwf.c.
+
+References bpm\_\-warning(), and intwf\_\-t::wf.\index{wave@{wave}!doublewf\_\-cast\_\-new@{doublewf\_\-cast\_\-new}}
+\index{doublewf\_\-cast\_\-new@{doublewf\_\-cast\_\-new}!wave@{wave}}
+\paragraph[doublewf\_\-cast\_\-new]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf doublewf\_\-t}$\ast$ doublewf\_\-cast\_\-new ({\bf intwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_g8bede821d107acdf8e8794bd61dd0c37}
+
+
+Cast the waveform of integers to a new waveform of doubles. Memory is allocated inside this routine so the user just needs to have a inwf\_\-t pointer ready. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of integers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A newly created \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} representation of the waveform of integers \end{Desc}
+
+
+Definition at line 194 of file intwf.c.
+
+References bpm\_\-error(), doublewf(), intwf\_\-t::fs, intwf\_\-t::ns, intwf\_\-t::wf, and doublewf\_\-t::wf.
+
+Referenced by intwf\_\-basic\_\-stats(), intwf\_\-getvalue(), and intwf\_\-resample().\index{wave@{wave}!doublewf\_\-cast@{doublewf\_\-cast}}
+\index{doublewf\_\-cast@{doublewf\_\-cast}!wave@{wave}}
+\paragraph[doublewf\_\-cast]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int doublewf\_\-cast ({\bf doublewf\_\-t} $\ast$ {\em w}, \/  {\bf intwf\_\-t} $\ast$ {\em iw})}\hfill\label{group__wave_gfe2df82d9f30aae79189cc0faa05ac40}
+
+
+Cast the waveform of integers to an already existing waveform of doubles. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em iw}]A pointer to an existing waveform of integers \item[{\em w}]A pointer to the waveform of integers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 220 of file intwf.c.
+
+References bpm\_\-error(), intwf\_\-t::ns, intwf\_\-t::wf, and doublewf\_\-t::wf.\index{wave@{wave}!intwf\_\-compat@{intwf\_\-compat}}
+\index{intwf\_\-compat@{intwf\_\-compat}!wave@{wave}}
+\paragraph[intwf\_\-compat]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-compat ({\bf intwf\_\-t} $\ast$ {\em w1}, \/  {\bf intwf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_gcfe7ed3d8a0043ebd103bf16405d85e4}
+
+
+Checks compatiblity of the two waveforms, returns true if the number of samples and the sampling frequencies match. For the sampling frequency, it is simply checked whether they match to WF\_\-EPS. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of integers \item[{\em w2}]A pointer to the second waveform of integers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]1 if the waveforms match, 0 if not. \end{Desc}
+
+
+Definition at line 238 of file intwf.c.
+
+References bpm\_\-error(), intwf\_\-t::fs, intwf\_\-t::ns, and WF\_\-EPS.
+
+Referenced by intwf\_\-add(), intwf\_\-copy(), intwf\_\-divide(), intwf\_\-multiply(), and intwf\_\-subtract().\index{wave@{wave}!intwf\_\-add@{intwf\_\-add}}
+\index{intwf\_\-add@{intwf\_\-add}!wave@{wave}}
+\paragraph[intwf\_\-add]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-add ({\bf intwf\_\-t} $\ast$ {\em w1}, \/  {\bf intwf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_g74be6534721bff74d80f4382b37a6c77}
+
+
+Adds two waveforms of integers w1+w2 sample per sample. The result is stored in w1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of integers \item[{\em w2}]A pointer to the second waveform of integers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 251 of file intwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), intwf\_\-compat(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-subtract@{intwf\_\-subtract}}
+\index{intwf\_\-subtract@{intwf\_\-subtract}!wave@{wave}}
+\paragraph[intwf\_\-subtract]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-subtract ({\bf intwf\_\-t} $\ast$ {\em w1}, \/  {\bf intwf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_geb2250b47157c7430f059566e387fb47}
+
+
+Subtracts two waveforms of integers w1-w2 sample per sample. The result is stored in w1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of integers \item[{\em w2}]A pointer to the second waveform of integers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 271 of file intwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), intwf\_\-compat(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-multiply@{intwf\_\-multiply}}
+\index{intwf\_\-multiply@{intwf\_\-multiply}!wave@{wave}}
+\paragraph[intwf\_\-multiply]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-multiply ({\bf intwf\_\-t} $\ast$ {\em w1}, \/  {\bf intwf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_gdf7185a414e098f3f493f4508979d291}
+
+
+Multiplies two waveforms of integers w1$\ast$w2 sample per sample. The result is stored in w1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of integers \item[{\em w2}]A pointer to the second waveform of integers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 291 of file intwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), intwf\_\-compat(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-divide@{intwf\_\-divide}}
+\index{intwf\_\-divide@{intwf\_\-divide}!wave@{wave}}
+\paragraph[intwf\_\-divide]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-divide ({\bf intwf\_\-t} $\ast$ {\em w1}, \/  {\bf intwf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_g21952541962fccfd0321de05917e05f9}
+
+
+Divides two waveforms of integers w1/w2 sample per sample. The result is stored in w1. When w2[i] is 0, w1[i] will be set to 0. and a warning message is printed. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of integers \item[{\em w2}]A pointer to the second waveform of integers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 313 of file intwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), intwf\_\-compat(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-scale@{intwf\_\-scale}}
+\index{intwf\_\-scale@{intwf\_\-scale}!wave@{wave}}
+\paragraph[intwf\_\-scale]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-scale (int {\em f}, \/  {\bf intwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_g663b264ea47497cda527014002b1ce7a}
+
+
+Scales the waveform of integers w by factor f. The result is stored in w. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]The scalefactor \item[{\em w}]A pointer to the waveform of integers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 343 of file intwf.c.
+
+References bpm\_\-error(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-bias@{intwf\_\-bias}}
+\index{intwf\_\-bias@{intwf\_\-bias}!wave@{wave}}
+\paragraph[intwf\_\-bias]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-bias (int {\em c}, \/  {\bf intwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_g10469f8aceee87d2755f270f55dd1945}
+
+
+Biases the waveform of integers w by a constant c. The result is stored in w. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em c}]The constant bias. \item[{\em w}]A pointer to the waveform of integers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 360 of file intwf.c.
+
+References bpm\_\-error(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-add\_\-cwtone@{intwf\_\-add\_\-cwtone}}
+\index{intwf\_\-add\_\-cwtone@{intwf\_\-add\_\-cwtone}!wave@{wave}}
+\paragraph[intwf\_\-add\_\-cwtone]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-add\_\-cwtone ({\bf intwf\_\-t} $\ast$ {\em w}, \/  double {\em amp}, \/  double {\em phase}, \/  double {\em freq}, \/  double {\em phasenoise})}\hfill\label{group__wave_g0d50dcd4503b63d92bb8a4fd78482413}
+
+
+Adds a cosine-like CW tone to the entire waveform. The sampling time is taken on the array index, so t=(double)i/w-$>$fs. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em amp}]Amplitude of the CW tone \item[{\em phase}]Phase of the CW tone \item[{\em freq}]Frequency of the CW tone \item[{\em phasenoise}]Sigma of the gaussian phasenoise \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 377 of file intwf.c.
+
+References bpm\_\-error(), dround(), intwf\_\-t::fs, nr\_\-rangauss(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-add\_\-dcywave@{intwf\_\-add\_\-dcywave}}
+\index{intwf\_\-add\_\-dcywave@{intwf\_\-add\_\-dcywave}!wave@{wave}}
+\paragraph[intwf\_\-add\_\-dcywave]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-add\_\-dcywave ({\bf intwf\_\-t} $\ast$ {\em w}, \/  double {\em amp}, \/  double {\em phase}, \/  double {\em freq}, \/  double {\em ttrig}, \/  double {\em tdcy}, \/  double {\em phasenoise})}\hfill\label{group__wave_g027685b4dd74bd8b32313a1dd40f4512}
+
+
+Adds a decaying wave pulse to the waveform. The sampling time is taken on the array index, so t=(double)i/w-$>$fs. The added signal is of the form : \[ amp e^{- ( t - ttrig ) / tdcy } cos( 2 \pi freq ( t- ttrig ) + phase ) \] If desired, phasenoise is added to the phase of the waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em amp}]Amplitude of the CW tone \item[{\em phase}]Phase of the CW tone \item[{\em freq}]Frequency of the CW tone \item[{\em ttrig}]Trigger time of the pulse \item[{\em tdcy}]Decay time of the pulse \item[{\em phasenoise}]Sigma of the gaussian phasenoise \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 397 of file intwf.c.
+
+References bpm\_\-error(), dround(), intwf\_\-t::fs, nr\_\-rangauss(), intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-add\_\-ampnoise@{intwf\_\-add\_\-ampnoise}}
+\index{intwf\_\-add\_\-ampnoise@{intwf\_\-add\_\-ampnoise}!wave@{wave}}
+\paragraph[intwf\_\-add\_\-ampnoise]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-add\_\-ampnoise ({\bf intwf\_\-t} $\ast$ {\em w}, \/  double {\em sigma})}\hfill\label{group__wave_g9c5a6329870933060eae156b8013f737}
+
+
+Adds gaussian amplitude noise to the waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em sigma}]The gaussian sigma of the amplitude noise \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 423 of file intwf.c.
+
+References bpm\_\-error(), dround(), nr\_\-rangauss(), intwf\_\-t::ns, and intwf\_\-t::wf.
+
+Referenced by digitise().\index{wave@{wave}!intwf\_\-basic\_\-stats@{intwf\_\-basic\_\-stats}}
+\index{intwf\_\-basic\_\-stats@{intwf\_\-basic\_\-stats}!wave@{wave}}
+\paragraph[intwf\_\-basic\_\-stats]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-basic\_\-stats ({\bf intwf\_\-t} $\ast$ {\em w}, \/  int {\em s0}, \/  int {\em s1}, \/  {\bf wfstat\_\-t} $\ast$ {\em stats})}\hfill\label{group__wave_g9fbbb89e367f6e50d0965fc6b824339b}
+
+
+Retrieves some basic statistics about the waveform of integers in w, only considers samples between s0 and s1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em s0}]First sample to consider \item[{\em s1}]Last sample to consider \item[{\em stats}]A filled \doxyref{wfstat\_\-t}{p.}{structwfstat__t} structure is returned. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 443 of file intwf.c.
+
+References bpm\_\-error(), doublewf\_\-basic\_\-stats(), doublewf\_\-cast\_\-new(), and doublewf\_\-delete().\index{wave@{wave}!intwf\_\-derive@{intwf\_\-derive}}
+\index{intwf\_\-derive@{intwf\_\-derive}!wave@{wave}}
+\paragraph[intwf\_\-derive]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-derive ({\bf intwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_ga7adc22629493c94180414cdf0e41e07}
+
+
+Produce the derivative waveform for w : dw/dt. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 469 of file intwf.c.
+
+References bpm\_\-error(), dround(), intwf\_\-t::fs, intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-integrate@{intwf\_\-integrate}}
+\index{intwf\_\-integrate@{intwf\_\-integrate}!wave@{wave}}
+\paragraph[intwf\_\-integrate]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-integrate ({\bf intwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_ga4f797961e54afa59593918246c165ab}
+
+
+Produce the integrated waveform for w : $^\wedge$t w(s)ds. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure. \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 494 of file intwf.c.
+
+References bpm\_\-error(), dround(), intwf\_\-t::fs, intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-print@{intwf\_\-print}}
+\index{intwf\_\-print@{intwf\_\-print}!wave@{wave}}
+\paragraph[intwf\_\-print]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void intwf\_\-print (FILE $\ast$ {\em of}, \/  {\bf intwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_g45c6dba874947a92c230c459a20139f4}
+
+
+Print the waveform to the filepointer \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em of}]A filepointer, use stdout for the terminal \item[{\em w}]A pointer to the waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 525 of file intwf.c.
+
+References bpm\_\-error(), intwf\_\-t::fs, intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!intwf\_\-getvalue@{intwf\_\-getvalue}}
+\index{intwf\_\-getvalue@{intwf\_\-getvalue}!wave@{wave}}
+\paragraph[intwf\_\-getvalue]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-getvalue ({\bf intwf\_\-t} $\ast$ {\em w}, \/  double {\em t}, \/  unsigned int {\em mode})}\hfill\label{group__wave_g293d07847e96b9c786997883bbfb0e89}
+
+
+Return the value for the waveform at sample time t, according to the interpolation mode. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em t}]A time at which to sample the waveform \item[{\em mode}]Interpolation mode \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the value of the waveform at time t \end{Desc}
+
+
+Definition at line 544 of file intwf.c.
+
+References bpm\_\-error(), doublewf\_\-cast\_\-new(), doublewf\_\-delete(), doublewf\_\-getvalue(), and dround().\index{wave@{wave}!intwf\_\-resample@{intwf\_\-resample}}
+\index{intwf\_\-resample@{intwf\_\-resample}!wave@{wave}}
+\paragraph[intwf\_\-resample]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int intwf\_\-resample ({\bf intwf\_\-t} $\ast$ {\em w2}, \/  double {\em fs}, \/  {\bf intwf\_\-t} $\ast$ {\em w1}, \/  unsigned int {\em mode})}\hfill\label{group__wave_g7bbb91111628728251ec9b36409342c0}
+
+
+Resamples the waveform w1 into w2 with new fs sampling frequency This routine recalculates the correct number of samples required. However the user needs to make sure that there are enough samples in w2 available as this is not checked. The w2-$>$ns value will be overwritten with the correct amount. The routine checkes whether the maximum allowed number of samples is not exceeded to avoid memory problems. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em t}]A time at which to sample the waveform \item[{\em mode}]Interpolation mode \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]the value of the waveform at time t \end{Desc}
+
+
+Definition at line 571 of file intwf.c.
+
+References bpm\_\-error(), doublewf\_\-cast\_\-new(), doublewf\_\-delete(), doublewf\_\-getvalue(), dround(), intwf\_\-t::fs, MAX\_\-ALLOWED\_\-NS, intwf\_\-t::ns, and intwf\_\-t::wf.\index{wave@{wave}!complexwf@{complexwf}}
+\index{complexwf@{complexwf}!wave@{wave}}
+\paragraph[complexwf]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf complexwf\_\-t}$\ast$ complexwf (int {\em ns}, \/  double {\em fs})}\hfill\label{group__wave_gf804f8cf9bfbd92719c3114bb68e1e91}
+
+
+Allocates memory for a new waveform of complex numbers \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ns}]The number of samples in the waveform \item[{\em fs}]The sampling frequency of the waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the allocated waveform structure \end{Desc}
+
+
+Definition at line 9 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-t::fs, MAX\_\-ALLOWED\_\-NS, complexwf\_\-t::ns, and complexwf\_\-t::wf.
+
+Referenced by complexwf\_\-copy\_\-new().\index{wave@{wave}!complexwf\_\-copy\_\-new@{complexwf\_\-copy\_\-new}}
+\index{complexwf\_\-copy\_\-new@{complexwf\_\-copy\_\-new}!wave@{wave}}
+\paragraph[complexwf\_\-copy\_\-new]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf complexwf\_\-t}$\ast$ complexwf\_\-copy\_\-new ({\bf complexwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_gb11b7e9572efe31b820dbe514e65c4d1}
+
+
+Allocates memory and produces a copy of the complex waveform w; \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the original waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the copy of w \end{Desc}
+
+
+Definition at line 51 of file complexwf.c.
+
+References bpm\_\-error(), complexwf(), complexwf\_\-t::fs, complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-copy@{complexwf\_\-copy}}
+\index{complexwf\_\-copy@{complexwf\_\-copy}!wave@{wave}}
+\paragraph[complexwf\_\-copy]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-copy ({\bf complexwf\_\-t} $\ast$ {\em copy}, \/  {\bf complexwf\_\-t} $\ast$ {\em src})}\hfill\label{group__wave_g3eed4ba73243c13d38cfb08a33ab6d84}
+
+
+Copies the values from existing complex waveform src into copy checks first whether the waveforms are compatible... This routine doesn't allocate memory internally and the waveforms should already have been created by the user... \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em copy}]A pointer to the copy waveform \item[{\em src}]A pointer to the original waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 68 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-compat(), complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-subset@{complexwf\_\-subset}}
+\index{complexwf\_\-subset@{complexwf\_\-subset}!wave@{wave}}
+\paragraph[complexwf\_\-subset]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-subset ({\bf complexwf\_\-t} $\ast$ {\em sub}, \/  {\bf complexwf\_\-t} $\ast$ {\em w}, \/  int {\em i1}, \/  int {\em i2})}\hfill\label{group__wave_gf245d98c6f141c3a41c4852df5b7673b}
+
+
+Copies a subset from sample i1 to sample i2 ( inclusive ) to the sub waveform from complex waveform w. The routine expects the sub waveform to already exist with enough samples. ( this is not checked ! ) The sub-$>$fs and sub-$>$ns will be overwritten. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em sub}]Pointer to the waveform which will hold the subset \item[{\em w}]Pointer to the original waveform \item[{\em i1}]First sample of w to copy \item[{\em i2}]Last sample of w to copy \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 89 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-t::fs, complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-setvalues@{complexwf\_\-setvalues}}
+\index{complexwf\_\-setvalues@{complexwf\_\-setvalues}!wave@{wave}}
+\paragraph[complexwf\_\-setvalues]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-setvalues ({\bf complexwf\_\-t} $\ast$ {\em w}, \/  {\bf complex\_\-t} $\ast$ {\em x})}\hfill\label{group__wave_gb6c924119ea1fc33329fc0fa032fea16}
+
+
+Fills the complex waveform with the values from the array x. No check is performed whether x contains enough samples, the user needs to be sure this is the case ! \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of complex numbers \item[{\em x}]A pointer to the complex x values \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 113 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-setfunction@{complexwf\_\-setfunction}}
+\index{complexwf\_\-setfunction@{complexwf\_\-setfunction}!wave@{wave}}
+\paragraph[complexwf\_\-setfunction]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-setfunction ({\bf complexwf\_\-t} $\ast$ {\em w}, \/  {\bf complex\_\-t}($\ast$)(double, int, double $\ast$) {\em wffun}, \/  int {\em npars}, \/  double $\ast$ {\em par})}\hfill\label{group__wave_g83be97a602e0730d03bae0f371302af9}
+
+
+Fills the waveform with values from the function wffun(), this function has to return a \doxyref{complex\_\-t}{p.}{structcomplex__t} from argument t ( time ) and has npars parameters given by the array $\ast$par. The function will be evaluated at the time t of each sample... \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of complex numbers \item[{\em wffun}]A pointer to the function to fill the waveform with \item[{\em t}]The time parameter in the function \item[{\em npars}]Number of parameters for the function \item[{\em par}]Array of parameters for the function \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 128 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-t::fs, complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-reset@{complexwf\_\-reset}}
+\index{complexwf\_\-reset@{complexwf\_\-reset}!wave@{wave}}
+\paragraph[complexwf\_\-reset]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-reset ({\bf complexwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_ga41cb07c125719a46308ff246deb369f}
+
+
+Resets the waveform of complex numbers to 0+0i \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the complex waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 146 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-t::ns, and complexwf\_\-t::wf.
+
+Referenced by get\_\-mode\_\-response().\index{wave@{wave}!complexwf\_\-delete@{complexwf\_\-delete}}
+\index{complexwf\_\-delete@{complexwf\_\-delete}!wave@{wave}}
+\paragraph[complexwf\_\-delete]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void complexwf\_\-delete ({\bf complexwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_gb2b1590cb88d7e08ddcf185aa47de97e}
+
+
+Frees up the memory used by the waveform \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform of complex numbers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 163 of file complexwf.c.
+
+References bpm\_\-warning(), and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-compat@{complexwf\_\-compat}}
+\index{complexwf\_\-compat@{complexwf\_\-compat}!wave@{wave}}
+\paragraph[complexwf\_\-compat]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-compat ({\bf complexwf\_\-t} $\ast$ {\em w1}, \/  {\bf complexwf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_gcdff0fb59b55140a74827895ad7126fc}
+
+
+Checks compatiblity of the two waveforms, returns true if the number of samples and the sampling frequencies match. For the sampling frequency, it is simply checked whether they match to WF\_\-EPS. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of complex numbers \item[{\em w2}]A pointer to the second waveform of complex numbers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]1 if the waveforms match, 0 if not. \end{Desc}
+
+
+Definition at line 180 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-t::fs, complexwf\_\-t::ns, and WF\_\-EPS.
+
+Referenced by complexwf\_\-add(), complexwf\_\-copy(), complexwf\_\-divide(), complexwf\_\-multiply(), and complexwf\_\-subtract().\index{wave@{wave}!complexwf\_\-add@{complexwf\_\-add}}
+\index{complexwf\_\-add@{complexwf\_\-add}!wave@{wave}}
+\paragraph[complexwf\_\-add]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-add ({\bf complexwf\_\-t} $\ast$ {\em w1}, \/  {\bf complexwf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_gab622f724c1da07ac500250bb2030933}
+
+
+Adds two waveforms of complex numbers w1+w2 sample per sample. The result is stored in w1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of complex numbers \item[{\em w2}]A pointer to the second waveform of comlex numbers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 193 of file complexwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), complexwf\_\-compat(), complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-subtract@{complexwf\_\-subtract}}
+\index{complexwf\_\-subtract@{complexwf\_\-subtract}!wave@{wave}}
+\paragraph[complexwf\_\-subtract]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-subtract ({\bf complexwf\_\-t} $\ast$ {\em w1}, \/  {\bf complexwf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_ga481cdcdd068d0f102b08851a5782e7f}
+
+
+Subtracts two waveforms of complex numbers w1-w2 sample per sample. The result is stored in w1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of complex numbers \item[{\em w2}]A pointer to the second waveform of comlex numbers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 213 of file complexwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), complexwf\_\-compat(), complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-multiply@{complexwf\_\-multiply}}
+\index{complexwf\_\-multiply@{complexwf\_\-multiply}!wave@{wave}}
+\paragraph[complexwf\_\-multiply]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-multiply ({\bf complexwf\_\-t} $\ast$ {\em w1}, \/  {\bf complexwf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_g66c600359f8b4b794772dee872cd93e8}
+
+
+Multiplies two waveforms of complex numbers w1$\ast$w2 sample per sample. The result is stored in w1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of complex numbers \item[{\em w2}]A pointer to the second waveform of comlex numbers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 234 of file complexwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), complexwf\_\-compat(), complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-divide@{complexwf\_\-divide}}
+\index{complexwf\_\-divide@{complexwf\_\-divide}!wave@{wave}}
+\paragraph[complexwf\_\-divide]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-divide ({\bf complexwf\_\-t} $\ast$ {\em w1}, \/  {\bf complexwf\_\-t} $\ast$ {\em w2})}\hfill\label{group__wave_gd895cc376d04c720343c75433220b584}
+
+
+Divides two waveforms of complex numbers w1/w2 sample per sample. The result is stored in w1. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w1}]A pointer to the first waveform of complex numbers \item[{\em w2}]A pointer to the second waveform of comlex numbers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 256 of file complexwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), complexwf\_\-compat(), complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-scale@{complexwf\_\-scale}}
+\index{complexwf\_\-scale@{complexwf\_\-scale}!wave@{wave}}
+\paragraph[complexwf\_\-scale]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-scale ({\bf complex\_\-t} {\em f}, \/  {\bf complexwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_gcb8d3ed191b31b9a32bc403782216e72}
+
+
+Scales the waveform of complex numbers w with complex factor f The result is stored in w. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em f}]The complex scaling factor \item[{\em w}]A pointer to the waveform of comlex numbers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 288 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-t::ns, and complexwf\_\-t::wf.
+
+Referenced by rf\_\-amplify\_\-complex(), and rf\_\-phase\_\-shifter().\index{wave@{wave}!complexwf\_\-bias@{complexwf\_\-bias}}
+\index{complexwf\_\-bias@{complexwf\_\-bias}!wave@{wave}}
+\paragraph[complexwf\_\-bias]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-bias ({\bf complex\_\-t} {\em c}, \/  {\bf complexwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_gc8d66f289a7c4d6fece20d59653fd697}
+
+
+Biases the waveform of complex numbers w with complex constant c The result is stored in w. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em c}]The complex constant \item[{\em w}]A pointer to the waveform of comlex numbers \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 305 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-add\_\-cwtone@{complexwf\_\-add\_\-cwtone}}
+\index{complexwf\_\-add\_\-cwtone@{complexwf\_\-add\_\-cwtone}!wave@{wave}}
+\paragraph[complexwf\_\-add\_\-cwtone]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-add\_\-cwtone ({\bf complexwf\_\-t} $\ast$ {\em w}, \/  double {\em amp}, \/  double {\em phase}, \/  double {\em freq}, \/  double {\em phasenoise})}\hfill\label{group__wave_gf23d284296aef1f49f3b39c91fc36376}
+
+
+Adds a CW tone to the entire waveform. The sampling time is taken on the array index, so t=(double)i/w-$>$fs. The real part will have the cos-like waveform, the imaginary part the sin-like waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the complex waveform structure \item[{\em amp}]Amplitude of the CW tone \item[{\em phase}]Phase of the CW tone \item[{\em freq}]Frequency of the CW tone \item[{\em phasenoise}]Sigma of the gaussian phasenoise \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 322 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-t::fs, complex\_\-t::im, nr\_\-rangauss(), complexwf\_\-t::ns, complex\_\-t::re, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-add\_\-dcywave@{complexwf\_\-add\_\-dcywave}}
+\index{complexwf\_\-add\_\-dcywave@{complexwf\_\-add\_\-dcywave}!wave@{wave}}
+\paragraph[complexwf\_\-add\_\-dcywave]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-add\_\-dcywave ({\bf complexwf\_\-t} $\ast$ {\em w}, \/  double {\em amp}, \/  double {\em phase}, \/  double {\em freq}, \/  double {\em ttrig}, \/  double {\em tdcy}, \/  double {\em phasenoise})}\hfill\label{group__wave_g2dcce20c6f7c2833606c36bbbca3c4c1}
+
+
+Adds a decaying wave pulse to the waveform. The sampling time is taken on the array index, so t=(double)i/w-$>$fs. The added signal is of the form : \[ amp e^{- ( t - ttrig ) / tdcy } sin( 2 \pi freq ( t- ttrig ) + phase ) \] The real part will have the cos-like component, the imaginary part the sin-like component. If desired, phasenoise is added to the phase of the waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the waveform structure \item[{\em amp}]Amplitude of the CW tone \item[{\em phase}]Phase of the CW tone \item[{\em freq}]Frequency of the CW tone \item[{\em ttrig}]Trigger time of the pulse \item[{\em tdcy}]Decay time of the pulse \item[{\em phasenoise}]Sigma of the gaussian phasenoise \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 346 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-t::fs, complex\_\-t::im, nr\_\-rangauss(), complexwf\_\-t::ns, complex\_\-t::re, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-add\_\-noise@{complexwf\_\-add\_\-noise}}
+\index{complexwf\_\-add\_\-noise@{complexwf\_\-add\_\-noise}!wave@{wave}}
+\paragraph[complexwf\_\-add\_\-noise]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-add\_\-noise ({\bf complexwf\_\-t} $\ast$ {\em w}, \/  double {\em sigma})}\hfill\label{group__wave_g419d8aac25e6f9d6a9e222ae84adf0fe}
+
+
+Adds uncorrelated gaussian amplitude noise with uniformly distributed random phase to the complex the waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the complex waveform structure \item[{\em sigma}]The gaussian sigma of the amplitude noise, phase is uniform over 2pi \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 373 of file complexwf.c.
+
+References bpm\_\-error(), nr\_\-rangauss(), nr\_\-ranuniform(), complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-add\_\-ampnoise@{complexwf\_\-add\_\-ampnoise}}
+\index{complexwf\_\-add\_\-ampnoise@{complexwf\_\-add\_\-ampnoise}!wave@{wave}}
+\paragraph[complexwf\_\-add\_\-ampnoise]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-add\_\-ampnoise ({\bf complexwf\_\-t} $\ast$ {\em w}, \/  double {\em sigma})}\hfill\label{group__wave_g5b46150d1f71737b28250d0b49e1eac9}
+
+
+Adds pure gaussian amplitude noise to the complex waveform and leaves the phase untouched \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the complex waveform structure \item[{\em sigma}]The gaussian sigma of the amplitude noise \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 397 of file complexwf.c.
+
+References bpm\_\-error(), nr\_\-rangauss(), complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-add\_\-phasenoise@{complexwf\_\-add\_\-phasenoise}}
+\index{complexwf\_\-add\_\-phasenoise@{complexwf\_\-add\_\-phasenoise}!wave@{wave}}
+\paragraph[complexwf\_\-add\_\-phasenoise]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-add\_\-phasenoise ({\bf complexwf\_\-t} $\ast$ {\em w}, \/  double {\em sigma})}\hfill\label{group__wave_g8da03e1c7c28c9137f6f2365d8a8b86d}
+
+
+Adds pure gaussian phase noise to the complex waveform and leaves the amplitude untouched \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]A pointer to the complex waveform structure \item[{\em sigma}]The gaussian sigma of the phase noise \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon succes, BPM\_\-FAILURE upon failure. \end{Desc}
+
+
+Definition at line 421 of file complexwf.c.
+
+References bpm\_\-error(), nr\_\-rangauss(), complexwf\_\-t::ns, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-print@{complexwf\_\-print}}
+\index{complexwf\_\-print@{complexwf\_\-print}!wave@{wave}}
+\paragraph[complexwf\_\-print]{\setlength{\rightskip}{0pt plus 5cm}EXTERN void complexwf\_\-print (FILE $\ast$ {\em of}, \/  {\bf complexwf\_\-t} $\ast$ {\em w})}\hfill\label{group__wave_g8d95bc1facca3faea845c39c75c5a42c}
+
+
+Print the waveform to the filepointer \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em of}]A filepointer, use stdout for the terminal \item[{\em w}]A pointer to the waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]void \end{Desc}
+
+
+Definition at line 446 of file complexwf.c.
+
+References bpm\_\-error(), complexwf\_\-t::fs, complex\_\-t::im, complexwf\_\-t::ns, complex\_\-t::re, and complexwf\_\-t::wf.\index{wave@{wave}!complexwf\_\-getreal@{complexwf\_\-getreal}}
+\index{complexwf\_\-getreal@{complexwf\_\-getreal}!wave@{wave}}
+\paragraph[complexwf\_\-getreal]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-getreal ({\bf doublewf\_\-t} $\ast$ {\em re}, \/  {\bf complexwf\_\-t} $\ast$ {\em z})}\hfill\label{group__wave_g08c88ae55d47e788ae34bc7ae730382d}
+
+
+Gets the real part of the comlex waveform into the waveform of doubles. The doublewf needs to be allocated by the user beforehand and have the same number of samples as the complex waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em re}]A pointer to the waveform of doubles which will store the real part \item[{\em z}]A pointer to the complex waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 466 of file complexwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), complexwf\_\-t::ns, doublewf\_\-t::ns, complex\_\-t::re, complexwf\_\-t::wf, and doublewf\_\-t::wf.
+
+Referenced by rf\_\-rectify().\index{wave@{wave}!complexwf\_\-getimag@{complexwf\_\-getimag}}
+\index{complexwf\_\-getimag@{complexwf\_\-getimag}!wave@{wave}}
+\paragraph[complexwf\_\-getimag]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-getimag ({\bf doublewf\_\-t} $\ast$ {\em im}, \/  {\bf complexwf\_\-t} $\ast$ {\em z})}\hfill\label{group__wave_gcf5a412f16733cc160db9af2ad07b131}
+
+
+Gets the imaginary part of the comlex waveform into the waveform of doubles. The doublewf needs to be allocated by the user beforehand and have the same number of samples as the complex waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em im}]A pointer to the waveform of doubles which will store the imaginary part \item[{\em z}]A pointer to the complex waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 488 of file complexwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), complex\_\-t::im, complexwf\_\-t::ns, doublewf\_\-t::ns, complexwf\_\-t::wf, and doublewf\_\-t::wf.\index{wave@{wave}!complexwf\_\-getamp@{complexwf\_\-getamp}}
+\index{complexwf\_\-getamp@{complexwf\_\-getamp}!wave@{wave}}
+\paragraph[complexwf\_\-getamp]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-getamp ({\bf doublewf\_\-t} $\ast$ {\em r}, \/  {\bf complexwf\_\-t} $\ast$ {\em z})}\hfill\label{group__wave_g1432cd70e6bec106888a64beec03dbba}
+
+
+Gets the amplitude of the comlex waveform into the waveform of doubles. The doublewf needs to be allocated by the user beforehand and have the same number of samples as the complex waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em im}]A pointer to the waveform of doubles which will store the amplitude \item[{\em z}]A pointer to the complex waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 510 of file complexwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), complexwf\_\-t::ns, doublewf\_\-t::ns, complexwf\_\-t::wf, and doublewf\_\-t::wf.\index{wave@{wave}!complexwf\_\-getphase@{complexwf\_\-getphase}}
+\index{complexwf\_\-getphase@{complexwf\_\-getphase}!wave@{wave}}
+\paragraph[complexwf\_\-getphase]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-getphase ({\bf doublewf\_\-t} $\ast$ {\em theta}, \/  {\bf complexwf\_\-t} $\ast$ {\em z})}\hfill\label{group__wave_g16bb6139e2f41c2de3053c383f3fe359}
+
+
+Gets the phase of the comlex waveform into the waveform of doubles. The doublewf needs to be allocated by the user beforehand and have the same number of samples as the complex waveform. The phase is normalised between [0,2pi[. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em im}]A pointer to the waveform of doubles which will store the phase \item[{\em z}]A pointer to the complex waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 532 of file complexwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), norm\_\-phase(), complexwf\_\-t::ns, doublewf\_\-t::ns, complexwf\_\-t::wf, and doublewf\_\-t::wf.\index{wave@{wave}!complexwf\_\-getreal\_\-new@{complexwf\_\-getreal\_\-new}}
+\index{complexwf\_\-getreal\_\-new@{complexwf\_\-getreal\_\-new}!wave@{wave}}
+\paragraph[complexwf\_\-getreal\_\-new]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf doublewf\_\-t}$\ast$ complexwf\_\-getreal\_\-new ({\bf complexwf\_\-t} $\ast$ {\em z})}\hfill\label{group__wave_gc4b6d8c8f1dc2ad96c660976b6f2e41f}
+
+
+Retrieves the real part of the complex waveform in a newly allocated waveform of doubles. Memory on the heap is allocated inside this routine, the user has to deal with deal with freeing it him/her self. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em z}]A pointer to the complex waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the allocated waveform of doubles containing the real part of z. \end{Desc}
+
+
+Definition at line 601 of file complexwf.c.
+
+References bpm\_\-error(), doublewf(), complexwf\_\-t::fs, complexwf\_\-t::ns, complex\_\-t::re, complexwf\_\-t::wf, and doublewf\_\-t::wf.\index{wave@{wave}!complexwf\_\-getimag\_\-new@{complexwf\_\-getimag\_\-new}}
+\index{complexwf\_\-getimag\_\-new@{complexwf\_\-getimag\_\-new}!wave@{wave}}
+\paragraph[complexwf\_\-getimag\_\-new]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf doublewf\_\-t}$\ast$ complexwf\_\-getimag\_\-new ({\bf complexwf\_\-t} $\ast$ {\em z})}\hfill\label{group__wave_g9016fb5dea7670fdd4d607613882b2ee}
+
+
+Retrieves the imaginary part of the complex waveform in a newly allocated waveform of doubles. Memory on the heap is allocated inside this routine, the user has to deal with deal with freeing it him/her self. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em z}]A pointer to the complex waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the allocated waveform of doubles containing the imaginary part of z. \end{Desc}
+
+
+Definition at line 626 of file complexwf.c.
+
+References bpm\_\-error(), doublewf(), complexwf\_\-t::fs, complex\_\-t::im, complexwf\_\-t::ns, complexwf\_\-t::wf, and doublewf\_\-t::wf.\index{wave@{wave}!complexwf\_\-getamp\_\-new@{complexwf\_\-getamp\_\-new}}
+\index{complexwf\_\-getamp\_\-new@{complexwf\_\-getamp\_\-new}!wave@{wave}}
+\paragraph[complexwf\_\-getamp\_\-new]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf doublewf\_\-t}$\ast$ complexwf\_\-getamp\_\-new ({\bf complexwf\_\-t} $\ast$ {\em z})}\hfill\label{group__wave_ga1ed0a34db03760524fad1f58893b161}
+
+
+Retrieves the amplitude of the complex waveform in a newly allocated waveform of doubles. Memory on the heap is allocated inside this routine, the user has to deal with deal with freeing it him/her self. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em z}]A pointer to the complex waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the allocated waveform of doubles containing the amplitude of z. \end{Desc}
+
+
+Definition at line 651 of file complexwf.c.
+
+References bpm\_\-error(), doublewf(), complexwf\_\-t::fs, complexwf\_\-t::ns, complexwf\_\-t::wf, and doublewf\_\-t::wf.\index{wave@{wave}!complexwf\_\-getphase\_\-new@{complexwf\_\-getphase\_\-new}}
+\index{complexwf\_\-getphase\_\-new@{complexwf\_\-getphase\_\-new}!wave@{wave}}
+\paragraph[complexwf\_\-getphase\_\-new]{\setlength{\rightskip}{0pt plus 5cm}EXTERN {\bf doublewf\_\-t}$\ast$ complexwf\_\-getphase\_\-new ({\bf complexwf\_\-t} $\ast$ {\em z})}\hfill\label{group__wave_g553eeba7ec2be3e3226f697e48973790}
+
+
+Retrieves the phase of the complex waveform in a newly allocated waveform of doubles. Memory on the heap is allocated inside this routine, the user has to deal with deal with freeing it him/her self. The phase is normalised between [0,2pi[. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em z}]A pointer to the complex waveform \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]A pointer to the allocated waveform of doubles containing the phase of z. \end{Desc}
+
+
+Definition at line 676 of file complexwf.c.
+
+References bpm\_\-error(), doublewf(), complexwf\_\-t::fs, norm\_\-phase(), complexwf\_\-t::ns, complexwf\_\-t::wf, and doublewf\_\-t::wf.\index{wave@{wave}!complexwf\_\-setreal@{complexwf\_\-setreal}}
+\index{complexwf\_\-setreal@{complexwf\_\-setreal}!wave@{wave}}
+\paragraph[complexwf\_\-setreal]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-setreal ({\bf complexwf\_\-t} $\ast$ {\em z}, \/  {\bf doublewf\_\-t} $\ast$ {\em re})}\hfill\label{group__wave_gea459d6086b5f83a01bfdc2abe8a92c1}
+
+
+Set the real part of the complex waveform z to re. The complexwf needs to be allocated by the user beforehand and have the same number of samples as the double waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em z}]A pointer to the complex waveform \item[{\em re}]A pointer to a waveform of double containing the real part \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 557 of file complexwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), complexwf\_\-t::ns, doublewf\_\-t::ns, complex\_\-t::re, doublewf\_\-t::wf, and complexwf\_\-t::wf.
+
+Referenced by ddc(), and get\_\-mode\_\-response().\index{wave@{wave}!complexwf\_\-setimag@{complexwf\_\-setimag}}
+\index{complexwf\_\-setimag@{complexwf\_\-setimag}!wave@{wave}}
+\paragraph[complexwf\_\-setimag]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int complexwf\_\-setimag ({\bf complexwf\_\-t} $\ast$ {\em z}, \/  {\bf doublewf\_\-t} $\ast$ {\em im})}\hfill\label{group__wave_g7274316b15ae8c8d8aa4b521d2da9f67}
+
+
+Set the imaginary part of the complex waveform z to im. The complexwf needs to be allocated by the user beforehand and have the same number of samples as the double waveform. \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em z}]A pointer to the complex waveform \item[{\em re}]A pointer to a waveform of double containing the imaginary part \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]BPM\_\-SUCCESS upon success, BPM\_\-FAILURE upon failure \end{Desc}
+
+
+Definition at line 579 of file complexwf.c.
+
+References bpm\_\-error(), bpm\_\-warning(), complex\_\-t::im, complexwf\_\-t::ns, doublewf\_\-t::ns, doublewf\_\-t::wf, and complexwf\_\-t::wf.
+
+Referenced by ddc(), and get\_\-mode\_\-response().

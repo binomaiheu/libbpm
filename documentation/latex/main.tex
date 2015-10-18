@@ -1,0 +1,83 @@
+\begin{Desc}
+\item[Author:]Bino Maiheu, University College London 
+
+Mark Slater, University of Cambridge 
+
+Alexey Lyapin, University College London 
+
+Stewart Boogert, Royal Holloway University of London\end{Desc}
+\subsection{Introduction}\label{main_main_intro}
+libbpm is a C-library which contains low level beam position monitor (BPM) signal processing routines. It's aim is to form a complete set of routines needed to handle RF Cavity BPM data, from digital downmixing, sampling, calibrating analysing and simulating BPM data. This library has been developed in the context of the BPM work done by the accelerator physics groups at University College London, Royal Holloway University of London and the University of Cambridge (UK) (2006-2007)
+
+The library consists out of a set of submodules which take care of different parts of the BPM signal handling. There are modules for BPM processing, calibration, simulation, general waveform handling, some numerical routines, memory management etc...
+
+The library is licenced under the \doxyref{GNU General Public License v2.}{p.}{licence_gpl}\subsection{Documentation structure}\label{main_main_docu}
+The documentation for this library is generated using doyxygen. For each module the documentation is contained in it's respective header file :
+
+\begin{itemize}
+\item \doxyref{The waveform handling module}{p.}{group__wave_wave}\item \doxyref{The digital signal processing module}{p.}{group__dsp_dsp}\item \doxyref{The BPM processing module}{p.}{group__processing}\end{itemize}
+\subsection{Compilation}\label{main_main_compile}
+The compilation of the libbpm structure is defined using the GNU autotools. Therefore making it portable under most unix flavours and MacOS as well as windows ( see futher ).\subsubsection{Compilation under Linux/Unix/MacOS}\label{main_main_compile_unix}
+For compilation under any unix flavour, please execute the standart sequence of {\tt }./configure , {\tt make}, and {\tt make} install. The default options for the configure script apply.
+
+If you have extracted the library from CVS, then you will have to generate the build scripts. the {\tt autogen.sh} script takes care of that. Run it and afterwards you can simply execute the same steps as above.\subsubsection{Note on Compilation under Windows}\label{main_main_compile_win32}
+This is a remnant from libespec, need to retest this and write proper documentation on it, but for what it's worth... here goes :
+
+To compile libbpm under windows, it is best to use the MinGW + MSYS environment which enables one to build native libraries under windows (dll). For this you need to declare some routines during the build process using the dllexport macro that MinGW defines. So when you want to compile this library as a DLL, set the BUILD\_\-DLL define statement active below. Or compile using -DBUILD\_\-DLL. When you want to use this headerfile to for linking with the bpm.ddl library, undefine the BUILD\_\-DLL, this will enable the compiler to import routines from libbpm in other programs from the ddl. Under linux it does not make a difference as the if statement checks first for the existence of the DLL\_\-EXPORT and \_\-\_\-WIN32\_\-\_\- macros.\subsection{Using libbpm in your programs}\label{main_main_usage}
+libbpm is a standalone plain C library. Care has been taken to not have to use special compiler options e.g. the library avoids having to be C99 compliant by implementing it's own complex data type, rounding function etc.. So it should be fairly portable to most platforms.
+
+To use libbpm in your makefiles for your project, a convenient script has been created which automatically gives you the correct compiler options and library locations. See this makefile example on how to use the script {\tt libbpm-config} 
+
+
+
+\begin{Code}\begin{verbatim}    #Example makefile that uses libbpm and ROOT (hey.. why not :D !)
+
+    SRC         = main.cpp subroutine.cpp
+
+    ROOT_LIBS   = $(shell root-config --libs)
+    ROOT_CFLAGS = $(shell root-config --cflags)
+
+    BPM_LIBS    = $(shell libbpm-config --libs)
+    BPM_CFLAGS  = $(shell libbpm-config --cflags)
+
+    CPP         = g++
+    CPPFLAGS    = -O3 -Wall -fPIC -fno-strict-aliasing $(BPM_CFLAGS) $(ROOT_CFLAGS)
+    LD          = g++
+    LDFLAGS     = $(BPM_LIBS) $(ROOT_LIBS)
+
+    OBJ         = $(SRC:.cpp=.o)
+ 
+    #suffix rules
+    .SUFFIXES: .cpp .o
+    .cpp.o:
+            $(CPP) $(CPPFLAGS) -c $<
+
+    #build rules
+    .PHONY: all
+    all: program
+
+    program: $(OBJ)
+            $(LD) $(LDFLAGS) $^ -o $@
+\end{verbatim}
+\end{Code}
+
+
+
+You can use the {\tt --help} option of {\tt libbpm-config} to display it's options :
+
+
+
+\begin{Code}\begin{verbatim}    [linux] ~/libbpm $ libbpm-config --help
+    Usage: libbpm-config [OPTION]
+
+    Known values for OPTION are:
+
+      --prefix              show libbpm installation prefix 
+      --libs                print library linking information
+      --cflags              print pre-processor and compiler flags
+      --help                display this help and exit
+      --version             output version information
+\end{verbatim}
+\end{Code}
+
+ 

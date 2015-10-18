@@ -1,0 +1,71 @@
+\subsection{filterrep\_\-t Struct Reference}
+\label{structfilterrep__t}\index{filterrep\_\-t@{filterrep\_\-t}}
+{\tt \#include $<$bpm\_\-dsp.h$>$}
+
+Collaboration diagram for filterrep\_\-t:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=58pt]{structfilterrep__t__coll__graph}
+\end{center}
+\end{figure}
+
+
+\subsubsection{Detailed Description}
+The filter representation in the complex plane (poles/zeros). 
+
+Definition at line 427 of file bpm\_\-dsp.h.\subsubsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+int {\bf npoles}
+\item 
+int {\bf nzeros}
+\item 
+{\bf complex\_\-t} {\bf pole} [MAXPZ]
+\item 
+{\bf complex\_\-t} {\bf zero} [MAXPZ]
+\end{CompactItemize}
+
+
+\subsubsection{Field Documentation}
+\index{filterrep\_\-t@{filterrep\_\-t}!npoles@{npoles}}
+\index{npoles@{npoles}!filterrep_t@{filterrep\_\-t}}
+\paragraph[npoles]{\setlength{\rightskip}{0pt plus 5cm}int {\bf filterrep\_\-t::npoles}}\hfill\label{structfilterrep__t_696051b6536b2d1416a6fd035998d402}
+
+
+The number of filter poles 
+
+Definition at line 428 of file bpm\_\-dsp.h.
+
+Referenced by calculate\_\-filter\_\-coefficients(), create\_\-filter(), create\_\-resonator\_\-representation(), create\_\-splane\_\-representation(), normalise\_\-filter(), print\_\-filter\_\-representation(), and zplane\_\-transform().\index{filterrep\_\-t@{filterrep\_\-t}!nzeros@{nzeros}}
+\index{nzeros@{nzeros}!filterrep_t@{filterrep\_\-t}}
+\paragraph[nzeros]{\setlength{\rightskip}{0pt plus 5cm}int {\bf filterrep\_\-t::nzeros}}\hfill\label{structfilterrep__t_c3b88e769143d340f94320a2096170ae}
+
+
+The number of filter zeros 
+
+Definition at line 429 of file bpm\_\-dsp.h.
+
+Referenced by calculate\_\-filter\_\-coefficients(), create\_\-resonator\_\-representation(), normalise\_\-filter(), print\_\-filter\_\-representation(), and zplane\_\-transform().\index{filterrep\_\-t@{filterrep\_\-t}!pole@{pole}}
+\index{pole@{pole}!filterrep_t@{filterrep\_\-t}}
+\paragraph[pole]{\setlength{\rightskip}{0pt plus 5cm}{\bf complex\_\-t} {\bf filterrep\_\-t::pole}[MAXPZ]}\hfill\label{structfilterrep__t_6e09dea05781f890ca586f44a23811b4}
+
+
+Array of the filter's complex poles 
+
+Definition at line 430 of file bpm\_\-dsp.h.
+
+Referenced by calculate\_\-filter\_\-coefficients(), create\_\-resonator\_\-representation(), create\_\-splane\_\-representation(), normalise\_\-filter(), print\_\-filter\_\-representation(), and zplane\_\-transform().\index{filterrep\_\-t@{filterrep\_\-t}!zero@{zero}}
+\index{zero@{zero}!filterrep_t@{filterrep\_\-t}}
+\paragraph[zero]{\setlength{\rightskip}{0pt plus 5cm}{\bf complex\_\-t} {\bf filterrep\_\-t::zero}[MAXPZ]}\hfill\label{structfilterrep__t_41c194dbef24dc71cd25a7cd9821c7ac}
+
+
+Array of the filter's complex zeros 
+
+Definition at line 431 of file bpm\_\-dsp.h.
+
+Referenced by calculate\_\-filter\_\-coefficients(), create\_\-resonator\_\-representation(), normalise\_\-filter(), print\_\-filter\_\-representation(), and zplane\_\-transform().
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+bpmdsp/{\bf bpm\_\-dsp.h}\end{CompactItemize}

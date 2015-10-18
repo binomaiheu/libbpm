@@ -1,0 +1,216 @@
+\subsection{Front-end interface}
+\label{group__interface}\index{Front-end interface@{Front-end interface}}
+
+
+\subsubsection{Detailed Description}
+
+
+\subsubsection*{Files}
+\begin{CompactItemize}
+\item 
+file {\bf bpm\_\-interface.h}
+\begin{CompactList}\small\item\em Front end interface structure definitions and handlers. \item\end{CompactList}
+
+\end{CompactItemize}
+\subsubsection*{Data Structures}
+\begin{CompactItemize}
+\item 
+struct {\bf bpmconf}
+\item 
+struct {\bf bpmcalib}
+\item 
+struct {\bf bpmproc}
+\item 
+struct {\bf beamconf}
+\item 
+struct {\bf bunchconf}
+\item 
+struct {\bf bpmmode}
+\item 
+struct {\bf rfmodel}
+\end{CompactItemize}
+\subsubsection*{Typedefs}
+\begin{CompactItemize}
+\item 
+typedef struct {\bf bpmconf} {\bf bpmconf\_\-t}
+\item 
+typedef struct {\bf bpmcalib} {\bf bpmcalib\_\-t}
+\item 
+typedef struct {\bf bpmproc} {\bf bpmproc\_\-t}
+\item 
+typedef struct {\bf beamconf} {\bf beamconf\_\-t}
+\item 
+typedef struct {\bf bunchconf} {\bf bunchconf\_\-t}
+\item 
+typedef struct {\bf bpmmode} \textbf{bpmmode\_\-t}\label{group__interface_g2599c9e0c0e36819170e95dcdcdbdfc0}
+
+\item 
+typedef struct {\bf rfmodel} \textbf{rfmodel\_\-t}\label{group__interface_g98c565a46975280f28037fb092e24ec7}
+
+\item 
+typedef enum {\bf triggertype} \textbf{triggertype\_\-t}\label{group__interface_gbfc973a0ffff9e74bf9dcdad55ecd3ce}
+
+\end{CompactItemize}
+\subsubsection*{Enumerations}
+\begin{CompactItemize}
+\item 
+enum {\bf bpmtype\_\-t} \{ {\bf diode}, 
+{\bf monopole}, 
+{\bf dipole}
+ \}
+\item 
+enum {\bf triggertype} \{ {\bf positive}, 
+{\bf negative}, 
+{\bf bipolar}
+ \}
+\item 
+enum {\bf bpmpol\_\-t} \{ {\bf horiz}, 
+{\bf vert}
+ \}
+\item 
+enum {\bf bpmphase\_\-t} \{ {\bf randomised}, 
+{\bf locked}
+ \}
+\end{CompactItemize}
+\subsubsection*{Variables}
+\begin{CompactItemize}
+\item 
+EXTERN int {\bf bpm\_\-verbose}
+\item 
+EXTERN int {\bf libbpm\_\-evtnum}
+\end{CompactItemize}
+
+
+\subsubsection{Typedef Documentation}
+\index{interface@{interface}!bpmconf\_\-t@{bpmconf\_\-t}}
+\index{bpmconf\_\-t@{bpmconf\_\-t}!interface@{interface}}
+\paragraph[bpmconf\_\-t]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf bpmconf} {\bf bpmconf\_\-t}}\hfill\label{group__interface_gd978e4445304753f9f98b992f41b1c44}
+
+
+type definition for BPM configuration 
+
+Definition at line 73 of file bpm\_\-interface.h.\index{interface@{interface}!bpmcalib\_\-t@{bpmcalib\_\-t}}
+\index{bpmcalib\_\-t@{bpmcalib\_\-t}!interface@{interface}}
+\paragraph[bpmcalib\_\-t]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf bpmcalib} {\bf bpmcalib\_\-t}}\hfill\label{group__interface_g84da34a9541ebd03c2f0be2f906910fe}
+
+
+type definition for calibrations 
+
+Definition at line 74 of file bpm\_\-interface.h.\index{interface@{interface}!bpmproc\_\-t@{bpmproc\_\-t}}
+\index{bpmproc\_\-t@{bpmproc\_\-t}!interface@{interface}}
+\paragraph[bpmproc\_\-t]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf bpmproc} {\bf bpmproc\_\-t}}\hfill\label{group__interface_gf9156d432cf34176fe171bebecb99a2a}
+
+
+type definition for processed BPM signals 
+
+Definition at line 75 of file bpm\_\-interface.h.\index{interface@{interface}!beamconf\_\-t@{beamconf\_\-t}}
+\index{beamconf\_\-t@{beamconf\_\-t}!interface@{interface}}
+\paragraph[beamconf\_\-t]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf beamconf} {\bf beamconf\_\-t}}\hfill\label{group__interface_g48d597d53219af7af0d083dad3e8842f}
+
+
+type definition for beam configurations 
+
+Definition at line 76 of file bpm\_\-interface.h.\index{interface@{interface}!bunchconf\_\-t@{bunchconf\_\-t}}
+\index{bunchconf\_\-t@{bunchconf\_\-t}!interface@{interface}}
+\paragraph[bunchconf\_\-t]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf bunchconf} {\bf bunchconf\_\-t}}\hfill\label{group__interface_gc83290f1666bee3149e4e6f0da967794}
+
+
+type definition for bunch configurations 
+
+Definition at line 77 of file bpm\_\-interface.h.
+
+\subsubsection{Enumeration Type Documentation}
+\index{interface@{interface}!bpmtype\_\-t@{bpmtype\_\-t}}
+\index{bpmtype\_\-t@{bpmtype\_\-t}!interface@{interface}}
+\paragraph[bpmtype\_\-t]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf bpmtype\_\-t}}\hfill\label{group__interface_gd32da6712e4173dae5874e246e6fee86}
+
+
+BPM cavity ( of better signal ) type \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{diode@{diode}!interface@{interface}}\index{interface@{interface}!diode@{diode}}\item[{\em 
+diode\label{group__interface_ggd32da6712e4173dae5874e246e6fee86ab471a312e0bebb8eb17826da1c45f5f}
+}]rectified bpm signal ( trigger pulse ) \index{monopole@{monopole}!interface@{interface}}\index{interface@{interface}!monopole@{monopole}}\item[{\em 
+monopole\label{group__interface_ggd32da6712e4173dae5874e246e6fee866ac4b77de6410320418ac45f8bb41cfa}
+}]reference cavity signal ( monopole ) \index{dipole@{dipole}!interface@{interface}}\index{interface@{interface}!dipole@{dipole}}\item[{\em 
+dipole\label{group__interface_ggd32da6712e4173dae5874e246e6fee864b63a6b46413b754da191740d5ceb73b}
+}]position sentivive cavity signal ( dipole ) \end{description}
+\end{Desc}
+
+
+
+Definition at line 41 of file bpm\_\-interface.h.\index{interface@{interface}!triggertype@{triggertype}}
+\index{triggertype@{triggertype}!interface@{interface}}
+\paragraph[triggertype]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf triggertype}}\hfill\label{group__interface_g92578d8fae7b954bc7642f271e948c71}
+
+
+Diode behavior type \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{positive@{positive}!interface@{interface}}\index{interface@{interface}!positive@{positive}}\item[{\em 
+positive\label{group__interface_gg92578d8fae7b954bc7642f271e948c71f3e33603bf389e5b337ee5bdbc9558b9}
+}]Positive half-period of the waveform is detected \index{negative@{negative}!interface@{interface}}\index{interface@{interface}!negative@{negative}}\item[{\em 
+negative\label{group__interface_gg92578d8fae7b954bc7642f271e948c717b1174d620ccd8d2a049d8440aa1fc4d}
+}]Negative half-period of the waveform is detected \index{bipolar@{bipolar}!interface@{interface}}\index{interface@{interface}!bipolar@{bipolar}}\item[{\em 
+bipolar\label{group__interface_gg92578d8fae7b954bc7642f271e948c71af941ae00aea56c2981c12f5848e4df5}
+}]The both half-periods are detected \end{description}
+\end{Desc}
+
+
+
+Definition at line 50 of file bpm\_\-interface.h.\index{interface@{interface}!bpmpol\_\-t@{bpmpol\_\-t}}
+\index{bpmpol\_\-t@{bpmpol\_\-t}!interface@{interface}}
+\paragraph[bpmpol\_\-t]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf bpmpol\_\-t}}\hfill\label{group__interface_g9c184538bd4a8c4dde8c1f866a85d2eb}
+
+
+BPM polarisation plane, basically a difficult way to say x or y ;) \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{horiz@{horiz}!interface@{interface}}\index{interface@{interface}!horiz@{horiz}}\item[{\em 
+horiz\label{group__interface_gg9c184538bd4a8c4dde8c1f866a85d2eb77e41753a8557ea24545d931e5facc33}
+}]Horizontal plane, or x in most cases \index{vert@{vert}!interface@{interface}}\index{interface@{interface}!vert@{vert}}\item[{\em 
+vert\label{group__interface_gg9c184538bd4a8c4dde8c1f866a85d2eb834932d06c05afc78322a5bbf48d72b9}
+}]Vertical plane, or y in most cases \end{description}
+\end{Desc}
+
+
+
+Definition at line 59 of file bpm\_\-interface.h.\index{interface@{interface}!bpmphase\_\-t@{bpmphase\_\-t}}
+\index{bpmphase\_\-t@{bpmphase\_\-t}!interface@{interface}}
+\paragraph[bpmphase\_\-t]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf bpmphase\_\-t}}\hfill\label{group__interface_gb251b13dfcb1736748d78f1fde1507fe}
+
+
+BPM electronics phase lock type \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{randomised@{randomised}!interface@{interface}}\index{interface@{interface}!randomised@{randomised}}\item[{\em 
+randomised\label{group__interface_ggb251b13dfcb1736748d78f1fde1507fefde66f30bebe6599c1f3482b5f018ac5}
+}]unlocked phase \index{locked@{locked}!interface@{interface}}\index{interface@{interface}!locked@{locked}}\item[{\em 
+locked\label{group__interface_ggb251b13dfcb1736748d78f1fde1507fe4fea9998d5cce90a5fbfab2a237e8398}
+}]locked phase \end{description}
+\end{Desc}
+
+
+
+Definition at line 67 of file bpm\_\-interface.h.
+
+\subsubsection{Variable Documentation}
+\index{interface@{interface}!bpm\_\-verbose@{bpm\_\-verbose}}
+\index{bpm\_\-verbose@{bpm\_\-verbose}!interface@{interface}}
+\paragraph[bpm\_\-verbose]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int {\bf bpm\_\-verbose}}\hfill\label{group__interface_g0813a2624b730c4664cefd9ba5d49664}
+
+
+be a bit verbose in libbpm 
+
+Definition at line 308 of file bpm\_\-interface.h.
+
+Referenced by get\_\-t0().\index{interface@{interface}!libbpm\_\-evtnum@{libbpm\_\-evtnum}}
+\index{libbpm\_\-evtnum@{libbpm\_\-evtnum}!interface@{interface}}
+\paragraph[libbpm\_\-evtnum]{\setlength{\rightskip}{0pt plus 5cm}EXTERN int {\bf libbpm\_\-evtnum}}\hfill\label{group__interface_g1ed0ece7cf39a8201736014afa3c7d26}
+
+
+the global event number in the processing 
+
+Definition at line 309 of file bpm\_\-interface.h.
+
+Referenced by bpm\_\-error(), and bpm\_\-warning().

@@ -1,0 +1,145 @@
+\subsection{bunchconf Struct Reference}
+\label{structbunchconf}\index{bunchconf@{bunchconf}}
+{\tt \#include $<$bpm\_\-interface.h$>$}
+
+
+
+\subsubsection{Detailed Description}
+This structure contains information on a single bunch inside the bunchtrain, which has its own energy, internal energy spread, charge, length, position/slope/tilt in the world coo frame and position/slope/tilt in the BPM local coo frame. 
+
+Definition at line 260 of file bpm\_\-interface.h.\subsubsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+int {\bf train\_\-num}
+\item 
+int {\bf bunch\_\-num}
+\item 
+double {\bf energy}
+\item 
+double {\bf energyspread}
+\item 
+double \textbf{charge}\label{structbunchconf_2d39addc39dc701e488faaace1d7b711}
+
+\item 
+double {\bf length}
+\item 
+double {\bf arrival\_\-time}
+\item 
+double {\bf position} [2]
+\item 
+double {\bf slope} [2]
+\item 
+double {\bf tilt} [2]
+\item 
+double {\bf bpmposition} [3]
+\item 
+double {\bf bpmslope} [2]
+\item 
+double {\bf bpmtilt} [2]
+\end{CompactItemize}
+
+
+\subsubsection{Field Documentation}
+\index{bunchconf@{bunchconf}!train\_\-num@{train\_\-num}}
+\index{train\_\-num@{train\_\-num}!bunchconf@{bunchconf}}
+\paragraph[train\_\-num]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bunchconf::train\_\-num}}\hfill\label{structbunchconf_bf9be3f4dbb15b1dd2392265f7ce0b83}
+
+
+seq number of the train this bunch belongs to 
+
+Definition at line 261 of file bpm\_\-interface.h.\index{bunchconf@{bunchconf}!bunch\_\-num@{bunch\_\-num}}
+\index{bunch\_\-num@{bunch\_\-num}!bunchconf@{bunchconf}}
+\paragraph[bunch\_\-num]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bunchconf::bunch\_\-num}}\hfill\label{structbunchconf_eb875731eeb9ed42e0ff30356bbf77d2}
+
+
+seq number of the bunch in the train 
+
+Definition at line 262 of file bpm\_\-interface.h.\index{bunchconf@{bunchconf}!energy@{energy}}
+\index{energy@{energy}!bunchconf@{bunchconf}}
+\paragraph[energy]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bunchconf::energy}}\hfill\label{structbunchconf_4b460ca05a551c27b1971d0d9f9cd448}
+
+
+energy of the bunch 
+
+Definition at line 264 of file bpm\_\-interface.h.\index{bunchconf@{bunchconf}!energyspread@{energyspread}}
+\index{energyspread@{energyspread}!bunchconf@{bunchconf}}
+\paragraph[energyspread]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bunchconf::energyspread}}\hfill\label{structbunchconf_3025ff841f30742837034239fa94cee8}
+
+
+energy spread inside the bunch 
+
+Definition at line 265 of file bpm\_\-interface.h.\index{bunchconf@{bunchconf}!length@{length}}
+\index{length@{length}!bunchconf@{bunchconf}}
+\paragraph[length]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bunchconf::length}}\hfill\label{structbunchconf_d0f7556a5e2d780a9925377b5decda90}
+
+
+the bunch length 
+
+Definition at line 267 of file bpm\_\-interface.h.
+
+Referenced by get\_\-mode\_\-amplitude().\index{bunchconf@{bunchconf}!arrival\_\-time@{arrival\_\-time}}
+\index{arrival\_\-time@{arrival\_\-time}!bunchconf@{bunchconf}}
+\paragraph[arrival\_\-time]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bunchconf::arrival\_\-time}}\hfill\label{structbunchconf_e2cb9e35f4ee18761393b29ef6e0de9a}
+
+
+arrival time of bunch 
+
+Definition at line 268 of file bpm\_\-interface.h.
+
+Referenced by generate\_\-bpmsignal().\index{bunchconf@{bunchconf}!position@{position}}
+\index{position@{position}!bunchconf@{bunchconf}}
+\paragraph[position]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bunchconf::position}[2]}\hfill\label{structbunchconf_d2f81b99a529249ff6cfdb85886d3f07}
+
+
+the bunch position x,y at the bpm coo 
+
+Definition at line 269 of file bpm\_\-interface.h.
+
+Referenced by get\_\-bpmhit().\index{bunchconf@{bunchconf}!slope@{slope}}
+\index{slope@{slope}!bunchconf@{bunchconf}}
+\paragraph[slope]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bunchconf::slope}[2]}\hfill\label{structbunchconf_867a15a56a3a60db2360b8645756cb71}
+
+
+the bunch slope x',y' at the bpm coo 
+
+Definition at line 270 of file bpm\_\-interface.h.
+
+Referenced by get\_\-bpmhit().\index{bunchconf@{bunchconf}!tilt@{tilt}}
+\index{tilt@{tilt}!bunchconf@{bunchconf}}
+\paragraph[tilt]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bunchconf::tilt}[2]}\hfill\label{structbunchconf_ed8955a77ae6a4147f4877dfd413c4b7}
+
+
+the bunch tilt x',y' at the bpm coo 
+
+Definition at line 271 of file bpm\_\-interface.h.\index{bunchconf@{bunchconf}!bpmposition@{bpmposition}}
+\index{bpmposition@{bpmposition}!bunchconf@{bunchconf}}
+\paragraph[bpmposition]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bunchconf::bpmposition}[3]}\hfill\label{structbunchconf_09345bb14a68c2391548054aa3cc5143}
+
+
+where the beam hits the BPM in the BPM local co 
+
+Definition at line 273 of file bpm\_\-interface.h.
+
+Referenced by get\_\-bpmhit(), get\_\-mode\_\-amplitude(), and setup\_\-calibration().\index{bunchconf@{bunchconf}!bpmslope@{bpmslope}}
+\index{bpmslope@{bpmslope}!bunchconf@{bunchconf}}
+\paragraph[bpmslope]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bunchconf::bpmslope}[2]}\hfill\label{structbunchconf_97cf9b9382c9b00b163ec51f00593bf1}
+
+
+slope of beam through the BPM in BPM local co 
+
+Definition at line 274 of file bpm\_\-interface.h.
+
+Referenced by get\_\-bpmhit(), and get\_\-mode\_\-amplitude().\index{bunchconf@{bunchconf}!bpmtilt@{bpmtilt}}
+\index{bpmtilt@{bpmtilt}!bunchconf@{bunchconf}}
+\paragraph[bpmtilt]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bunchconf::bpmtilt}[2]}\hfill\label{structbunchconf_02a745532d1169ab016f2c6ded81938c}
+
+
+bunch tilt in the BPM local co 
+
+Definition at line 275 of file bpm\_\-interface.h.
+
+Referenced by get\_\-bpmhit().
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+bpminterface/{\bf bpm\_\-interface.h}\end{CompactItemize}

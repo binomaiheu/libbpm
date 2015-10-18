@@ -1,0 +1,414 @@
+\subsection{bpmconf Struct Reference}
+\label{structbpmconf}\index{bpmconf@{bpmconf}}
+{\tt \#include $<$bpm\_\-interface.h$>$}
+
+Collaboration diagram for bpmconf:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{structbpmconf__coll__graph}
+\end{center}
+\end{figure}
+
+
+\subsubsection{Detailed Description}
+Structure containing the BPM configuration 
+
+Definition at line 86 of file bpm\_\-interface.h.\subsubsection*{Data Fields}
+\begin{CompactItemize}
+\item 
+char {\bf name} [20]
+\item 
+enum {\bf bpmtype\_\-t} {\bf cav\_\-type}
+\item 
+enum {\bf bpmpol\_\-t} {\bf cav\_\-polarisation}
+\item 
+enum {\bf bpmphase\_\-t} {\bf cav\_\-phasetype}
+\item 
+{\bf rfmodel\_\-t} $\ast$ \textbf{cav\_\-model}\label{structbpmconf_5a10e9ae753f6d357df5466d5c0f9b20}
+
+\item 
+double {\bf cav\_\-length}
+\item 
+double {\bf cav\_\-freq}
+\item 
+double {\bf cav\_\-decaytime}
+\item 
+double {\bf cav\_\-phase}
+\item 
+double {\bf cav\_\-iqrotation}
+\item 
+double {\bf cav\_\-chargesens}
+\item 
+double {\bf cav\_\-possens}
+\item 
+double {\bf cav\_\-tiltsens}
+\item 
+double {\bf rf\_\-LOfreq}
+\item 
+double {\bf digi\_\-trigtimeoffset}
+\item 
+double {\bf digi\_\-freq}
+\item 
+int {\bf digi\_\-nbits}
+\item 
+int {\bf digi\_\-nsamples}
+\item 
+double {\bf digi\_\-ampnoise}
+\item 
+int {\bf digi\_\-voltageoffset}
+\item 
+double {\bf digi\_\-phasenoise}
+\item 
+double {\bf t0}
+\item 
+double {\bf ddc\_\-freq}
+\item 
+double {\bf ddc\_\-tdecay}
+\item 
+double {\bf ddc\_\-tOffset}
+\item 
+{\bf filter\_\-t} $\ast$ {\bf ddc\_\-filter}
+\item 
+double {\bf fit\_\-inifreq}
+\item 
+double {\bf fit\_\-initdecay}
+\item 
+double {\bf fit\_\-tOffset}
+\item 
+double {\bf ddc\_\-ct\_\-freq}
+\item 
+{\bf filter\_\-t} $\ast$ {\bf ddc\_\-ct\_\-filter}
+\item 
+int {\bf ddc\_\-ct\_\-iSample}
+\item 
+double {\bf geom\_\-pos} [3]
+\item 
+double {\bf geom\_\-tilt} [3]
+\item 
+int {\bf ref\_\-idx}
+\item 
+int {\bf diode\_\-idx}
+\item 
+int {\bf forced\_\-trigger}
+\item 
+{\bf doublewf\_\-t} $\ast$ {\bf ddc\_\-buffer\_\-re}
+\item 
+{\bf doublewf\_\-t} $\ast$ {\bf ddc\_\-buffer\_\-im}
+\end{CompactItemize}
+
+
+\subsubsection{Field Documentation}
+\index{bpmconf@{bpmconf}!name@{name}}
+\index{name@{name}!bpmconf@{bpmconf}}
+\paragraph[name]{\setlength{\rightskip}{0pt plus 5cm}char {\bf bpmconf::name}[20]}\hfill\label{structbpmconf_f9992502005d5a2a2af64bd71bb6d0e0}
+
+
+a BPM should have a name 
+
+Definition at line 87 of file bpm\_\-interface.h.
+
+Referenced by postprocess\_\-waveform(), process\_\-caltone(), process\_\-diode(), process\_\-dipole(), process\_\-monopole(), and process\_\-waveform().\index{bpmconf@{bpmconf}!cav\_\-type@{cav\_\-type}}
+\index{cav\_\-type@{cav\_\-type}!bpmconf@{bpmconf}}
+\paragraph[cav\_\-type]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf bpmtype\_\-t} {\bf bpmconf::cav\_\-type}}\hfill\label{structbpmconf_6360d70b5d4f4abfb37ca7e38df5b5ed}
+
+
+BPM type 
+
+Definition at line 89 of file bpm\_\-interface.h.
+
+Referenced by process\_\-diode().\index{bpmconf@{bpmconf}!cav\_\-polarisation@{cav\_\-polarisation}}
+\index{cav\_\-polarisation@{cav\_\-polarisation}!bpmconf@{bpmconf}}
+\paragraph[cav\_\-polarisation]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf bpmpol\_\-t} {\bf bpmconf::cav\_\-polarisation}}\hfill\label{structbpmconf_e7a0598eeb337a60a8c69d64c871e21b}
+
+
+BPM polarisation 
+
+Definition at line 90 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!cav\_\-phasetype@{cav\_\-phasetype}}
+\index{cav\_\-phasetype@{cav\_\-phasetype}!bpmconf@{bpmconf}}
+\paragraph[cav\_\-phasetype]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf bpmphase\_\-t} {\bf bpmconf::cav\_\-phasetype}}\hfill\label{structbpmconf_15efdd896d7cb61cc270f4fdb1d4a8b8}
+
+
+BPM phase type 
+
+Definition at line 91 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!cav\_\-length@{cav\_\-length}}
+\index{cav\_\-length@{cav\_\-length}!bpmconf@{bpmconf}}
+\paragraph[cav\_\-length]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::cav\_\-length}}\hfill\label{structbpmconf_ab40b14a949f642e1bf125b0c1adbc46}
+
+
+length of the cavity 
+
+Definition at line 94 of file bpm\_\-interface.h.
+
+Referenced by get\_\-mode\_\-amplitude().\index{bpmconf@{bpmconf}!cav\_\-freq@{cav\_\-freq}}
+\index{cav\_\-freq@{cav\_\-freq}!bpmconf@{bpmconf}}
+\paragraph[cav\_\-freq]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::cav\_\-freq}}\hfill\label{structbpmconf_0afced46dcedfaaf7f6bf5bccc54b3af}
+
+
+cavity freq (MHz) 
+
+Definition at line 95 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!cav\_\-decaytime@{cav\_\-decaytime}}
+\index{cav\_\-decaytime@{cav\_\-decaytime}!bpmconf@{bpmconf}}
+\paragraph[cav\_\-decaytime]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::cav\_\-decaytime}}\hfill\label{structbpmconf_3a1e7d48a61675a0e40eb9a9eaddabcf}
+
+
+cavity decay time (microsec) 
+
+Definition at line 96 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmconf@{bpmconf}!cav\_\-phase@{cav\_\-phase}}
+\index{cav\_\-phase@{cav\_\-phase}!bpmconf@{bpmconf}}
+\paragraph[cav\_\-phase]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::cav\_\-phase}}\hfill\label{structbpmconf_797ba2a47eb4568ffa42b211b7cfd919}
+
+
+phase advance wrt. reference (fixed or random) 
+
+Definition at line 97 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!cav\_\-iqrotation@{cav\_\-iqrotation}}
+\index{cav\_\-iqrotation@{cav\_\-iqrotation}!bpmconf@{bpmconf}}
+\paragraph[cav\_\-iqrotation]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::cav\_\-iqrotation}}\hfill\label{structbpmconf_3f42d7001f93d0f5d96494fc56d34db4}
+
+
+cavity IQ rotation 
+
+Definition at line 98 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!cav\_\-chargesens@{cav\_\-chargesens}}
+\index{cav\_\-chargesens@{cav\_\-chargesens}!bpmconf@{bpmconf}}
+\paragraph[cav\_\-chargesens]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::cav\_\-chargesens}}\hfill\label{structbpmconf_531fa3ac5f947a73104f2530d9201fe1}
+
+
+charge sensitivity (volt/nC) 
+
+Definition at line 99 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!cav\_\-possens@{cav\_\-possens}}
+\index{cav\_\-possens@{cav\_\-possens}!bpmconf@{bpmconf}}
+\paragraph[cav\_\-possens]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::cav\_\-possens}}\hfill\label{structbpmconf_c71cb91910658b14805f0f2df775d800}
+
+
+pos sensitivity at 1.6nC charge (volt/micron) 
+
+Definition at line 100 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!cav\_\-tiltsens@{cav\_\-tiltsens}}
+\index{cav\_\-tiltsens@{cav\_\-tiltsens}!bpmconf@{bpmconf}}
+\paragraph[cav\_\-tiltsens]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::cav\_\-tiltsens}}\hfill\label{structbpmconf_b36911235f88643648515d9e7221ba0a}
+
+
+tilt sensitivity at 1.6nC charge (volt/micron) 
+
+Definition at line 101 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!rf\_\-LOfreq@{rf\_\-LOfreq}}
+\index{rf\_\-LOfreq@{rf\_\-LOfreq}!bpmconf@{bpmconf}}
+\paragraph[rf\_\-LOfreq]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::rf\_\-LOfreq}}\hfill\label{structbpmconf_93d6c265f81e710190e3def3e0e9f915}
+
+
+LO frequency to mix down with (in MHz) 
+
+Definition at line 103 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!digi\_\-trigtimeoffset@{digi\_\-trigtimeoffset}}
+\index{digi\_\-trigtimeoffset@{digi\_\-trigtimeoffset}!bpmconf@{bpmconf}}
+\paragraph[digi\_\-trigtimeoffset]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::digi\_\-trigtimeoffset}}\hfill\label{structbpmconf_1a98df4d591675dde152fccb06e493e3}
+
+
+time (usec) to offset bunch arrival times by 
+
+Definition at line 106 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!digi\_\-freq@{digi\_\-freq}}
+\index{digi\_\-freq@{digi\_\-freq}!bpmconf@{bpmconf}}
+\paragraph[digi\_\-freq]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::digi\_\-freq}}\hfill\label{structbpmconf_365b1e31d0d764deb0570b2aa1eede91}
+
+
+digitization frequency (MHz) 
+
+Definition at line 107 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmconf@{bpmconf}!digi\_\-nbits@{digi\_\-nbits}}
+\index{digi\_\-nbits@{digi\_\-nbits}!bpmconf@{bpmconf}}
+\paragraph[digi\_\-nbits]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmconf::digi\_\-nbits}}\hfill\label{structbpmconf_4590775f30535e00c5ec47c0f9c138ec}
+
+
+number of bits in ADC for digitisation 
+
+Definition at line 108 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{bpmconf@{bpmconf}!digi\_\-nsamples@{digi\_\-nsamples}}
+\index{digi\_\-nsamples@{digi\_\-nsamples}!bpmconf@{bpmconf}}
+\paragraph[digi\_\-nsamples]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmconf::digi\_\-nsamples}}\hfill\label{structbpmconf_fcbe4ae12ac60abee295c9261b9c4410}
+
+
+number of samples in ADC digitisation 
+
+Definition at line 109 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmconf@{bpmconf}!digi\_\-ampnoise@{digi\_\-ampnoise}}
+\index{digi\_\-ampnoise@{digi\_\-ampnoise}!bpmconf@{bpmconf}}
+\paragraph[digi\_\-ampnoise]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::digi\_\-ampnoise}}\hfill\label{structbpmconf_08a2f1bf3b66aae4801db4e60b18e877}
+
+
+amplitude noise in ADC channels (pedestal width) 
+
+Definition at line 110 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!digi\_\-voltageoffset@{digi\_\-voltageoffset}}
+\index{digi\_\-voltageoffset@{digi\_\-voltageoffset}!bpmconf@{bpmconf}}
+\paragraph[digi\_\-voltageoffset]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmconf::digi\_\-voltageoffset}}\hfill\label{structbpmconf_9135fd99da4a801e88a66845a7c71ff9}
+
+
+voltage offset (pedestal position) in counts 
+
+Definition at line 111 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!digi\_\-phasenoise@{digi\_\-phasenoise}}
+\index{digi\_\-phasenoise@{digi\_\-phasenoise}!bpmconf@{bpmconf}}
+\paragraph[digi\_\-phasenoise]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::digi\_\-phasenoise}}\hfill\label{structbpmconf_88562cd1feeaee818230b11035ef57a7}
+
+
+phase noise 
+
+Definition at line 112 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!t0@{t0}}
+\index{t0@{t0}!bpmconf@{bpmconf}}
+\paragraph[t0]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::t0}}\hfill\label{structbpmconf_59157c2831c6191ccabfc702acddf02a}
+
+
+start time of pulse 
+
+Definition at line 116 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmconf@{bpmconf}!ddc\_\-freq@{ddc\_\-freq}}
+\index{ddc\_\-freq@{ddc\_\-freq}!bpmconf@{bpmconf}}
+\paragraph[ddc\_\-freq]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::ddc\_\-freq}}\hfill\label{structbpmconf_6c054672fa971d58fd3c50040d9a7e57}
+
+
+Frequency of downmixed waveform (MHz) 
+
+Definition at line 119 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmconf@{bpmconf}!ddc\_\-tdecay@{ddc\_\-tdecay}}
+\index{ddc\_\-tdecay@{ddc\_\-tdecay}!bpmconf@{bpmconf}}
+\paragraph[ddc\_\-tdecay]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::ddc\_\-tdecay}}\hfill\label{structbpmconf_626f42b1ed03ecc448dbf6a64852f793}
+
+
+Decay time (usec) 
+
+Definition at line 120 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmconf@{bpmconf}!ddc\_\-tOffset@{ddc\_\-tOffset}}
+\index{ddc\_\-tOffset@{ddc\_\-tOffset}!bpmconf@{bpmconf}}
+\paragraph[ddc\_\-tOffset]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::ddc\_\-tOffset}}\hfill\label{structbpmconf_23a43814f2826696ea56587c81cdea4e}
+
+
+Always have offset from t0 for sampling !!! 
+
+Definition at line 121 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmconf@{bpmconf}!ddc\_\-filter@{ddc\_\-filter}}
+\index{ddc\_\-filter@{ddc\_\-filter}!bpmconf@{bpmconf}}
+\paragraph[ddc\_\-filter]{\setlength{\rightskip}{0pt plus 5cm}{\bf filter\_\-t}$\ast$ {\bf bpmconf::ddc\_\-filter}}\hfill\label{structbpmconf_641616863daef1ba61c3962ee0f1feb3}
+
+
+DDC 2 omega filter 
+
+Definition at line 122 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmconf@{bpmconf}!fit\_\-inifreq@{fit\_\-inifreq}}
+\index{fit\_\-inifreq@{fit\_\-inifreq}!bpmconf@{bpmconf}}
+\paragraph[fit\_\-inifreq]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::fit\_\-inifreq}}\hfill\label{structbpmconf_c874a126f597bef0e859829df40f6828}
+
+
+Initial frequency for fitting 
+
+Definition at line 125 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!fit\_\-initdecay@{fit\_\-initdecay}}
+\index{fit\_\-initdecay@{fit\_\-initdecay}!bpmconf@{bpmconf}}
+\paragraph[fit\_\-initdecay]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::fit\_\-initdecay}}\hfill\label{structbpmconf_09649f2fb45b07b22a94841d28af91e7}
+
+
+Initial decay time for fitting 
+
+Definition at line 126 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!fit\_\-tOffset@{fit\_\-tOffset}}
+\index{fit\_\-tOffset@{fit\_\-tOffset}!bpmconf@{bpmconf}}
+\paragraph[fit\_\-tOffset]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::fit\_\-tOffset}}\hfill\label{structbpmconf_10b19a4b942d4d29812197e3cd6614fe}
+
+
+Offset from t0 to start fitting 
+
+Definition at line 127 of file bpm\_\-interface.h.
+
+Referenced by process\_\-waveform().\index{bpmconf@{bpmconf}!ddc\_\-ct\_\-freq@{ddc\_\-ct\_\-freq}}
+\index{ddc\_\-ct\_\-freq@{ddc\_\-ct\_\-freq}!bpmconf@{bpmconf}}
+\paragraph[ddc\_\-ct\_\-freq]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::ddc\_\-ct\_\-freq}}\hfill\label{structbpmconf_4161d0ffd2c54fa963cf647acee85d07}
+
+
+caltone frequency for the ddc algorithm 
+
+Definition at line 130 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone().\index{bpmconf@{bpmconf}!ddc\_\-ct\_\-filter@{ddc\_\-ct\_\-filter}}
+\index{ddc\_\-ct\_\-filter@{ddc\_\-ct\_\-filter}!bpmconf@{bpmconf}}
+\paragraph[ddc\_\-ct\_\-filter]{\setlength{\rightskip}{0pt plus 5cm}{\bf filter\_\-t}$\ast$ {\bf bpmconf::ddc\_\-ct\_\-filter}}\hfill\label{structbpmconf_c5f7ea44e1cbfa2b6efa35cb0fb3eb78}
+
+
+filter for the caltone ddc 
+
+Definition at line 131 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone().\index{bpmconf@{bpmconf}!ddc\_\-ct\_\-iSample@{ddc\_\-ct\_\-iSample}}
+\index{ddc\_\-ct\_\-iSample@{ddc\_\-ct\_\-iSample}!bpmconf@{bpmconf}}
+\paragraph[ddc\_\-ct\_\-iSample]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmconf::ddc\_\-ct\_\-iSample}}\hfill\label{structbpmconf_22293d75805cdba7799374a11ec3efc7}
+
+
+sample number to sample from ddc for amp/phase 
+
+Definition at line 132 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone().\index{bpmconf@{bpmconf}!geom\_\-pos@{geom\_\-pos}}
+\index{geom\_\-pos@{geom\_\-pos}!bpmconf@{bpmconf}}
+\paragraph[geom\_\-pos]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::geom\_\-pos}[3]}\hfill\label{structbpmconf_c1d1faa7d508fc9c577426adb9a49e1f}
+
+
+position of the BPM in the beamline 
+
+Definition at line 136 of file bpm\_\-interface.h.
+
+Referenced by get\_\-bpmhit().\index{bpmconf@{bpmconf}!geom\_\-tilt@{geom\_\-tilt}}
+\index{geom\_\-tilt@{geom\_\-tilt}!bpmconf@{bpmconf}}
+\paragraph[geom\_\-tilt]{\setlength{\rightskip}{0pt plus 5cm}double {\bf bpmconf::geom\_\-tilt}[3]}\hfill\label{structbpmconf_893d35f9c9c87b77f0314b8ed58928ee}
+
+
+tilt of the BPM (0: xrot, 1: yrot, 2: zrot) 
+
+Definition at line 137 of file bpm\_\-interface.h.
+
+Referenced by get\_\-bpmhit().\index{bpmconf@{bpmconf}!ref\_\-idx@{ref\_\-idx}}
+\index{ref\_\-idx@{ref\_\-idx}!bpmconf@{bpmconf}}
+\paragraph[ref\_\-idx]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmconf::ref\_\-idx}}\hfill\label{structbpmconf_d3858f7f6e82fd515a6f126b873a34f1}
+
+
+reference cavity index for this BPM 
+
+Definition at line 140 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!diode\_\-idx@{diode\_\-idx}}
+\index{diode\_\-idx@{diode\_\-idx}!bpmconf@{bpmconf}}
+\paragraph[diode\_\-idx]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmconf::diode\_\-idx}}\hfill\label{structbpmconf_d3877ddfdbd0ea0b459c01a9ad64e807}
+
+
+reference diode index for this BPM 
+
+Definition at line 141 of file bpm\_\-interface.h.\index{bpmconf@{bpmconf}!forced\_\-trigger@{forced\_\-trigger}}
+\index{forced\_\-trigger@{forced\_\-trigger}!bpmconf@{bpmconf}}
+\paragraph[forced\_\-trigger]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bpmconf::forced\_\-trigger}}\hfill\label{structbpmconf_2a7324686323fe06ecbe81a6455e9d6f}
+
+
+this cavity is abused as trigger signal 
+
+Definition at line 142 of file bpm\_\-interface.h.
+
+Referenced by process\_\-diode().\index{bpmconf@{bpmconf}!ddc\_\-buffer\_\-re@{ddc\_\-buffer\_\-re}}
+\index{ddc\_\-buffer\_\-re@{ddc\_\-buffer\_\-re}!bpmconf@{bpmconf}}
+\paragraph[ddc\_\-buffer\_\-re]{\setlength{\rightskip}{0pt plus 5cm}{\bf doublewf\_\-t}$\ast$ {\bf bpmconf::ddc\_\-buffer\_\-re}}\hfill\label{structbpmconf_b65d00543b88a7d2765d0a63419f4948}
+
+
+pointer to a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} buffer 
+
+Definition at line 145 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().\index{bpmconf@{bpmconf}!ddc\_\-buffer\_\-im@{ddc\_\-buffer\_\-im}}
+\index{ddc\_\-buffer\_\-im@{ddc\_\-buffer\_\-im}!bpmconf@{bpmconf}}
+\paragraph[ddc\_\-buffer\_\-im]{\setlength{\rightskip}{0pt plus 5cm}{\bf doublewf\_\-t}$\ast$ {\bf bpmconf::ddc\_\-buffer\_\-im}}\hfill\label{structbpmconf_6d4802e13e5838a5df80aeda01a1f5b2}
+
+
+pointer to a \doxyref{doublewf\_\-t}{p.}{structdoublewf__t} buffer 
+
+Definition at line 146 of file bpm\_\-interface.h.
+
+Referenced by process\_\-caltone(), and process\_\-waveform().
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+bpminterface/{\bf bpm\_\-interface.h}\end{CompactItemize}
